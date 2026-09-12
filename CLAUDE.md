@@ -1,0 +1,22 @@
+# Contexto del proyecto
+
+Esta carpeta es la documentación viva del proyecto "Agente Fit" — un agente de IA de ventas para Fitness Suplementos, construido sobre el CRM white-label rmsystemm.com.br. Cuando trabajes en este proyecto, leé estos archivos primero para tener el contexto real (decisiones ya tomadas, estado actual, pendientes) en vez de asumir o repetir exploración ya hecha.
+
+## Orden de lectura recomendado
+- `00-resumen-general.md` — visión general del proyecto y objetivos.
+- `01-agente-de-ia.md` — cómo está armado el editor de Agente de IA en rmsystemm (pestañas, guardrails, herramientas).
+- `02-pipeline-comercial-real.md` / `03-funil-de-ventas-nuevo.md` — pipelines del CRM.
+- `04-patrones-reales-de-venta.md` — cómo vende el equipo humano hoy (base del prompt).
+- `05-infraestructura-tecnica.md` — infraestructura técnica general de la cuenta.
+- `06-seguridad-y-pendientes.md` — hallazgos de seguridad y checklist de pendientes (revisar siempre antes de tocar credenciales).
+- `07` a `12` — estrategias, remarketing, copiloto IA, DS Voice, biblioteca de prompts, caso real de referencia.
+- `13-prompt-agente-fit-v1.md` — el prompt de producción real del agente.
+- `14-funil-recompra.md` — pipeline de recompra.
+- `15-flujos-automatizacion-avanzados.md` — motor de Flujos de Automatización (nodos, triggers, hallazgos técnicos).
+- `16-auditoria-completa-crm.md` — auditoría completa de la cuenta.
+
+## Reglas importantes al continuar este trabajo
+- Nunca pegar API keys, client secrets, access tokens ni refresh tokens completos en estos archivos — si un valor real quedó expuesto en una sesión, documentar el incidente y la mitigación, no el valor.
+- Antes de clickear en el CRM real, confirmar con screenshot/snapshot el estado antes y después de cualquier acción que cambie datos.
+- No navegar de menús que el usuario ya conoce — ir directo a ubicación + campos/valores.
+- Actualizar el archivo correspondiente a medida que se resuelven pendientes, en vez de dejar la información desactualizada.
