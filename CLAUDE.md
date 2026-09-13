@@ -16,6 +16,10 @@ Esta carpeta es la documentación viva del proyecto "Agente Fit" — un agente d
 - `16-auditoria-completa-crm.md` — auditoría completa de la cuenta.
 - `17-registro-de-cambios.md` — registro cronológico de sesiones de trabajo y decisiones, para retomar el contexto rápido desde otra PC.
 - `18-integracion-bling.md` — guía completa de la integración con Bling: cómo repetir la autorización OAuth2, cómo evitar que el token se venza, límites reales de la API, y oportunidades de escalar.
+- `19-investigacion-externa-escalabilidad.md` — investigación externa (con fuentes) sobre cómo escalar el agente más allá del CRM: arquitecturas n8n, memoria de largo plazo, guardrails, audio/STT, selección dinámica de audios pre-grabados. Son hallazgos para decidir, no un plan ya aprobado.
+
+## Nota técnica: MCP de n8n registrado (2026-09-13)
+Este proyecto tiene un servidor MCP de n8n registrado (`claude mcp add --transport http n8n https://fitnessuplementos.app.n8n.cloud/mcp-server/http`) pero **sin autenticar todavía**. Al abrir una sesión nueva de Claude Code en este proyecto, correr `/mcp` y elegir "n8n" para autenticar (OAuth, abre una pestaña) — recién ahí aparecen herramientas nativas `mcp__n8n__*` para crear/editar workflows sin pasar por el navegador.
 
 ## Reglas importantes al continuar este trabajo
 - Al cierre de cada sesión de trabajo con cambios relevantes, agregar una entrada en `17-registro-de-cambios.md` (qué se pidió, qué se hizo/verificó, qué queda pendiente) y hacer commit + push a GitHub antes de cerrar, para poder continuar desde otra PC.
