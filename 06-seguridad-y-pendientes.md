@@ -2,7 +2,7 @@
 
 ## Hallazgos de seguridad
 - **Clave API de OpenAI expuesta en el DOM** en el agente "Assistente Fitness" (id 9347): el campo se muestra enmascarado visualmente pero el valor real completo está en el HTML subyacente, legible por cualquier herramienta de automatización sin hacer clic en el ojito. **No se guarda el valor real en esta documentación a propósito.** Recomendación pendiente: rotarla en platform.openai.com.
-- El campo Clave API de "Agente fit" (id 9756) no es una key real, dice literalmente `usersanti001` — no es una fuga, es un dato inválido puesto por error.
+- **Corrección importante (2026-09-13)**: el campo Clave API de "Agente fit" (id 9816) con el valor `usersanti001` **NO es un dato inválido al azar como se pensaba** — el usuario confirmó que es la contraseña real de la cuenta de Google `usersantifitness@gmail.com`, cargada ahí por error en algún momento (probablemente autocompletado por el navegador, confundiendo el campo con uno de login). Es una fuga real, aunque de bajo riesgo mientras el campo no se comparta ni se filtre fuera del CRM. **No se guarda el valor real en esta documentación a propósito.** Pendiente (el usuario decidió dejarlo para después explícitamente): (1) reemplazar ese valor por una clave de OpenAI real, (2) rotar la contraseña de esa cuenta de Google ya que estuvo expuesta en un campo de formulario del CRM.
 - Se compartió por chat una clave con formato `AQ.Ab8...` que **no** tiene el formato de una API key de Gemini real (esas empiezan con `AIzaSy`) — probablemente se copió el dato equivocado desde Google. Pendiente: el usuario debe conseguir la key correcta en `aistudio.google.com/apikey`.
 - Recomendación general: evitar pegar claves API completas en el chat; si hay que hacerlo, rotarlas después.
 
