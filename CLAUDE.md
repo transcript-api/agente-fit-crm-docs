@@ -15,6 +15,7 @@ Esta carpeta es la documentación viva del proyecto "Agente Fit" — un agente d
 - `15-flujos-automatizacion-avanzados.md` — motor de Flujos de Automatización (nodos, triggers, hallazgos técnicos).
 - `16-auditoria-completa-crm.md` — auditoría completa de la cuenta.
 - `17-registro-de-cambios.md` — registro cronológico de sesiones de trabajo y decisiones, para retomar el contexto rápido desde otra PC.
+- `18-integracion-bling.md` — guía completa de la integración con Bling: cómo repetir la autorización OAuth2, cómo evitar que el token se venza, límites reales de la API, y oportunidades de escalar.
 
 ## Reglas importantes al continuar este trabajo
 - Al cierre de cada sesión de trabajo con cambios relevantes, agregar una entrada en `17-registro-de-cambios.md` (qué se pidió, qué se hizo/verificó, qué queda pendiente) y hacer commit + push a GitHub antes de cerrar, para poder continuar desde otra PC.
