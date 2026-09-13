@@ -14,8 +14,10 @@ Esta carpeta es la documentación viva del proyecto "Agente Fit" — un agente d
 - `14-funil-recompra.md` — pipeline de recompra.
 - `15-flujos-automatizacion-avanzados.md` — motor de Flujos de Automatización (nodos, triggers, hallazgos técnicos).
 - `16-auditoria-completa-crm.md` — auditoría completa de la cuenta.
+- `17-registro-de-cambios.md` — registro cronológico de sesiones de trabajo y decisiones, para retomar el contexto rápido desde otra PC.
 
 ## Reglas importantes al continuar este trabajo
+- Al cierre de cada sesión de trabajo con cambios relevantes, agregar una entrada en `17-registro-de-cambios.md` (qué se pidió, qué se hizo/verificó, qué queda pendiente) y hacer commit + push a GitHub antes de cerrar, para poder continuar desde otra PC.
 - Nunca pegar API keys, client secrets, access tokens ni refresh tokens completos en estos archivos — si un valor real quedó expuesto en una sesión, documentar el incidente y la mitigación, no el valor.
 - Antes de clickear en el CRM real, confirmar con screenshot/snapshot el estado antes y después de cualquier acción que cambie datos.
 - No navegar de menús que el usuario ya conoce — ir directo a ubicación + campos/valores.
