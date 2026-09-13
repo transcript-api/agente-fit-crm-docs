@@ -1,3 +1,14 @@
+## ✅ v4 — ACTUALIZADO Y VERIFICADO GUARDADO (2026-09-13, madrugada)
+Se agregaron 2 cambios puntuales al prompt v3 de abajo, confirmados guardados de verdad (releído el campo tras recargar la página, no solo asumido):
+1. **Regla de escalamiento por desconocimiento**, agregada al final de `<reglas_absolutas>`: *"Si no tenés la información necesaria para responder algo con seguridad (un precio no confirmado, una política que no conocés, una pregunta técnica fuera de tu base de conocimiento) no inventes la respuesta — avisá con naturalidad que vas a confirmar eso y transferí el ticket a la fila de Atención Humana en vez de responder a ciegas."* — resuelve el pendiente anotado en [[07-estrategias-pendientes-agente]].
+2. **Fix de inconsistencia en el tag de cupón** (CUPONES DINÁMICOS): unificado a `FV|Cupon [nombre]_Enviado` (con guion bajo) en las dos menciones — antes una decía con espacio y la otra con guion bajo, lo que hubiera roto la lógica de "nunca repetir el mismo cupón".
+
+También corregidos en esta sesión (ver [[01-agente-de-ia]] y [[06-seguridad-y-pendientes]] para el detalle): la Clave API ya no está rota (clave real de OpenAI cargada), y el modo de ejecución del agente está en "Avanzado" (tool calling nativo).
+
+**Bloqueante real distinto, no de este archivo**: la sección "Guardrails" del editor (que debería reforzar automáticamente reglas como "no inventar precios") tiene un bug de persistencia confirmado — no confiar en que esté activa sin volver a verificarla. La única protección real hoy es esta regla del prompt.
+
+---
+
 # Prompt "Agente fit" — v3 (2026-09-11, con lógica de negociación, Recompra, cupones por categoría)
 
 **Historial**: v1 (borrador inicial) → v2 (corrección de tono: sin "che", sin "¿" de apertura, sin opciones fijas de 2-3 con precio directo, mensaje de cierre real) → **v3 (esta versión)**: reemplaza el bloque de precios fijo por negociación progresiva (anclaje alto → leer reacción), agrega modo Recompra completo, corrige lógica de cupones a nivel categoría (no producto exacto), agrega variables de estilo de cliente neutras, agrega instrucción de variar redacción, agrega posibilidad de usar audios de DS Voice por tema.

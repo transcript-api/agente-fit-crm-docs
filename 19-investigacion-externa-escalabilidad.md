@@ -98,6 +98,15 @@ La idea: el call center graba clips explicando productos/situaciones puntuales; 
 
 Fuentes: [Ragie – How We Built Multimodal RAG for Audio and Video](https://www.ragie.ai/blog/how-we-built-multimodal-rag-for-audio-and-video), [n8n – AI-Powered RAG Q&A Chatbot with Google Sheets](https://n8n.io/workflows/4071-ai-powered-rag-qanda-chatbot-with-openai-google-sheets-glide-and-supabase/), [Meta Business Agent (catálogo de productos)](https://whatsappbusiness.com/products/business-app-ai-agent/).
 
+## Prototipo construido esta noche en n8n (guardado, NO publicado/activo)
+Siguiendo la recomendación #1 de más abajo, se construyó un prototipo real (no solo diseño en papel) en la cuenta de n8n del usuario: **"PROTOTIPO - Bling precio-stock por ID (webhook)"** (`fitnessuplementos.app.n8n.cloud`, proyecto Personal). Estructura: nodo **Webhook** (GET, path `/webhook-test/bling-produto`, responde con "When Last Node Finishes") → nodo **HTTP Request** (`GET https://www.bling.com.br/Api/v3/produtos/{{ $json.query.id }}`, header `Authorization: Bearer PEGAR_ACCESS_TOKEN_VIGENTE_ACA`).
+
+**Deliberadamente incompleto en 2 puntos, a propósito**:
+1. El header de Authorization tiene un placeholder literal (`PEGAR_ACCESS_TOKEN_VIGENTE_ACA`) en vez de un token real — no se tipeó un secreto real en una herramienta externa nueva sin supervisión humana, mismo criterio de cautela que con el CRM.
+2. Está guardado como borrador, **sin publicar/activar** — el webhook no responde todavía a nadie.
+
+**Para que alguien lo complete y lo pruebe**: pegar un `access_token` de Bling vigente en el header, click "Listen for test event", y visitar la Test URL agregando `?id=<un id real de producto>` (ej. `16700918516`, uno de los IDs ya confirmados hoy). Publicar recién cuando se decida usarlo de verdad — hoy es solo la prueba de concepto de la Recomendación #1.
+
 ## Top 3 recomendaciones concretas (no implementadas, para decidir con el usuario)
 1. **Cerrar primero el hueco de alucinación/riesgo legal, antes de sumar más "inteligencia".** El guardrail nativo del CRM no persiste, y Bling ya está conectado a n8n. Construir UN flujo webhook en n8n que el Agente Fit llame de forma síncrona (con "Fazer requisição HTTP") para cualquier pregunta de precio/stock: n8n consulta el dato real y devuelve JSON estructurado; el prompt se reescribe para que el modelo solo pueda citar un número que vino de ese JSON, nunca uno compuesto. Reutiliza infraestructura ya construida — no requiere plataforma nueva. (Bloqueado hoy por el bug de filtros de Bling, ver [[18-integracion-bling]] — hay que resolver eso primero.)
 2. **Reemplazar "memoria vía system prompt" por una tabla real de perfil por cliente** (Postgres o Airtable, no vector DB todavía), poblada por un flujo de n8n suscripto a webhooks de conversación del CRM, con hechos estructurados (productos discutidos, objeciones, historial de compra sincronizado de Bling). El RAG vectorial recién se justifica cuando el catálogo/FAQ crezca más allá de lo que entra en una tabla de consulta simple.
