@@ -26,17 +26,37 @@ Este archivo consolida todo lo aprendido sobre la integración con Bling (el ERP
 ### Cómo se hizo sin exponer nunca el secreto ni los tokens en el chat
 Todo el paso 5 (y el 6) se ejecuta con `browser_evaluate` de Playwright **dentro del navegador**, leyendo el Client Secret directo del input del DOM (`input.value`) y haciendo el `fetch()` ahí mismo — el script solo devuelve resultados no sensibles (código de estado HTTP, cantidad de productos, nombre de un producto de prueba), nunca el token ni el secreto. Es el mismo criterio que se usó para las claves de OpenAI (ver [[06-seguridad-y-pendientes]]) y coincide con la skill `browser-automation` instalada este mismo día. **Cualquier agente que repita este proceso debe seguir el mismo patrón** — nunca pedirle al usuario que pegue el Client Secret o un token en el chat, y nunca usar `browser_type`/`browser_fill_form` con el valor real (Claude Code tiene un clasificador de seguridad que bloquea eso activamente, ya se probó en esta sesión).
 
-## Mecanismo de renovación automática — diseñado, todavía no construido
-El diseño completo (nodo por nodo) vive en [[15-flujos-automatizacion-avanzados]], sección "Diseño de Recompra actualizado" / hallazgo de persistencia vía Contato fijo. Resumen:
-1. Flujo con disparador **Agendado**, cada 5 horas (margen cómodo antes de que venza a las 6hs).
-2. Nodo **Contato → Buscar/Criar** un contacto fijo (ej. "Sistema - Bling Token") que actúa como "base de datos" del token vigente.
-3. Nodo **Requisição HTTP** → `POST /Api/v3/oauth/token` con `grant_type=refresh_token`, usando el refresh_token guardado en ese contacto.
-4. Nodo **Contato → Alterar campos**, escribiendo el `access_token` y el **nuevo** `refresh_token` en dos campos personalizados de Contacto a crear (`Bling Access Token`, `Bling Refresh Token` — hoy solo existe el campo "Endereço").
+## Mecanismo de renovación automática — ✅ construido y publicado (2026-09-13), falta activar
+El diseño completo (nodo por nodo) vive en [[15-flujos-automatizacion-avanzados]], sección "Diseño de Recompra actualizado" / hallazgo de persistencia vía Contato fijo. **Ya está construido y publicado** como el flujo **"FV|Bling - Renovacion de Token"** (id 5117), en estado **Inativa** a propósito (mismo criterio que el resto del proyecto — nunca activar sin confirmar antes). Estructura real (5 nodos):
+1. **Agendado**, cada 5 horas.
+2. **Contato → Criar contato**: Nome `Sistema - Bling Token`, Telefone `5511900000000`. Confirmado en vivo que este sub-tipo hace *find-or-create* por teléfono (ver sección de abajo), no hace falta un sub-tipo "Buscar" aparte.
+3. **Requisição HTTP** → `POST https://www.bling.com.br/Api/v3/oauth/token`, header `Content-Type: application/json`, body JSON:
+   ```json
+   {
+     "grant_type": "refresh_token",
+     "refresh_token": "{contact.extraInfo.Bling Refresh Token}",
+     "client_id": "5c4cdb73dc5148b34ee2a83a50c24d3273e2290b",
+     "client_secret": "<pegar a mano, nunca dejarlo commiteado en ningún lado>"
+   }
+   ```
+   Con "Salvar resposta em variável" activado, nombre de variable `bling_token_response`.
+4. **Contato → Campo do contato** ("Definir"): Chave `Bling Access Token`, Valor `{bling_token_response.access_token}`.
+5. **Contato → Campo do contato** ("Definir"): Chave `Bling Refresh Token`, Valor `{bling_token_response.refresh_token}`.
 
-**Pendiente de construir de verdad** — solo se probó el diseño en un flujo descartable, nunca publicado.
+### Hallazgos de UI para armar esto (para no repetir la exploración)
+- El body del nodo "Requisição HTTP" es **JSON, no x-www-form-urlencoded** — aunque se ponga ese Content-Type como header, el campo de body solo acepta JSON válido.
+- Para referenciar un campo personalizado del contacto: `{contact.extraInfo.Nombre Exacto Del Campo}` (el propio panel de variables lo indica: "Informações Adicionais (use .nome_do_campo)").
+- Para referenciar la respuesta guardada de un nodo HTTP: `{nombre_de_la_variable.campo_de_la_respuesta}` (ej. `{bling_token_response.access_token}`).
+- El sub-tipo de un nodo "Contato" (Criar / **Campo do contato** / Nota / Lista) **no se puede elegir desde el picker rápido "+"** en medio de una conexión — ese siempre inserta "Criar contato". Hay que ir al panel lateral de Componentes, clickear "Contato" (abre un submenú con las 4 variantes) y **arrastrar** la variante correcta hasta el conector — clickear no alcanza, hace falta drag and drop.
+
+### ⚠️ Incidente de seguridad durante la construcción (2026-09-13)
+Al usar el botón "Testar" (Modo Teste/simulación) del flujo con el `client_secret` ya escrito en el body, el panel de "O que o fluxo faria" lo mostró **completo en texto plano** — quedó expuesto en la conversación con Claude. El usuario decidió explícitamente no rotarlo. Recomendación que queda en pie para cualquiera que retome esto: **no usar "Testar" con el secret ya cargado en el body** — ir directo a "Executar agora" (no muestra el preview del body armado), o vaciar el campo `client_secret` antes de cualquier simulación y pegarlo recién al final.
 
 ### ⚠️ Riesgo no verificado todavía, importante para quien lo construya
 OAuth2 estándar suele **rotar el `refresh_token`** en cada uso (el anterior deja de servir). Nunca se probó un `grant_type=refresh_token` real en esta cuenta todavía — hay que asumir que rota y **guardar siempre el `refresh_token` nuevo** que devuelva la respuesta, no solo el `access_token`. Si el Flujo de renovación solo actualiza el `access_token` y reutiliza un `refresh_token` viejo, se va a romper en la segunda corrida, no en la primera — un bug fácil de no notar hasta 5-10 horas después de publicarlo.
+
+### ✅ RESUELTO (2026-09-13): "Criar contato" SÍ hace find-or-create por teléfono
+Se probó en vivo con un flujo descartable ("TEST-borrar-semantica-contato", disparo manual): se ejecutó el nodo "Contato → Criar contato" con el mismo Nombre/Telefone fijos **4 veces seguidas** (execuções #476698 a #476700 y la inicial). Resultado verificado en `/business/contacts`: **un solo contacto**, con la fecha de creación de la primera corrida — ninguna ejecución posterior generó un duplicado. Confirma que el diseño de "Contato fijo" para guardar el token es seguro para correr cada 5hs sin ensuciar la base de contactos. No hace falta buscar un sub-tipo "Buscar" — "Criar contato" (el que aparece por defecto al insertar el nodo) ya alcanza.
 
 ## Límites reales de la API (confirmado contra developer.bling.com.br/limites)
 - **3 requisições por segundo**, **120.000 requisições por día**.
@@ -55,7 +75,12 @@ La llamada de prueba (`GET /Api/v3/produtos?limite=3`) devolvió 100 resultados,
 4. **Factura de Bling pendiente**: se vio un aviso real de "fatura de Setembro/2026 ainda está em aberto" al crear la app nueva — si no se regulariza, se corre riesgo de perder acceso a toda la cuenta de Bling, no solo a la API. Vale la pena que alguien lo revise pronto (ver [[17-registro-de-cambios]]).
 
 ## Pendiente
-- Construir de verdad el Flujo de renovación automática (diseño arriba), con especial cuidado en guardar el `refresh_token` nuevo en cada corrida.
-- Crear los 2 campos personalizados de Contacto (`Bling Access Token`, `Bling Refresh Token`) en `Configuración → Campos de Contacto`.
+- ✅ ~~Construir de verdad el Flujo de renovación automática~~ — hecho y publicado (id 5117), ver arriba.
+- ✅ ~~Crear los 2 campos personalizados de Contacto~~ — hechos (`Bling Access Token`, `Bling Refresh Token`).
+- **Antes de activar el Flujo** (falta, en este orden):
+  1. Cargar a mano en el contacto "Sistema - Bling Token" (`/business/contacts`) un `refresh_token` inicial válido en el campo "Bling Refresh Token" — hoy está vacío, y sin esto la primera corrida real falla (refresh_token vacío).
+  2. Pegar el `client_secret` real en el nodo "Requisição HTTP" del flujo (se vació a propósito por el incidente de seguridad de arriba).
+  3. Probar con "Executar agora" una vez (no "Testar") y confirmar en el contacto que los dos campos personalizados se actualizaron con valores nuevos.
+  4. Recién ahí, tildar el checkbox de Status del flujo en la lista de Flujos de Automação para activarlo de verdad.
 - Decidir si se elimina la app vieja (id 398769, cuenta de Facundo) o se deja abandonada sin borrar.
 - Agregar al prompt del Agente Fit la instrucción real de consultar Bling por `nome`/`codigo` antes de citar un precio (conecta con el guardrail "No inventar precios", ver [[01-agente-de-ia]]).
