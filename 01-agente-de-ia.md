@@ -55,6 +55,7 @@ En `Configuración → Cuentas Integradas` (`/settings/external-accounts`) hay u
 - Muestra: Activación general (activos/con responsable/sin responsable), **Colas** vinculadas, **Canales de atención** vinculados.
 - En la primera auditoría ("Assistente Fitness"): 0 en todo, sin cola ni canal — estructuralmente no podía atender nada.
 - "Agente fit" ya tiene la cola "Atencion IA" vinculada (mejora respecto a la primera auditoría).
+- **Confirmado (2026-09-11, sesión en la otra PC)**: "Ningún canal de atención vinculado todavía" — pero en el diálogo real "Vincular canales de atención" ya existen 2 números de WhatsApp reales conectados a la cuenta para elegir: **"Fitness Suplementos"** y **"SUPLEMENTOS ®"**. No hace falta dar de alta ningún número nuevo — vincular uno de estos dos al agente es un solo click en "Vincular" cuando se decida activarlo en producción (paso todavía no hecho a propósito, para no activar nada sin confirmar).
 
 ## Panel lateral "Ayuda con IA - Gratis"
 Aparece en casi todas las pantallas del editor de agente. Es un copiloto de la propia plataforma para *configurar* cosas por lenguaje natural (no es el agente de venta). Incluido gratis con el plan de rmsystemm — distinto de la facturación de la API del modelo (esa la paga la empresa aparte, ver conversación sobre OpenAI vs Gemini billing).

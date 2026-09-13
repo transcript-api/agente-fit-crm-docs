@@ -64,5 +64,8 @@ La herramienta "+ Enviar Funil DS Voice" está confirmada en la lista de herrami
 **Limitación real**: el audio grabado no puede decir el nombre de la persona dentro del audio (no hay `{{Nombre}}` en un archivo de audio ya grabado) — se compensa con el mensaje de texto previo ("Mirá, te explico 👇") + el delay realista, tal como se vio en el caso real de "Rafael".
 **Pendiente**: verificar que "Enviar Funil DS Voice" exista como opción real dentro de "Agente fit" en rmsystemm (confirmado en DKW, no confirmado todavía en nuestra cuenta), y grabar los audios por tema/producto una vez que se defina qué temas necesitan uno.
 
+## Pendiente: instrucción explícita de escalamiento cuando el agente no sabe/no tiene el dato (2026-09-11)
+El prompt actual (ver [[13-prompt-agente-fit-v1]]) no tiene una regla explícita para el caso "el agente no tiene la información o no está seguro de la respuesta". Las piezas para resolverlo ya están confirmadas como reales en el panel de acciones del editor de Instrucciones (no son teóricas): **"Transferir Ticket"** (a una fila humana) y **"Finalizar atendimento"**. Falta agregar al prompt algo como: *"si no tenés la información necesaria o no estás seguro de cómo responder, no inventes — transferí el ticket a la fila de Atención Humana en vez de responder a ciegas."* Se decidió no agregarlo todavía a propósito (no implementado), queda anotado para cuando se retome el prompt.
+
 ## Cómo se usa este archivo
 Es un archivo "vivo" de ideas — no un plan de ejecución. Cuando una idea de acá se implementa, se mueve la referencia al archivo correspondiente (ej. [[01-agente-de-ia]] o [[03-funil-de-ventas-nuevo]]) y se marca acá como hecha, en vez de duplicar contenido.
