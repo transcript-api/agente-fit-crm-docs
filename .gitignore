@@ -3,3 +3,5 @@
 
 # Screenshots/snapshots que genera Playwright MCP al operar el navegador (datos del CRM en vivo, no documentación)
 .playwright-mcp/
+# Playwright CLI output (may contain credentials)
+.playwright-cli/

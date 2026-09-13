@@ -47,6 +47,19 @@ En una PC distinta (usuario Windows "USUARIO", no "Home") donde Node, npm y Chro
 6. **Confirmado funcionando**: login real en `rmsystemm.com.br` con verificación en dos pasos, sesión persistida en el perfil dedicado — el usuario logueó a mano en la ventana (nunca se le pidió ni se manejó la contraseña por chat), confirmado con `browser_snapshot`/captura mostrando el dashboard real ("Bienvenido, User Santi a Fitness Suplementos").
 7. Se instaló también la skill de Claude Code `browser-automation` (protocolo de disciplina para este tipo de tareas — perfil dedicado, verificación con dos señales, cadencia humana en acciones masivas, etc.), global y a nivel de este proyecto.
 
+### Segunda herramienta: `@playwright/cli` (2026-09-13) — coexiste con el MCP, no lo reemplaza
+Microsoft lanzó (setiembre 2026) un paquete oficial separado, `@playwright/cli`, pensado para agentes de código: en vez de tool calls MCP que vuelcan todo el árbol de accesibilidad en cada interacción, el agente corre comandos de shell puntuales (`playwright-cli open/goto/click/fill/screenshot/close`), más eficiente en tokens. Verificado contra la documentación oficial (`playwright.dev/docs/getting-started-cli`, `playwright.dev/agent-cli/skills`) antes de instalarlo, no solo por un video de terceros que lo recomendaba.
+
+**Diferencia importante con el MCP, según la propia documentación oficial**: el MCP (`@playwright/mcp`, ya instalado) es lo recomendado para **automatización exploratoria** — que es exactamente lo que este proyecto necesita casi siempre (navegar el CRM, mirar qué hay, decidir el siguiente paso según lo que se ve, con el usuario supervisando). El CLI está pensado para **tareas puntuales/repetibles y escritura de tests**. No son intercambiables 1 a 1 — se instalaron los dos para tener ambos disponibles según el caso, no para reemplazar el MCP.
+
+Instalación (misma PC, sin nada especial más allá de lo ya instalado para el MCP):
+```
+npm install -g @playwright/cli@latest
+npx playwright-cli install --skills           # skill a nivel de proyecto (.claude/skills/playwright-cli)
+npx playwright-cli install --skills --global  # skill también a nivel global (~/.claude/skills)
+```
+El propio instalador agrega solo `.playwright-cli/` a `.gitignore` (avisa explícitamente: "may contain credentials" — la carpeta de output/estado del CLI, no debe subirse a GitHub, igual criterio que `.playwright-mcp/`).
+
 ### Gotchas de la UI de rmsystemm en Playwright
 - Muchos elementos MUI (tabs, botones de tarjetas con drag-and-drop, diálogos) **cuelgan con timeout en `browser_click` normal** ("waiting for element to be visible, enabled and stable"). Solución: `browser_evaluate` con `(el) => el.click()` sobre el ref, o para selects tipo MUI, `dispatchEvent(new MouseEvent('mousedown', ...))`.
 - `browser_take_screenshot` a veces cuelga en "waiting for fonts to load..." — reintentar suele funcionar; si no, usar `browser_snapshot` (árbol de accesibilidad) como respaldo.
