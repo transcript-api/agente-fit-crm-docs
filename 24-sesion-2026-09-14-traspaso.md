@@ -107,6 +107,20 @@ O sea: **el Copiloto no aparece porque es un addon no contratado**, y **el agent
 
 Ojo con el límite: **están al tope de usuarios y de canales**. Sumar un canal para el agente requiere subir de plan.
 
+### 1.7b Sobre "¿pagamos o no pagamos?" — no hay evidencia de que nadie haya mentido
+El usuario se alarmó al ver "trial R$ 0,00/mês". Hay que leerlo junto con la otra pantalla.
+
+`Configuración → Financiero` muestra una suscripción **real y activa**:
+> Assinatura **#10867** · Status: **Ativo** · Data de Vencimiento: **06/04/2027** · *"Esta assinatura não possui um pedido vinculado."*
+
+Interpretación calibrada: una cuenta trial de verdad no tendría un vencimiento a 2027. Que la suscripción exista, esté activa y tenga fecha larga es compatible con un contrato real. Y *"no tiene un pedido vinculado"* significa que **el cobro no pasa por la pasarela del sistema** — no que nadie pague.
+
+Eso es exactamente lo esperable en una cuenta provisionada por un revendedor white-label (ver §4.0): el partner crea la cuenta con su plan interno en R$0, le pone el vencimiento del contrato, y **factura por fuera** (transferencia, factura propia). El panel del cliente final nunca refleja ese cobro. El propio nombre del plan, *"Administrador RM System"*, suena a plan interno del revendedor y no a un plan de catálogo.
+
+**Conclusión: lo más probable es que sí se pague y que el cobro simplemente no se gestione dentro del CRM.** Para salir de la duda sin generar un conflicto: pedirle el comprobante o la factura a quien paga en la empresa, y preguntarle a RM System cómo está facturada la cuenta.
+
+**Lo que sí es un dato duro:** la cuenta **vence el 06/04/2027** (agendarlo), y **están al límite de usuarios (6/6) y canales (2/2)**.
+
 ---
 
 ## 2. Lo que se construyó y quedó funcionando
@@ -271,7 +285,27 @@ Disparadores/acciones/excepciones **vistos en uso**: CUÁNDO → `Entrada en la 
 
 ## 4. ¿Se puede revender este CRM con marca propia?
 
-**Respuesta corta: sí, pero no con la suscripción actual.**
+### 4.0 Confirmado con pruebas: "RM System" es una marca white-label, no un producto propio
+
+El usuario lo sospechaba ("RM System es un nombre que ellos le pusieron"). Quedó probado con tres evidencias independientes:
+
+1. **El favicon de RM System vive en el storage del fabricante.** URL real:
+   `https://storage.integrador-crm.com/b7dfe010-5c69-43d8-9753-773a373c9636/FAVICONS_RM_SYSTEM_a60d6e77.png`
+   Es decir: el logo está en `integrador-crm.com` (la plataforma), dentro de una carpeta con un UUID por partner, en un archivo llamado literalmente `FAVICONS_RM_SYSTEM`. Ese UUID es el identificador de RM System como partner.
+2. **El código de la app lleva el prefijo del fabricante.** En el HTML hay IDs de filtros SVG llamados `dkw-liquid-glass-filter` y `dkw-glass-toast`. Cambiaron el logo y el dominio, pero el código interno sigue siendo el de **DKW**.
+3. **Las APIs son del fabricante, no de RM System.** La API principal es `api.integrador-crm.com` (ya lo sabíamos desde [[00-resumen-general]]); solo los webhooks salen por `api.rmsystemm.com.br`.
+
+Esto coincide exactamente con lo que DKW vende en su programa de partners: *"Custom logo, colors, and favicon"* + *"Own domain"* + *"Customers never see DKW branding"*.
+
+**Tres consecuencias prácticas, y son importantes:**
+
+- **El soporte con el que nos reunimos es el revendedor, no el fabricante.** No pueden arreglar un bug del producto: solo escalarlo a DKW. Eso probablemente explica por qué el bug de guardrails sigue vivo. Conviene preguntarles directamente *"¿esto lo pueden resolver ustedes o depende del fabricante, y en cuánto tiempo?"* — no para incomodar, sino para saber a qué atenerse.
+- **Lo que hizo RM System, se puede hacer igual.** Poner marca propia sobre DKW no requiere desarrollar nada. Es exactamente lo que el usuario preguntó si era posible.
+- **Se puede evaluar ir directo a DKW**, salteando la capa intermedia. Gana margen y soporte de primera mano; pierde la relación con RM System, que es quien atiende hoy.
+
+---
+
+**Respuesta corta a "¿se puede revender?": sí, pero no con la suscripción actual.**
 
 La cadena es: **DKW System** (dueño de la plataforma) → **RM System** (revendedor, `rmsystemm.com.br`) → **nosotros** (cliente de RM System). Por eso el plan se llama *"Administrador RM System"*.
 

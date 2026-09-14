@@ -239,6 +239,28 @@ Tem alguma forma de forçar uma execução real pra testar, sem ter que esperar 
 
 ---
 
+## Bloco 7 — Plano e faturamento (agregado 2026-09-14)
+
+*Preguntá esto sin acusar a nadie. El objetivo es tener por escrito qué pagás, hasta cuándo y qué incluye. Ver [[24-sesion-2026-09-14-traspaso]] §1.7b.*
+
+**28.** Queria confirmar como está o nosso plano, porque as duas telas do sistema mostram coisas diferentes e eu quero entender.
+
+Em **"Meu Plano"** aparece *"Administrador RM System · Assinatura trial · R$ 0,00/mês"*, com recorrência "Trial" e sem próxima cobrança. Mas em **"Financeiro"** aparece a assinatura **#10867**, com status **Ativo** e vencimento em **06/04/2027**, dizendo que *"não possui um pedido vinculado"*.
+
+Como é que a nossa conta está faturada de fato? O valor é cobrado por fora da plataforma?
+
+**29.** E queria deixar registrado o que o plano inclui hoje, porque vi dois limites que já estão no teto: **usuários 6 de 6** e **canais de atendimento 2 de 2**, zero disponíveis.
+
+A gente vai precisar de pelo menos mais um canal pra colocar o agente de IA pra rodar sem mexer no número que a equipe usa. **Quanto custa ampliar usuários e canais?**
+
+**30.** Por último, sobre vocês e a plataforma. Eu vi que o favicon do sistema está hospedado em `storage.integrador-crm.com` e que o código tem identificadores com prefixo `dkw-`. Então entendo que a RM System é uma camada em cima da plataforma da DKW, com a marca de vocês — o que é ótimo, não tem problema nenhum.
+
+Pergunto por um motivo prático: quando a gente reporta um bug como o dos guardrails, **vocês conseguem corrigir direto ou depende do fabricante?** E nesse caso, qual costuma ser o prazo?
+
+*→ Esto no es para incomodarlos. Es para saber a qué atenerte cuando reportes algo.*
+
+---
+
 ## Fechamento
 
 **27.** Por último: vocês têm um **canal direto pra reportar bug**? E existe algum **changelog ou roadmap** que a gente possa acompanhar pra saber o que vem por aí?
