@@ -2,7 +2,19 @@
 
 Esta carpeta es la documentación viva del proyecto "Agente Fit" — un agente de IA de ventas para Fitness Suplementos, construido sobre el CRM white-label rmsystemm.com.br. Cuando trabajes en este proyecto, leé estos archivos primero para tener el contexto real (decisiones ya tomadas, estado actual, pendientes) en vez de asumir o repetir exploración ya hecha.
 
+## ⚠️ Antes de consolidar cualquier cosa: leer PENDIENTES.md
+`PENDIENTES.md` es el registro único de todo lo que está sin resolver. **Es obligatorio leerlo completo antes de producir cualquier entregable que consolide estado**: preparar una reunión, armar un plan, priorizar, decidir qué construir, o cerrar una sesión con un resumen.
+
+Motivo (error real del 2026-09-13): se armó el documento de preguntas para soporte del CRM olvidando el Copiloto de IA, que estaba documentado hacía días con la frase literal "habría que preguntarles si/cuándo planean habilitarlo". El pendiente existía y estaba escrito — se pasó por alto porque el trabajo se armó desde lo que estaba fresco en la conversación, no desde lo documentado. **No alcanza con lo que esté en el contexto de la charla: hay que ir a buscar.**
+
+Reglas asociadas:
+1. **Marcador único**: todo pendiente, en cualquier archivo, se escribe con el prefijo `**PENDIENTE:**` al inicio de la línea, para que un solo grep los recupere todos: `grep -rn "\*\*PENDIENTE:" *.md`. Antes de consolidar, correr ese grep **además** de leer `PENDIENTES.md`, y comparar: si aparece algo en el grep que no está en el registro, agregarlo.
+2. **Registrar en el momento**: cuando se descubre algo sin resolver, se agrega a `PENDIENTES.md` en ese mismo momento — no se deja solo enterrado en la prosa de un archivo temático.
+3. **Cerrar explícitamente**: al resolver algo, marcarlo ✅ con fecha en `PENDIENTES.md` Y en el archivo de origen. No borrar la fila.
+4. **Cada pendiente dice quién lo desbloquea** (nosotros / soporte del CRM / Bling / el equipo / el usuario). Sin eso la lista se vuelve inútil.
+
 ## Orden de lectura recomendado
+- `PENDIENTES.md` — **empezar acá**: qué está sin resolver, quién lo desbloquea, y dónde está el detalle.
 - `00-resumen-general.md` — visión general del proyecto y objetivos.
 - `01-agente-de-ia.md` — cómo está armado el editor de Agente de IA en rmsystemm (pestañas, guardrails, herramientas).
 - `02-pipeline-comercial-real.md` / `03-funil-de-ventas-nuevo.md` — pipelines del CRM.
