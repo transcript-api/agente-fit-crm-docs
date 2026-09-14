@@ -3,6 +3,13 @@
 ## Cómo se ve el CRM (Playwright + Chrome con depuración remota)
 Este entorno (Windows, PowerShell, sin Node preinstalado, sin `claude` CLI en PATH) requirió armar acceso a navegador desde cero. **El entorno se resetea entre sesiones** (Node portátil, `.mcp.json`, perfil de Chrome copiado — todo desapareció una vez), así que esto es más una receta a repetir que una config permanente.
 
+### ✅ Node.js instalado de forma permanente en esta PC ("Home"), 2026-09-14
+Antes solo existía la variante portátil (`C:\Users\Home\AppData\Local\nodejs-portable`, que sí sobrevive entre sesiones en disco pero no queda en el PATH del sistema). Esta sesión instaló Node.js LTS **de forma permanente vía `winget install --id OpenJS.NodeJS.LTS -e`** (requiere aprobar un diálogo de UAC en pantalla — no se puede automatizar sin un humano presente). Quedó en `C:\Program Files\nodejs`, con `node`/`npm` ya en el PATH del sistema (Machine) — a diferencia de sesiones anteriores, una terminal nueva en esta PC ya debería tener `node`/`npm` disponibles sin ningún paso extra.
+
+Con eso instalado: `npm install -g @playwright/mcp@latest @playwright/cli@latest` funcionó directo, sin el truco de apuntar a `node.exe`+`cli.js` a mano (ya no hace falta, era un workaround específico de la variante portátil).
+
+El `.mcp.json` global (`C:\Users\Home\.mcp.json`) y el perfil de Chrome de depuración (`C:\ChromeRemoteDebuggingUserData`) de una sesión anterior **seguían en disco y funcionaron tal cual** — no fue necesario recrearlos, solo relanzar Chrome (paso 4 de la receta original) porque el puerto 9222 no respondía al empezar la sesión.
+
 ### Receta que funcionó (repetible)
 1. **Node portátil** (no hay Node preinstalado): descargar el zip de la última LTS desde `https://nodejs.org/dist/index.json` (buscar el de mayor versión con `lts != false`), extraer a `C:\Users\Home\AppData\Local\nodejs-portable`.
 2. **Cachear el paquete de Playwright MCP**: con Node portátil en PATH temporalmente, correr `node node_modules/npm/bin/npx-cli.js -y @playwright/mcp@latest --version`. Esto descarga el paquete a `%LOCALAPPDATA%\npm-cache\_npx\<hash>\node_modules\@playwright\mcp\` (el hash suele ser el mismo entre sesiones: `9833c18b2d85bc59`, pero verificar).

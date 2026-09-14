@@ -1,3 +1,46 @@
+## ✅ v7 — ACTUALIZADO Y VERIFICADO GUARDADO (2026-09-14, primera prueba real en columna vacía)
+Se probó el agente en vivo por primera vez usando el mecanismo de "Gerenciar Agente" por conversación (ver [[26-respuestas-reunion-soporte-2026-09-14]] #4): el usuario se escribió a sí mismo desde su propio número, movió el negocio a `FV | ENTRADA DE LEAD`, y vinculó el Agente Fit al ticket. **Funcionó**: el agente respondió (con el delay de 25s ya configurado) — primer indicio real de que el mecanismo de rollout controlado sirve.
+
+**Hallazgos de esta primera prueba**:
+1. El ticket se auto-asignó también a un responsable humano ("Ticket vinculado a User Santi") y el agente **respondió igual** — confirma en la práctica que el toggle "Responder tickets con asignado" (ON) hace que el agente no se calle aunque haya un responsable humano en el ticket. Ver pendiente P4 en [[PENDIENTES]].
+2. **El agente volvió a usar "¿" al abrir preguntas** ("¿Cómo estás?", "¿En qué puedo ayudarte hoy?") — pese a que el prompt ya lo prohibía explícitamente desde v3. Mismo patrón que se había medido en la sesión del 2026-09-14 (noche, ver [[24-sesion-2026-09-14-traspaso]] §1.3): con `gpt-4o-mini`, una regla de formato simple y literal no se cumple de forma confiable.
+
+**Cambio aplicado (v7)**: se reforzó la regla — de una línea genérica a una regla marcada como "la más importante", con dos ejemplos concretos de mal/bien, pidiéndole al modelo que revise mentalmente cada mensaje antes de mandarlo. Reemplaza la línea vieja `- Usá el signo de pregunta SOLO al final ("?"), nunca el de apertura ("¿").` por:
+```
+- REGLA DE FORMATO MÁS IMPORTANTE, NUNCA LA ROMPAS: jamás escribas el carácter ¿ (signo de apertura de pregunta). Ni una sola vez, en ningún mensaje. Español de Uruguay/Argentina real por WhatsApp NO usa ese signo al empezar una pregunta. Ejemplo de cómo tenés que escribir: "como estas?" y NO "¿cómo estás?". Ejemplo: "en que te puedo ayudar?" y NO "¿en qué te puedo ayudar?". Revisá mentalmente cada mensaje antes de mandarlo: si tiene un ¿, sacalo.
+```
+**Sin garantía**: esto es un refuerzo de wording, no un guardrail real — la única protección dura para esto sería un guardrail de "Estilo" (ver [[01-agente-de-ia]]), que sigue sin persistir (S2). Hay que seguir probando para ver si mejora, empeora, o no cambia nada.
+
+Verificado guardado tras recargar (15.273 caracteres).
+
+---
+
+## ✅ v6 — ACTUALIZADO Y VERIFICADO GUARDADO (2026-09-14, ajustes post-reunión)
+Aplicado directo en el agente real (id 9816) vía Playwright, verificado guardado tras recargar la página. Backup de v5 en [`artefactos/prompt-v5-backup-antes-de-v6.txt`](artefactos/prompt-v5-backup-antes-de-v6.txt) (14.462 caracteres). v6 quedó en 14.897 caracteres.
+
+**Un solo cambio, agregado justo después de `</identidad_ia>`:**
+```
+<transcripcion_audio>
+Si recibís un audio transcripto, la transcripción puede venir en portugués aunque el cliente te haya escrito en español (o en cualquier otro idioma) — es un comportamiento de la herramienta de transcripción, no un cambio de idioma real del cliente. Segui respondiendo siempre en el idioma en el que el cliente te escribio antes, sin importar en que idioma este la transcripcion del audio.
+</transcripcion_audio>
+```
+**Por qué**: surgió en la reunión con soporte del 2026-09-14 (ver [[26-respuestas-reunion-soporte-2026-09-14]] #12) — la transcripción de audio de la plataforma sale siempre en portugués, sin importar el idioma real del cliente. Sin esta regla, el agente podría "contagiarse" el idioma equivocado después de procesar un audio.
+
+**Nota importante**: esto asume que la transcripción de audio funciona — no está confirmado empíricamente todavía (contradicción sin resolver entre lo que dice "Mi Plan", que dice que es un addon no incluido, y lo que dijo soporte en la reunión, que con la clave BYOK ya transcribe solo). Ver pendiente P2 en [[PENDIENTES]] — probarlo con un audio real antes de asumir que esta regla se está aplicando de verdad.
+
+**Además, se ajustó la configuración técnica de la plataforma (no es parte del texto del prompt, vive en el panel de engranaje junto al selector de Modelo)**, alineándola con lo que recomiendan [[10-ds-agente-ds-voice-manual]] y la sección "RESTRICCIONES TÉCNICAS" que tenía el propio prompt hasta v4:
+
+| Campo | Antes (v5) | Ahora (v6) | Motivo |
+|---|---|---|---|
+| Máx. mensajes en historial | 12 | **30** | Coincide con la recomendación de los videos (~30) |
+| Máx. Tokens en respuesta | 600 | **200** | Coincide con la recomendación (150-200) y con la regla del propio prompt de "respuestas cortas, 2 a 4 líneas" |
+| Retraso para responder mensajes (segundos) | 0 | **25** | Recomendado 20-30s en toda la documentación de referencia — con 0s el agente responde fragmentado si el cliente manda varios mensajes seguidos |
+| Temperatura | 0,7 | 0,7 (sin cambios) | Ya estaba dentro del rango recomendado (0.5-1) |
+
+Verificado guardado tras recargar la página (screenshot antes/después).
+
+---
+
 ## ✅ v4 — ACTUALIZADO Y VERIFICADO GUARDADO (2026-09-13, madrugada)
 Se agregaron 2 cambios puntuales al prompt v3 de abajo, confirmados guardados de verdad (releído el campo tras recargar la página, no solo asumido):
 1. **Regla de escalamiento por desconocimiento**, agregada al final de `<reglas_absolutas>`: *"Si no tenés la información necesaria para responder algo con seguridad (un precio no confirmado, una política que no conocés, una pregunta técnica fuera de tu base de conocimiento) no inventes la respuesta — avisá con naturalidad que vas a confirmar eso y transferí el ticket a la fila de Atención Humana en vez de responder a ciegas."* — resuelve el pendiente anotado en [[07-estrategias-pendientes-agente]].
