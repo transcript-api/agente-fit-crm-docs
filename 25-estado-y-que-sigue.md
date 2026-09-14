@@ -32,7 +32,8 @@ Regla: nada entra acá como "funciona" sin que se haya verificado. Si dice "sin 
 | **El agente ignora reglas literales del prompt** | Usó "¿" en las 7 respuestas, estando prohibido textualmente | 🟠 El prompt no es garantía |
 | **Guardrails no persisten — es el backend, y NO hay workaround** | Se intentó 2 veces el 14/09 (con y sin cambiar de pestaña). En el mismo guardado el nombre del agente **sí** se guardó y el guardrail **no** → el servidor acepta el POST y descarta el guardrail | 🔴 **Sin red de seguridad, y sin forma de arreglarlo de nuestro lado** |
 | **Fuentes externas no se guardan solas** | Botón "Guardar cambios" queda deshabilitado | 🟠 Hay workaround (§1.4 del traspaso) |
-| **2 automatizaciones con "Cambiar de Columna" sin destino** | FV \| CUALIFICACION y FV \| DERIVAR A REMARKETING | 🟠 Funnel cortado |
+| **1 automatización con "Cambiar de Columna" sin destino** | Solo `FV \| DERIVAR A REMARKETING` (ID 55317). *(La de CUALIFICACION la había marcado mal: está bien, fue error de lectura)* | 🟡 Está **inactiva**, no rompe nada hoy |
+| **Las 7 automatizaciones de FV\| FUNIL DE VENTAS están inactivas** | Verificado abriendo el detalle de cada una (IDs 55258, 55287, 55288, 55290, 55294, 55301, 55317) | 🟡 Correcto para un pipeline de práctica, pero hay que saberlo |
 | **Nombres desalineados prompt vs CRM** | `FV\|CUALIFICACION` vs `FV \| CUALIFICACION`; `FVR \|` en remarketing | 🟠 Falla en silencio |
 | **Remarketing no arranca solo** | Las 2 primeras columnas no tienen automatizaciones | 🟡 Requiere mover a mano |
 | **Bug de traducción** | `automation.dialog.columnSubtitle` sin traducir | 🟢 Cosmético, reportar |

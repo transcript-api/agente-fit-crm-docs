@@ -195,7 +195,28 @@ Los 7 nodos:
 | FV \| DERIVAR A REMARKETING | Enviar a Remarketing | Entrada en la Tarjeta | Cambiar de Columna **(sin destino)** | — |
 | FV \| CERRAR SIN VENTA | — | — | — | — |
 
-🔴 **Dos automatizaciones están rotas: "Cambiar de Columna" sin columna destino** (FV | CUALIFICACION y FV | DERIVAR A REMARKETING). Las otras sí nombran el destino. El circuito del funnel está cortado en esos dos puntos: el lead se queda quieto. **Esto hay que arreglarlo, y es de lo más rápido de arreglar que hay en la lista.**
+> ### ⚠️ Corrección de dos errores míos (verificado después, mismo día)
+>
+> En la tabla de arriba marqué **FV | CUALIFICACION** como rota ("Cambiar de Columna" sin destino). **Era un error mío de lectura, no un bug.** Al abrirla de nuevo con más tiempo de espera dice `Cambiar de Columna · FV | SEGUIMIENTO`. El barrido automático leyó el panel antes de que el nombre de la columna terminara de cargar. **Esa automatización está bien.**
+>
+> **FV | DERIVAR A REMARKETING** sí está sin destino (confirmado abriendo el detalle: automatización **ID 55317**, `ACCIONES · 1 → Cambiar de Columna`, sin columna). Pero está **Inactiva**, así que no está rompiendo nada hoy — es una automatización a medio hacer.
+>
+> ### 🔑 Y el dato que faltaba: las 7 automatizaciones de FV| FUNIL DE VENTAS están INACTIVAS
+> Cada automatización tiene un campo **Status** que solo se ve abriendo su detalle (el resumen de la lista no lo muestra, por eso se me pasó en el primer barrido). Las 7 dicen **Inactivo**:
+>
+> | Automatización | ID | Status |
+> |---|---|---|
+> | Derivar a Seguimiento (Cualificación) | 55301 | Inactivo |
+> | Derivar a Seguimiento (Propuesta) | 55294 | Inactivo |
+> | Recordatorio Propuesta. | 55258 | Inactivo |
+> | Derivar a Remarketing tras 72hs | 55290 | Inactivo |
+> | Derivar a Seguimiento (Pago Pendiente) | 55288 | Inactivo |
+> | Recordatorio Pago Pendiente | 55287 | Inactivo |
+> | Enviar a Remarketing | 55317 | Inactivo |
+>
+> **O sea: el funnel FV| no está ejecutando absolutamente nada.** Está armado y apagado, que es exactamente como debe estar mientras es el pipeline de práctica. Cuando se decida encenderlo, hay que: (a) ponerle el destino a la 55317, y (b) activarlas una por una, empezando por las de recordatorio.
+>
+> **Lección de método, para el que siga:** el resumen de la lista de automatizaciones no muestra el Status y a veces tarda en cargar el destino de la columna. **Hay que abrir el detalle de cada una antes de afirmar nada sobre ellas.**
 
 ### FV| RMKG - REMARKETING (id 23865) — 6 columnas
 REMARKETING - POR CONTACTAR *(sin automatizaciones)* · SEGUIMIENTOS - 1/2/3 CONTACTOS *(sin automatizaciones)* · LEAD REACTIVADO · PAGO PENDIENTE · VENTA GANADA · CERRAR SIN VENTA.
