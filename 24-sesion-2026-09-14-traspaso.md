@@ -21,6 +21,16 @@ Lo dice con total seguridad, en buen tono, sin dudar. **Un cliente real le creer
 
 **Conclusión operativa: el agente NO se puede conectar a un canal real hasta resolver esto.**
 
+> ### ✅ CAUSA ENCONTRADA Y CORREGIDA — 2026-09-15
+> Eran **dos causas sumadas**, y el usuario las resolvió al día siguiente:
+>
+> 1. **La planilla de Google no estaba compartida como pública.** El CRM no tenía permiso para leerla, así que la fuente de conocimiento devolvía vacío y el modelo rellenaba el hueco inventando. En la sesión del 14/09 intenté abrir el diálogo "Compartir" del Sheet, se quedó cargando, y seguí adelante sin resolverlo — **ese fue el eslabón que me faltó**.
+> 2. **La pestaña "Prueba" no ejecuta conectores ni consulta el conocimiento.** Confirmado por el usuario: *"en el modo test no agarra"*. Coincide con las tres pruebas de §1.2.
+>
+> **Lección que vale para todo el proyecto:** cuando el agente "inventa", lo primero a revisar no es el prompt ni el modelo — es **si la fuente de datos es legible para el CRM** (permisos) y **si el entorno donde estás probando ejecuta herramientas**. El síntoma (alucinación) apuntaba al modelo; la causa estaba en permisos y en el entorno de prueba.
+>
+> **Sigue pendiente confirmarlo:** que en una **conversación real** el agente dé el precio correcto (990, no 1.200). Hasta que eso se vea, la corrección es "causa resuelta", no "problema cerrado". → **N12**
+
 ### 1.2 La pestaña "Prueba" no ejecuta herramientas ni consulta el conocimiento
 Evidencia acumulada:
 - Con el conector de Google Sheets adjunto, nunca lo llamó — ni siquiera pidiéndoselo explícitamente ("buscá en la planilla la fila de CREATINA 300G"), donde respondió "voy a confirmar eso y te cuento".
