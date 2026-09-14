@@ -1,3 +1,14 @@
+## ✅ v8 — ACTUALIZADO Y VERIFICADO GUARDADO (2026-09-14, corrige lo "no natural" de la primera prueba)
+El usuario pidió explícitamente que el agente "tenga noción" de los 3 problemas de naturalidad detectados en la primera prueba real (ver sección v7 abajo). Se reforzaron 3 reglas ya existentes, cada una con un ejemplo concreto de mal/bien (el mismo patrón que ya había funcionado con la regla del "¿" en v7):
+
+1. **No repetir el MOLDE de cierre** (no solo el texto literal): se agregó, justo después de la regla de "nunca repitas la misma frase textual", la aclaración de que alternar las palabras dentro del mismo molde ("Querés que X o preferís que Y?") sigue siendo repetitivo, con 3 formas alternativas de cerrar un mensaje.
+2. **No listar varios productos cuando preguntan algo abierto** (Etapa 2): se agregó que aunque pregunten "qué creatinas tienen" o similar, tiene que mostrar UN producto primero (el de `ranking_ventas = A`), no una lista de 2-3 de una — recién una segunda opción si el cliente pide más.
+3. **No copiar `descripcion_base` casi textual**: se agregó un ejemplo explícito de la frase-molde que NO hay que usar ("Es ideal para mejorar el rendimiento, aumentar energía y apoyar la recuperación...") y un ejemplo de cómo sí contar el mismo beneficio con voz propia.
+
+Verificado guardado tras recargar (16.480 caracteres). **Sin garantía** de que se cumpla siempre — mismo caveat que v7: sin guardrails funcionando, esto es refuerzo de wording, no una regla dura. Falta seguir probando para confirmar si mejora.
+
+---
+
 ## ✅ v7 — ACTUALIZADO Y VERIFICADO GUARDADO (2026-09-14, primera prueba real en columna vacía)
 Se probó el agente en vivo por primera vez usando el mecanismo de "Gerenciar Agente" por conversación (ver [[26-respuestas-reunion-soporte-2026-09-14]] #4): el usuario se escribió a sí mismo desde su propio número, movió el negocio a `FV | ENTRADA DE LEAD`, y vinculó el Agente Fit al ticket. **Funcionó**: el agente respondió (con el delay de 25s ya configurado) — primer indicio real de que el mecanismo de rollout controlado sirve.
 
