@@ -30,7 +30,7 @@ Regla: nada entra acá como "funciona" sin que se haya verificado. Si dice "sin 
 | **El agente inventa precios** | 3 de 3 preguntas respondidas con datos falsos y tono seguro | 🔴 Bloquea salir a producción |
 | **La pestaña "Prueba" no ejecuta herramientas ni RAG** | Nunca llamó al conector ni con pedido explícito; "Uso" quedó en 0 tokens tras 7 respuestas | 🔴 No podemos validar nada |
 | **El agente ignora reglas literales del prompt** | Usó "¿" en las 7 respuestas, estando prohibido textualmente | 🟠 El prompt no es garantía |
-| **Guardrails no persisten** | Los 4 configurados el 11/09 ya no están | 🔴 Sin red de seguridad |
+| **Guardrails no persisten — es el backend, y NO hay workaround** | Se intentó 2 veces el 14/09 (con y sin cambiar de pestaña). En el mismo guardado el nombre del agente **sí** se guardó y el guardrail **no** → el servidor acepta el POST y descarta el guardrail | 🔴 **Sin red de seguridad, y sin forma de arreglarlo de nuestro lado** |
 | **Fuentes externas no se guardan solas** | Botón "Guardar cambios" queda deshabilitado | 🟠 Hay workaround (§1.4 del traspaso) |
 | **2 automatizaciones con "Cambiar de Columna" sin destino** | FV \| CUALIFICACION y FV \| DERIVAR A REMARKETING | 🟠 Funnel cortado |
 | **Nombres desalineados prompt vs CRM** | `FV\|CUALIFICACION` vs `FV \| CUALIFICACION`; `FVR \|` en remarketing | 🟠 Falla en silencio |
@@ -129,7 +129,7 @@ Regla: nada entra acá como "funciona" sin que se haya verificado. Si dice "sin 
 | # | Qué | Quién lo desbloquea |
 |---|---|---|
 | N12 | **Encontrar cómo validar el agente con herramientas de verdad** (la pestaña Prueba no sirve) | Nosotros + soporte |
-| N17 | **Reconfigurar los guardrails** una vez que se sepa por qué se borran — con el workaround de "otro cambio en paralelo" puede que ahora sí persistan. **Probar esto es rápido y sería un golazo** | Nosotros |
+| ~~N17~~ | ~~Reconfigurar los guardrails con el workaround~~ → **❌ PROBADO EL 2026-09-14, NO FUNCIONA.** Se intentó de las dos formas (cambiando de pestaña y sin cambiar). En el mismo guardado el nombre del agente sí se guardó y el guardrail no → **es el backend**. Ya no depende de nosotros: pasa a S2 | Soporte del CRM |
 | N18 | Bajar el catálogo de nuevo cada X tiempo (el script ya está: `artefactos/build-catalogo.ps1`) y decidir si se automatiza con n8n | Nosotros |
 | N19 | Revisar los 31 productos que quedaron en categoría `otros` y los 136 sin marca | Nosotros |
 

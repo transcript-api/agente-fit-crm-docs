@@ -28,7 +28,7 @@ Nació el 2026-09-13 después de un error real: se armó el documento de pregunt
 | # | Pendiente | Detalle en | Estado |
 |---|---|---|---|
 | S1 | ¿Las variables de "Salvar Variável" persisten por contacto o mueren al cerrar el ticket? — **de esto depende todo el modo Recompra** | [[21-preguntas-para-soporte-rmsystemm]] #1 | 🟠 A preguntar |
-| S2 | Guardrails no persisten (bug reproducido 2 veces) | [[01-agente-de-ia]] | 🟠 A reportar |
+| S2 | **Guardrails no persisten — bug del BACKEND, sin workaround posible.** Reproducido 4 veces (2 el 11/09, 2 el 14/09). Prueba concluyente: en el mismo guardado el nombre del agente sí persistió y el guardrail no → el servidor acepta el POST y descarta el guardrail. Es el único mecanismo que impediría que el agente invente precios | [[24-sesion-2026-09-14-traspaso]] §1.4 | 🔴 **2ª más importante de la reunión** |
 | S3 | ¿Existe API de rmsystemm? ¿Webhooks salientes? — base de toda la integración con n8n | [[21-preguntas-para-soporte-rmsystemm]] #3 | 🟠 A preguntar |
 | S4 | **Copiloto de IA**: disponibilidad, costo, y si obliga a migrar de BYOK a "IA Gerenciada" | [[09-copiloto-ia-partner]] | 🟠 A preguntar |
 | S5 | ¿El CRM captura de qué anuncio vino el lead? + Meta Ads figura "Reconexión necesaria" | [[04-patrones-reales-de-venta]] | 🟠 A preguntar |

@@ -34,6 +34,18 @@ O caminho que a gente fez foi: configurar o guardrail de "Ancoragem de valores",
 
 É um bug conhecido? Tem alguma sequência de salvamento diferente que a gente deveria estar fazendo, ou depende de algum plano ou módulo estar habilitado?
 
+*→ Esto es lo que no te van a poder esquivar. Contalo tal cual.*
+
+E tem uma coisa que eu testei ontem que acho que mata a dúvida. **No mesmo salvamento** eu mudei duas coisas ao mesmo tempo: adicionei o guardrail **e** mudei o nome do agente. Cliquei em Guardar cambios uma única vez e recarreguei.
+
+**O nome do agente salvou. O guardrail não.**
+
+Ou seja: a requisição saiu, o servidor aceitou e gravou o resto — mas descartou o guardrail. Não é a interface, não é a forma de preencher, não é o "Conexão ao vivo perdida". **É o backend que não está persistindo esse campo.**
+
+Testei também completando outros campos junto, pra ver se o formulário precisava estar "sujo" por outro motivo, e mesmo assim o guardrail não sobreviveu à recarga.
+
+Isso é sério pra gente porque o guardrail de **Ancoragem de valores** é literalmente a única proteção automática contra o agente inventar preço — e a gente já mediu que ele inventa (ver a pergunta 19b).
+
 Uma coisa que pode estar relacionada: de vez em quando aparece um aviso de **"Conexão ao vivo perdida"** no editor do agente. Pode ser que quando isso acontece o salvamento não chegue no servidor e a gente nem perceba?
 
 *→ Es importante: hoy es la única protección automática contra que invente precios.*

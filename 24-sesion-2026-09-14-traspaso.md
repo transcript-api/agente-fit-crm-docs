@@ -44,7 +44,21 @@ Esto importa más de lo que parece: si ignora una regla tan simple y literal, no
 
 **El workaround (idea del usuario, funcionó):** completar la fuente externa **y además hacer cualquier otro cambio** en el formulario (por ejemplo tocar el prompt o un toggle). El botón se habilita por ese otro cambio y **arrastra la fuente**, que entonces sí persiste. Verificado: la fuente sobrevivió a la recarga.
 
-Qué persiste sin problema: prompt, slider de RAG, conectores, toggles.
+Qué persiste sin problema: prompt, slider de RAG, conectores, toggles, nombre del agente.
+
+**⚠️ Pero el workaround NO sirve para los guardrails. Son dos bugs distintos.**
+
+Se intentó dos veces configurar el guardrail **"Ancoragem de valores"** (nombrado "No inventar precios"), que es exactamente el que impediría el problema de 1.1:
+1. Agregándolo y ensuciando el formulario desde otra pestaña (Entrenamiento) → **no persistió**.
+2. Agregándolo y ensuciando el formulario **sin salir de Herramientas** (cambiando el nombre del agente) → **tampoco persistió**.
+
+**Y acá está la prueba que lo vuelve concluyente:** en ese segundo intento, el cambio del nombre del agente (`Agente fit` → `Agente Fit`) **sí quedó guardado**. O sea que el POST salió, el backend lo aceptó y guardó los otros campos — **pero descartó el guardrail**.
+
+No es un problema del front, ni de cómo se llena el formulario, ni del usuario. **Es el servidor el que no persiste los guardrails.**
+
+Consecuencia dura: **el único mecanismo de la plataforma que puede impedir que el agente invente precios está roto.** No hay workaround. Esto convierte a S2 en la segunda pregunta más importante de la reunión, después de S19.
+
+*(Efecto colateral menor de esta prueba: el agente ahora se llama "Agente Fit" con F mayúscula en vez de "Agente fit". Cosmético, no afecta nada.)*
 
 ### 1.5 Meta Ads: el CRM SÍ captura de qué anuncio vino el lead
 Se confirmó mirando el pipeline real. Cada tarjeta trae tres niveles:
