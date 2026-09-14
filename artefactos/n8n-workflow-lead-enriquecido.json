@@ -1,0 +1,119 @@
+{
+  "name": "FV | Enriquecimiento y ruteo de leads (Agente Fit)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-fitness",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000001",
+      "name": "Entrada de Lead",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-460, 300],
+      "webhookId": "a1000000-0000-4000-8000-0000000000w1"
+    },
+    {
+      "parameters": {
+        "url": "https://fitnessuplementos.com/products.json?limit=250",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000002",
+      "name": "Catalogo Shopify",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ---------------------------------------------------------------\n// Enriquecimiento del lead con el catalogo real de Shopify.\n// Entrada esperada en el webhook (JSON o form):\n//   name        -> nombre del contacto\n//   phone       -> telefono\n//   ad_name     -> nombre del anuncio de Meta (ej: \"HIPERCALORICO VITAMIN HORSE 3KG [VIDEO]\")\n//   message     -> primer mensaje del cliente (el prellenado del anuncio)\n// ---------------------------------------------------------------\n\nconst lead = $('Entrada de Lead').first().json;\nconst body = lead.body || lead.query || lead;\n\nconst productos = ($('Catalogo Shopify').first().json.products) || [];\n\n// --- normalizacion ---\nconst limpiar = (s) => (s || '')\n  .toString()\n  .toUpperCase()\n  .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')\n  .replace(/[^A-Z0-9 ]/g, ' ')\n  .replace(/\\s+/g, ' ')\n  .trim();\n\nlet telefono = (body.phone || '').toString().replace(/\\D/g, '');\nif (telefono && !telefono.startsWith('598') && !telefono.startsWith('55')) {\n  telefono = '598' + telefono.replace(/^0+/, '');\n}\n\nconst nombre = (body.name || '').toString().trim() || 'Lead sin nombre';\nconst textoAnuncio = limpiar(body.ad_name);\nconst textoMensaje = limpiar(body.message);\nconst pista = (textoAnuncio + ' ' + textoMensaje).trim();\n\n// --- categorizacion (mismas reglas que el catalogo del agente) ---\nfunction categoria(n) {\n  const u = limpiar(n);\n  if (/^KIT |KIT |COMBO /.test(u)) return 'kits y combos';\n  if (/CREATIN/.test(u)) return 'creatina';\n  if (/WHEY|PROTEIN|CASEIN|ALBUMIN|ISOLAD|ISOLATE|CARNIBOL|MASTODON|CREAMASS|HIPERCAL|HYPER|GAINER|MASS/.test(u)) return 'proteinas';\n  if (/BCAA|GLUTAMIN|ARGININ|BETA ALANIN|EAA|HMB|AMINO|TAURIN|CARNITIN/.test(u)) return 'aminoacidos';\n  if (/THERMO|TERMO|ABDOMEN|LIPO|BURN|KIMERA|CLEMBUTER|DIMETHYL/.test(u)) return 'termogenicos';\n  if (/PRE TREINO|PRE WORKOUT|PRE ENTRENO|WORKOUT|ENERGY|NITRATO|PUMP|HAZE|DILATED|TESTO|BOPE|FIRE GUN|HUGER|EVORA|BOOSTER/.test(u)) return 'pre-entreno';\n  if (/HYDRO|RECHARGE|SALT|ISOTON|ELECTROL/.test(u)) return 'hidratacion';\n  if (/VITAMIN|FISH OIL|OMEGA|ZMA|MULTI|MAGNESIO|ZINC|MELATONIN/.test(u)) return 'vitaminas y salud';\n  if (/COLAGEN|COLLAGEN/.test(u)) return 'colageno';\n  if (/BARRA|BAR |PROTOBAR|CRISP|PACOCA|ALFAJOR|COOKIE|CHIPS/.test(u)) return 'barras y snacks';\n  if (/PEANUT|AMENDOIM/.test(u)) return 'pasta de mani';\n  if (/MALTO|DEXTRIN|WAXY|PALATINOSE|CARBO/.test(u)) return 'carbohidratos';\n  return 'otros';\n}\n\nconst OBJETIVO = {\n  'proteinas': 'ganar masa muscular',\n  'creatina': 'ganar masa muscular',\n  'carbohidratos': 'ganar masa muscular',\n  'aminoacidos': 'ganar masa muscular',\n  'kits y combos': 'ganar masa muscular',\n  'termogenicos': 'bajar de peso',\n  'pre-entreno': 'rendimiento',\n  'hidratacion': 'rendimiento',\n  'vitaminas y salud': 'salud general',\n  'colageno': 'salud general'\n};\n\n// --- matching: cuantas palabras del anuncio aparecen en el nombre del producto ---\nconst palabras = pista.split(' ').filter(p => p.length > 2 && !['PARA','CON','LOS','LAS','DEL','QUIERO','COMPRAR','HOLA','VIDEO','IMG','MENSAJES'].includes(p));\n\nlet mejor = null;\nlet mejorPuntaje = 0;\nfor (const p of productos) {\n  const nom = limpiar(p.title);\n  let puntaje = 0;\n  for (const w of palabras) { if (nom.includes(w)) puntaje++; }\n  if (puntaje > mejorPuntaje) { mejorPuntaje = puntaje; mejor = p; }\n}\n\n// se exige un minimo de coincidencia para no inventar un match\nconst identificado = mejor !== null && mejorPuntaje >= 2;\nconst v = identificado ? (mejor.variants[0] || {}) : {};\nconst cat = identificado ? categoria(mejor.title) : '';\n\n// --- alternativas de la misma categoria (para que el vendedor/agente tenga con que cruzar) ---\nlet alternativas = [];\nif (identificado) {\n  alternativas = productos\n    .filter(p => p.handle !== mejor.handle && categoria(p.title) === cat)\n    .slice(0, 3)\n    .map(p => `${p.title} ($${(p.variants[0] || {}).price || '?'})`);\n}\n\n// --- prioridad ---\n// caliente: el anuncio identifica un producto concreto -> el lead ya sabe que quiere\n// tibio: hay pista de categoria pero no de producto\n// frio: no hay nada, hay que diagnosticar desde cero\nlet prioridad = 'frio';\nif (identificado) prioridad = 'caliente';\nelse if (pista.length > 0) prioridad = 'tibio';\n\nreturn [{\n  json: {\n    name: nombre,\n    phone: telefono,\n    prioridad,\n    producto_interes: identificado ? mejor.title : '',\n    categoria_interes: cat,\n    objetivo_lead: OBJETIVO[cat] || '',\n    precio_uyu: v.price || '',\n    link_producto: identificado ? ('https://fitnessuplementos.com/products/' + mejor.handle) : '',\n    sku: v.sku || '',\n    disponible_web: identificado ? (v.available ? 'si' : 'no') : '',\n    alternativas: alternativas.join(' | '),\n    anuncio_origen: body.ad_name || '',\n    primer_mensaje: body.message || '',\n    confianza_match: mejorPuntaje,\n    procesado_en: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "a1000000-0000-4000-8000-000000000003",
+      "name": "Enriquecer Lead",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-20, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 },
+          "conditions": [
+            {
+              "id": "cond-1",
+              "leftValue": "={{ $json.prioridad }}",
+              "rightValue": "caliente",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000004",
+      "name": "Es lead caliente?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "PEGAR_AQUI_LA_URL_DEL_WEBHOOK_DEL_CRM",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ name: $json.name, phone: $json.phone, adicional1: 'PRIORIDAD: CALIENTE', adicional2: 'Producto: ' + $json.producto_interes, adicional3: 'Precio: $' + $json.precio_uyu, adicional4: 'Categoria: ' + $json.categoria_interes, adicional5: 'Objetivo: ' + $json.objetivo_lead, adicional6: 'Link: ' + $json.link_producto, adicional7: 'Anuncio: ' + $json.anuncio_origen, adicional8: 'Alternativas: ' + $json.alternativas }) }}",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000005",
+      "name": "CRM - Crear lead CALIENTE",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [440, 180]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "PEGAR_AQUI_LA_URL_DEL_WEBHOOK_DEL_CRM",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ name: $json.name, phone: $json.phone, adicional1: 'PRIORIDAD: ' + $json.prioridad.toUpperCase(), adicional2: 'Sin producto identificado - requiere diagnostico', adicional3: 'Anuncio: ' + $json.anuncio_origen, adicional4: 'Primer mensaje: ' + $json.primer_mensaje }) }}",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000006",
+      "name": "CRM - Crear lead A DIAGNOSTICAR",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [440, 420]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, recibido: $('Enriquecer Lead').first().json }) }}",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000007",
+      "name": "Responder",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [700, 300]
+    }
+  ],
+  "connections": {
+    "Entrada de Lead": { "main": [[{ "node": "Catalogo Shopify", "type": "main", "index": 0 }]] },
+    "Catalogo Shopify": { "main": [[{ "node": "Enriquecer Lead", "type": "main", "index": 0 }]] },
+    "Enriquecer Lead": { "main": [[{ "node": "Es lead caliente?", "type": "main", "index": 0 }]] },
+    "Es lead caliente?": {
+      "main": [
+        [{ "node": "CRM - Crear lead CALIENTE", "type": "main", "index": 0 }],
+        [{ "node": "CRM - Crear lead A DIAGNOSTICAR", "type": "main", "index": 0 }]
+      ]
+    },
+    "CRM - Crear lead CALIENTE": { "main": [[{ "node": "Responder", "type": "main", "index": 0 }]] },
+    "CRM - Crear lead A DIAGNOSTICAR": { "main": [[{ "node": "Responder", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {}
+}

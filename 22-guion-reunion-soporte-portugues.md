@@ -56,7 +56,9 @@ A gente não quer soltar isso pros 5 mil contatos de uma vez sem ter testado em 
 
 Duas funções me chamaram muita atenção: o resumo da conversa com resposta sugerida pro vendedor, e principalmente a parte onde **o Copiloto ajuda a criar e melhorar o prompt do agente**, rodando teste em loop, simulando conversas e ajustando sozinho. Isso é exatamente o trabalho que a gente está fazendo na mão hoje.
 
-Primeira pergunta: **isso está disponível na nossa conta?** A gente procurou e não achou em lugar nenhum.
+*→ No preguntes "¿está disponible?". Ya lo sabemos: en Mi Plan dice "Copiloto IA: não incluído". Es un addon que no tenemos contratado. Andá directo al precio.*
+
+Eu já vi em "Meu Plano" que aparece como *"Copiloto IA: não incluído"*, então entendo que é um addon. **Quanto custa e o que vem incluído?**
 
 **6.** E essa é a que mais me preocupa: no vídeo falava que **o Copiloto não funciona com BYOK**, que precisa da IA Gerenciada. A gente hoje está com chave própria da OpenAI configurada no agente.
 
@@ -98,9 +100,11 @@ E se o endpoint falhar ou demorar demais, o que o agente faz: avisa o cliente, t
 
 ## Bloco 4 — Capacidades que a gente quer usar
 
-**12.** O agente consegue **escutar e transcrever áudio** que o cliente manda no WhatsApp? Nossos clientes mandam áudio o tempo todo.
+**12.** Sobre **transcrição de áudio**. Eu vi em "Meu Plano" que aparece como addon não incluído: *"Transcrição de áudios: não incluída"*. Nossos clientes mandam áudio o tempo todo, então isso é importante pra gente.
 
-A gente viu o toggle de "Processar imagens", mas não achou o equivalente pra áudio. Se não existe: está no roadmap? E tem alguma forma de resolver por fora — tipo um webhook que recebe o áudio, transcreve e devolve como texto pro agente?
+*→ No preguntes "¿existe?". Ya sabemos que existe como addon y que no lo tenemos.*
+
+**Quanto custa esse addon e o que ele inclui exatamente?** O agente passa a entender o áudio sozinho e responder, ou só gera a transcrição pra equipe ler?
 
 **13.** Sobre o **DS Voice**. Eu já vi o material de vocês explicando os Criativos, os Funis e os Gatilhos, então já entendi que **o Gatilho dispara por correspondência de texto literal, sem passar pela IA**. Minha dúvida é outra:
 
@@ -116,9 +120,7 @@ A opção **"Enviar como gravado na hora"** nos áudios, que faz aparecer o "gra
 
 E a variável **"Saudação"**, que preenche sozinha "Bom dia", "Boa tarde" ou "Boa noite" conforme a hora do envio.
 
-**15.** Uma que pode resolver um problemão pra gente: nas automações de coluna, existe a opção de **"Exceção: Troca de Mensagens"**?
-
-Explico: a gente montou vários lembretes por "Tempo na Coluna", mas o temporizador não sabe se o cliente já respondeu no meio do caminho — então corre o risco de mandar um lembrete pra alguém que acabou de escrever. Vi no material de vocês uma opção de exceção que cancela a ação se o cliente respondeu dentro de uma janela de tempo. **Isso existe na nossa versão?** Se existir, onde fica exatamente? A gente procurou no modal de automação e não encontrou.
+*→ (La pregunta 15 sobre "Exceção: Troca de Mensagens" SE ELIMINÓ el 2026-09-14: ya la respondimos solos. Existe, se llama así, y la estamos usando en 5 automatizaciones FV| con ventana de 2 horas. No la preguntes.)*
 
 **16.** No editor do agente, existem os campos de **Temperatura, Delay de resposta e Máximo de tokens**? A gente viu esses parâmetros num exemplo de agente de vocês (120 tokens, 120 segundos de delay) e queria confirmar se estão disponíveis na nossa conta e onde ficam.
 
@@ -136,15 +138,41 @@ Ele respeita os guardrails configurados no agente? Consegue ler as variáveis sa
 
 A gente quer usar ele pra reativar cliente na recompra, e precisa que mantenha as mesmas regras de não inventar preço e transferir quando não souber.
 
-**20.** Quando um lead chega no WhatsApp vindo de um **anúncio do Meta**, o CRM guarda de qual anúncio ou campanha ele veio?
+**20.** Sobre os dados de **anúncio do Meta**. Eu já vi que vocês guardam isso: nos cards do pipeline aparecem a campanha, o conjunto e o anúncio — tipo "NUEVO STOCK 12/08 [MENSAJES]", "P. Segm Intereses (Mensajes WP)" e "HIPERCALORICO VITAMIN HORSE 3KG [VIDEO]". Isso é ótimo.
 
-A gente quer que o agente já comece a conversa sabendo o que a pessoa viu no anúncio, em vez de perguntar tudo do zero. Se guarda esse dado: o agente consegue ler como variável? Dá pra usar como condição nas Regras de Ativação ou dentro de um fluxo?
+*→ Ojo: NO preguntes si lo captura. Ya sabemos que sí. La pregunta es cómo leerlo.*
+
+Minha dúvida é outra: **como o agente acessa esse dado?** Na ficha do negócio eu só vejo Telefone, Endereço e os campos personalizados que a gente criou — a campanha e o anúncio não aparecem ali.
+
+Tem uma variável pra ler isso dentro do prompt do agente? Dá pra usar como condição nas Regras de Ativação ou dentro de um fluxo de automação?
 
 *→ Y aprovechá para preguntar esto:*
 
 Aproveitando: no Hub de Integrações o **Meta Ads** aparece como "Reconexão necessária". O que a gente perde enquanto está assim, e como faz pra reconectar?
 
 **21.** Dá pra **exportar o histórico de conversas em lote**? A ideia é revisar de tempos em tempos o que o agente respondeu, pra ir melhorando o prompt com casos reais em vez de ficar abrindo conversa por conversa.
+
+---
+
+## Bloco 3B — A pergunta más importante de todas (agregada 2026-09-14)
+
+*Esta salió de probar el agente por primera vez. Es la que más vale de toda la reunión: si no se resuelve, no podemos validar nada. Si el tiempo se corta, hacé esta antes que ninguna otra del bloque 3.*
+
+**19b.** A gente anexou o conector do Google Sheets no agente e também carregou a planilha como fonte de conhecimento. Depois fui na aba **Testar** e perguntei o preço de um produto que está na planilha.
+
+**O agente inventou o preço.** Disse "1.200 pesos" quando na planilha está 990. Pedi explicitamente pra ele buscar a linha na planilha e ele respondeu "vou confirmar e te conto". Perguntei qual era o produto mais vendido e inventou outro que nem é o primeiro da lista.
+
+Reparei também que a aba **"Uso"** continuou marcando **0 tokens e 0 requisições** mesmo depois de umas 7 respostas.
+
+Então minha pergunta é: **a aba "Testar" executa os conectores e consulta as fontes de conhecimento, ou ela só testa o prompt contra o modelo?**
+
+Pergunto porque, se ela não executa as ferramentas, a gente não tem como validar nada antes de colocar no ar — e colocar um agente que inventa preço na frente do cliente não é uma opção.
+
+E se ela não executa: **qual é a forma certa de testar um agente com conector antes de ligar num canal real?**
+
+*→ Si dice que la pestaña Testar sí ejecuta las herramientas, entonces el problema es otro y hay que preguntar:*
+
+Se ela executa, então por que ele não chamou o conector nenhuma vez? Tem algum log onde eu veja as chamadas de ferramenta que o agente fez ou tentou fazer?
 
 ---
 

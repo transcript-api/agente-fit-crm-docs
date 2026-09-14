@@ -35,7 +35,10 @@ Workspace: **"Fitness Suplementos"**. Dos usuarios principales identificados:
 - [[22-guion-reunion-soporte-portugues]] — el mismo temario en portugués, escrito para leer en voz alta durante la reunión.
 - [[23-conectores-hub-integraciones]] — **los 25 conectores del Hub leídos uno por uno**: qué puede hacer cada uno, sus disparadores, cómo se adjuntan al agente, y los cuatro hallazgos que cambian planes ya escritos (Shopify, Google Sheets, Meta Ads, OpenAI Key).
 - [[23b-conectores-volcado-literal]] — anexo: el texto literal de los 25 paneles, sin resumir. Fuente del archivo anterior.
+- [[24-sesion-2026-09-14-traspaso]] — **traspaso completo de la sesión del 14/09**: el agente probado por primera vez (y los tres precios que inventó), el catálogo real de 421 productos conectado, el webhook de entrada para n8n, el mapa de automatizaciones FV|, y la investigación sobre revender el CRM y sobre Hermes Agent.
+- [[25-estado-y-que-sigue]] — **qué está probado, qué no funciona, qué está construido sin probar y qué está bloqueado por quién.** Es el archivo que responde "¿qué hay que hacer?".
 - [[PENDIENTES]] — **registro único de todo lo que está sin resolver.** Leerlo antes de armar cualquier entregable que consolide estado.
+- `artefactos/` — el catálogo en CSV, el JSON del workflow de n8n, el backup del prompt v4 y el script que regenera el catálogo.
 
 ## Regla de oro para trabajar en este proyecto
 El usuario pidió explícitamente: **mirar y guiar, no editar directamente**, salvo que pida lo contrario de forma explícita para una acción puntual. Cuando se edite algo (con permiso), confirmar visualmente antes de dar por hecho un cambio, y avisar de inmediato si algo se toca por error (ya pasó una vez: se desactivó sin querer una automatización real, se detectó y corrigió al toque).

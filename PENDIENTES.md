@@ -44,6 +44,8 @@ Nació el 2026-09-13 después de un error real: se armó el documento de pregunt
 | S15 | ¿Qué significa la etiqueta `AUTOMATIZACIÓN` en las acciones? Solo 12 de 226 la llevan (Google Sheets y Gmail). Hipótesis: usables como nodo en Flujos | [[23-conectores-hub-integraciones]] §6b | 🟠 A preguntar |
 | S16 | Citar textual la descripción de "OpenAI Key" (dice que la clave propia sirve para **el Copiloto**) y preguntar por qué no coincide con lo observado en modo BYOK | [[23-conectores-hub-integraciones]] §4.3, [[09-copiloto-ia-partner]] | 🟠 A preguntar (refuerza S4) |
 | S17 | Shopify: ¿qué sincroniza exactamente y los eventos de tienda ("nuevo pedido", "carrito abandonado") aparecen como gatillo en Flujos? | [[23-conectores-hub-integraciones]] §4.1 | 🟠 A preguntar |
+| S18 | El CRM **sí** captura campaña/conjunto/anuncio (confirmado solos). Falta: **¿cómo lee el agente ese dato?** No aparece en la ficha del negocio | [[24-sesion-2026-09-14-traspaso]] §1.5 | 🟠 A preguntar (reemplaza a S5) |
+| S19 | **¿La pestaña "Prueba" ejecuta conectores y consulta el conocimiento, o solo prueba el prompt?** Y ¿por qué "Uso" queda en 0 tokens tras 7 respuestas? | [[24-sesion-2026-09-14-traspaso]] §1.2 | 🔴 **La más importante de la reunión** |
 
 ## 🟡 Bloqueado por: EL EQUIPO / DATOS QUE NO TENEMOS
 
@@ -72,6 +74,14 @@ Nació el 2026-09-13 después de un error real: se armó el documento de pregunt
 | N9 | Adjuntar Google Sheets al agente (`Herramientas → Conectores`) + línea en el prompt de cuándo consultarlo (búsqueda exacta para precio/link) | [[23-conectores-hub-integraciones]] §4.2 | 🟢 Depende de que exista la planilla (E1/E2) |
 | N10 | Vincular la cuenta de Google en `Agente de IA → Herramientas → Agendamientos` — hoy dice "Nenhuma conta Google vinculada", es una vinculación distinta de la del Hub | [[23-conectores-hub-integraciones]] §4.4 | 🟢 Se puede hacer ya |
 | N11 | Verificar si los 8 disparadores de Google Sheets aparecen como gatillo en Flujos de Automatización — de eso depende que sirvan | [[23-conectores-hub-integraciones]] §4.2 | 🟢 Se puede hacer ya |
+| N12 | **Encontrar cómo validar el agente con herramientas de verdad.** La pestaña "Prueba" NO ejecuta conectores ni RAG (probado 3 veces) — sin esto no se puede medir nada | [[24-sesion-2026-09-14-traspaso]] §1.2 | 🔴 Abierto — bloquea todo lo demás |
+| N13 | **Unificar nombres**: el prompt dice `FV\|CUALIFICACION` pero la columna es `FV \| CUALIFICACION` (con espacios), y las etiquetas de remarketing son `FVR \|`. Si el match es exacto, el agente falla en silencio | [[24-sesion-2026-09-14-traspaso]] §3 | 🟠 Abierto |
+| N14 | Capturar a ojo el catálogo completo de disparadores/acciones/excepciones del constructor de automatizaciones (el DOM no lo expone) | [[24-sesion-2026-09-14-traspaso]] §3 | 🟢 2 minutos a mano |
+| N15 | **Arreglar las 2 automatizaciones con "Cambiar de Columna" SIN destino** (FV \| CUALIFICACION y FV \| DERIVAR A REMARKETING) — el funnel está cortado ahí | [[24-sesion-2026-09-14-traspaso]] §3 | 🟠 Abierto — rápido de arreglar |
+| N16 | Decidir si se paga n8n: **el trial vence en 14 días** (desde 2026-09-14) | [[24-sesion-2026-09-14-traspaso]] §2.6 | 🟠 Decisión del usuario |
+| N17 | **Reintentar los guardrails con el workaround** de "hacer otro cambio en paralelo" — puede que ahora sí persistan. Es rápido y sería el arreglo más valioso | [[24-sesion-2026-09-14-traspaso]] §1.4 | 🟢 Se puede hacer ya |
+| N18 | Decidir cada cuánto se regenera el catálogo (el script ya existe: `artefactos/build-catalogo.ps1`) y si se automatiza con n8n | [[25-estado-y-que-sigue]] | 🟢 Sin empezar |
+| N19 | Revisar los 31 productos en categoría `otros` y los 136 sin marca detectada | [[25-estado-y-que-sigue]] | 🟢 Menor |
 
 ---
 
@@ -84,3 +94,11 @@ Nació el 2026-09-13 después de un error real: se armó el documento de pregunt
 | — | Los 3 niveles de temperatura en Remarketing reflejados en el prompt | ✅ ya estaba hecho en el prompt v3 (Etapa 4) — el pendiente en [[07-estrategias-pendientes-agente]] quedó mal marcado como abierto |
 | — | Confirmar que "Criar contato" no duplica contactos | ✅ 2026-09-13 — probado 4 veces, hace find-or-create |
 | — | Construir el flujo de renovación de token de Bling | ✅ 2026-09-13 — construido y activo (aunque su primera corrida falló, ver B1) |
+| E1 | Export CSV de productos de Shopify | ✅ 2026-09-14 — **resuelto solos**: `fitnessuplementos.com/products.json` es público. 422 productos, sin pedirle nada a nadie |
+| E2 | Ranking de más vendidos | ✅ 2026-09-14 — **resuelto solos**: `collections/all?sort_by=best-selling` da el orden real. 205 productos rankeados |
+| N1 | Nunca se validó que el agente responda | ✅ 2026-09-14 — **responde**. Pero destapó que inventa precios y que la pestaña Prueba no ejecuta herramientas (N12) |
+| S8 | ¿El agente transcribe notas de voz? | ✅ 2026-09-14 — Mi Plan: *"Transcrição de áudios: não incluída"*. Es un addon no contratado. Queda preguntar solo el precio |
+| S4 (parcial) | ¿El Copiloto está disponible? | ✅ 2026-09-14 — Mi Plan: *"Copiloto IA: não incluído"*. Es addon. Queda preguntar precio y si obliga a salir de BYOK |
+| S5 | ¿El CRM captura de qué anuncio vino el lead? | ✅ 2026-09-14 — **sí**, campaña/conjunto/anuncio en cada tarjeta. Reemplazado por S18 (cómo leerlo desde el agente) |
+| — | "Exceção: Troca de Mensagens" (pendiente desde [[10-ds-agente-ds-voice-manual]]) | ✅ 2026-09-14 — existe y está en uso en 5 automatizaciones FV\| con ventana de 2 h |
+| N6 (corregido) | Borrar el flujo "Novo Fluxo" | ❌ **NO BORRAR** — 2026-09-14: está EN PRODUCCIÓN, dispara por "Mensaje Recibido" y manda el menú 1/2/3 a leads reales. El pendiente estaba mal |

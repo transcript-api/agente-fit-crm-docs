@@ -14,7 +14,9 @@ Reglas asociadas:
 4. **Cada pendiente dice quién lo desbloquea** (nosotros / soporte del CRM / Bling / el equipo / el usuario). Sin eso la lista se vuelve inútil.
 
 ## Orden de lectura recomendado
-- `PENDIENTES.md` — **empezar acá**: qué está sin resolver, quién lo desbloquea, y dónde está el detalle.
+- `24-sesion-2026-09-14-traspaso.md` — **empezar acá si venís de otra PC**: todo lo que pasó, los bugs medidos, lo construido y lo que falta.
+- `25-estado-y-que-sigue.md` — qué está probado, qué NO funciona, qué está construido sin probar, y qué está bloqueado por quién. **Si alguien pregunta "¿qué hay que hacer?", se responde desde acá.**
+- `PENDIENTES.md` — el registro único: qué está sin resolver, quién lo desbloquea, y dónde está el detalle.
 - `00-resumen-general.md` — visión general del proyecto y objetivos.
 - `01-agente-de-ia.md` — cómo está armado el editor de Agente de IA en rmsystemm (pestañas, guardrails, herramientas).
 - `02-pipeline-comercial-real.md` / `03-funil-de-ventas-nuevo.md` — pipelines del CRM.

@@ -10,6 +10,22 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-14 (noche) — Catálogo real conectado + PRIMERA prueba del agente + puerta a n8n
+- **Pedido**: trabajar de corrido mientras el usuario duerme; armar un Google Sheet con productos reales y conectarlo al agente; probarlo; leer todas las automatizaciones de columna FV|; usar n8n; investigar Hermes en VPS y la reventa del CRM; y dejar un traspaso completo para la otra PC.
+- **Documentos nuevos**: [[24-sesion-2026-09-14-traspaso]] (el traspaso completo) y [[25-estado-y-que-sigue]] (qué está probado / qué falta / qué está bloqueado y por quién). Artefactos en `artefactos/`.
+- **Lo más importante — se probó el agente por primera vez en el proyecto y falló donde importa**:
+  - **Inventó precios 3 de 3 veces** (dijo 1.200 donde el real es 990; dijo un "más vendido" que no lo es). Con tono seguro. Un cliente le creería.
+  - **La pestaña "Prueba" no ejecuta conectores ni consulta el RAG** — ni pidiéndoselo explícitamente. "Uso" quedó en 0 tokens tras 7 respuestas. Endpoint: `prompt-user-chat/49785/send-message`.
+  - **Ignoró una regla literal del prompt** (usó "¿" las 7 veces estando prohibido) → con gpt-4o-mini el prompt no es garantía.
+- **Catálogo real construido**: 421 productos con precio, link, SKU, categoría, objetivo y **ranking de ventas real**. Todo desde endpoints **públicos de Shopify** (`products.json` y `collections/all?sort_by=best-selling`) — **cierra E1 y E2 sin depender del equipo ni de Bling**. Sheet `1NR9cth…xuEtY`, cuenta `max.suplementos77@gmail.com`.
+- **Conectado al agente por dos vías**: conector de Google Sheets (6 de 11 herramientas, solo lectura + append) y fuente de conocimiento RAG (similaridad bajada a 0.35). Prompt v5 (11.844 → 14.461 chars) con bloque de catálogo y bloque `<inicio_sin_mensaje>`.
+- **Bug de guardado acotado + workaround**: las listas de items (guardrails, fuentes externas) no habilitan "Guardar cambios". **Workaround del usuario, verificado**: hacer otro cambio en paralelo y el guardado arrastra la fuente. Persistió.
+- **Puerta a n8n encontrada**: cada columna tiene pestaña **Integraciones → Webhooks**. Formato documentado por el propio CRM (`POST /webhook/leads/<token>` con `name` y `phone` obligatorios + campos adicionales). Se creó "FV n8n - prueba" y se armó el workflow **"FV | Enriquecimiento y ruteo de leads"** (7 nodos) en n8n, **sin activar**, a falta de pegarle la URL.
+- **Automatizaciones FV| leídas una por una**: mapa completo en el traspaso §3. **Se encontraron 2 automatizaciones rotas** ("Cambiar de Columna" sin destino) y un **desalineamiento de nombres** entre el prompt y las columnas reales.
+- **Correcciones a lo que creíamos**: "Novo Fluxo" **NO es basura, está en producción**; el CRM **sí** captura campaña/conjunto/anuncio de Meta; el Copiloto y la transcripción son **addons no contratados** (lo dice Mi Plan) — eso saca 3 preguntas de la reunión.
+- **Investigado**: revender el CRM con marca propia es posible vía el programa de partner de **DKW System** (no con la suscripción actual, que es trial R$0 de RM System); y **Hermes Agent en VPS hoy no conviene** (se pisa con n8n y obligaría a sacar WhatsApp del CRM) — sí convendría si se confirma que las variables no persisten.
+- **Pendientes nuevos**: N12-N19 y S18-S19 en [[PENDIENTES]]. El que bloquea todo es **N12** (no hay forma de validar el agente con herramientas).
+
 ### 2026-09-14 — Barrido completo del Hub de Integraciones
 - **Pedido (literal)**: *"quiero que leas literalmente todo lo que dicen los conectores esos, o sea todo lo que dice al darle click, pero sin dejar nada para atrás porque tal vez eso no está documentado."*
 - **Hecho**: se abrió el panel de **los 25 conectores** de `Configuración → Cuentas Integradas` y se leyeron sus **dos pestañas** completas (no solo lo visible en pantalla — se leyó el `innerText` del panel entero). Resultado: **226 acciones y 45 disparadores** catalogados.
