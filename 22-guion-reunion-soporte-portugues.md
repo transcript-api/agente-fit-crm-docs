@@ -2,6 +2,8 @@
 
 **Cómo usar este archivo**: es la versión hablada de [[21-preguntas-para-soporte-rmsystemm]] (ahí está el "por qué importa" de cada una, para vos). Acá está solo lo que se dice, en portugués, en orden. Las líneas en *cursiva y en español* son notas tuyas — **no se leen**.
 
+*Revisado el 2026-09-14 contra los archivos que salieron de los videos de la empresa ([[09-copiloto-ia-partner]], [[10-ds-agente-ds-voice-manual]], [[12-caso-real-rafael-prompt-produccion]]) para sacar lo que esos videos ya respondían y agregar lo que ahí quedó marcado como pendiente de confirmar. Si se edita este archivo, revisar también el 21 para que no se desincronicen.*
+
 *Grabá la reunión desde el principio y avisale que estás grabando. Después pasame la transcripción y vuelco todo a los archivos.*
 
 *Si el tiempo se corta, las que no podés dejar pasar son la 1, 2, 3 y 4.*
@@ -32,6 +34,8 @@ O caminho que a gente fez foi: configurar o guardrail de "Ancoragem de valores",
 
 É um bug conhecido? Tem alguma sequência de salvamento diferente que a gente deveria estar fazendo, ou depende de algum plano ou módulo estar habilitado?
 
+Uma coisa que pode estar relacionada: de vez em quando aparece um aviso de **"Conexão ao vivo perdida"** no editor do agente. Pode ser que quando isso acontece o salvamento não chegue no servidor e a gente nem perceba?
+
 *→ Es importante: hoy es la única protección automática contra que invente precios.*
 
 **3.** Existe uma **API do rmsystemm**? A gente viu uma seção de "API Keys" nas configurações, mas não sabe o alcance dela.
@@ -60,7 +64,9 @@ Então: pra usar o Copiloto a gente teria que migrar a conta inteira pra IA Gere
 
 E se tiver que migrar: como muda o custo? Hoje a gente paga a OpenAI direto e enxerga o gasto real. Na gerenciada a gente passaria a comprar crédito de vocês, certo? Como funciona esse preço?
 
-**7.** E se estiver disponível ou for liberado: **quanto custa** e o que exatamente entra em cada plano?
+**7.** Sobre preço: no material da plataforma base eu vi planos do Copiloto na faixa de R$79, R$247 e R$647 por mês dependendo da quantidade de usuários, mais consumo de créditos de IA à parte.
+
+**Vocês revendem com esses mesmos valores, ou o preço de vocês é outro?** E os créditos de IA entram junto ou são cobrados separado?
 
 ---
 
@@ -90,27 +96,41 @@ E se o endpoint falhar ou demorar demais, o que o agente faz: avisa o cliente, t
 
 A gente viu o toggle de "Processar imagens", mas não achou o equivalente pra áudio. Se não existe: está no roadmap? E tem alguma forma de resolver por fora — tipo um webhook que recebe o áudio, transcreve e devolve como texto pro agente?
 
-**13.** Sobre o **DS Voice** e a ação "Enviar funil de Criativos": a gente tem esse módulo habilitado na nossa conta? A gente só viu o botão da ação no editor do agente, mas não sabe se o módulo completo está ativo.
+**13.** Sobre o **DS Voice**. Eu já vi o material de vocês explicando os Criativos, os Funis e os Gatilhos, então já entendi que **o Gatilho dispara por correspondência de texto literal, sem passar pela IA**. Minha dúvida é outra:
 
-E o agente consegue **escolher qual áudio mandar pelo critério dele**, dependendo do assunto da conversa, ou só dispara por palavra-chave fixa?
+Primeiro: **a gente tem o módulo DS Voice habilitado na nossa conta?** No editor do agente aparece o botão de ação "Enviar funil de Criativos", mas a gente não achou a seção de Criativos/Funis/Gatilhos em lugar nenhum do menu.
 
-O plano aqui é o seguinte: nosso call center vai gravar áudios explicando cada produto e cada situação, e a ideia é o agente escolher o áudio certo pra cada cliente — tipo, se o cliente fala que tem uma intolerância, ele manda o áudio do produto que serve pra esse caso. Isso é possível?
+Segundo, e essa é a principal: quando **o próprio agente** chama a ação "Enviar funil de Criativos" — não o Gatilho, o agente mesmo — **ele consegue escolher qual funil mandar pelo critério dele**, dependendo do que está sendo conversado?
 
-Quantos criativos dá pra ter cadastrados? E dá pra etiquetar ou categorizar eles pro agente conseguir diferenciar?
+O plano é o seguinte: nosso call center vai gravar áudios explicando cada produto e cada situação. A ideia é que se o cliente comenta que tem uma intolerância, por exemplo, o agente escolha e mande o áudio daquele produto específico — sem a gente ter que amarrar isso a uma palavra-chave fixa. Isso é possível hoje?
 
-**14.** A ação **"Agendamento de mensagem"**: o agente consegue programar uma mensagem pra uma data que ele deduziu da conversa?
+**14.** Ainda sobre isso, duas coisas do material de vocês que eu queria confirmar se existem aqui na nossa conta:
+
+A opção **"Enviar como gravado na hora"** nos áudios, que faz aparecer o "gravando áudio..." no WhatsApp do cliente — pra parecer que é uma pessoa gravando de verdade naquele momento. Isso a gente tem?
+
+E a variável **"Saudação"**, que preenche sozinha "Bom dia", "Boa tarde" ou "Boa noite" conforme a hora do envio.
+
+**15.** Uma que pode resolver um problemão pra gente: nas automações de coluna, existe a opção de **"Exceção: Troca de Mensagens"**?
+
+Explico: a gente montou vários lembretes por "Tempo na Coluna", mas o temporizador não sabe se o cliente já respondeu no meio do caminho — então corre o risco de mandar um lembrete pra alguém que acabou de escrever. Vi no material de vocês uma opção de exceção que cancela a ação se o cliente respondeu dentro de uma janela de tempo. **Isso existe na nossa versão?** Se existir, onde fica exatamente? A gente procurou no modal de automação e não encontrou.
+
+**16.** No editor do agente, existem os campos de **Temperatura, Delay de resposta e Máximo de tokens**? A gente viu esses parâmetros num exemplo de agente de vocês (120 tokens, 120 segundos de delay) e queria confirmar se estão disponíveis na nossa conta e onde ficam.
+
+**17.** A ação **"Agendamento de mensagem"**: o agente consegue programar uma mensagem pra uma data que ele deduziu da conversa?
 
 O caso real é o cliente falar "só recebo dia 3", e a gente querer que o agente agende o follow-up sozinho pro dia 4 ou 5 — com uma folguinha, pra não parecer desesperado pra vender. A data pode sair de uma variável ou do raciocínio dele, ou tem que ser um tempo fixo definido antes?
 
-**15.** Quando alguém da nossa equipe **responde manualmente** numa conversa que o agente está atendendo, o agente para sozinho? A gente não quer que o cliente receba duas respostas em cima da outra.
+**18.** Quando alguém da nossa equipe **responde manualmente** numa conversa que o agente está atendendo, o agente para sozinho? A gente não quer que o cliente receba duas respostas em cima da outra.
 
 E o que exatamente faz o toggle "Desativar agente ao responder fora da plataforma"? E o "Responder tickets com responsável"?
 
-**16.** O **Follow Up Generativo** usa o mesmo prompt do agente, ou a gente precisa escrever instruções separadas pra ele?
+**19.** Sobre o **Follow Up Generativo**: eu vi que ele tem um campo próprio de "Instruções para o Follow-Up", separado do prompt principal do agente. Minha dúvida é o que ele herda do agente e o que não:
 
-A gente quer que ele mantenha as mesmas regras — não inventar preço, transferir pro humano quando não sabe — e não que vire um segundo agente com critério próprio.
+Ele respeita os guardrails configurados no agente? Consegue ler as variáveis salvas do contato? E consegue executar as mesmas ações — tipo transferir pro humano — ou só escreve texto?
 
-**17.** Quando um lead chega no WhatsApp vindo de um **anúncio do Meta**, o CRM guarda de qual anúncio ou campanha ele veio?
+A gente quer usar ele pra reativar cliente na recompra, e precisa que mantenha as mesmas regras de não inventar preço e transferir quando não souber.
+
+**20.** Quando um lead chega no WhatsApp vindo de um **anúncio do Meta**, o CRM guarda de qual anúncio ou campanha ele veio?
 
 A gente quer que o agente já comece a conversa sabendo o que a pessoa viu no anúncio, em vez de perguntar tudo do zero. Se guarda esse dado: o agente consegue ler como variável? Dá pra usar como condição nas Regras de Ativação ou dentro de um fluxo?
 
@@ -118,36 +138,32 @@ A gente quer que o agente já comece a conversa sabendo o que a pessoa viu no an
 
 Aproveitando: no Hub de Integrações o **Meta Ads** aparece como "Reconexão necessária". O que a gente perde enquanto está assim, e como faz pra reconectar?
 
-**18.** Dá pra **exportar o histórico de conversas em lote**? A ideia é revisar de tempos em tempos o que o agente respondeu, pra ir melhorando o prompt com casos reais em vez de ficar abrindo conversa por conversa.
+**21.** Dá pra **exportar o histórico de conversas em lote**? A ideia é revisar de tempos em tempos o que o agente respondeu, pra ir melhorando o prompt com casos reais em vez de ficar abrindo conversa por conversa.
 
 ---
 
 ## Bloco 5 — Custos e limites
 
-**19.** No **Modo Avançado** de processamento de ações, aquele cache de prompt de 90% que a tela menciona: é automático? Nosso prompt é grande, uns 11 mil caracteres, e ele vai junto em toda mensagem.
+**22.** No **Modo Avançado** de processamento de ações, aquele cache de prompt de 90% que a tela menciona: é automático? Nosso prompt é grande, uns 11 mil caracteres, e ele vai junto em toda mensagem.
 
-**20.** A aba **"Uso"** mostra o custo real em dólar, ou só a quantidade de mensagens? A gente precisa conseguir projetar quanto vai custar quando escalar pra todo o volume.
+**23.** A aba **"Uso"** mostra o custo real em dólar, ou só a quantidade de mensagens? A gente precisa conseguir projetar quanto vai custar quando escalar pra todo o volume.
 
-**21.** Tem **limite de conversas simultâneas** que o agente aguenta? Em pico de campanha entram muitos leads ao mesmo tempo.
+**24.** Tem **limite de conversas simultâneas** que o agente aguenta? Em pico de campanha entram muitos leads ao mesmo tempo.
 
-**22.** E quantos **agentes de IA diferentes** dá pra ter na conta? Eles dividem custo e limite, ou cada um conta separado?
+**25.** E quantos **agentes de IA diferentes** dá pra ter na conta? Eles dividem custo e limite, ou cada um conta separado?
 
 ---
 
-## Bloco 6 — Coisas pequenas que a gente notou usando
+## Bloco 6 — Um detalhe pra reportar
 
-**23.** Três detalhes rápidos, mais pra reportar:
+**26.** Fluxo com gatilho **"Agendado" não tem "Executar agora"** — só tem o "Testar", que simula e não executa as requisições HTTP de verdade, ele mesmo avisa "não executada no teste".
 
-Fluxo com gatilho **"Agendado" não tem "Executar agora"** — só tem o "Testar", que simula e não executa as requisições HTTP de verdade, ele mesmo avisa "não executada no teste". Tem alguma forma de forçar uma execução real pra testar, sem ter que esperar o horário chegar? A gente perdeu várias horas esperando só pra descobrir que tinha um erro.
-
-No editor do agente o **salvamento é em dois passos** — salvar dentro do modal e depois "Guardar cambios" no topo da página. Isso é o comportamento esperado? É fácil achar que salvou e perder o trabalho.
-
-Às vezes aparece **"Conexão ao vivo perdida"** no editor do agente. Isso é normal? Pode fazer perder alteração não salva?
+Tem alguma forma de forçar uma execução real pra testar, sem ter que esperar o horário chegar? A gente perdeu várias horas esperando só pra descobrir que tinha um erro numa requisição.
 
 ---
 
 ## Fechamento
 
-**24.** Por último: vocês têm um **canal direto pra reportar bug**? E existe algum **changelog ou roadmap** que a gente possa acompanhar pra saber o que vem por aí?
+**27.** Por último: vocês têm um **canal direto pra reportar bug**? E existe algum **changelog ou roadmap** que a gente possa acompanhar pra saber o que vem por aí?
 
 Era isso. Muito obrigado pelo tempo — vou repassar tudo com a equipe e provavelmente volto com mais dúvidas conforme a gente for avançando.

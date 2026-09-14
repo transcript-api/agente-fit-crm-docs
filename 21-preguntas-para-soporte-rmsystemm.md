@@ -64,9 +64,22 @@ Dejar espacio para anotar la respuesta al lado de cada una y volcarla después a
 **Por qué importa**: los clientes mandan audios constantemente. Hay un toggle "Procesar imágenes" pero no encontramos el equivalente para audio.
 **Repreguntar si dicen que no**: ¿está en el roadmap? ¿hay alguna forma de resolverlo por afuera (webhook que reciba el audio, lo transcriba y lo devuelva como texto)?
 
-### 12. DS Voice / "Enviar funil de Criativos": ¿existe el módulo completo en nuestra cuenta, y el agente puede elegir CUÁL audio mandar según el contexto?
-**Por qué importa**: la idea es que el call center grabe audios explicando cada producto/situación, y que el agente elija el correcto según lo que necesita el cliente (ej. detecta una intolerancia y manda el audio de ese producto). Pendiente anotado desde el 2026-09-11 en [[07-estrategias-pendientes-agente]]: el módulo DS Voice con Gatilhos está confirmado en la plataforma base (DKW) pero **nunca se confirmó que exista en nuestra cuenta** — solo vimos el chip de acción "Enviar funil de Criativos" en el editor del agente.
-**Preguntar**: ¿tenemos DS Voice habilitado? ¿La selección del audio es por palabra clave fija o el agente puede decidirlo por criterio propio según el tema? ¿Cuántos criativos se pueden cargar y se pueden etiquetar/categorizar para que el agente los distinga?
+### 12. DS Voice: ¿existe el módulo en nuestra cuenta, y el AGENTE puede elegir qué funil mandar por criterio propio?
+**Ojo — parte de esto ya está respondido por el video** ([[10-ds-agente-ds-voice-manual]]): los **Gatilhos de DS Voice disparan por coincidencia de texto literal, SIN pasar por la IA**. Eso ya lo sabemos, no hay que preguntarlo. Lo que sigue abierto es distinto y hay que plantearlo bien para no perder la pregunta:
+1. ¿El módulo DS Voice (Criativos/Funis/Gatilhos) existe como sección en NUESTRA cuenta? Solo vimos el chip de acción en el editor del agente, nunca la sección.
+2. Cuando **el agente** llama a "Enviar funil de Criativos" (que es un camino distinto al Gatilho), ¿puede elegir cuál funil según el contexto, o también está atado a algo fijo?
+**Por qué importa**: es la diferencia entre poder hacer la idea de los audios del call center por criterio del agente, o tener que amarrar cada audio a una palabra clave.
+
+### 12b. Dos funciones del video a confirmar en nuestra cuenta
+- **"Enviar como gravado na hora"** en los audios (hace aparecer el "grabando audio..." en el WhatsApp del cliente). Alto valor para que los audios del call center no se sientan robóticos.
+- **Variable `Saudação`** (completa sola "Bom dia"/"Boa tarde"/"Boa noite" según la hora).
+Ambas están documentadas en [[10-ds-agente-ds-voice-manual]] como funciones de la plataforma base, marcadas ahí mismo como "deberíamos ver si rmsystemm tiene lo mismo".
+
+### 12c. ¿Existe la opción "Exceção: Troca de Mensagens" en las automatizaciones de columna?
+**Por qué importa — esta es de las más valiosas y casi se nos pasa**: cancela una acción programada si el cliente respondió dentro de una ventana de tiempo. Resuelve de raíz el problema de que el temporizador "Tiempo en la Columna" no sabe si el cliente ya contestó — limitación que motivó buena parte del diseño manual del Funil de Ventas. El video muestra que existe en la plataforma base; [[10-ds-agente-ds-voice-manual]] lo dejó anotado como "pendiente: volver a revisar el modal de automatización en rmsystemm buscando específicamente esta opción".
+
+### 12d. ¿Existen los campos Temperatura, Delay de respuesta y Máximo de tokens en el editor del agente?
+**Por qué importa**: el prompt tiene valores recomendados (120 tokens, 120s de delay) sacados de un agente real de DKW, pero [[10-ds-agente-ds-voice-manual]] dejó anotado que **nunca se confirmó que esos campos existan en la cuenta de rmsystemm**.
 
 ### 13. "Agendamento de mensagem": ¿el agente puede programar un mensaje para una fecha que dedujo de la conversación?
 **Por qué importa**: caso real y frecuente — el cliente dice "cobro el 3 de octubre". Queremos que el agente agende solo el seguimiento para el 4 o 5 (con margen, para no sonar desesperado). Pendiente anotado en [[07-estrategias-pendientes-agente]].
@@ -76,8 +89,10 @@ Dejar espacio para anotar la respuesta al lado de cada una y volcarla después a
 **Por qué importa**: si no, el cliente recibe dos respuestas encimadas y queda pésimo.
 **Preguntar también**: ¿qué hace exactamente el toggle "Desactivar agente al responder fuera de la plataforma"? ¿Y "Responder tickets con asignado"?
 
-### 15. "Follow Up → Generativo": ¿usa el mismo prompt del agente o hay que escribirle instrucciones aparte?
-**Por qué importa**: queremos que el follow-up mantenga el mismo tono y las mismas reglas (no inventar precios, escalamiento, etc.), no que sea un segundo agente con criterio propio. Además, el plan de Recompra (ver [[14-funil-recompra]]) todavía no definió si el mensaje de reactivación lo manda una automatización fija o el Follow Up Generativo — la respuesta define ese diseño.
+### 15. Follow Up Generativo: ¿qué hereda del agente y qué no?
+**Ojo — la pregunta obvia ya está respondida**: [[01-agente-de-ia]] documenta que el Follow Up Generativo **tiene su propio campo "Instrucciones para el Follow-Up"**, separado del prompt principal. O sea, no usa el mismo prompt. No preguntar eso.
+**Lo que sigue abierto**: ¿respeta los guardrails del agente? ¿Puede leer las variables guardadas del contacto? ¿Puede ejecutar acciones (ej. transferir a humano) o solo escribe texto?
+**Por qué importa**: el plan de Recompra ([[14-funil-recompra]]) todavía no definió si la reactivación la manda una automatización fija o el Follow Up Generativo — y si el Follow Up no respeta las reglas de no inventar precios, no sirve para eso.
 
 ### 16. ¿Se puede exportar el historial de conversaciones en bloque?
 **Por qué importa**: para revisar periódicamente qué respondió el agente y mejorar el prompt con casos reales (es la práctica que recomiendan todos los que hacen esto en serio). Sin export, hay que revisar chat por chat a mano.
@@ -103,9 +118,11 @@ Dejar espacio para anotar la respuesta al lado de cada una y volcarla después a
 ## ⚙️ Cosas menores para mencionar de paso (bugs/fricciones observadas)
 
 - **Los flujos con gatillo "Agendado" no tienen "Executar agora"** — solo "Testar", que simula y no ejecuta las llamadas HTTP reales (dice "não executada no teste"). Preguntar: ¿hay alguna forma de forzar una ejecución real para probar, sin esperar al horario? Nos costó horas de espera para detectar un error.
-- **Guardado en dos pasos**: en el editor del agente hay que guardar en el modal Y después "Guardar cambios" en la página. ¿Es el comportamiento esperado? Es fácil perder trabajo sin darse cuenta.
-- **Aparece "Conexão ao vivo perdida"** cada tanto en el editor del agente. ¿Es normal? ¿Puede hacer que se pierdan cambios sin guardar?
 - Pedirles: **un canal directo para reportar bugs** y si hay **changelog o roadmap público** que podamos seguir.
+
+**Sacadas de la lista a propósito** (eran ruido para una reunión con tiempo limitado):
+- *Guardado en dos pasos en el editor*: ya lo entendemos y lo manejamos, no vale gastar tiempo de reunión.
+- *"Conexão ao vivo perdida"*: dejó de ser una pregunta suelta y se movió **dentro de la pregunta #2 (guardrails)** como posible causa del bug de persistencia — ahí sí aporta, como pista técnica para que la investiguen.
 
 ---
 
