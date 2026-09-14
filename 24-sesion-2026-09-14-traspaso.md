@@ -80,6 +80,22 @@ En [[PENDIENTES]] el ítem N6 decía que "Novo Fluxo" era basura para limpiar. *
 
 **Regla que sale de esto: antes de borrar cualquier flujo o automatización, buscar su nombre en el historial de una conversación real.** El listado de flujos no alcanza.
 
+**Matiz, verificado después abriendo el flujo (id 1107):** el contenido coincide exactamente con lo que se vio en la conversación — gatillo **"Primeira mensagem"** (*"Dispara quando uma mensagem é recebida pela primeira vez"*) sobre el canal Fitness Suplementos, un nodo **"Menu de opções"** con el texto *"Hola! Gracias por escribirnos a Fitness Suplementos..."* y los botones **Masa Muscular / Perder Peso / Energía** (máx. 3 intentos), y un nodo final **"Bye"** con *"Gracias por tus respuestas! Atendemos de 09 a 20 hs..."*.
+
+Pero **hoy está inactivo** y la lista dice "Última Execução: Nunca". O sea: **estuvo en producción atendiendo leads reales (junio 2026), y en algún momento se apagó.** La conclusión práctica no cambia — **no se borra**, porque es el mensaje de bienvenida real del negocio y se puede querer reactivar — pero es honesto decir que hoy no está corriendo.
+
+### 1.6b Bonus: el editor de Flujos tiene un nodo "Apps" que conecta con los conectores
+Al abrir el editor se ve el catálogo completo de nodos, y ahí aparece algo que **responde N11 y S15 sin preguntarle a nadie**:
+
+- **Apps** — *"Ações de apps conectados (Google Sheets, Gmail, Jira...)"* → **los conectores del Hub SÍ se pueden usar dentro de un Flujo de Automatización.**
+- **Agente de IA** — *"Vincula ou remove o agente de IA da conversa"* → un flujo puede prender y apagar el agente en una conversación. Esto es justo lo que hace falta para el rollout controlado (S6).
+
+Catálogo completo de nodos, textual:
+> **AÇÕES:** Conversa (*criar, transferir ou buscar uma conversa*) · **Apps** · Contato (*criar, anotar, alterar campos ou listar*) · Negócio (*criar, buscar, transferir ou atualizar*) · Enviar Mensagem (*blocos de texto, mídia e botões*) · Pergunta (*envia uma pergunta e valida a resposta*) · Reagir à Mensagem · Salvar Variável · Tags · **Agente de IA** · Requisição HTTP · Data & Hora · Script (*roda JavaScript seguro*)
+> **CONTROLE DE FLUXO:** Condicional · Randomizador · Delay · Ir Para · Para cada item (*roda um pedaço do fluxo pra cada item de uma lista — contatos, planilha...*)
+
+**Por qué esto importa muchísimo:** el problema de 1.1 es que el agente no llama la herramienta y entonces inventa el precio. Con el nodo **Apps** un Flujo puede consultar el Google Sheet **por fuera del agente** y dejarle el dato servido en una variable. Es un camino alternativo al conector, y no depende de que el modelo decida usar la herramienta. **Esta es probablemente la vía más prometedora que quedó abierta en esta sesión.**
+
 ### 1.7 El plan del CRM responde dos preguntas que le íbamos a hacer a soporte
 `Configuración → Mi Plan` dice, textual:
 - Plan: **"Administrador RM System" · Assinatura trial · R$ 0,00/mês · Ativo**, validez "Sin plazo".

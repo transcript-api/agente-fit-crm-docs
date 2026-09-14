@@ -100,7 +100,7 @@ Regla: nada entra acá como "funciona" sin que se haya verificado. Si dice "sin 
 | S12 | Export masivo de conversaciones |
 | S13 | Costos y límites |
 | S14 | Filtro "Agente IA" del Hub se contradice con el selector del agente |
-| S15 | Qué significa la etiqueta `AUTOMATIZACIÓN` (12 de 226 acciones) |
+| ~~S15~~ | ~~Qué significa la etiqueta `AUTOMATIZACIÓN`~~ → **respondida sola el 14/09**: el editor de Flujos tiene un nodo **"Apps" — "Ações de apps conectados (Google Sheets, Gmail, Jira...)"**. La etiqueta marca las acciones usables desde ese nodo. Confirmarlo solo si sobra tiempo |
 | S17 | Shopify: qué sincroniza y si los eventos de tienda son gatillo de Flujo |
 | S18 | **¿Cómo lee el agente los datos de campaña/anuncio?** (que el CRM sí captura) |
 | S19 | **¿Por qué la pestaña "Prueba" no ejecuta conectores?** ¿Y por qué "Uso" no cuenta esas pruebas? |
@@ -133,6 +133,7 @@ Regla: nada entra acá como "funciona" sin que se haya verificado. Si dice "sin 
 | ~~N17~~ | ~~Reconfigurar los guardrails con el workaround~~ → **❌ PROBADO EL 2026-09-14, NO FUNCIONA.** Se intentó de las dos formas (cambiando de pestaña y sin cambiar). En el mismo guardado el nombre del agente sí se guardó y el guardrail no → **es el backend**. Ya no depende de nosotros: pasa a S2 | Soporte del CRM |
 | N18 | Bajar el catálogo de nuevo cada X tiempo (el script ya está: `artefactos/build-catalogo.ps1`) y decidir si se automatiza con n8n | Nosotros |
 | N19 | Revisar los 31 productos que quedaron en categoría `otros` y los 136 sin marca | Nosotros |
+| **N20** | **🔥 Probar el nodo "Apps" de los Flujos de Automatización para consultar el Google Sheet por fuera del agente.** Es la vía más prometedora que quedó abierta: no depende de que el modelo decida llamar la herramienta, así que esquiva el problema de los precios inventados. Combinable con el nodo "Agente de IA", que vincula/desvincula el agente de una conversación | Nosotros — **empezar por acá** |
 
 ---
 
