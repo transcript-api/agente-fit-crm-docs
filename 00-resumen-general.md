@@ -31,6 +31,11 @@ Workspace: **"Fitness Suplementos"**. Dos usuarios principales identificados:
 - [[18-integracion-bling]] — guía completa de la integración con Bling: proceso de autorización OAuth2 repetible, cómo evitar que el token se venza, límites reales de la API, y oportunidades de escalar.
 - [[19-investigacion-externa-escalabilidad]] — investigación externa con fuentes sobre cómo escalar el agente con n8n/agentes externos, memoria, guardrails, audio y selección dinámica de audios pre-grabados.
 - [[20-catalogo-estructura-para-el-agente]] — esquema del catálogo (categorías reales, ranking de más vendidos, links de Shopify) para que el agente recomiende priorizando lo que más se vende.
+- [[21-preguntas-para-soporte-rmsystemm]] — preguntas priorizadas para la reunión con soporte del CRM, con el "por qué importa" de cada una.
+- [[22-guion-reunion-soporte-portugues]] — el mismo temario en portugués, escrito para leer en voz alta durante la reunión.
+- [[23-conectores-hub-integraciones]] — **los 25 conectores del Hub leídos uno por uno**: qué puede hacer cada uno, sus disparadores, cómo se adjuntan al agente, y los cuatro hallazgos que cambian planes ya escritos (Shopify, Google Sheets, Meta Ads, OpenAI Key).
+- [[23b-conectores-volcado-literal]] — anexo: el texto literal de los 25 paneles, sin resumir. Fuente del archivo anterior.
+- [[PENDIENTES]] — **registro único de todo lo que está sin resolver.** Leerlo antes de armar cualquier entregable que consolide estado.
 
 ## Regla de oro para trabajar en este proyecto
 El usuario pidió explícitamente: **mirar y guiar, no editar directamente**, salvo que pida lo contrario de forma explícita para una acción puntual. Cuando se edite algo (con permiso), confirmar visualmente antes de dar por hecho un cambio, y avisar de inmediato si algo se toca por error (ya pasó una vez: se desactivó sin querer una automatización real, se detectó y corrigió al toque).

@@ -40,6 +40,10 @@ Nació el 2026-09-13 después de un error real: se armó el documento de pregunt
 | S11 | Follow Up Generativo: ¿usa el mismo prompt? — define el diseño de Recompra | [[14-funil-recompra]] | 🟠 A preguntar |
 | S12 | Export masivo de conversaciones (para revisar y mejorar el prompt con casos reales) | [[21-preguntas-para-soporte-rmsystemm]] #16 | 🟠 A preguntar |
 | S13 | Costos y límites: caché de prompt, pestaña "Uso", conversaciones simultáneas | [[21-preguntas-para-soporte-rmsystemm]] #17-20 | 🟠 A preguntar |
+| S14 | El filtro "Agente IA" del Hub excluye Google Sheets, pero el selector "Agregar conector" del agente sí lo ofrece. ¿Cuál manda? | [[23-conectores-hub-integraciones]] §6a | 🟠 A preguntar |
+| S15 | ¿Qué significa la etiqueta `AUTOMATIZACIÓN` en las acciones? Solo 12 de 226 la llevan (Google Sheets y Gmail). Hipótesis: usables como nodo en Flujos | [[23-conectores-hub-integraciones]] §6b | 🟠 A preguntar |
+| S16 | Citar textual la descripción de "OpenAI Key" (dice que la clave propia sirve para **el Copiloto**) y preguntar por qué no coincide con lo observado en modo BYOK | [[23-conectores-hub-integraciones]] §4.3, [[09-copiloto-ia-partner]] | 🟠 A preguntar (refuerza S4) |
+| S17 | Shopify: ¿qué sincroniza exactamente y los eventos de tienda ("nuevo pedido", "carrito abandonado") aparecen como gatillo en Flujos? | [[23-conectores-hub-integraciones]] §4.1 | 🟠 A preguntar |
 
 ## 🟡 Bloqueado por: EL EQUIPO / DATOS QUE NO TENEMOS
 
@@ -64,6 +68,10 @@ Nació el 2026-09-13 después de un error real: se armó el documento de pregunt
 | N5 | Definir el destino "Venta Sin Cerrar" (rechazo activo ≠ no respondió) | [[07-estrategias-pendientes-agente]], [[08-funil-remarketing-nuevo]] | 🟢 Sin definir |
 | N6 | Limpiar: contacto "TEST Sistema Bling Token", flujo "Novo Fluxo", y decidir sobre "FV\|Consultar Producto Bling" (activo pero inofensivo, disparo manual) | [[17-registro-de-cambios]] | 🟢 Menor |
 | N7 | Guardrails para las otras promesas del prompt (tag, variável, columna) | [[01-agente-de-ia]] | 🟢 Bloqueado de hecho por S2 (no persisten) |
+| N8 | **Conectar Shopify en el Hub de Integraciones** y verificar qué sincroniza de verdad (productos, pedidos, eventos de tienda). Es la acción de mayor impacto de todo el Hub | [[23-conectores-hub-integraciones]] §4.1 | 🟢 Se puede hacer ya |
+| N9 | Adjuntar Google Sheets al agente (`Herramientas → Conectores`) + línea en el prompt de cuándo consultarlo (búsqueda exacta para precio/link) | [[23-conectores-hub-integraciones]] §4.2 | 🟢 Depende de que exista la planilla (E1/E2) |
+| N10 | Vincular la cuenta de Google en `Agente de IA → Herramientas → Agendamientos` — hoy dice "Nenhuma conta Google vinculada", es una vinculación distinta de la del Hub | [[23-conectores-hub-integraciones]] §4.4 | 🟢 Se puede hacer ya |
+| N11 | Verificar si los 8 disparadores de Google Sheets aparecen como gatillo en Flujos de Automatización — de eso depende que sirvan | [[23-conectores-hub-integraciones]] §4.2 | 🟢 Se puede hacer ya |
 
 ---
 

@@ -60,6 +60,12 @@ Primeira pergunta: **isso está disponível na nossa conta?** A gente procurou e
 
 **6.** E essa é a que mais me preocupa: no vídeo falava que **o Copiloto não funciona com BYOK**, que precisa da IA Gerenciada. A gente hoje está com chave própria da OpenAI configurada no agente.
 
+*→ Acá tenés una cita literal de la propia plataforma que dice lo contrario. Leela tal cual, es la carta más fuerte de este bloque.*
+
+Só que tem uma coisa que não bate, e queria entender. No **Hub de Integrações**, quando eu clico no conector **"OpenAI Key"**, a descrição de vocês diz, palavra por palavra: *"Conecta tu clave de OpenAI para usar los modelos GPT... en los Agentes de IA, **el Copiloto** y los Flujos de automatización."*
+
+Ou seja, a própria tela diz que a chave própria serve pro Copiloto. Qual das duas está certa?
+
 Então: pra usar o Copiloto a gente teria que migrar a conta inteira pra IA Gerenciada? Dá pra ter **o agente com chave própria e o Copiloto na gerenciada ao mesmo tempo**, ou é tudo ou nada?
 
 E se tiver que migrar: como muda o custo? Hoje a gente paga a OpenAI direto e enxerga o gasto real. Na gerenciada a gente passaria a comprar crédito de vocês, certo? Como funciona esse preço?
@@ -139,6 +145,37 @@ A gente quer que o agente já comece a conversa sabendo o que a pessoa viu no an
 Aproveitando: no Hub de Integrações o **Meta Ads** aparece como "Reconexão necessária". O que a gente perde enquanto está assim, e como faz pra reconectar?
 
 **21.** Dá pra **exportar o histórico de conversas em lote**? A ideia é revisar de tempos em tempos o que o agente respondeu, pra ir melhorando o prompt com casos reais em vez de ficar abrindo conversa por conversa.
+
+---
+
+## Bloco 4B — Hub de Integrações
+
+*Bloque nuevo (2026-09-14), después de abrir los 25 conectores uno por uno. Ver [[23-conectores-hub-integraciones]]. La más importante de todas es la de Shopify.*
+
+**21a.** Fui olhar o **Hub de Integrações** e vi que tem 25 conectores, cada um com uma lista enorme de ações. Mas o agente aqui diz *"Nenhum conector anexado"*. Queria confirmar se entendi o caminho certo: eu conecto a conta no Hub, depois anexo ela no agente em **Ferramentas → Conectores**, e aí escrevo no prompt em linguagem natural quando usar. É isso, ou falta algum passo?
+
+**21b.** A mais importante pra gente: o conector do **Shopify**. A descrição fala em sincronizar produtos, pedidos e clientes, e em **disparar fluxos por eventos da loja, tipo "novo pedido" e "carrinho abandonado"**.
+
+Isso resolveria vários problemas nossos de uma vez, então queria entender direito:
+
+- O que exatamente sincroniza pro CRM? Produto com preço, descrição e link? Com que frequência atualiza?
+- Esses eventos de loja aparecem como **gatilho dentro dos Fluxos de Automação**? Porque carrinho abandonado seria perfeito pro nosso funil de remarketing.
+- O agente consegue consultar o **status de um pedido** direto na conversa?
+
+**21c.** Sobre o conector do **Google Sheets** — a gente acabou de conectar. Ele tem uma ação chamada **"Buscar linha da planilha"**, que busca por correspondência exata.
+
+A gente quer botar o catálogo inteiro numa planilha. Minha dúvida é qual é o caminho certo: subir a planilha como **base de conhecimento** na aba Conhecimento, ou anexar o **conector** e deixar o agente consultar na hora?
+
+Pergunto porque pra preço a busca por similaridade me assusta — se ela trouxer a linha errada, o agente informa um preço errado pro cliente. A busca exata não teria esse risco. Dá pra usar os dois juntos?
+
+**21d.** Ainda no Sheets: ele tem **8 gatilhos** listados, tipo "Novas Linhas" e "Valores do Intervalo Alterados". Esses gatilhos aparecem onde? Dá pra usar eles pra **iniciar um Fluxo de Automação**?
+
+*→ Esto es lo que destrabaría la alerta de stock sin depender de Bling.*
+
+**21e.** Duas coisas menores que não consegui entender sozinho:
+
+- Em cima da lista tem os filtros **"Todos", "Agente IA" e "Fluxo"**. O filtro "Agente IA" esconde o Google Sheets — mas quando eu vou anexar conector no agente, o Google Sheets aparece na lista. O que esse filtro quer dizer?
+- Algumas ações têm uma etiqueta **"AUTOMAÇÃO"** e a maioria não tem. São só 12 de mais de 200. O que muda entre uma ação com essa etiqueta e uma sem?
 
 ---
 

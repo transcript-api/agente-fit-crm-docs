@@ -28,6 +28,9 @@ Reglas asociadas:
 - `16-auditoria-completa-crm.md` — auditoría completa de la cuenta.
 - `17-registro-de-cambios.md` — registro cronológico de sesiones de trabajo y decisiones, para retomar el contexto rápido desde otra PC.
 - `18-integracion-bling.md` — guía completa de la integración con Bling: cómo repetir la autorización OAuth2, cómo evitar que el token se venza, límites reales de la API, y oportunidades de escalar.
+- `19` a `22` — investigación de escalabilidad (n8n, agentes externos, audio), estructura del catálogo, y las preguntas para la reunión con soporte (versión interna y guion en portugués).
+- `23-conectores-hub-integraciones.md` — los 25 conectores del Hub leídos uno por uno: qué hace cada uno, cómo se adjuntan al agente, y los hallazgos que cambian planes. Su anexo literal es `23b-conectores-volcado-literal.md`.
+- `PENDIENTES.md` — **registro único de todo lo que está sin resolver.** Ver la regla de barrido obligatorio más abajo.
 - `19-investigacion-externa-escalabilidad.md` — investigación externa (con fuentes) sobre cómo escalar el agente más allá del CRM: arquitecturas n8n, memoria de largo plazo, guardrails, audio/STT, selección dinámica de audios pre-grabados. Son hallazgos para decidir, no un plan ya aprobado.
 - `20-catalogo-estructura-para-el-agente.md` — cómo hay que estructurar el catálogo (categorías, ranking de más vendidos, links) para que el agente recomiende bien. Estructura definida, datos pendientes del export de Shopify.
 - `21-preguntas-para-soporte-rmsystemm.md` — preguntas priorizadas para la reunión con soporte del CRM, con el "por qué importa" de cada una (versión interna, para entender qué se busca con cada pregunta).

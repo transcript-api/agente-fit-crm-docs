@@ -10,6 +10,22 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-14 — Barrido completo del Hub de Integraciones
+- **Pedido (literal)**: *"quiero que leas literalmente todo lo que dicen los conectores esos, o sea todo lo que dice al darle click, pero sin dejar nada para atrás porque tal vez eso no está documentado."*
+- **Hecho**: se abrió el panel de **los 25 conectores** de `Configuración → Cuentas Integradas` y se leyeron sus **dos pestañas** completas (no solo lo visible en pantalla — se leyó el `innerText` del panel entero). Resultado: **226 acciones y 45 disparadores** catalogados.
+  - [[23b-conectores-volcado-literal]] — el texto literal de los 25 paneles, sin resumir ni reescribir. 25/25 secciones verificadas en el archivo (109.543 bytes).
+  - [[23-conectores-hub-integraciones]] — el análisis: cómo se usan realmente, tabla completa, los cuatro hallazgos que cambian planes, y las dos cosas que quedaron sin explicar.
+- **Hallazgo de mecanismo (no estaba documentado)**: los conectores requieren **tres pasos**, no uno — conectar la cuenta en el Hub, **adjuntarla al agente** en `Agente de IA → Herramientas → Conectores`, y decirle en el prompt en lenguaje natural cuándo usarla. Hoy el agente dice *"Ningún conector adjunto"*: no tiene acceso a ninguna integración externa.
+- **Hallazgos que cambian planes ya escritos**:
+  - **Shopify** (nativo, sin conectar) promete sincronizar productos/pedidos/clientes y **disparar flujos por "nuevo pedido" y "carrito abandonado"** — toca directamente lo que Bling tiene roto (B2) y el remarketing de [[08-funil-remarketing-nuevo]]. Precaución que se mantiene: el stock de Shopify viene de Bling y hereda sus problemas.
+  - **Google Sheets** (conectado hoy por el usuario) tiene 11 acciones y 8 disparadores, incluida **búsqueda por coincidencia exacta** y **escritura**. Actualizado [[20-catalogo-estructura-para-el-agente]]: el catálogo ya no es solo RAG pasivo.
+  - **OpenAI Key** dice textualmente que la clave propia sirve para **el Copiloto** — contradice lo observado en [[09-copiloto-ia-partner]]. Se lleva la cita a la reunión.
+  - **Meta Ads** menciona "reaccionar a leads de anuncios" — acota S5 a preguntar por el *campo*, no por la capacidad.
+- **Aclaración sobre el "31"**: el número que aparece arriba de la lista no es un contador de integraciones — es el logo de Google Calendar colándose como texto. Los conectores son **25**.
+- **Sin explicar (van a la reunión)**: el filtro "Agente IA" excluye Google Sheets, pero el selector "Agregar conector" del agente sí lo ofrece (S14); y qué significa exactamente la etiqueta `AUTOMATIZACIÓN`, que solo llevan 12 de las 226 acciones (S15).
+- **Nada se modificó en el CRM.** Se abrió el selector "Agregar conector" y se cerró con Cancelar; se verificó después que el agente sigue con "Ningún conector adjunto" y no se tocó "Guardar cambios". Google Sheets lo conectó el usuario, no esta sesión (confirmado por él en el chat).
+- **Pendiente**: se registraron N8–N11 y S14–S17 en [[PENDIENTES]]. El de mayor impacto y que no depende de nadie externo es **N8: conectar Shopify**.
+
 ### 2026-09-13 (madrugada) — Sesión de trabajo autónomo nocturno: guardrails, bug crítico de Bling, investigación externa
 
 **TL;DR para leer primero:**

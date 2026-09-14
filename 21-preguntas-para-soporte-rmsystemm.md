@@ -24,7 +24,11 @@ Dejar espacio para anotar la respuesta al lado de cada una y volcarla después a
 ### 4. Copiloto de IA — ¿está disponible en rmsystemm? Y si no, ¿cuándo y a qué costo?
 **Por qué importa**: es un producto distinto del Agente de IA (no habla con clientes, asiste al equipo humano). Ver [[09-copiloto-ia-partner]] para el detalle completo. Está documentado en la plataforma base (DKW System) pero nunca apareció en nuestra cuenta. Dos funciones son directamente valiosas para nosotros hoy: (a) **genera y mejora el prompt del Agente de IA, con un modo de test en loop que simula conversaciones cliente↔vendedor e itera el prompt solo** — es exactamente el trabajo que estamos haciendo a mano; (b) resúmenes de conversación + respuesta sugerida para el equipo.
 
-**⚠️ La sub-pregunta más importante, y es arquitectónica**: según la documentación de la plataforma base, el Copiloto **NO funciona en modo BYOK** ("Bring Your Own Key") — requiere "IA Gerenciada" (clave de IA centralizada del proveedor). **Nosotros hoy estamos en BYOK** (clave propia de OpenAI cargada en el agente). Entonces:
+**⚠️ La sub-pregunta más importante, y es arquitectónica**: según la documentación de la plataforma base, el Copiloto **NO funciona en modo BYOK** ("Bring Your Own Key") — requiere "IA Gerenciada" (clave de IA centralizada del proveedor). **Nosotros hoy estamos en BYOK** (clave propia de OpenAI cargada en el agente).
+
+**Munición nueva (2026-09-14)**: el propio Hub de Integraciones dice lo contrario. El conector "OpenAI Key" describe, textual: *"Conecta tu clave de OpenAI para usar los modelos GPT (GPT-4o, GPT-5, serie o) y las acciones de OpenAI — texto, imagen, embeddings y moderación — en los Agentes de IA, **el Copiloto** y los Flujos de automatización."* Llevar esa frase a la reunión y preguntar cuál de las dos vale. Ver [[23-conectores-hub-integraciones]] §4.3.
+
+Entonces:
 - ¿Habría que migrar toda la cuenta a "IA Gerenciada" para poder usar el Copiloto?
 - ¿Se puede tener el **Agente de IA en BYOK y el Copiloto en gerenciada** al mismo tiempo, o es todo o nada?
 - Si hay que migrar: ¿cómo cambia el costo? Hoy pagamos OpenAI directo y vemos el gasto real; en gerenciada pasaríamos a comprar créditos a rmsystemm. ¿Qué margen tiene eso encima?
@@ -98,6 +102,39 @@ Ambas están documentadas en [[10-ds-agente-ds-voice-manual]] como funciones de 
 **Por qué importa**: para revisar periódicamente qué respondió el agente y mejorar el prompt con casos reales (es la práctica que recomiendan todos los que hacen esto en serio). Sin export, hay que revisar chat por chat a mano.
 
 ---
+
+## 🟠 PRIORIDAD 2B — Hub de Integraciones (bloque nuevo, 2026-09-14)
+
+*Agregado después de abrir los 25 conectores uno por uno. Análisis completo en [[23-conectores-hub-integraciones]]; el texto literal de cada panel, en [[23b-conectores-volcado-literal]]. En el guion en portugués son las preguntas 21a a 21e.*
+
+### 21a. Confirmar la cadena de tres pasos para usar un conector
+**Qué preguntar**: conectar la cuenta en el Hub → adjuntarla en `Agente de IA → Herramientas → Conectores` → escribir en el prompt cuándo usarla. ¿Es así o falta algo?
+
+**Por qué importa**: hasta ahora dábamos por hecho que conectar en el Hub alcanzaba. No alcanza — el agente hoy dice "Ningún conector adjunto", o sea que no tiene acceso a ninguna integración externa. Si el mecanismo es el que creemos, la forma de controlar un conector es **escribiendo en el prompt**, y hay que agregarle esas líneas al prompt v4.
+
+### 21b. Shopify — la pregunta más importante de toda la reunión
+**Qué preguntar**: qué sincroniza exactamente (¿producto con precio, descripción y link? ¿cada cuánto?), si los eventos de tienda ("nuevo pedido", "carrito abandonado") aparecen como **gatillo en Flujos de Automatización**, y si el agente puede consultar el estado de un pedido en la conversación.
+
+**Por qué importa**: la descripción del conector promete resolver tres cosas que hoy están trabadas — el catálogo (hoy depende de un export CSV manual porque la API de Bling ignora los parámetros, B2), la detección de carrito abandonado (que es exactamente el funil de [[08-funil-remarketing-nuevo]] y hoy no existe forma de detectar), y el estado del pedido (una de las consultas que hoy escala al humano). Es la acción de mayor impacto de todo el Hub.
+
+**Cuidado que hay que mantener**: el stock de Shopify viene sincronizado de Bling, así que hereda sus problemas. Shopify resolvería catálogo, precios, links y pedidos; **no** garantiza que el número de unidades esté bien.
+
+### 21c. Google Sheets — ¿base de conocimiento (RAG) o conector? ¿O los dos?
+**Qué preguntar**: para el catálogo, cuál es el camino correcto, y si se pueden usar los dos a la vez.
+
+**Por qué importa**: el conector tiene una acción de **búsqueda por coincidencia exacta** ("Buscar fila de la hoja de cálculo"). El RAG busca por similitud y puede traer la fila equivocada — y traer la fila equivocada de precio es literalmente inventar un precio, que es justo lo que el guardrail intenta impedir. Lo razonable es RAG para preguntas abiertas y conector para las puntuales, pero hay que confirmar que convivan. Esto define la decisión pendiente de [[20-catalogo-estructura-para-el-agente]].
+
+### 21d. Los 8 disparadores de Google Sheets, ¿dónde viven?
+**Qué preguntar**: si "Nuevas Filas" y "Valores del Rango Cambiados" pueden **iniciar un Flujo de Automatización**.
+
+**Por qué importa**: si se puede, la alerta de stock se puede armar desde una planilla y **sale de encima el bloqueo de Bling** (B1/B2). No resuelve de dónde sale el dato de stock, pero saca a Bling del camino crítico de la notificación.
+
+### 21e. Dos cosas del Hub que no se pudieron explicar mirando
+**Qué preguntar**:
+- El filtro "Agente IA" esconde Google Sheets, pero el selector "Agregar conector" del agente sí lo ofrece. ¿Cuál manda?
+- La etiqueta `AUTOMATIZACIÓN`: solo la llevan 12 de las 226 acciones, y solo en Google Sheets y Gmail. ¿Qué significa?
+
+**Por qué importa**: la hipótesis es que `AUTOMATIZACIÓN` marca las acciones usables como nodo dentro de Flujos, y las demás solo sirven para el agente/Copiloto. Si es así, cambia qué se puede automatizar y qué no. Es una hipótesis sin verificar.
 
 ## 🟢 PRIORIDAD 4 — Costos, límites y operativa
 

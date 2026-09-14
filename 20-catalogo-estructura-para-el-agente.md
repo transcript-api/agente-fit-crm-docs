@@ -15,6 +15,15 @@ La idea original era separar en varios archivos (creatina, proteína, etc.) para
 
 **Cuándo sí conviene separar en varios**: si se confirma que el CRM permite elegir *qué base de conocimiento consultar* según el contexto de la conversación (no verificado todavía). Si eso existe, separar da una mejora real de precisión. Queda como pendiente de verificar en la pestaña "Conocimiento".
 
+> **Actualización 2026-09-14 — hay un segundo camino, y para precios es mejor.**
+> Todo lo de arriba asume que la planilla se usa como base de conocimiento (RAG): lectura por similitud, pasiva. Al leer el Hub de Integraciones apareció que el conector de **Google Sheets** tiene 11 acciones y 8 disparadores (ver [[23-conectores-hub-integraciones]] §4.2), y se puede **adjuntar al agente** en `Herramientas → Conectores`. Eso agrega dos capacidades que el RAG no tiene:
+> - **Búsqueda exacta.** La acción "Buscar fila de la hoja de cálculo" busca por coincidencia exacta de celda, no por similitud. Para `precio` y `link_shopify` — donde equivocarse de fila es literalmente inventar un precio, justo lo que el guardrail intenta evitar — esto es estrictamente mejor que el RAG.
+> - **Escritura.** "Agregar Valores" / "Crear Fila" permiten que el agente registre objeciones, productos pedidos que no existen y motivos de pérdida en una planilla aparte.
+>
+> **Lo razonable es usar los dos, no elegir**: RAG para las preguntas abiertas ("¿qué me sirve para ganar masa muscular?") y el conector para las puntuales ("¿cuánto sale la creatina ON de 300g?"). La decisión de **un solo archivo con columna `categoria`** no cambia — al contrario, el conector la refuerza, porque busca sobre una planilla única.
+>
+> Google Sheets quedó conectado en el Hub el 2026-09-14. Falta la planilla (E1/E2) y adjuntarlo al agente (N9).
+
 ## Esquema de columnas propuesto
 | Columna | Para qué sirve | Ejemplo |
 |---|---|---|
