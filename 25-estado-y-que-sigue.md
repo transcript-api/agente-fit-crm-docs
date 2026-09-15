@@ -37,7 +37,7 @@ Regla: nada entra acá como "funciona" sin que se haya verificado. Si dice "sin 
 | **Nombres desalineados prompt vs CRM** | `FV\|CUALIFICACION` vs `FV \| CUALIFICACION`; `FVR \|` en remarketing | 🟠 Falla en silencio |
 | **Remarketing no arranca solo** | Las 2 primeras columnas no tienen automatizaciones | 🟡 Requiere mover a mano |
 | **Bug de traducción** | `automation.dialog.columnSubtitle` sin traducir | 🟢 Cosmético, reportar |
-| **Cuenta al límite** | Usuarios 6/6 y Canales 2/2, 0 disponibles | 🟠 Sumar canal exige subir de plan |
+| ~~**Cuenta al límite**~~ | ~~Usuarios 6/6 y Canales 2/2~~ — **ANULADO 2026-09-15**: la pantalla se leyó sin el rol de administrador, así que no refleja la capacidad real | ⚫ No usar hasta releerlo con el rol correcto |
 
 ---
 
@@ -150,4 +150,4 @@ Regla: nada entra acá como "funciona" sin que se haya verificado. Si dice "sin 
 | Catálogo Shopify (público) | `https://fitnessuplementos.com/products.json?limit=250&page=N` |
 | Ranking de ventas (público) | `https://fitnessuplementos.com/collections/all?sort_by=best-selling&page=N` |
 | n8n | `fitnessuplementos.app.n8n.cloud` — **trial, 14 días** |
-| Plan del CRM | "Administrador RM System", trial R$ 0,00/mes, usuarios 6/6, canales 2/2 |
+| Plan del CRM | "Administrador RM System", trial R$ 0,00/mes. *(Los límites 6/6 y 2/2 quedaron anulados — se leyeron sin rol de administrador.)* |

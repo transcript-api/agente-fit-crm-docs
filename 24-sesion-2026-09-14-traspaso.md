@@ -115,7 +115,12 @@ Catálogo completo de nodos, textual:
 
 O sea: **el Copiloto no aparece porque es un addon no contratado**, y **el agente no transcribe audios por lo mismo**. No hacía falta preguntarlo.
 
-Ojo con el límite: **están al tope de usuarios y de canales**. Sumar un canal para el agente requiere subir de plan.
+> ⚠️ **CORRECCIÓN (2026-09-15).** Lo de "6 de 6 usuarios y 2 de 2 canales" **no vale como dato**.
+> Esa pantalla se leyó **sin tener el rol de administrador activo**, así que muestra lo que ve un
+> usuario común, no la capacidad real de la cuenta. El usuario lo aclaró: el tema se habló en la
+> reunión y además el rol de administrador se lo habían quitado. **No usar este número en ninguna
+> presentación ni conclusión** hasta releerlo con el rol correcto. Se sacó de la lámina 4 del deck,
+> donde estaba puesto como "verificado en el sistema".
 
 ### 1.7b Sobre "¿pagamos o no pagamos?" — no hay evidencia de que nadie haya mentido
 El usuario se alarmó al ver "trial R$ 0,00/mês". Hay que leerlo junto con la otra pantalla.
@@ -129,7 +134,7 @@ Eso es exactamente lo esperable en una cuenta provisionada por un revendedor whi
 
 **Conclusión: lo más probable es que sí se pague y que el cobro simplemente no se gestione dentro del CRM.** Para salir de la duda sin generar un conflicto: pedirle el comprobante o la factura a quien paga en la empresa, y preguntarle a RM System cómo está facturada la cuenta.
 
-**Lo que sí es un dato duro:** la cuenta **vence el 06/04/2027** (agendarlo), y **están al límite de usuarios (6/6) y canales (2/2)**.
+**Lo que sí es un dato duro:** la cuenta **vence el 06/04/2027** (agendarlo). *(Lo de los límites 6/6 y 2/2 quedó anulado — ver la corrección en §1.7.)*
 
 ---
 
