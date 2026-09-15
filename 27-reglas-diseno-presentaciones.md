@@ -7,6 +7,30 @@ El estilo objetivo es el de **Mobile Editing Club** y los carruseles de Instagra
 
 ---
 
+## 🚫 La regla que manda sobre todas: no decir lo obvio
+
+**Si el que lee ya lo sabe, no va.** Corrección del usuario, 2026-09-15, textual:
+*"un líder, un profesional sabe, no son burros... si no vas a andar siempre poniendo algo que
+nadie quiere saber porque es obvio."*
+
+Cada línea obvia ocupa el lugar de una que sí aporta. Y además suena condescendiente: se lo estás
+explicando a alguien que dirige el negocio.
+
+Ejemplos reales de esta misma presentación:
+
+| Salió así | Por qué está mal | Quedó así |
+|---|---|---|
+| *"El equipo no falla por falta de ganas… Es capacidad, no actitud."* | Nadie pensó que el equipo no tiene ganas | **"De seis operadores a tres o cuatro. El volumen no bajó."** |
+| *"tu catálogo real"* (nota en la portada) | Que el catálogo es de ellos es obvio | Se borró |
+| *"No son visitas anónimas."* | Nadie pensó que eran visitas | Pendiente de reemplazo |
+
+**Test antes de escribir cualquier línea:** ¿esto se lo estoy contando o se lo estoy recordando?
+Si es lo segundo, se borra.
+
+Corolario que viene del mismo lugar: **no inflar**. El usuario bajó "siete días" a "cinco" por su
+cuenta, para no parecer que estaba agrandando el trabajo. Los números van para abajo, nunca para
+arriba.
+
 ## ❌ Prohibido (los errores que ya cometí)
 
 1. **Nada de cajas con borde izquierdo de color.** Es el cliché más reconocible de diseño generado por IA.
