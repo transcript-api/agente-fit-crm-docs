@@ -58,6 +58,7 @@ Nació el 2026-09-13 después de un error real: se armó el documento de pregunt
 | E5 | Promos vigentes del mes para completar el placeholder `{{promos_vigentes}}` del prompt | [[13-prompt-agente-fit-v1]] | 🟡 Sin empezar — el prompt tiene el placeholder sin llenar |
 | E6 | Mapeo producto/interés → cupón correspondiente | [[07-estrategias-pendientes-agente]] | 🟡 Sin definir |
 | E7 | Base de anuncios activos (copy + producto + promo) para que el agente reconozca de dónde vino el lead | [[04-patrones-reales-de-venta]] | 🟡 Sin empezar |
+| E8 | **Ticket promedio y margen por venta.** Sin estos dos números las "~200 ventas más por mes" de la presentación no se pueden convertir en plata — que es el número que cierra la reunión con la gerencia | [[27-reglas-diseno-presentaciones]], lámina "Impacto" | 🟡 Pedido al usuario, va en la reunión |
 
 ## 🟢 Depende solo de nosotros
 
@@ -82,6 +83,7 @@ Nació el 2026-09-13 después de un error real: se armó el documento de pregunt
 | N17 | **Reintentar los guardrails con el workaround** de "hacer otro cambio en paralelo" — puede que ahora sí persistan. Es rápido y sería el arreglo más valioso | [[24-sesion-2026-09-14-traspaso]] §1.4 | 🟢 Se puede hacer ya |
 | N18 | Decidir cada cuánto se regenera el catálogo (el script ya existe: `artefactos/build-catalogo.ps1`) y si se automatiza con n8n | [[25-estado-y-que-sigue]] | 🟢 Sin empezar |
 | N19 | Revisar los 31 productos en categoría `otros` y los 136 sin marca detectada | [[25-estado-y-que-sigue]] | 🟢 Menor |
+| N20 | **Publicar la presentación**: las 10 láminas están terminadas y verificadas, pero el `publish` al canvas `HRrwo9NAPYA5TFroatPPua` lo **denegó el clasificador de permisos** (`Live-Shared Artifact Sensitive Delta`). Hipótesis: la captura real del CRM, aunque los datos de clientes estén desenfocados. Opciones: sacar esa lámina, o que el usuario autorice el permiso | [[27-reglas-diseno-presentaciones]] | 🟠 Decisión del usuario |
 
 ---
 
