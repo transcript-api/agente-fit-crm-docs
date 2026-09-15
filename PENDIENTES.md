@@ -95,6 +95,9 @@ Nació el 2026-09-13 después de un error real: se armó el documento de pregunt
 | P7 | Diseñar la automatización "Leads Descualificados → Disparar Conversión a Meta" (columna nueva + automatización con ventana de tiempo) | [[26-respuestas-reunion-soporte-2026-09-14]] #20 | 🟢 Oportunidad nueva |
 | P8 | Confirmar cuándo dan el acceso "súper"/administrador que el usuario ya pidió | [[26-respuestas-reunion-soporte-2026-09-14]] | 🟡 Depende de soporte |
 | **P10** | **Plan de testing destrabado**: usar "Gerenciar Agente" (por conversación) para asignar el Agente Fit solo a las columnas vacías de `FV\| FUNIL DE VENTAS`, sin vincular el canal real — prueba real sin riesgo | [[26-respuestas-reunion-soporte-2026-09-14]] | 🟢 Listo para ejecutar (después de P1, P3, P4) |
+| Q1 | **Conectar el recurso "Métodos de pago"** (Recursos → Criativos → Mensagens) al prompt de Agente Fit - Cierre (id 9884): arrastrar el chip "Enviar funil de Criativos" al final del prompt y elegir ese mensaje. No se pudo automatizar (mismo problema de `z-index:-1` del editor Slate en el chip de origen) | [[17-registro-de-cambios]] 2026-09-15 (noche) | 🟢 2 minutos a mano |
+| Q2 | **Decidir qué hacer con la planilla curada nueva** (`catalogo-agente-curado`, id `17ShWFe5UVOEFmaY9JQNOC0H4fsrFChXfDe0t51mHbhk`, 7 productos con descripciones reales, no genéricas): ¿se cambia el ID en el prompt de Conversión/Cierre reemplazando la planilla de 422 productos, se corre en paralelo, o se espera a cargar más productos? Hoy ningún agente la usa todavía | [[17-registro-de-cambios]] 2026-09-15 (noche) | 🟡 Decisión del usuario |
+| Q3 | Renombrar la pestaña interna de `catalogo-agente-curado` (quedó "Untitled" por el mismo problema de clicks del editor) antes de configurar el conector — el prompt necesita el nombre real de la hoja | [[17-registro-de-cambios]] 2026-09-15 (noche) | 🟢 2 minutos a mano |
 
 ---
 
