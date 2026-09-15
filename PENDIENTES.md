@@ -83,7 +83,8 @@ Nació el 2026-09-13 después de un error real: se armó el documento de pregunt
 | N17 | **Reintentar los guardrails con el workaround** de "hacer otro cambio en paralelo" — puede que ahora sí persistan. Es rápido y sería el arreglo más valioso | [[24-sesion-2026-09-14-traspaso]] §1.4 | 🟢 Se puede hacer ya |
 | N18 | Decidir cada cuánto se regenera el catálogo (el script ya existe: `artefactos/build-catalogo.ps1`) y si se automatiza con n8n | [[25-estado-y-que-sigue]] | 🟢 Sin empezar |
 | N19 | Revisar los 31 productos en categoría `otros` y los 136 sin marca detectada | [[25-estado-y-que-sigue]] | 🟢 Menor |
-| N20 | **Publicar la presentación**: las 10 láminas están terminadas y verificadas, pero el `publish` al canvas `HRrwo9NAPYA5TFroatPPua` lo **denegó el clasificador de permisos** (`Live-Shared Artifact Sensitive Delta`). Hipótesis: la captura real del CRM, aunque los datos de clientes estén desenfocados. Opciones: sacar esa lámina, o que el usuario autorice el permiso | [[27-reglas-diseno-presentaciones]] | 🟠 Decisión del usuario |
+| N20 | **Publicar la presentación** | [[27-reglas-diseno-presentaciones]] | ✅ 2026-09-15 — publicada (versión 7). El bloqueo del clasificador (`Live-Shared Artifact Sensitive Delta`) **era la captura real del CRM**: sacándola, el publish pasó a la primera. Confirmado, no era hipótesis |
+| N21 | **La versión "pinneada" del canvas**: quien entra por el link ve una versión vieja congelada, no la última. Se saca desde el menú de compartir del artifact — no lo puedo hacer yo. Mientras siga pinneada, publicar encima no cambia lo que ve el que recibe el link | [[27-reglas-diseno-presentaciones]] | 🟠 Lo destraba el usuario |
 
 ---
 

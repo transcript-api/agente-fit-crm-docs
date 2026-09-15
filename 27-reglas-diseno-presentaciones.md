@@ -71,6 +71,16 @@ En esa sola imagen se ven los choques de elementos — que fue exactamente lo qu
 pasada: la nota manuscrita del embudo encima del "~30%", las monedas tapando el pie de "Costo", y la
 fecha de portada detrás del bote de producto. Sin esa verificación se publican rotas.
 
+### Qué se puede publicar y qué no (comprobado, 2026-09-15)
+El `publish` del canvas se **denegó** con el motivo `Live-Shared Artifact Sensitive Delta` mientras la
+lámina "Lo construido" llevaba embebida la **captura real del pipeline del CRM**. Los nombres y teléfonos
+estaban desenfocados y aun así no pasó. Sacando esa imagen, el publish entró a la primera.
+
+**Regla:** en un artifact compartido por link no van capturas de pantalla con datos de clientes,
+ni siquiera desenfocadas. Las cifras agregadas sí (`2.535 negocios en el pipeline` quedó, y es
+lo que realmente importa en la lámina). Para reemplazar la captura se usó `chat3d.jpg`, un render
+3D sin ningún dato.
+
 ### Archivos
 Los `.dc.html` de las láminas, las imágenes y `canvas.json` viven en el scratchpad de la sesión
 (`scratchpad/deck/`), no en el repo: pesan ~500 KB de fotos y se regeneran con `seed-canvas.mjs`.
