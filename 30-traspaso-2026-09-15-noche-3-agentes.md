@@ -43,6 +43,29 @@ En el editor modal de Instrucciones de rmsystemm (Slate.js), **`Ctrl+End` no mue
 
 **Recomendación para la próxima vez que haya que tocar un prompt en vivo**: si el cambio es agregar una acción (`transfer_order`, `save_variable`), es más simple y más seguro pedirle al usuario que arrastre el chip a mano — toma 30 segundos y no tiene el riesgo de la edición por script. Reservar la automatización para lectura/verificación, no para escritura de acciones.
 
+## Hallazgo grande: cómo se conecta de verdad una columna con un agente
+
+Esto estaba pendiente de confirmar desde que se armó el primer agente ("¿el agente consigue saber a dónde tiene que enviar los clientes?"). La respuesta completa: `transfer_order` mueve el **negocio** de columna, pero eso solo no hace que otro agente empiece a responder — falta el segundo paso, que es **vincular el agente correcto a la conversación**.
+
+**Lo que NO es**: la pantalla Configuración → Colas tiene un campo "Agente de IA" por cola — se probó en vivo (sin guardar nada) y ninguna de las 3 colas que existen (`DS bot`, `comercial`, `Atencion IA`) lo tiene configurado, ni siquiera la del Agente Fit original. No es el mecanismo que se está usando.
+
+**Lo que SÍ es**: un **Flujo de Automatización** por columna, con disparador **"Negócio mudou de etapa"** (se configura por Pipeline + Etapa) y acción **"Agente de IA"** (vincula o remueve el agente de esa conversación). Confirmado en vivo abriendo el constructor de flujos (Automatizaciones → Flujos de Automatización → Adicionar) y viendo ambos componentes reales en el catálogo, sin guardar nada.
+
+Hacen falta 8 flujos (uno por columna que necesita agente):
+
+| Pipeline | Etapa | Agente |
+|---|---|---|
+| `FV\| FUNIL DE VENTAS ` | `FV \| ENTRADA DE LEAD` | Recepcionista (9882) |
+| `FV\| FUNIL DE VENTAS ` | `FV \| CUALIFICACION` | Conversión (9883) |
+| `FV\| FUNIL DE VENTAS ` | `FV \| PROPUESTA ENVIADA` | Cierre (9884) |
+| `FV\| FUNIL DE VENTAS ` | `FV \| PAGO PENDIENTE` | Cierre (9884) |
+| `FV\| FUNIL DE VENTAS ` | `FV \| SEGUIMIENTO` | Seguimiento (no existe todavía) |
+| `FV\|RECOMPRA` | `RECOMPRA - 30 DIAS` | Recompra (no existe todavía) |
+| `FV\|RECOMPRA` | `RECOMPRA - 60 DIAS` | Recompra (no existe todavía) |
+| `FV\|RECOMPRA` | `RECOMPRA - 90 DIAS` | Recompra (no existe todavía) |
+
+Ninguno de estos 8 flujos existe todavía — es la pieza que faltaba para que la cadena de traspaso funcione sola, sin depender de "Gerenciar Agente" manual por conversación (que es el único mecanismo probado hasta ahora, usado para el testing seguro del Agente Fit original).
+
 ## Lo que falta (ver `PENDIENTES.md`, prefijo Q)
 
 - **Q7**: crear los agentes **Seguimiento** (columna `FV|SEGUIMIENTO`) y **Recompra** (columnas `RECOMPRA - 30/60/90 DIAS`) en rmsystemm. Los prompts ya están escritos en `29-prompts-por-columna.md`, listos para pegar apenas se crea el agente. **Todavía no pasaron por la auditoría de ChatGPT** como los otros 3 — están escritos aplicando el mismo criterio aprendido, pero no revisados por separado. Si se quiere el mismo nivel de rigor, el mensaje para mandarle a ChatGPT está más abajo en este mismo archivo.
