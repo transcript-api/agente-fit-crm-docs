@@ -14,7 +14,9 @@ Reglas asociadas:
 4. **Cada pendiente dice quién lo desbloquea** (nosotros / soporte del CRM / Bling / el equipo / el usuario). Sin eso la lista se vuelve inútil.
 
 ## Orden de lectura recomendado
-- `28-traspaso-2026-09-15-deck-e-informe.md` — **empezar acá.** La presentación y el informe para la gerencia: qué quedó publicado, las reglas de escritura que puso el usuario (la más importante: **no decir lo obvio**), los datos que se cayeron y no hay que volver a usar, las trampas del editor del canvas, y las preguntas abiertas para completar desde la otra PC.
+- `30-traspaso-2026-09-15-noche-3-agentes.md` — **empezar acá si el tema son los agentes de venta.** Los 3 agentes reales (Recepcionista/Conversión/Cierre), la auditoría colaborativa con ChatGPT que reescribió los 5 prompts (los 3 reales + 2 nuevos), el estado verificado de cada uno en rmsystemm, y un hallazgo técnico nuevo sobre el editor de prompts que hay que conocer antes de volver a tocarlo por script.
+- `28-traspaso-2026-09-15-deck-e-informe.md` — la presentación y el informe para la gerencia: qué quedó publicado, las reglas de escritura que puso el usuario (la más importante: **no decir lo obvio**), los datos que se cayeron y no hay que volver a usar, las trampas del editor del canvas, y las preguntas abiertas para completar desde la otra PC.
+- `29-prompts-por-columna.md` — el prompt de producción de cada agente, uno por columna del embudo (incluye los 2 que todavía no existen como agente real).
 - `24-sesion-2026-09-14-traspaso.md` — el traspaso anterior: todo lo que pasó, los bugs medidos, lo construido y lo que falta.
 - `25-estado-y-que-sigue.md` — qué está probado, qué NO funciona, qué está construido sin probar, y qué está bloqueado por quién. **Si alguien pregunta "¿qué hay que hacer?", se responde desde acá.**
 - `PENDIENTES.md` — el registro único: qué está sin resolver, quién lo desbloquea, y dónde está el detalle.
