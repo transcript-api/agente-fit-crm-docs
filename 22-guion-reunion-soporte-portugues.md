@@ -251,6 +251,8 @@ Em **"Meu Plano"** aparece *"Administrador RM System · Assinatura trial · R$ 0
 
 Como é que a nossa conta está faturada de fato? O valor é cobrado por fora da plataforma?
 
+> ⚠️ **Revisar antes de leer esta pregunta (2026-09-15).** Los números 6/6 y 2/2 se leyeron **sin el rol de administrador activo**, así que puede que no sean los límites reales. Antes de decir esto en voz alta, mirar `Configuración → Mi Plan` con el rol correcto. Si no se pudo verificar, preguntar directamente *"quantos usuários e canais inclui o nosso plano hoje?"* en vez de afirmar el número.
+
 **29.** E queria deixar registrado o que o plano inclui hoje, porque vi dois limites que já estão no teto: **usuários 6 de 6** e **canais de atendimento 2 de 2**, zero disponíveis.
 
 A gente vai precisar de pelo menos mais um canal pra colocar o agente de IA pra rodar sem mexer no número que a equipe usa. **Quanto custa ampliar usuários e canais?**

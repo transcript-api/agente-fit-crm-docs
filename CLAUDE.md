@@ -14,7 +14,8 @@ Reglas asociadas:
 4. **Cada pendiente dice quién lo desbloquea** (nosotros / soporte del CRM / Bling / el equipo / el usuario). Sin eso la lista se vuelve inútil.
 
 ## Orden de lectura recomendado
-- `24-sesion-2026-09-14-traspaso.md` — **empezar acá si venís de otra PC**: todo lo que pasó, los bugs medidos, lo construido y lo que falta.
+- `28-traspaso-2026-09-15-deck-e-informe.md` — **empezar acá.** La presentación y el informe para la gerencia: qué quedó publicado, las reglas de escritura que puso el usuario (la más importante: **no decir lo obvio**), los datos que se cayeron y no hay que volver a usar, las trampas del editor del canvas, y las preguntas abiertas para completar desde la otra PC.
+- `24-sesion-2026-09-14-traspaso.md` — el traspaso anterior: todo lo que pasó, los bugs medidos, lo construido y lo que falta.
 - `25-estado-y-que-sigue.md` — qué está probado, qué NO funciona, qué está construido sin probar, y qué está bloqueado por quién. **Si alguien pregunta "¿qué hay que hacer?", se responde desde acá.**
 - `PENDIENTES.md` — el registro único: qué está sin resolver, quién lo desbloquea, y dónde está el detalle.
 - `00-resumen-general.md` — visión general del proyecto y objetivos.
