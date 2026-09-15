@@ -10,6 +10,17 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-15 (mañana) — Reescritura del deck y del informe lámina por lámina, con las reglas del usuario
+- **Pedido**: revisarlo con él de a una lámina, sacar todo lo que a un gerente le resulta obvio, y dejar todo documentado para la PC del trabajo.
+- **La regla que ordenó todo lo demás — no decir lo obvio.** Textual suyo: *"un líder, un profesional sabe, no son burros… si no vas a andar siempre poniendo algo que nadie quiere saber porque es obvio."* Cada línea obvia ocupa el lugar de una que aporta, y suena condescendiente con quien dirige el negocio. Escrita con ejemplos en [[27-reglas-diseno-presentaciones]].
+- **Corolarios que puso él**: no dar sugerencias sobre su negocio (se sacó entero el bloque del giro a recompra), no inflar (bajó "siete días" a "cinco" por su cuenta), y que las bajadas de las láminas son **su apunte para hablar**, no un texto para que ellos lean — eso cambió el tono del deck entero a líneas cortas y secas.
+- **Dos datos anulados**: el "6 de 6 usuarios y 2 de 2 canales" (leído sin rol de administrador; estaba en cuatro archivos y el guion de la reunión le hacía afirmarlo en voz alta) y el ranking de más vendidos de Shopify (por ahí casi no venden — el orden real sale de Bling, ver E9).
+- **Un dato cerrado**: el agente **ya responde consultando el catálogo**, probado por él desde su propio número (N12 ✅). Pidió que no se cuente como "estaba roto y lo arreglamos" sino como estado actual.
+- **La lámina 6 dada vuelta**: era "cuatro fallas del proveedor". Él la frenó — *"yo no soy el soporte de la plataforma"*. Quedó solo el bloqueo real (el control anti-errores no persiste) y el espacio liberado se usó para lo que viene: la columna de los que no contestan y la atribución por anuncio.
+- **Bug del editor encontrado y resuelto de raíz**: el canvas **destruye el grano SVG inline en cada guardado** (lo deja como `url("data:image/svg+xml")` vacío). Había pasado en 6 de 10 láminas. Se reemplazó por `grain.png`, un archivo real, que sí sobrevive.
+- **Otra trampa documentada**: pegar texto del chat en el editor arrastra el formato del chat dentro del HTML (gris sobre gris, 13px), y una vez dejó `line-height: 2.OO` con la letra O. Hay que pegar con `Ctrl+Shift+V` y barrer antes de publicar.
+- **Publicado**: deck versión 23, informe versión 5. Traspaso completo en [[28-traspaso-2026-09-15-deck-e-informe]], con siete preguntas abiertas para que las conteste el Claude Code de la otra PC.
+
 ### 2026-09-15 — La presentación para la gerencia: reglas de diseño y las 10 láminas
 - **Pedido**: una presentación estilo carrusel, "espejada" en las referencias de Instagram que pasó el usuario, para el gerente y el dueño de Fitness Suplementos. Audiencia no técnica. Dos versiones anteriores fueron rechazadas por genéricas.
 - **Por qué salieron genéricas las primeras dos**: cajas con borde izquierdo de color, grillas simétricas de tarjetas iguales, cero fotografía, una sola familia tipográfica. Se escribieron las reglas explícitas para no repetirlo en [[27-reglas-diseno-presentaciones]] — 7 prohibiciones y 6 obligaciones por lámina.
