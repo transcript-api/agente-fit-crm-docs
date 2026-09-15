@@ -23,6 +23,9 @@ y deja el informe como respaldo.**
 
 ## 1. Las reglas que puso el usuario (esto es lo más importante del archivo)
 
+> **Los cinco filtros completos, el tono y el chequeo previo a publicar están en [[27-reglas-diseno-presentaciones]].**
+> Leelos antes de escribir una línea: esta sección es el resumen, ese archivo es el procedimiento.
+
 Son suyas, dichas explícitamente, y valen para todo lo que se escriba de acá en más.
 Detalle largo en [[27-reglas-diseno-presentaciones]].
 

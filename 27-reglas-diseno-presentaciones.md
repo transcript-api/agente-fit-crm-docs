@@ -27,6 +27,38 @@ Ejemplos reales de esta misma presentación:
 **Test antes de escribir cualquier línea:** ¿esto se lo estoy contando o se lo estoy recordando?
 Si es lo segundo, se borra.
 
+### Los otros cuatro filtros (se aplican a cada línea, junto con el de arriba)
+
+2. **¿Le estoy diciendo qué hacer con su negocio?** → se saca. Nada sobre su tráfico pago, sus precios ni su estrategia. Se aporta el hecho; la conclusión la sacan ellos.
+3. **¿Este número es medido o me lo contaron?** → si me lo contaron, hay que decirlo donde aparece.
+4. **¿Esto suena más grande de lo que es?** → bajarlo.
+5. **¿Esto lo lee él en voz alta o lo leen ellos?** → las bajadas son su apunte para hablar: una o dos líneas secas, no un párrafo.
+
+### El tono
+
+Que suene a él, no a un consultor. Lo que **no** tiene que parecer, textual suyo:
+*"una persona que se siente llevando, que es muy entrometida y solo quiere forzar que sabe."*
+
+| No va | Va |
+|---|---|
+| Demostrar que sabemos | Poner una observación sobre la mesa |
+| Sacar pecho por los hallazgos | Decir el estado y seguir |
+| Explicar el negocio de ellos | Explicar lo que hace el agente |
+| Párrafos elaborados | Frases cortas |
+
+**Si una frase se puede leer como "mirá todo lo que descubrí", está mal escrita.**
+
+### Contar el estado, no la historia
+
+No narrar "esto estaba roto y lo arreglamos" — ocupa lugar para no decir nada.
+
+- ❌ *"Inventaba precios. La causa era la planilla. Corregido."*
+- ✅ *"Responde con el catálogo real. El precio y el link salen de ahí."*
+
+Y los bugs del proveedor: **Santiago no es su soporte.** Solo va lo que efectivamente le impide
+avanzar. Textual: *"a mí no se me pidió que integrara Bling… tenés que usar ese tiempo para
+poner cosas interesantes."*
+
 Corolario que viene del mismo lugar: **no inflar**. El usuario bajó "siete días" a "cinco" por su
 cuenta, para no parecer que estaba agrandando el trabajo. Los números van para abajo, nunca para
 arriba.
