@@ -108,8 +108,11 @@ Leer `LEAD MASIVOS` vía `GET /commercial-order`, clasificar cada negocio por su
 
 **Fase 3 — Enviar:** con template aprobado + credenciales + mensaje decidido, recién ahí un workflow de n8n dispara `POST /message-template/send/v2` por cada negocio de cada columna de campaña, con ritmo controlado (no todos de golpe). **Esta fase no se ejecuta sin luz verde explícita del usuario en el momento**, por instrucción suya de esta misma noche.
 
-## 4. Blueprint de n8n dejado listo (diseño, no importado ni corrido)
-Ver `artefactos/n8n-pipeline-masivo-segmentar.json` — un esqueleto de workflow que implementa la Fase 1 (segmentar), pensado para importarse en n8n y revisarse antes de activar: Trigger manual → HTTP Request `GET /commercial-order` paginado filtrando por pipeline → Function que mapea nombre de anuncio → columna destino → SplitInBatches → HTTP Request `POST .../move` → Wait (para no golpear la API de golpe). **No tiene credenciales cargadas, no está importado a la cuenta de n8n real, y no se ejecutó.**
+## 4. Blueprints de n8n dejados listos (diseño, ninguno importado ni corrido)
+- **Fase 1 — segmentar**: `artefactos/n8n-pipeline-masivo-segmentar.json`. Trigger manual → `GET /commercial-order` paginado → filtro `LEAD MASIVOS` → clasificar por nombre de anuncio → lotes de 20 → `POST .../move` → espera entre lotes. No manda ningún mensaje.
+- **Fase 3 — enviar template**: `artefactos/n8n-pipeline-masivo-enviar-template.json`. Se corre una vez por columna de campaña ya segmentada → arma las variables del template → `POST /message-template/send/v2`. **Tiene 3 placeholders literales sin completar a propósito** (`TEMPLATE_NAME`, el texto del template, y las credenciales) — no se puede correr tal cual ni por accidente hasta llenarlos con datos reales.
+
+**Ninguno de los dos tiene credenciales cargadas, ninguno está importado a la cuenta de n8n real, ninguno se ejecutó.**
 
 ## 5. Evidencia
 Screenshot tomado en vivo del estado real de la pipeline: `.playwright-mcp/masivo-header.png` — **no versionado a propósito** (esa carpeta está en `.gitignore` porque son capturas del CRM en vivo, con datos de clientes reales, no documentación). Efímero como el resto de `.playwright-mcp/`: si hace falta más adelante, se vuelve a sacar navegando a `selectedPipeline=24326`.
