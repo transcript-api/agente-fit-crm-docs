@@ -10,6 +10,18 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-19 (madrugada) — Investigación nocturna del remarketing masivo, sin tocar datos reales
+- **Pedido, textual y de madrugada**: *"la idea es hacer un remarketing masivo en la pipeline de masivos nueva"*, con instrucción explícita de no mandar ningún mensaje real y trabajar solo, sin preguntar.
+- **Se relanzó el Chrome de depuración** (perfil `C:\ChromeRemoteDebuggingUserData`, puerto 9222) y se navegó en vivo al CRM real — logueado como `usersantifitness@gmail.com`. Todo lo que sigue es lectura y diseño, **cero mutaciones sobre los 2396 negocios reales**.
+- **Encontrada "PIPELINE MASIVO" (id 24326)**, no documentada antes: columna `LEAD MASIVOS` con los 2396 negocios reales acumulados, más 5 columnas de campaña vacías (Testo Dilated/Hipercalórico/Isolado/Woman/Creatina) sin ningún mecanismo que mueva gente a ellas todavía.
+- **Encontrado el endpoint que le faltaba a Q15**: `POST /commercial-order/{identifier}/move` (body `{ commercialStep: "<etapa>" }`) — resuelve la segmentación por API sin necesitar `Connection-Token`.
+- **Corrección importante al diseño anterior de Q15**: existe un endpoint separado de Templates (`POST /message-template/send/v2` + `GET /message-template`) para mensajes pre-aprobados por Meta, distinto del envío libre que asumía el diseño del 17/09. Con leads inactivos hace semanas/meses, lo más probable es que haga falta un template aprobado, no el envío libre — queda sin confirmar si ya existe uno.
+- **Blueprint de n8n dejado listo, sin importar ni ejecutar**: `artefactos/n8n-pipeline-masivo-segmentar.json` — hace solo la segmentación (mover de etapa), nunca el envío.
+- **Encontrado de paso, sin documentar antes**: un Flujo `FV|Recompra - Reactivación` en el listado de Automatizaciones. Sin revisar todavía qué hace (N23).
+- **Corregido un descuido propio de esta misma sesión**: se guardaron sin querer 3 archivos con datos reales de clientes (nombre + teléfono) en la raíz del repo en vez de en `.playwright-mcp/` (que está en `.gitignore`) — se movieron antes de cualquier commit, no llegaron a subirse.
+- **Todo el detalle, con lo que queda por confirmar y quién lo desbloquea, en** [[31-pipeline-masivo-y-api-negocios-2026-09-19]]. `PENDIENTES.md` actualizado (Q15/Q16/N23).
+- **Qué NO se hizo, a propósito**: no se movió ningún negocio, no se buscó ni se copió ninguna API key o Connection-Token (el clasificador de permisos bloqueó la navegación a esa pantalla y no correspondía insistir), no se mandó ningún mensaje.
+
 ### 2026-09-18 — Puesta al día desde otra PC + barrido de PENDIENTES.md
 - **Pedido**: ponerse al día con el proyecto antes de tocar nada más.
 - **Leído**: [[28-traspaso-2026-09-15-deck-e-informe]] (punto de entrada), [[PENDIENTES]] completo, [[25-estado-y-que-sigue]], [[26-meta-muse-y-business-agent]], más el grep obligatorio `grep -rn "\*\*PENDIENTE:" *.md` que exige `CLAUDE.md` antes de consolidar. No se leyó el resto del vault línea por línea.

@@ -14,6 +14,7 @@ Reglas asociadas:
 4. **Cada pendiente dice quién lo desbloquea** (nosotros / soporte del CRM / Bling / el equipo / el usuario). Sin eso la lista se vuelve inútil.
 
 ## Orden de lectura recomendado
+- `31-pipeline-masivo-y-api-negocios-2026-09-19.md` — **empezar acá si el tema es el remarketing masivo.** La pipeline "PIPELINE MASIVO" (2396 leads reales esperando), el endpoint de la API que faltaba para segmentar (`/commercial-order/{id}/move`), y por qué el plan anterior de mandar el mensaje libre probablemente esté equivocado (hace falta un template pre-aprobado). Todo investigado y diseñado, nada ejecutado sobre datos reales.
 - `30-traspaso-2026-09-15-noche-3-agentes.md` — **empezar acá si el tema son los agentes de venta.** Los 3 agentes reales (Recepcionista/Conversión/Cierre), la auditoría colaborativa con ChatGPT que reescribió los 5 prompts (los 3 reales + 2 nuevos), el estado verificado de cada uno en rmsystemm, y un hallazgo técnico nuevo sobre el editor de prompts que hay que conocer antes de volver a tocarlo por script.
 - `28-traspaso-2026-09-15-deck-e-informe.md` — la presentación y el informe para la gerencia: qué quedó publicado, las reglas de escritura que puso el usuario (la más importante: **no decir lo obvio**), los datos que se cayeron y no hay que volver a usar, las trampas del editor del canvas, y las preguntas abiertas para completar desde la otra PC.
 - `29-prompts-por-columna.md` — el prompt de producción de cada agente, uno por columna del embudo (incluye los 2 que todavía no existen como agente real).
