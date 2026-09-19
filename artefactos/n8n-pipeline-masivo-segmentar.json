@@ -1,0 +1,146 @@
+{
+  "name": "FV | Pipeline Masivo - Segmentar por campaña (DISEÑO, NO IMPORTADO)",
+  "meta": {
+    "_nota": "Construido 2026-09-19 de madrugada, sobre documentación real de la API de rmsystemm leída en vivo (ver 31-pipeline-masivo-y-api-negocios-2026-09-19.md). NUNCA importado a una cuenta de n8n real, NUNCA ejecutado, sin credenciales cargadas. Hace SOLO la Fase 1 (segmentar) — NO manda ningún mensaje. Antes de importar: revisar cada nodo, cargar la credencial real de rmsystemm (header api-key), y probar con 'Ejecutar paso' nodo por nodo antes de correr el flujo completo, con el usuario mirando."
+  },
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Ejecutar manualmente",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "url": "https://api.rmsystemm.com.br/api/commercial-order",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "page", "value": "={{ $pageCount + 1 }}" },
+            { "name": "limit", "value": "100" }
+          ]
+        },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "paginationMode": "responseContainsNextURL",
+              "_nota": "AJUSTAR: revisar en la doc real (Automatizaciones -> API -> Negócios -> Consulta de Negócios) si la paginación es por cursor/next-url o simplemente por page/limit hasta que la respuesta venga vacía. No se confirmó el detalle exacto esta noche, solo que existen los parámetros page/limit (ver Q15/P5 en PENDIENTES.md).",
+              "maxRequests": 30
+            }
+          }
+        },
+        "headerParametersUi": {
+          "parameter": [
+            { "name": "api-key", "value": "={{ $credentials.rmsystemmApiKey }}" }
+          ]
+        }
+      },
+      "id": "http-get-negocios",
+      "name": "Leer negocios (paginado)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [220, 0],
+      "notes": "GET /commercial-order. Trae Pipeline.name, CommercialSalesStep.name y Contact completo por cada negocio (confirmado en la sesión del 17/09, ver PENDIENTES.md P5)."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "es-pipeline-masivo",
+              "leftValue": "={{ $json.Pipeline?.name }}",
+              "rightValue": "PIPELINE MASIVO",
+              "operator": { "type": "string", "operation": "equals" }
+            },
+            {
+              "id": "es-lead-masivos",
+              "leftValue": "={{ $json.CommercialSalesStep?.name }}",
+              "rightValue": "LEAD MASIVOS",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "filter-lead-masivos",
+      "name": "Filtrar: solo LEAD MASIVOS",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [440, 0],
+      "notes": "Defensivo: aunque se filtre por pipeline en la consulta, esto asegura que solo se toquen negocios que hoy están parados en LEAD MASIVOS, no los que ya se movieron en una corrida anterior."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Clasifica cada negocio por el nombre del anuncio/creativo de origen.\n// AJUSTAR el campo real una vez confirmado con un negocio de prueba real\n// (hipotesis: Business.name o un additionalInfo — no se confirmo esta noche,\n// ver seccion 1.1 de 31-pipeline-masivo-y-api-negocios-2026-09-19.md).\n\nconst REGLAS = [\n  { match: /creatina/i, columna: 'CAMPAÑA CREATINA' },\n  { match: /testo/i, columna: 'CAMPAÑA TESTO DILATED' },\n  { match: /hipercalor/i, columna: 'CAMPAÑA HIPERCALORICO' },\n  { match: /isolad|isolate/i, columna: 'CAMPAÑA ISOLADO' },\n  { match: /woman|femenin|mujer/i, columna: 'CAMPAÑA WOMAN' },\n];\n\nconst out = [];\nconst sinClasificar = [];\n\nfor (const item of $input.all()) {\n  const negocio = item.json;\n  // AJUSTAR: reemplazar por el campo real donde vive el nombre del anuncio.\n  const textoOrigen = negocio.adName || negocio.Business?.name || negocio.title || '';\n\n  const regla = REGLAS.find(r => r.match.test(textoOrigen));\n\n  if (regla) {\n    out.push({ json: { id: negocio.id, targetStep: regla.columna, textoOrigen } });\n  } else {\n    sinClasificar.push({ json: { id: negocio.id, textoOrigen, motivo: 'sin match en las reglas' } });\n  }\n}\n\n// Los sin clasificar se devuelven aparte para revision manual, NUNCA se mueven a ciegas.\nreturn { clasificados: out, sinClasificar };\n"
+      },
+      "id": "clasificar-por-campana",
+      "name": "Clasificar por campaña",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 0],
+      "notes": "Devuelve dos grupos: 'clasificados' (listos para mover) y 'sinClasificar' (revisar a mano, no se tocan). No inventa una columna para lo que no matchea ninguna regla."
+    },
+    {
+      "parameters": { "batchSize": 20, "options": {} },
+      "id": "split-in-batches",
+      "name": "Repartir en lotes de 20",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [880, 0],
+      "notes": "Ritmo controlado: no mover los 2396 negocios de golpe contra la API real."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.rmsystemm.com.br/api/commercial-order/{{ $json.id }}/move",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "commercialStep", "value": "={{ $json.targetStep }}" }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            { "name": "api-key", "value": "={{ $credentials.rmsystemmApiKey }}" }
+          ]
+        }
+      },
+      "id": "http-post-move",
+      "name": "Mover a la columna de campaña",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1100, 0],
+      "notes": "POST /commercial-order/{identifier}/move — endpoint confirmado leyendo la documentacion real el 2026-09-19. Body: { commercialStep: <nombre exacto de la etapa> }."
+    },
+    {
+      "parameters": { "amount": 2, "unit": "seconds" },
+      "id": "wait-entre-lotes",
+      "name": "Esperar entre lotes",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [1320, 0],
+      "notes": "Pausa entre lotes para no golpear la API de un saque. Ajustar el tiempo segun lo que tolere la cuenta real (no medido)."
+    }
+  ],
+  "connections": {
+    "Ejecutar manualmente": { "main": [[{ "node": "Leer negocios (paginado)", "type": "main", "index": 0 }]] },
+    "Leer negocios (paginado)": { "main": [[{ "node": "Filtrar: solo LEAD MASIVOS", "type": "main", "index": 0 }]] },
+    "Filtrar: solo LEAD MASIVOS": { "main": [[{ "node": "Clasificar por campaña", "type": "main", "index": 0 }]] },
+    "Clasificar por campaña": { "main": [[{ "node": "Repartir en lotes de 20", "type": "main", "index": 0 }]] },
+    "Repartir en lotes de 20": {
+      "main": [
+        [{ "node": "Mover a la columna de campaña", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "Mover a la columna de campaña": { "main": [[{ "node": "Esperar entre lotes", "type": "main", "index": 0 }]] },
+    "Esperar entre lotes": { "main": [[{ "node": "Repartir en lotes de 20", "type": "main", "index": 0 }]] }
+  }
+}

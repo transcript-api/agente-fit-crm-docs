@@ -1,0 +1,143 @@
+{
+  "name": "FV | Pipeline Masivo - Enviar template por campaña (DISEÑO, NO IMPORTADO)",
+  "meta": {
+    "_nota": "Construido 2026-09-19 de madrugada. Fase 3 del plan documentado en 31-pipeline-masivo-y-api-negocios-2026-09-19.md. NUNCA importado, NUNCA ejecutado, sin credenciales cargadas. NO USAR hasta confirmar TODO esto (ver PENDIENTES.md Q16): (1) existe un template de WhatsApp ya aprobado por Meta para este mensaje — GET /message-template; (2) la cuenta paso Business Verification y tiene URL de politica de privacidad cargada; (3) el 'tier' de mensajeria diario de la cuenta alcanza para el volumen que se quiera mandar (250/1.000/10.000/100.000/ilimitado — se ve en Meta Business Manager, no en rmsystemm); (4) los destinatarios cuentan como opt-in valido para categoria Marketing. Ninguno de los 4 esta confirmado todavia. Correr primero con UN SOLO destinatario de prueba (el propio numero del usuario) antes de soltarlo sobre la columna real."
+  },
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Ejecutar manualmente",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "url": "https://api.rmsystemm.com.br/api/commercial-order",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "page", "value": "={{ $pageCount + 1 }}" },
+            { "name": "limit", "value": "100" }
+          ]
+        },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "paginationMode": "responseContainsNextURL",
+              "_nota": "Igual que en el workflow de segmentar — confirmar el modo real de paginacion antes de correr.",
+              "maxRequests": 30
+            }
+          }
+        },
+        "headerParametersUi": {
+          "parameter": [
+            { "name": "api-key", "value": "={{ $credentials.rmsystemmApiKey }}" }
+          ]
+        }
+      },
+      "id": "http-get-negocios",
+      "name": "Leer negocios de una columna de campaña",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [220, 0],
+      "notes": "Correr una vez por columna de campaña (CAMPAÑA CREATINA, CAMPAÑA WOMAN, etc.) despues de que la Fase 1 (segmentar) ya haya movido gente ahi. Filtrar por CommercialSalesStep.name = la columna correspondiente en el siguiente nodo."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "es-la-columna-de-campana",
+              "leftValue": "={{ $json.CommercialSalesStep?.name }}",
+              "rightValue": "CAMPAÑA CREATINA",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "filter-columna-campana",
+      "name": "Filtrar: solo esta columna de campaña",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [440, 0],
+      "notes": "AJUSTAR el valor 'CAMPAÑA CREATINA' por la columna que corresponda en cada corrida. No mezclar columnas en una sola ejecucion: cada campaña tiene su propio mensaje/template."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Arma las variables del template a partir de cada negocio.\n// AJUSTAR nombre del template y de las variables una vez que exista\n// un template real aprobado por Meta (GET /message-template).\n\nconst TEMPLATE_NAME = 'PENDIENTE_nombre_del_template_aprobado';\n\nreturn $input.all().map(item => {\n  const negocio = item.json;\n  const nombre = negocio.Contact?.name || '';\n  const numero = negocio.Contact?.number || negocio.Contact?.phone || '';\n\n  return {\n    json: {\n      negocioId: negocio.id,\n      number: numero,\n      templateName: TEMPLATE_NAME,\n      manualVariables: { '{{1}}': nombre },\n    },\n  };\n}).filter(i => i.json.number); // nunca mandar sin numero confirmado\n"
+      },
+      "id": "armar-variables-template",
+      "name": "Armar variables del template",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 0],
+      "notes": "processedText no se manda aca a proposito: sale del template ya aprobado, no se redacta en el workflow."
+    },
+    {
+      "parameters": { "batchSize": 20, "options": {} },
+      "id": "split-in-batches",
+      "name": "Repartir en lotes de 20",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [880, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.rmsystemm.com.br/api/message-template/send/v2",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "number", "value": "={{ $json.number }}" },
+            { "name": "templateName", "value": "={{ $json.templateName }}" },
+            { "name": "processedText", "value": "PENDIENTE: pegar el texto real del template aprobado, con sus placeholders {{1}} {{2}}..." },
+            { "name": "manualVariables", "value": "={{ $json.manualVariables }}" }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            { "name": "api-key", "value": "={{ $credentials.rmsystemmApiKey }}" },
+            { "name": "Connection-Token", "value": "={{ $credentials.rmsystemmConnectionToken }}" }
+          ]
+        }
+      },
+      "id": "http-post-send-template",
+      "name": "Enviar template",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1100, 0],
+      "notes": "POST /message-template/send/v2 — endpoint confirmado leyendo la documentacion real el 2026-09-19. Necesita api-key + Connection-Token (a diferencia del endpoint de mover etapa, que solo pide api-key)."
+    },
+    {
+      "parameters": { "amount": 3, "unit": "seconds" },
+      "id": "wait-entre-lotes",
+      "name": "Esperar entre lotes",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [1320, 0],
+      "notes": "Pausa entre lotes. Ajustar segun el tier real de mensajeria de la cuenta (ver PENDIENTES.md Q16) — un tier bajo puede requerir repartir el envio en varios dias, no solo espaciar segundos."
+    }
+  ],
+  "connections": {
+    "Ejecutar manualmente": { "main": [[{ "node": "Leer negocios de una columna de campaña", "type": "main", "index": 0 }]] },
+    "Leer negocios de una columna de campaña": { "main": [[{ "node": "Filtrar: solo esta columna de campaña", "type": "main", "index": 0 }]] },
+    "Filtrar: solo esta columna de campaña": { "main": [[{ "node": "Armar variables del template", "type": "main", "index": 0 }]] },
+    "Armar variables del template": { "main": [[{ "node": "Repartir en lotes de 20", "type": "main", "index": 0 }]] },
+    "Repartir en lotes de 20": {
+      "main": [
+        [{ "node": "Enviar template", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "Enviar template": { "main": [[{ "node": "Esperar entre lotes", "type": "main", "index": 0 }]] },
+    "Esperar entre lotes": { "main": [[{ "node": "Repartir en lotes de 20", "type": "main", "index": 0 }]] }
+  }
+}
