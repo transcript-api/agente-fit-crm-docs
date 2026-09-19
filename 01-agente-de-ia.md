@@ -79,6 +79,29 @@ Además de la integración de Shopify que vive DENTRO de Bling (sincroniza stock
 
 **Ampliación 2026-09-14 — se leyeron los 25 conectores del Hub, uno por uno.** Shopify resultó ser **nativo** (sin catálogo de acciones/disparadores, a diferencia de los 20 que vienen de Composio), y su descripción promete bastante más de lo que decía esta sección: sincronizar productos, pedidos y clientes, **disparar flujos por eventos de tienda (nuevo pedido, carrito abandonado)** y consultar el estado del pedido en la atención. Sigue sin conectar. Detalle, texto literal y las preguntas que quedaron abiertas en [[23-conectores-hub-integraciones]] §4.1.
 
+## Parámetros técnicos confirmados en rmsystemm (2026-09-14, reunión con soporte) — ✅ ajustados el mismo día
+Pendiente viejo (de [[10-ds-agente-ds-voice-manual]] y [[12-caso-real-rafael-prompt-produccion]]) **cerrado**: sí existen, en un panel de engranaje junto al selector de Modelo, dentro de Entrenamiento. Se encontraron con el Delay en 0s (riesgo real de respuestas fragmentadas) y se ajustaron en vivo, alineados con lo que recomiendan los archivos de los videos — ver el detalle completo y el "antes/después" en [[13-prompt-agente-fit-v1]] (sección v6):
+
+| Campo | Valor actual (ajustado 2026-09-14) |
+|---|---|
+| Temperatura | 0,7 (sin cambios, ya estaba en rango) |
+| Máx. mensajes en historial | **30** (antes 12) |
+| Máx. Tokens en respuesta | **200** (antes 600) |
+| Retraso para responder mensajes (segundos) | **25** (antes 0) |
+| Ignorar mensagens até X segundos após criação da conversa | 0 (sin cambios, el video recomienda dejarlo así) |
+
+Verificado guardado tras recargar la página.
+
+Toggles confirmados con su estado real (pestaña Entrenamiento, captura de la reunión):
+- Responder tickets con asignado: **ON** — ⚠️ confirmar qué significa exactamente antes de asignar el agente a una conversación con responsable humano (riesgo de doble respuesta), ver P4.
+- Dividir respuestas en bloques: ON.
+- Procesar imágenes: OFF.
+- Desactivar agente al responder fuera de la plataforma: ON.
+- Mantener historial de tickets cerrados / Responder reacciones de Instagram / Mantener como no leídos: OFF.
+
+## Asignación de agente por conversación (hallazgo 2026-09-14 — mecanismo de rollout controlado)
+Dentro de una conversación real, el menú de opciones (junto a "Cerrar", arriba a la derecha) abre **"Gerenciar Agente" → "Selecionar Agente"** — un dropdown que permite asignar (o quitar) el Agente de IA a esa conversación puntual, **sin necesidad de vincular el canal completo**. Esto resuelve S6 (rollout controlado): en vez de conectar el WhatsApp real y que el agente le responda a los ~5000 contactos/mes de una, se lo puede asignar solo a conversaciones/negocios puntuales — por ejemplo, a los que caigan en las columnas vacías de `FV| FUNIL DE VENTAS`, como prueba real sin riesgo. Detalle completo en [[26-respuestas-reunion-soporte-2026-09-14]] #4.
+
 ## Pendiente clave
 ~~El campo "Instrucciones" sigue vacío~~ — **RESUELTO 2026-09-11: el prompt v3 completo ya está pegado y guardado** en el campo "Instrucciones" del Agente Fit (id 9816), ver [[13-prompt-agente-fit-v1]] para el detalle de los ajustes de nombres de función hechos al pegarlo. Se descubrió además que el editor real de "Instrucciones" es un modal grande con un panel lateral "Arraste para adicionar" con chips de acción reales — el catálogo completo de nombres de función quedó documentado en el archivo 13.
 

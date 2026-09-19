@@ -1,6 +1,8 @@
 # Guion para la reunión con soporte — en portugués, listo para leer
 
-**Cómo usar este archivo**: es la versión hablada de [[21-preguntas-para-soporte-rmsystemm]] (ahí está el "por qué importa" de cada una, para vos). Acá está solo lo que se dice, en portugués, en orden. Las líneas en *cursiva y en español* son notas tuyas — **no se leen**.
+**✅ La reunión ya se hizo, el 2026-09-14.** Las respuestas (numeradas igual que este guion) están en [[26-respuestas-reunion-soporte-2026-09-14]]. Este archivo queda como referencia histórica de qué se planeaba preguntar — no se volvió a usar en vivo. Bloques que **no se llegaron a cubrir**: la pregunta 21 (export de conversaciones, aunque surgió algo más importante al pasar — ver el hallazgo destacado en el 26), 21a y 21e del Bloque 4B, y la pregunta 22 del Bloque 5. El resto de los bloques (1 a 20, 23, Bloque 7) se tocaron con distinto nivel de profundidad — ver el 26 para el detalle de cada una.
+
+**Cómo usar este archivo (para la próxima reunión, si hace falta otra)**: es la versión hablada de [[21-preguntas-para-soporte-rmsystemm]] (ahí está el "por qué importa" de cada una, para vos). Acá está solo lo que se dice, en portugués, en orden. Las líneas en *cursiva y en español* son notas tuyas — **no se leen**.
 
 *Revisado el 2026-09-14 contra los archivos que salieron de los videos de la empresa ([[09-copiloto-ia-partner]], [[10-ds-agente-ds-voice-manual]], [[12-caso-real-rafael-prompt-produccion]]) para sacar lo que esos videos ya respondían y agregar lo que ahí quedó marcado como pendiente de confirmar. Si se edita este archivo, revisar también el 21 para que no se desincronicen.*
 

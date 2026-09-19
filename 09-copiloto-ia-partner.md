@@ -36,6 +36,13 @@ Son **dos productos separados** dentro de la misma plataforma:
 ## Modelo de negocio (mayormente NO aplica a nosotros — somos el cliente final, no el revendedor)
 DKW le vende tokens al por mayor a los partners (como quien administra rmsystemm), el partner le pone margen y se lo revende a sus clientes finales (como Fitness Suplementos). Esto explica por qué, si algún día aparece en rmsystemm, probablemente venga con un costo adicional sobre el uso de tokens, no sea gratis. No hay acción nuestra que tomar acá, solo entender que si se activa, probablemente tenga un costo extra facturado por rmsystemm.
 
+## Confirmado por soporte (reunión 2026-09-14)
+- El Copiloto está **en desarrollo** dentro de rmsystemm — no liberado para todas las cuentas, solo para las que tienen **"función súper"** (nivel de administración de la cuenta). La cuenta de Fitness Suplementos no la tiene hoy — el usuario ya pidió que se la den (ver [[26-respuestas-reunion-soporte-2026-09-14]]).
+- Anunciaron que en unos días van a sacar **videos explicando el Copiloto en profundidad**.
+- Sobre la contradicción de si la clave BYOK sirve para el Copiloto (la descripción del conector "OpenAI Key" decía que sí, ver [[23-conectores-hub-integraciones]] §4.3): según soporte, **no** — esa clave sirve solo para el agente y algunas funciones del agente. La descripción del conector parece estar mal redactada. No se profundizó más — repreguntar con la cita en mano si el Copiloto se vuelve prioridad.
+- El precio no lo pudieron dar en esta llamada.
+
 ## Pendiente
 - Esperando transcripción/análisis de un segundo video (~1 hora) con más detalle — se agrega a este mismo archivo cuando llegue.
-- Revisar periódicamente si esta función aparece en la cuenta real de rmsystemm (buscar en `Agente de IA` un submenú "Copiloto").
+- Revisar periódicamente si esta función aparece en la cuenta real de rmsystemm (buscar en `Agente de IA` un submenú "Copiloto") — sobre todo una vez que llegue el acceso "súper".
+- Cuando salgan los videos anunciados, volver a este archivo y actualizar.

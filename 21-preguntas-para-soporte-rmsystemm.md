@@ -4,6 +4,8 @@ Preparado el 2026-09-13 para una reunión online con soporte. Cada pregunta tien
 
 Dejar espacio para anotar la respuesta al lado de cada una y volcarla después a los archivos correspondientes del vault.
 
+**✅ La reunión se hizo el 2026-09-14.** Las respuestas completas están en [[26-respuestas-reunion-soporte-2026-09-14]] — este archivo se deja como referencia de qué se preguntó originalmente y por qué, pero **para saber qué contestaron, ir al 26**. Debajo, cada pregunta respondida queda marcada ✅ con un puntero corto.
+
 ---
 
 ## 🔴 PRIORIDAD 1 — Cosas que si están mal, rompen todo lo que ya construimos
