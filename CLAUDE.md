@@ -14,6 +14,7 @@ Reglas asociadas:
 4. **Cada pendiente dice quién lo desbloquea** (nosotros / soporte del CRM / Bling / el equipo / el usuario). Sin eso la lista se vuelve inútil.
 
 ## Orden de lectura recomendado
+- `31-envio-masivo-remarketing-cupon.md` — **empezar acá si el tema es el envío masivo a los 2400 leads de remarketing.** El mecanismo nativo (2 Flujos de Automatización) ya construido y probado de punta a punta, todos los hallazgos técnicos (ventana de 24hs de WhatsApp, plantillas sin audio, orden de entrega imagen/texto), y la lista exacta de qué falta para escalar. Reemplaza el plan viejo de API+n8n.
 - `30-traspaso-2026-09-15-noche-3-agentes.md` — **empezar acá si el tema son los agentes de venta.** Los 3 agentes reales (Recepcionista/Conversión/Cierre), la auditoría colaborativa con ChatGPT que reescribió los 5 prompts (los 3 reales + 2 nuevos), el estado verificado de cada uno en rmsystemm, y un hallazgo técnico nuevo sobre el editor de prompts que hay que conocer antes de volver a tocarlo por script.
 - `28-traspaso-2026-09-15-deck-e-informe.md` — la presentación y el informe para la gerencia: qué quedó publicado, las reglas de escritura que puso el usuario (la más importante: **no decir lo obvio**), los datos que se cayeron y no hay que volver a usar, las trampas del editor del canvas, y las preguntas abiertas para completar desde la otra PC.
 - `29-prompts-por-columna.md` — el prompt de producción de cada agente, uno por columna del embudo (incluye los 2 que todavía no existen como agente real).
