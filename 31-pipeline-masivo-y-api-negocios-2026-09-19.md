@@ -83,7 +83,16 @@ Body:
 ```
 Más `GET /message-template` para listar los templates ya registrados (no se llegó a consultar en vivo — pide `api-key`, no disponible esta noche).
 
-**Por qué importa, y esto es una corrección al diseño que dejó Q15 el 17/09, no solo un dato más:** el diseño anterior de Q15 apuntaba a `POST /messages/send/v2` (envío libre de texto/media) para el disparo masivo. **Este es probablemente el endpoint equivocado para este caso.** Es una regla general y pública de la API de WhatsApp Business (no algo que diga la documentación de rmsystemm, es una inferencia mía a partir de que existe un endpoint de Templates separado): un negocio solo puede escribirle primero a un cliente, fuera de una ventana de 24 horas desde su último mensaje, usando un **template pre-aprobado por Meta** — un mensaje libre en ese caso se rechaza o arriesga el número. Los 2396 leads de "LEAD MASIVOS" llevan, en varios casos vistos, semanas o meses sin actividad — case de libro de "fuera de la ventana de 24 h". **Esto hay que confirmarlo antes de mandar nada real**: si ya existe un template aprobado y cargado (`GET /message-template` lo diría), el camino correcto es `POST /message-template/send/v2`, no el de envío libre. Si no existe ningún template, hay que crear y esperar la aprobación de Meta antes de poder hacer este envío — lo cual cambia el plazo de "esto se puede hacer ya" a "hay un paso de aprobación externo por delante".
+**Por qué importa, y esto es una corrección al diseño que dejó Q15 el 17/09, no solo un dato más:** el diseño anterior de Q15 apuntaba a `POST /messages/send/v2` (envío libre de texto/media) para el disparo masivo. **Este es probablemente el endpoint equivocado para este caso.** Confirmado por búsqueda externa esta noche (no es algo que diga la documentación de rmsystemm — es la regla pública de la API de WhatsApp Business, ver fuentes al final): un negocio solo puede **iniciar** una conversación con un cliente, fuera de la ventana de 24 horas desde su último mensaje, usando un **template pre-aprobado por Meta** ("business-initiated conversation"). Los 2396 leads de "LEAD MASIVOS" llevan, en varios casos vistos en pantalla, semanas o meses sin actividad — caso de libro de "fuera de la ventana de 24 h". **Esto hay que confirmarlo antes de mandar nada real**: si ya existe un template aprobado y cargado (`GET /message-template` lo diría), el camino correcto es `POST /message-template/send/v2`, no el de envío libre. Si no existe ningún template, hay que crear uno y esperar la aprobación de Meta antes de poder hacer este envío — cambia el plazo de "esto se puede hacer ya" a "hay un paso de aprobación externo por delante".
+
+### 2.3 Tres cosas más que la búsqueda externa destapó, y que Q15 no tenía en cuenta
+No verificadas contra la cuenta real de Fitness Suplementos (para eso hace falta entrar a Meta Business Manager, no algo que se pueda mirar desde rmsystemm) — quedan como preguntas a confirmar, no como hechos de esta cuenta:
+
+1. **Un mensaje de remarketing a leads fríos cae en la categoría "Marketing" de los templates**, que exige **opt-in explícito y documentable** de cada destinatario, más un mecanismo de baja fácil en el propio mensaje. Los 2396 leads llegaron por interacción con un anuncio — no está confirmado si eso cuenta como opt-in válido para Meta o si hace falta algo más.
+2. **Hay un límite diario de mensajes según el "tier" de la cuenta**, no solo un riesgo difuso de "que baneen el número": cuentas nuevas/sin verificar arrancan en 250/día, y escalan (1.000 → 10.000 → 100.000 → ilimitado) según verificación de negocio y calificación de calidad. **Si la cuenta de Fitness Suplementos está en un tier bajo, ni siquiera se puede intentar mandarle a los 2396 en una sola tanda** — se necesita saber el tier real antes de diseñar el ritmo de envío.
+3. **Meta exige verificación de negocio ("Business Verification") y una URL de política de privacidad cargada antes de poder mandar cualquier template** — no se confirmó si la cuenta de WhatsApp Business de Fitness Suplementos ya pasó por esto.
+
+Esto no cambia el plan de esta noche (seguía sin poder ejecutarse la Fase 3 de todos modos, por falta de credenciales), pero sí cambia lo que hay que preguntar/confirmar antes de la Fase 3 — se agregó a §6.
 
 ---
 
@@ -109,9 +118,20 @@ Screenshot tomado en vivo del estado real de la pipeline: `.playwright-mcp/masiv
 - **Confirmar el campo exacto donde vive el "anuncio de origen" en la respuesta de `GET /commercial-order`** — nosotros, con una llamada real de prueba (necesita `api-key`).
 - **Conseguir `api-key` + `Connection-Token`** — el usuario (son credenciales, no las busco yo sin que él lo pida explícitamente).
 - **Confirmar si existe ya un template de WhatsApp aprobado para este mensaje** — nosotros, en cuanto haya `api-key` (`GET /message-template`).
+- **Confirmar el "tier" de mensajería diario de la cuenta de WhatsApp Business** (250/1.000/10.000/100.000/ilimitado) — determina si se puede mandar a los 2396 en una tanda o hay que repartir en varios días. Se mira en Meta Business Manager, no en rmsystemm.
+- **Confirmar que la cuenta pasó "Business Verification" de Meta y tiene URL de política de privacidad cargada** — requisito 2026 para poder mandar cualquier template.
+- **Confirmar si los 2396 leads cuentan como opt-in válido para un template de categoría Marketing**, o si hace falta pedirlo de nuevo — decisión que probablemente necesite al equipo/abogado, no solo técnica.
 - **Decidir el mensaje/creativo real por campaña** — el equipo/usuario, no nosotros.
 - **Revisar qué hace `FV|Recompra - Reactivación`** (flujo encontrado esta noche, no documentado antes) — nosotros, próxima sesión con navegador.
-- **Confirmar visualmente (captura, no snapshot de accesibilidad) si `Novo Fluxo` sigue activo** — nosotros, antes de asumir cualquier cambio de estado.
+- **🔴 Confirmar si `Novo Fluxo` sigue realmente apagado y desde cuándo** (visto con captura real esta noche, ver §1.3) — prioridad alta, posible impacto en clientes reales ahora mismo.
 
 **PENDIENTE:** ejecutar la Fase 1 (segmentar los 2396 negocios) con el usuario presente y mirando, siguiendo el blueprint de n8n de §4 — no antes.
-**PENDIENTE:** confirmar si existe un template de WhatsApp aprobado para el mensaje de remarketing masivo antes de asumir que `POST /message-template/send/v2` está listo para usarse.
+**PENDIENTE:** confirmar tier de mensajería, Business Verification, opt-in y template aprobado antes de asumir que la Fase 3 (envío) está lista para intentarse.
+
+## 7. Fuentes (búsqueda externa, no específicas de rmsystemm)
+- [WhatsApp Business Platform 24 Hour Rule — Enchant](https://www.enchant.com/whatsapp-business-platform-24-hour-rule)
+- [Understanding the 24-hour conversation window — ActiveCampaign](https://help.activecampaign.com/hc/en-us/articles/20679458055964-Understanding-the-24-hour-conversation-window-in-WhatsApp-messaging)
+- [WhatsApp Business API message template: types and rules — SleekFlow](https://sleekflow.io/blog/whatsapp-business-template)
+- [Get opt-in for WhatsApp — Meta for Developers](https://developers.facebook.com/documentation/business-messaging/whatsapp/getting-opt-in)
+- [WhatsApp Messaging Limits 2026: Scale Without Getting Banned — Chatarmin](https://chatarmin.com/en/blog/whats-app-messaging-limits)
+- [WhatsApp Business Message Limits 2026: Broadcast Caps, Tier Progression — Uptail](https://www.uptail.ai/blog/whatsapp-business-message-limits-2026-broadcast-caps-tier-progression-what-happens-when-you-hit-the-ceiling)
