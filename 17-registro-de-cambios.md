@@ -10,6 +10,13 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-19 (noche) — Columnas reales de PIPELINE MASIVO + prompt de ChatGPT para las 5 plantillas por campaña
+- **Pedido 1**: qué columnas hay en `PIPELINE MASIVO` clasificadas por anuncio. Se verificó en vivo en vez de confiar en la documentación (que tenía un nombre mal): `LEAD MASIVOS` (2.407) + 5 columnas de campaña — `CAMPAÑA TESTO DILATED` (0), `CAMPAÑA HIPERCALORICO` (1, ya hay un lead movido — "Nico", sin investigar cómo llegó ahí), `CAMPAÑA ISOLADO` (0), `CAMPAÑA WOMAN` (0), `CAMPAÑA CREATINA` (0). Total 2.408 negocios, subió desde los ~2.396-2.400 documentados antes.
+- **Corregido de paso**: `31-envio-masivo-remarketing-cupon.md` decía "AD MASIVOS" — único lugar del vault con ese error, los otros 3 archivos ya decían bien "LEAD MASIVOS".
+- **Pedido 2**: crear una plantilla personalizada por campaña, mismo formato que `cupon_general`. El usuario aclaró que el descuento es el mismo para las 5 (5% OFF, VOLVISTE5) y que quiere que **ChatGPT piense el copy** de cada una, no que yo lo genere — mi tarea fue armar el prompt para pasarle, no las plantillas en sí.
+- **Restricción técnica que se sumó al prompt sin que el usuario la pidiera explícitamente, porque es real y cambia el plan**: Testo Dilated (y a futuro Black Skull Kit) son campañas de audio, y WhatsApp no permite Audio como encabezado de plantilla — se le explicó a ChatGPT en el prompt que esas necesitan encabezado de Imagen + el mecanismo de 3 pasos ya construido (el audio real se manda después, como mensaje libre, no dentro de la plantilla).
+- **Entregado**: `artefactos/prompt-chatgpt-plantillas-por-campana.md`, listo para pegar. `PENDIENTES.md`: Q17j nueva.
+
 ### 2026-09-19 (noche, después del push) — Terminar de propagar "CANJEAR AHORA" en los 2 Flujos
 - **Contexto**: el usuario pegó la transcripción de dónde se había cortado la sesión de la tarde — a mitad de subir la imagen del cupón a la plantilla, con un error de Playwright (`browser_click` no maneja un modal de selector de archivo abierto, hacía falta `browser_file_upload`).
 - **Antes de tocar nada, se verificó el estado real en el CRM** (no se asumió que seguía como quedó documentado):
