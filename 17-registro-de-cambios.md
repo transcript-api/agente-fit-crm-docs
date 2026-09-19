@@ -10,6 +10,17 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-18 — Puesta al día desde otra PC + barrido de PENDIENTES.md
+- **Pedido**: ponerse al día con el proyecto antes de tocar nada más.
+- **Leído**: [[28-traspaso-2026-09-15-deck-e-informe]] (punto de entrada), [[PENDIENTES]] completo, [[25-estado-y-que-sigue]], [[26-meta-muse-y-business-agent]], más el grep obligatorio `grep -rn "\*\*PENDIENTE:" *.md` que exige `CLAUDE.md` antes de consolidar. No se leyó el resto del vault línea por línea.
+- **El barrido encontró 4 pendientes reales, escritos en el vault, sin fila en el registro único** — el mismo tipo de error que motivó crear `PENDIENTES.md`. Se agregaron con fecha y nota de que estaban sin registrar, sin borrar ni tocar ninguna fila existente:
+  - **E10** — decisión abierta de ser partner directo de DKW System vs. seguir con RM System (estaba solo en [[24-sesion-2026-09-14-traspaso]] §4.0).
+  - **E11** — transcripciones de los videos 2 a 5 de Meta (Muse/Business Agent) y 6 preguntas abiertas sobre Business Agent (estaba solo en [[26-meta-muse-y-business-agent]] y en el §6.2 del traspaso 28).
+  - **E12** — las respuestas de la reunión con soporte del CRM se perdieron entre PCs (estaba solo en el §6.2 del traspaso 28).
+  - **N22** — probar el nodo "Apps" de Flujos para consultar el Sheet sin depender del agente; se anotó que su motivo original (precios inventados) ya se resolvió por otro lado, así que sigue abierto pero ya no es urgente por esa razón puntual.
+- **No se resolvió ningún pendiente de fondo esta sesión** — las siete preguntas que el traspaso 28 dejó para "el Claude de la otra PC" (§7: qué respondió soporte, si el anti-errores sigue sin guardarse, si se consiguió rol de administrador, ticket/margen, relectura del deck) quedan sin contestar: no había información nueva disponible en esta PC, solo el vault.
+- **Pendiente**: seguir con el deck (`Construido.dc.html`, abierto en el editor) o con alguno de los pendientes nuevos — a definir con el usuario.
+
 ### 2026-09-15 (mañana) — Reescritura del deck y del informe lámina por lámina, con las reglas del usuario
 - **Pedido**: revisarlo con él de a una lámina, sacar todo lo que a un gerente le resulta obvio, y dejar todo documentado para la PC del trabajo.
 - **La regla que ordenó todo lo demás — no decir lo obvio.** Textual suyo: *"un líder, un profesional sabe, no son burros… si no vas a andar siempre poniendo algo que nadie quiere saber porque es obvio."* Cada línea obvia ocupa el lugar de una que aporta, y suena condescendiente con quien dirige el negocio. Escrita con ejemplos en [[27-reglas-diseno-presentaciones]].
