@@ -45,15 +45,18 @@ Dispara cuando el lead responde al botón (o escribe la frase a mano — el gati
 
 **Probado en vivo el 2026-09-19, con el propio número del usuario, extremo a extremo**: mover el card → llega el cupón con foto + botón → click en el botón → llega la confirmación + se aplica la tag + el card salta solo a `MASIVO - RESPUESTAS → LEAD REACTIVADO`. Funcionó.
 
-## ⚠️ Naming pendiente de terminar de propagar: "CANJEAR CUPON" → "CANJEAR AHORA"
+## ✅ Naming "CANJEAR CUPON" → "CANJEAR AHORA" — terminado de propagar (2026-09-19 noche)
 
 El creativo real (compartido por el usuario) tiene el botón dibujado con el texto **"CANJEAR AHORA →"** y código **VOLVISTE5**, no "CANJEAR CUPON" que se había usado en las primeras pruebas. Se decidió unificar todo a "CANJEAR AHORA" para que el botón real coincida con lo que el cliente ve escrito en la imagen.
 
-**Ya actualizado**: la plantilla nueva `cupon_general` (ver abajo) usa "CANJEAR AHORA".
-**Pendiente de actualizar** (quedó cortado al pedir este resumen, retomar acá):
-- Botón del nodo "Enviar Mensagem" en el Flujo "TEST - Envío Campaña" (todavía dice CANJEAR CUPON).
-- Gatillo del Flujo "TEST - Reacción Canjear" (todavía busca CANJEAR CUPON).
-- Automatización de columna "TEST CUPON" (Entrada en la Tarjeta → Enviar Creativo), si tiene un botón propio configurado.
+**Los 3 lugares quedaron confirmados, cada uno verificado con una recarga completa de la página (no solo estado del cliente) antes y después de guardar:**
+- Botón de la plantilla `cupon_general`: ya decía "CANJEAR AHORA" (hecho en la sesión anterior). Además, la plantilla ya está **Aprovado** por Meta (Enviadas: 0 — aprobada pero sin usar todavía).
+- Botón del nodo "Enviar Mensagem" en el Flujo "TEST - Envío Campaña" (id 5798): estaba en "CANJEAR CUPON" — corregido y publicado.
+- Gatillo del Flujo "TEST - Reacción Canjear" (id 5797), condición "Quando a mensagem contiver": estaba en "CANJEAR CUPON" — corregido y publicado.
+
+**No se revisó** la automatización de columna "TEST CUPON" (si tiene un botón propio configurado) — queda para la próxima sesión, no es de los 3 que se sabía que estaban desactualizados.
+
+**Hallazgo suelto al revisar el Flujo 1**: el nodo de espera entre el envío de la imagen y el texto+botón dice **"Aguardar 2 segundos"** en el canvas real, no los 5 segundos que dice este documento más abajo (sección "Mecanismo construido y probado", paso 4). No se tocó — revisar cuál de los dos valores es el correcto antes de escalar, y corregir el que esté mal (el doc o el flujo).
 
 ## Hallazgos técnicos importantes (para no volver a pisarlos)
 
@@ -125,11 +128,12 @@ y recién ahí pasarle esa segunda ruta a `browser_file_upload`.
 
 ## Qué falta para escalar a producción (resumen)
 
-1. **Terminar de propagar "CANJEAR AHORA"** en los 3 lugares que faltan (ver sección de naming arriba) — es lo inmediato, quedó a mitad de camino.
-2. Esperar la aprobación de Meta de `cupon_general` (24-48hs).
+1. ~~Terminar de propagar "CANJEAR AHORA" en los 3 lugares que faltan~~ — ✅ **hecho el 2026-09-19 de noche**, ver sección de naming arriba.
+2. ~~Esperar la aprobación de Meta de `cupon_general`~~ — ✅ **ya está Aprovado** (verificado 2026-09-19 de noche).
 3. Construir el Flujo de "apertura con plantilla" (paso 1 del diseño de 3 pasos) para leads fríos — hoy el Flujo de envío asume ventana abierta.
 4. Confirmar con soporte de rmsystemm el tema de facturación durante la ventana de 72hs de Meta.
 5. Decidir tag dinámica por campaña (Opción A) antes de escalar a las 6 columnas reales de `PIPELINE MASIVO`.
 6. Construir las etapas reales de `MASIVO - RESPUESTAS` (hoy solo la de prueba).
 7. Replicar el mecanismo (2 Flujos + columna de disparo) en las columnas reales de campaña, probando de a una antes de activar todas.
-8. Revisar los 120 errores semanales de Flujos en el dashboard antes de escalar.
+8. Revisar los 121 errores semanales de Flujos en el dashboard antes de escalar (subió de 120 a 121 desde la sesión anterior).
+9. **Nuevo**: confirmar el delay real entre imagen y texto+botón del Flujo "TEST - Envío Campaña" — el canvas dice 2s, este documento decía 5s (ver nota en la sección de naming).

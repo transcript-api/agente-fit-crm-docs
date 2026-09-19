@@ -10,6 +10,17 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-19 (noche, después del push) — Terminar de propagar "CANJEAR AHORA" en los 2 Flujos
+- **Contexto**: el usuario pegó la transcripción de dónde se había cortado la sesión de la tarde — a mitad de subir la imagen del cupón a la plantilla, con un error de Playwright (`browser_click` no maneja un modal de selector de archivo abierto, hacía falta `browser_file_upload`).
+- **Antes de tocar nada, se verificó el estado real en el CRM** (no se asumió que seguía como quedó documentado):
+  - Plantilla `cupon_general`: ya tenía el botón "CANJEAR AHORA" correcto, y **ya está Aprovado por Meta** (el documento todavía decía "Pendente").
+  - Flujo "TEST - Envío Campaña" (id 5798): el botón del nodo "Enviar Mensagem" seguía en "CANJEAR CUPON".
+  - Flujo "TEST - Reacción Canjear" (id 5797): la condición del gatillo seguía buscando "CANJEAR CUPON".
+- **Corregidos los 2 Flujos** (la decisión de unificar a "CANJEAR AHORA" ya estaba tomada y documentada, no era ambigua) — cada cambio se guardó con "Publicar" y se verificó **recargando la página entera desde cero** (no solo el estado del cliente) antes y después, siguiendo la regla de `CLAUDE.md` de confirmar con snapshot antes/después de escribir en el CRM real.
+- **No se tocó** la automatización de columna "TEST CUPON" — no se sabía si tenía un botón propio configurado, queda para revisar.
+- **Hallazgo suelto de paso**: el nodo de espera del Flujo "TEST - Envío Campaña" dice "Aguardar 2 segundos" en el canvas real; el documento decía 5 segundos. No se tocó, solo se anotó la discrepancia (Q17i).
+- **Actualizado** [[31-envio-masivo-remarketing-cupon]] y `PENDIENTES.md` (Q17a parcialmente cerrada, Q17b cerrada, Q17i nueva).
+
 ### 2026-09-19 (noche) — Organización general del vault y push a GitHub
 - **Pedido**: *"hace un push en todo lo que esta actualizado en git hub actualiza todo cambia lo que veas que se contradice arregla y organiza todo"*.
 - **Resuelta la colisión de numeración "26-"** que `CLAUDE.md` tenía marcada como pendiente desde el 2026-09-18 (dos archivos distintos con el mismo número, por un merge de dos sesiones en paralelo). Se renombró `26-meta-muse-y-business-agent.md` → `32-meta-muse-y-business-agent.md` (el que tenía menos enlaces entrantes: 3 contra 14+ del otro) y se actualizaron los 3 `[[wikilinks]]` que apuntaban al nombre viejo (`17-registro-de-cambios.md` ×2, `PENDIENTES.md` ×1). `git mv` preserva el historial del archivo.
