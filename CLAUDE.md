@@ -14,13 +14,27 @@ Reglas asociadas:
 4. **Cada pendiente dice quién lo desbloquea** (nosotros / soporte del CRM / Bling / el equipo / el usuario). Sin eso la lista se vuelve inútil.
 
 ## Orden de lectura recomendado
-- `31-pipeline-masivo-y-api-negocios-2026-09-19.md` — **empezar acá si el tema es el remarketing masivo.** La pipeline "PIPELINE MASIVO" (2396 leads reales esperando), el endpoint de la API que faltaba para segmentar (`/commercial-order/{id}/move`), y por qué el plan anterior de mandar el mensaje libre probablemente esté equivocado (hace falta un template pre-aprobado). Todo investigado y diseñado, nada ejecutado sobre datos reales.
-- `30-traspaso-2026-09-15-noche-3-agentes.md` — **empezar acá si el tema son los agentes de venta.** Los 3 agentes reales (Recepcionista/Conversión/Cierre), la auditoría colaborativa con ChatGPT que reescribió los 5 prompts (los 3 reales + 2 nuevos), el estado verificado de cada uno en rmsystemm, y un hallazgo técnico nuevo sobre el editor de prompts que hay que conocer antes de volver a tocarlo por script.
-- `28-traspaso-2026-09-15-deck-e-informe.md` — la presentación y el informe para la gerencia: qué quedó publicado, las reglas de escritura que puso el usuario (la más importante: **no decir lo obvio**), los datos que se cayeron y no hay que volver a usar, las trampas del editor del canvas, y las preguntas abiertas para completar desde la otra PC.
+
+**Para ponerse al día rápido, en este orden:**
+1. `PENDIENTES.md` — el registro único: qué está sin resolver, quién lo desbloquea, y dónde está el detalle. **Si alguien pregunta "¿qué hay que hacer?", se responde desde acá.** Ver la regla de barrido obligatorio arriba.
+2. `17-registro-de-cambios.md` — registro cronológico de sesiones, empezando por la más reciente arriba. La forma más rápida de entender "qué pasó última vez".
+3. `31-pipeline-masivo-y-api-negocios-2026-09-19.md` y `30-traspaso-2026-09-15-noche-3-agentes.md` — el estado real más reciente del proyecto (remarketing masivo y los 3 agentes de venta, respectivamente).
+
+**Según el tema puntual:**
+- `31-pipeline-masivo-y-api-negocios-2026-09-19.md` — remarketing masivo. La pipeline "PIPELINE MASIVO" (2396 leads reales esperando), el endpoint de la API para segmentar (`/commercial-order/{id}/move`), y por qué el plan anterior de mandar el mensaje libre probablemente esté equivocado (hace falta un template pre-aprobado). Todo investigado y diseñado, nada ejecutado sobre datos reales.
+- `30-traspaso-2026-09-15-noche-3-agentes.md` — los agentes de venta. Los 3 agentes reales (Recepcionista/Conversión/Cierre), la auditoría colaborativa con ChatGPT que reescribió los 5 prompts (los 3 reales + 2 nuevos), el estado verificado de cada uno en rmsystemm, y un hallazgo técnico sobre el editor de prompts a conocer antes de tocarlo por script.
 - `29-prompts-por-columna.md` — el prompt de producción de cada agente, uno por columna del embudo (incluye los 2 que todavía no existen como agente real).
-- `24-sesion-2026-09-14-traspaso.md` — el traspaso anterior: todo lo que pasó, los bugs medidos, lo construido y lo que falta.
-- `25-estado-y-que-sigue.md` — qué está probado, qué NO funciona, qué está construido sin probar, y qué está bloqueado por quién. **Si alguien pregunta "¿qué hay que hacer?", se responde desde acá.**
-- `PENDIENTES.md` — el registro único: qué está sin resolver, quién lo desbloquea, y dónde está el detalle.
+- `26-respuestas-reunion-soporte-2026-09-14.md` — **las respuestas reales de la reunión con soporte**, pregunta por pregunta (mapeadas a los archivos 21/22), más los hallazgos de las capturas que compartieron en vivo. Incluye el hallazgo más accionable del proyecto hasta ahora: la causa probable (no un bug irreparable) de por qué el agente nunca consultó el catálogo.
+- `28-traspaso-2026-09-15-deck-e-informe.md` — la presentación y el informe para la gerencia: qué quedó publicado, las reglas de escritura que puso el usuario (la más importante: **no decir lo obvio**), los datos que se cayeron y no hay que volver a usar, las trampas del editor del canvas.
+- `32-meta-muse-y-business-agent.md` — Muse AI vs. Meta Business Agent: qué compite con el agente propio y qué no. *(Renombrado el 2026-09-19 desde `26-meta-muse-y-business-agent.md` — había dos archivos "26-" distintos por un merge de dos sesiones en paralelo; se resolvió la colisión moviendo este, que tenía menos enlaces entrantes, al primer número libre.)*
+- `24-sesion-2026-09-14-traspaso.md` — el traspaso de esa sesión: los bugs medidos, lo construido y lo que faltaba en ese momento.
+- `18-integracion-bling.md` — integración con Bling: cómo repetir la autorización OAuth2, evitar que el token se venza, límites reales de la API, oportunidades de escalar.
+- `23-conectores-hub-integraciones.md` — los 25 conectores del Hub leídos uno por uno: qué hace cada uno, cómo se adjuntan al agente, hallazgos que cambian planes. Anexo literal: `23b-conectores-volcado-literal.md`.
+- `21-preguntas-para-soporte-rmsystemm.md` / `22-guion-reunion-soporte-portugues.md` — lo que se preguntó originalmente y por qué (21, referencia interna) y el guion en portugués para leer en vivo (22). **Las respuestas están en el 26**, no acá.
+- `20-catalogo-estructura-para-el-agente.md` — cómo estructurar el catálogo (categorías, ranking de más vendidos, links) para que el agente recomiende bien.
+- `19-investigacion-externa-escalabilidad.md` — investigación externa (con fuentes) sobre escalar el agente más allá del CRM: arquitecturas n8n, memoria de largo plazo, guardrails, audio/STT.
+
+**Fundamentos del proyecto (rara vez hace falta releerlos enteros, pero son la base):**
 - `00-resumen-general.md` — visión general del proyecto y objetivos.
 - `01-agente-de-ia.md` — cómo está armado el editor de Agente de IA en rmsystemm (pestañas, guardrails, herramientas).
 - `02-pipeline-comercial-real.md` / `03-funil-de-ventas-nuevo.md` — pipelines del CRM.
@@ -28,21 +42,10 @@ Reglas asociadas:
 - `05-infraestructura-tecnica.md` — infraestructura técnica general de la cuenta.
 - `06-seguridad-y-pendientes.md` — hallazgos de seguridad y checklist de pendientes (revisar siempre antes de tocar credenciales).
 - `07` a `12` — estrategias, remarketing, copiloto IA, DS Voice, biblioteca de prompts, caso real de referencia.
-- `13-prompt-agente-fit-v1.md` — el prompt de producción real del agente.
+- `13-prompt-agente-fit-v1.md` — el prompt de producción real del agente (versión histórica; los prompts vivos están en el 29 y en `30`).
 - `14-funil-recompra.md` — pipeline de recompra.
 - `15-flujos-automatizacion-avanzados.md` — motor de Flujos de Automatización (nodos, triggers, hallazgos técnicos).
 - `16-auditoria-completa-crm.md` — auditoría completa de la cuenta.
-- `17-registro-de-cambios.md` — registro cronológico de sesiones de trabajo y decisiones, para retomar el contexto rápido desde otra PC.
-- `18-integracion-bling.md` — guía completa de la integración con Bling: cómo repetir la autorización OAuth2, cómo evitar que el token se venza, límites reales de la API, y oportunidades de escalar.
-- `19` a `22` — investigación de escalabilidad (n8n, agentes externos, audio), estructura del catálogo, y las preguntas para la reunión con soporte (versión interna y guion en portugués).
-- `23-conectores-hub-integraciones.md` — los 25 conectores del Hub leídos uno por uno: qué hace cada uno, cómo se adjuntan al agente, y los hallazgos que cambian planes. Su anexo literal es `23b-conectores-volcado-literal.md`.
-- `26-respuestas-reunion-soporte-2026-09-14.md` — **las respuestas reales de la reunión con soporte**, pregunta por pregunta (mapeadas a los archivos 21/22), más los hallazgos de las capturas de pantalla que compartieron en vivo. Incluye el hallazgo más accionable del proyecto hasta ahora: posible causa real (no un bug irreparable) de por qué el agente nunca consultó el catálogo.
-- `26-meta-muse-y-business-agent.md` — Muse AI vs. Meta Business Agent: qué compite con el agente propio y qué no. ⚠️ **Colisión de numeración sin resolver (detectada 2026-09-18 al mergear dos sesiones en paralelo)**: hay dos archivos "26-" distintos, este y el de arriba. Nadie renumeró todavía — antes de crear un archivo "26" nuevo o renombrar alguno de estos dos, confirmar con el usuario para no romper los `[[wikilinks]]` que ya apuntan a cada uno.
-- `PENDIENTES.md` — **registro único de todo lo que está sin resolver.** Ver la regla de barrido obligatorio más abajo.
-- `19-investigacion-externa-escalabilidad.md` — investigación externa (con fuentes) sobre cómo escalar el agente más allá del CRM: arquitecturas n8n, memoria de largo plazo, guardrails, audio/STT, selección dinámica de audios pre-grabados. Son hallazgos para decidir, no un plan ya aprobado.
-- `20-catalogo-estructura-para-el-agente.md` — cómo hay que estructurar el catálogo (categorías, ranking de más vendidos, links) para que el agente recomiende bien. Estructura definida, datos pendientes del export de Shopify.
-- `21-preguntas-para-soporte-rmsystemm.md` — preguntas priorizadas para la reunión con soporte del CRM, con el "por qué importa" de cada una (versión interna, para entender qué se busca con cada pregunta).
-- `22-guion-reunion-soporte-portugues.md` — la misma reunión pero en portugués, redactada para leer en voz alta durante la llamada. Es el archivo que se usa en vivo; el 21 es el de referencia.
 
 ## Nota técnica: MCP de n8n registrado (2026-09-13)
 Este proyecto tiene un servidor MCP de n8n registrado (`claude mcp add --transport http n8n https://fitnessuplementos.app.n8n.cloud/mcp-server/http`) pero **sin autenticar todavía**. Al abrir una sesión nueva de Claude Code en este proyecto, correr `/mcp` y elegir "n8n" para autenticar (OAuth, abre una pestaña) — recién ahí aparecen herramientas nativas `mcp__n8n__*` para crear/editar workflows sin pasar por el navegador.

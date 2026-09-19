@@ -10,6 +10,18 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-19 — Organización general del vault y push a GitHub
+- **Pedido**: *"hace un push en todo lo que esta actualizado en git hub actualiza todo cambia lo que veas que se contradice arregla y organiza todo"*.
+- **Resuelta la colisión de numeración "26-"** que `CLAUDE.md` tenía marcada como pendiente desde el 2026-09-18 (dos archivos distintos con el mismo número, por un merge de dos sesiones en paralelo). Se renombró `26-meta-muse-y-business-agent.md` → `32-meta-muse-y-business-agent.md` (el que tenía menos enlaces entrantes: 3 contra 14+ del otro) y se actualizaron los 3 `[[wikilinks]]` que apuntaban al nombre viejo (`17-registro-de-cambios.md` ×2, `PENDIENTES.md` ×1). `git mv` preserva el historial del archivo.
+- **Reescrita la sección "Orden de lectura recomendado" de `CLAUDE.md`**: tenía `PENDIENTES.md` listado dos veces y el rango "19 a 22" descrito dos veces (una vez agrupado, otra vez archivo por archivo). Quedó en tres bloques sin duplicados: puesta al día rápida, según el tema puntual, y fundamentos del proyecto.
+- **Encontrada y marcada otra colisión menor**: `25-estado-y-que-sigue.md` tiene su propia lista local de pendientes numerados con el mismo prefijo `N` que `PENDIENTES.md`, y su `N20` es el mismo ítem (nodo "Apps") que el `N22` del registro único. Se anotó la equivalencia en ambos lados en vez de borrar contenido histórico.
+- **`25-estado-y-que-sigue.md` marcado como congelado**: es del 2026-09-14, describe el agente único viejo (id 9816) y `CLAUDE.md` lo señalaba como la respuesta a "¿qué hay que hacer?" — ya no lo es, eso pasó a `PENDIENTES.md` y a los traspasos 30/31. Se agregó un banner arriba del archivo apuntando a las fuentes vivas; no se reescribió el contenido histórico.
+- **Encontrada una afirmación desactualizada sin advertencia**: `24-sesion-2026-09-14-traspaso.md` §1.6 seguía diciendo en presente que "Novo Fluxo" *"está corriendo en producción"*, sin mencionar el hallazgo del 2026-09-19 (N24, status visto apagado, sin confirmar). Se agregó una nota de fecha con el puntero a N24.
+- **Barrido obligatorio de `PENDIENTES.md`** (`grep -rn "\*\*PENDIENTE:" *.md`, regla de `CLAUDE.md`) corrido y comparado fila por fila: los 8 marcadores sueltos que aparecieron ya estaban cubiertos por N8, N11, Q7, Q16 y E11 del registro único. No hizo falta agregar ninguna fila nueva.
+- **Verificado que no quedara ninguna afirmación viva del dato anulado "6 de 6 usuarios y 2 de 2 canales"** fuera de los cuatro archivos ya conocidos, y que los cuatro tuvieran la corrección visible (los cuatro la tenían).
+- **Agregados sin revisar en detalle** (no son parte de la documentación del proyecto, son archivos de la skill externa `higgsfield-ai/skills` que quedaron sin trackear tras instalarse): scripts de Python y configs `openai.yaml` bajo `.agents/skills/` y `.claude/skills/`, más `skills-lock.json`. Barridos por patrones de secretos (`api_key`, `token`, `secret`, `password`) antes de subir — el único hit fue un falso positivo (`color tokens` de SVG, no credenciales).
+- **Todo commiteado y pusheado a `origin/main`.**
+
 ### 2026-09-19 (madrugada) — Investigación nocturna del remarketing masivo, sin tocar datos reales
 - **Pedido, textual y de madrugada**: *"la idea es hacer un remarketing masivo en la pipeline de masivos nueva"*, con instrucción explícita de no mandar ningún mensaje real y trabajar solo, sin preguntar.
 - **Se relanzó el Chrome de depuración** (perfil `C:\ChromeRemoteDebuggingUserData`, puerto 9222) y se navegó en vivo al CRM real — logueado como `usersantifitness@gmail.com`. Todo lo que sigue es lectura y diseño, **cero mutaciones sobre los 2396 negocios reales**.
@@ -25,10 +37,10 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ### 2026-09-18 — Puesta al día desde otra PC + barrido de PENDIENTES.md
 - **Pedido**: ponerse al día con el proyecto antes de tocar nada más.
-- **Leído**: [[28-traspaso-2026-09-15-deck-e-informe]] (punto de entrada), [[PENDIENTES]] completo, [[25-estado-y-que-sigue]], [[26-meta-muse-y-business-agent]], más el grep obligatorio `grep -rn "\*\*PENDIENTE:" *.md` que exige `CLAUDE.md` antes de consolidar. No se leyó el resto del vault línea por línea.
+- **Leído**: [[28-traspaso-2026-09-15-deck-e-informe]] (punto de entrada), [[PENDIENTES]] completo, [[25-estado-y-que-sigue]], [[32-meta-muse-y-business-agent]], más el grep obligatorio `grep -rn "\*\*PENDIENTE:" *.md` que exige `CLAUDE.md` antes de consolidar. No se leyó el resto del vault línea por línea.
 - **El barrido encontró 4 pendientes reales, escritos en el vault, sin fila en el registro único** — el mismo tipo de error que motivó crear `PENDIENTES.md`. Se agregaron con fecha y nota de que estaban sin registrar, sin borrar ni tocar ninguna fila existente:
   - **E10** — decisión abierta de ser partner directo de DKW System vs. seguir con RM System (estaba solo en [[24-sesion-2026-09-14-traspaso]] §4.0).
-  - **E11** — transcripciones de los videos 2 a 5 de Meta (Muse/Business Agent) y 6 preguntas abiertas sobre Business Agent (estaba solo en [[26-meta-muse-y-business-agent]] y en el §6.2 del traspaso 28).
+  - **E11** — transcripciones de los videos 2 a 5 de Meta (Muse/Business Agent) y 6 preguntas abiertas sobre Business Agent (estaba solo en [[32-meta-muse-y-business-agent]] y en el §6.2 del traspaso 28).
   - **E12** — las respuestas de la reunión con soporte del CRM se perdieron entre PCs (estaba solo en el §6.2 del traspaso 28).
   - **N22** — probar el nodo "Apps" de Flujos para consultar el Sheet sin depender del agente; se anotó que su motivo original (precios inventados) ya se resolvió por otro lado, así que sigue abierto pero ya no es urgente por esa razón puntual.
 - **No se resolvió ningún pendiente de fondo esta sesión** — las siete preguntas que el traspaso 28 dejó para "el Claude de la otra PC" (§7: qué respondió soporte, si el anti-errores sigue sin guardarse, si se consiguió rol de administrador, ticket/margen, relectura del deck) quedan sin contestar: no había información nueva disponible en esta PC, solo el vault.

@@ -1,6 +1,8 @@
 # Estado real y qué sigue — actualizado 2026-09-14
 
-**Para qué es este archivo:** si alguien pregunta *"¿qué hay que hacer?"*, se responde desde acá. Todo está clasificado en cuatro cajones: **probado y funciona**, **probado y NO funciona**, **construido pero sin probar**, y **bloqueado (y por quién)**.
+> ⚠️ **Este archivo quedó congelado en el 2026-09-14** (agente único "Agente fit", id 9816). Desde entonces el proyecto pasó a una arquitectura de **3 agentes reales por columna** — ver [[30-traspaso-2026-09-15-noche-3-agentes]] para el estado actual de eso, y [[PENDIENTES]] para la lista viva de pendientes (esta página tiene su propia lista local más abajo, que ya no se actualiza). Se deja como referencia histórica de esa sesión puntual, no como fuente de verdad del estado actual.
+
+**Para qué era este archivo:** si alguien preguntaba *"¿qué hay que hacer?"*, se respondía desde acá. Todo está clasificado en cuatro cajones: **probado y funciona**, **probado y NO funciona**, **construido pero sin probar**, y **bloqueado (y por quién)**.
 
 Regla: nada entra acá como "funciona" sin que se haya verificado. Si dice "sin probar", es porque literalmente no se probó.
 
@@ -133,7 +135,7 @@ Regla: nada entra acá como "funciona" sin que se haya verificado. Si dice "sin 
 | ~~N17~~ | ~~Reconfigurar los guardrails con el workaround~~ → **❌ PROBADO EL 2026-09-14, NO FUNCIONA.** Se intentó de las dos formas (cambiando de pestaña y sin cambiar). En el mismo guardado el nombre del agente sí se guardó y el guardrail no → **es el backend**. Ya no depende de nosotros: pasa a S2 | Soporte del CRM |
 | N18 | Bajar el catálogo de nuevo cada X tiempo (el script ya está: `artefactos/build-catalogo.ps1`) y decidir si se automatiza con n8n | Nosotros |
 | N19 | Revisar los 31 productos que quedaron en categoría `otros` y los 136 sin marca | Nosotros |
-| **N20** | **🔥 Probar el nodo "Apps" de los Flujos de Automatización para consultar el Google Sheet por fuera del agente.** Es la vía más prometedora que quedó abierta: no depende de que el modelo decida llamar la herramienta, así que esquiva el problema de los precios inventados. Combinable con el nodo "Agente de IA", que vincula/desvincula el agente de una conversación | Nosotros — **empezar por acá** |
+| **N20** *(de esta lista local — no confundir con N20 de [[PENDIENTES]], que es otro pendiente distinto; este mismo ítem está registrado ahí como **N22**)* | **🔥 Probar el nodo "Apps" de los Flujos de Automatización para consultar el Google Sheet por fuera del agente.** Es la vía más prometedora que quedó abierta: no depende de que el modelo decida llamar la herramienta, así que esquiva el problema de los precios inventados. Combinable con el nodo "Agente de IA", que vincula/desvincula el agente de una conversación | Nosotros — **empezar por acá** |
 
 ---
 

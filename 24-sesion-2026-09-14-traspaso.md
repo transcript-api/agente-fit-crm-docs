@@ -88,6 +88,8 @@ Además, el mensaje de entrada del cliente ya nombra el producto: *"Hola, quiero
 ### 1.6 Casi borramos un flujo que está en producción
 En [[PENDIENTES]] el ítem N6 decía que "Novo Fluxo" era basura para limpiar. **Es mentira: está corriendo en producción.** En una conversación real de hace 3 meses se lee: *"Automatización 'Novo Fluxo' iniciada (disparador: Mensaje Recibido)"*, y manda un menú de botones 1/2/3 (Masa Muscular / Perder Peso / Energía), seguido de un mensaje con horario 09-20hs, sorteo de iPhone 17 pro max y link a la web.
 
+> ⚠️ **Esto era cierto al 2026-09-14.** El 2026-09-19 de madrugada apareció con el Status **apagado** en una captura real — sin confirmar todavía si es un apagado real o un error de lectura. Ver **N24** en [[PENDIENTES]] (urgente) antes de asumir que sigue activo.
+
 **Regla que sale de esto: antes de borrar cualquier flujo o automatización, buscar su nombre en el historial de una conversación real.** El listado de flujos no alcanza.
 
 **Matiz, verificado después abriendo el flujo (id 1107):** el contenido coincide exactamente con lo que se vio en la conversación — gatillo **"Primeira mensagem"** (*"Dispara quando uma mensagem é recebida pela primeira vez"*) sobre el canal Fitness Suplementos, un nodo **"Menu de opções"** con el texto *"Hola! Gracias por escribirnos a Fitness Suplementos..."* y los botones **Masa Muscular / Perder Peso / Energía** (máx. 3 intentos), y un nodo final **"Bye"** con *"Gracias por tus respuestas! Atendemos de 09 a 20 hs..."*.
