@@ -21,6 +21,7 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 - **Corregido un descuido propio de esta misma sesión**: se guardaron sin querer 3 archivos con datos reales de clientes (nombre + teléfono) en la raíz del repo en vez de en `.playwright-mcp/` (que está en `.gitignore`) — se movieron antes de cualquier commit, no llegaron a subirse.
 - **Todo el detalle, con lo que queda por confirmar y quién lo desbloquea, en** [[31-pipeline-masivo-y-api-negocios-2026-09-19]]. `PENDIENTES.md` actualizado (Q15/Q16/N23).
 - **Qué NO se hizo, a propósito**: no se movió ningún negocio, no se buscó ni se copió ninguna API key o Connection-Token (el clasificador de permisos bloqueó la navegación a esa pantalla y no correspondía insistir), no se mandó ningún mensaje.
+- **Hallazgo urgente de último momento, confirmado con captura real (no solo el árbol de accesibilidad)**: `Novo Fluxo` y `FV|Recompra - Reactivación` aparecen con el Status **apagado**. `Novo Fluxo` estaba documentado como EN PRODUCCIÓN con advertencia explícita de no borrarlo — si de verdad está apagado, los clientes que escriben pueden no estar recibiendo el menú automático 1/2/3. No se tocó el toggle ni se investigó la causa. Anotado como **N24, prioridad alta**, para confirmar apenas se pueda.
 
 ### 2026-09-18 — Puesta al día desde otra PC + barrido de PENDIENTES.md
 - **Pedido**: ponerse al día con el proyecto antes de tocar nada más.

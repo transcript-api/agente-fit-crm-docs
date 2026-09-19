@@ -27,6 +27,12 @@ Punto de partida concreto para retomar: Q13b (fragmentos del prompt v3 todavía 
 
 ---
 
+## 🔴 URGENTE — confirmar apenas se pueda: posible caída de un flujo en producción
+
+| # | Pendiente | Detalle en | Estado |
+|---|---|---|---|
+| N24 | **`Novo Fluxo` aparece con el Status APAGADO**, confirmado con captura de pantalla real el 2026-09-19 de madrugada. Estaba documentado como **EN PRODUCCIÓN** (dispara por "Mensaje Recibido", manda el menú 1/2/3 a leads reales, marcado "NO BORRAR" en N6). Si de verdad está apagado, **los clientes que escriben pueden no estar recibiendo el menú automático**. No se tocó el toggle ni se investigó la causa — no correspondía hacerlo sin el usuario mirando. `FV\|Recompra - Reactivación` también aparece apagado, pero ese nunca se documentó como debiendo estar prendido | [[31-pipeline-masivo-y-api-negocios-2026-09-19]] §1.3 | 🔴 **Confirmar apenas se pueda** — si es un apagado real y no intencional, prenderlo es urgente |
+
 ## 🔴 Bloqueado por: BLING (rompe cosas que ya construimos)
 
 | # | Pendiente | Detalle en | Estado |
@@ -149,4 +155,4 @@ Punto de partida concreto para retomar: Q13b (fragmentos del prompt v3 todavía 
 | S4 (parcial) | ¿El Copiloto está disponible? | ✅ 2026-09-14 — Mi Plan: *"Copiloto IA: não incluído"*. Es addon. Queda preguntar precio y si obliga a salir de BYOK |
 | S5 | ¿El CRM captura de qué anuncio vino el lead? | ✅ 2026-09-14 — **sí**, campaña/conjunto/anuncio en cada tarjeta. Reemplazado por S18 (cómo leerlo desde el agente) |
 | — | "Exceção: Troca de Mensagens" (pendiente desde [[10-ds-agente-ds-voice-manual]]) | ✅ 2026-09-14 — existe y está en uso en 5 automatizaciones FV\| con ventana de 2 h |
-| N6 (corregido) | Borrar el flujo "Novo Fluxo" | ❌ **NO BORRAR** — 2026-09-14: está EN PRODUCCIÓN, dispara por "Mensaje Recibido" y manda el menú 1/2/3 a leads reales. El pendiente estaba mal |
+| N6 (corregido) | Borrar el flujo "Novo Fluxo" | ❌ **NO BORRAR** — 2026-09-14: está EN PRODUCCIÓN, dispara por "Mensaje Recibido" y manda el menú 1/2/3 a leads reales. El pendiente estaba mal. ⚠️ **Ver N24**: el 2026-09-19 apareció con el Status apagado — a confirmar si sigue en producción |

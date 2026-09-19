@@ -34,7 +34,12 @@ Cada negocio trae, visible en la tarjeta:
 ### 1.2 Confirmado: no hay ninguna automatización construida todavía para esta pipeline
 Se revisó `Automatizaciones → Flujos de Automatización` completo (7 flujos existentes, ninguno nuevo desde el 17/09) — cero resultados para "masivo" o "campaña". Los flujos que existen son los ya documentados: `FV|Asignar Cierre`, `FV|Asignar Conversión.`, `FV|Bling - Alerta de Stock Bajo`, `FV|Bling - Renovacion de Token`, `FV|Consultar Producto Bling`, `FV|Recompra - Reactivación` (este último **no estaba documentado en el vault** — pendiente de revisar qué hace), `Novo Fluxo`.
 
-**Nota aparte, a verificar, no urgente:** en la tabla de Flujos, la columna Status de `FV|Recompra - Reactivación` y de `Novo Fluxo` aparecía sin el check visualmente marcado — posible indicio de que están inactivos. **Novo Fluxo estaba documentado como EN PRODUCCIÓN** (no se debía borrar). Esto puede ser una lectura mal interpretada del snapshot de accesibilidad (no es una captura visual) — **no tratar como confirmado, revisar con una captura de pantalla real antes de asumir que cambió de estado.**
+### 1.3 🔴 Hallazgo confirmado con captura real, no solo snapshot — posible impacto operativo
+Se volvió a entrar a `Automatizaciones → Flujos de Automatización` y se sacó una captura de pantalla real (no solo el árbol de accesibilidad). **Confirmado con los ojos:** el toggle de Status de **`Novo Fluxo` y `FV|Recompra - Reactivación` está apagado (gris)** — los otros 5 flujos (`FV|Asignar Cierre`, `FV|Asignar Conversión.`, `FV|Bling - Alerta de Stock Bajo`, `FV|Bling - Renovacion de Token`, `FV|Consultar Producto Bling`) están prendidos (azul).
+
+**Por qué esto puede importar de verdad:** `Novo Fluxo` estaba documentado en el vault como **"EN PRODUCCIÓN"**, disparando por "Mensaje Recibido" y mandando el menú 1/2/3 a leads reales — con la advertencia explícita "NO BORRAR" (ver [[PENDIENTES]] N6, cerrado el 14/09 con esa corrección). Si de verdad está apagado ahora, **los mensajes entrantes de clientes reales pueden no estar recibiendo ese menú automático** desde quién sabe cuándo. No se investigó la causa (¿lo apagó el usuario a propósito? ¿se apagó solo? ¿es normal que estos dos convivan apagados con el resto prendido?) — **no se tocó el toggle, ni para confirmar ni para corregir, sin el usuario mirando.**
+
+**No se abrió el editor de ninguno de los dos flujos reales esta noche** — a diferencia de sesiones anteriores que usaban un flujo descartable ("Novo Fluxo" de prueba, sin guardar) para explorar el catálogo de nodos, entrar al editor de un flujo real que ya existe en producción tiene más riesgo de guardar un cambio por error sin querer, y esta noche no correspondía correr ese riesgo sin supervisión.
 
 ---
 
