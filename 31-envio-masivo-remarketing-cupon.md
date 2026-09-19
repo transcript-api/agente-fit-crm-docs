@@ -6,11 +6,13 @@ Reemplaza el plan anterior (API + n8n, ver [[17-registro-de-cambios]] 2026-09-17
 
 En vez de que los leads lleguen naturalmente a la columna de Remarketing en momentos distintos (como pasaba antes), se **mueven en bloque** desde donde están hoy hacia una columna nueva de disparo. El disparador "Entrada en la Tarjeta" se activa para todos casi al mismo tiempo, sin importar cuándo habían entrado originalmente al embudo. El "envío masivo" no es una acción en sí — es un movimiento masivo de cards que dispara N automatizaciones individuales de una sola card cada una (el mecanismo más simple y ya probado del proyecto), en vez de necesitar un mecanismo de verdad masivo.
 
-Escala real: **2400 leads en `PIPELINE MASIVO → AD MASIVOS`**, se van a mandar en tandas de ~400 (no todos juntos), seleccionando y moviendo cards a mano con el botón "Seleccionar" del tablero (soporta selección múltiple, confirmado).
+Escala real: **~2400 leads en `PIPELINE MASIVO → LEAD MASIVOS`**, se van a mandar en tandas de ~400 (no todos juntos), seleccionando y moviendo cards a mano con el botón "Seleccionar" del tablero (soporta selección múltiple, confirmado).
 
 ## Segmentación por campaña/anuncio
 
-`PIPELINE MASIVO` tiene una columna pulmón (`AD MASIVOS`, con los 2396/2400 leads) y columnas por campaña: `CAMPAÑA TESTO DILATED`, `CAMPAÑA HIPERCALORICO`, `CAMPAÑA ISOLADO`, `CAMPAÑA WOMAN`, `CAMPAÑA CREATINA`, y se van a sumar más (Black Skull Kit, etc.). Cada columna va a mandar el creativo/audio que corresponde al anuncio que originó ese lead — algunas van a ser audio (las principales: Testo Dilated, Black Skull Kit), otras foto.
+`PIPELINE MASIVO` tiene una columna pulmón (**`LEAD MASIVOS`**, con los leads acumulados) y columnas por campaña: `CAMPAÑA TESTO DILATED`, `CAMPAÑA HIPERCALORICO`, `CAMPAÑA ISOLADO`, `CAMPAÑA WOMAN`, `CAMPAÑA CREATINA`, y se van a sumar más (Black Skull Kit, etc.). Cada columna va a mandar el creativo/audio que corresponde al anuncio que originó ese lead — algunas van a ser audio (las principales: Testo Dilated, Black Skull Kit), otras foto.
+
+**Verificado en vivo el 2026-09-19 de noche** (antes decía por error "AD MASIVOS" en este archivo — el nombre real es `LEAD MASIVOS`, como ya decían correctamente los demás documentos): a esa hora había **2.408 negocios en total** — 2.407 todavía en `LEAD MASIVOS`, y **1 ya movido a `CAMPAÑA HIPERCALORICO`** (el resto de las columnas de campaña seguían en 0). No se investigó cómo llegó ese lead a moverse — no fue parte de esta sesión.
 
 **Decisión tomada**: no multiplicar automatizaciones/Flujos por columna de campaña. Un único mecanismo genérico sirve para todas — si en el futuro hace falta preservar de qué campaña vino cada uno en la pipeline de respuestas, la vía recomendada es una **tag dinámica por campaña** (leída con el nodo "Negócio → Buscar", que trae la etapa/columna actual), no una columna de destino por campaña (evita explosión combinatoria producto × etapa de venta). Todavía no implementado — es la próxima mejora, no bloqueante.
 
