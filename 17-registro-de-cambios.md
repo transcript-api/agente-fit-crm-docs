@@ -10,6 +10,30 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-21 — Documentar la auditoría de arquitectura de los agentes hecha con ChatGPT
+- **Pedido**: el usuario pegó el documento de estado que armó ChatGPT después de muchas rondas de pruebas del Recepcionista (*"los avances que estamos teniendo acá con ChatGPT en el agente, que está siendo increíble"*) y pidió que quede todo documentado, incluida "la última instrucción".
+- **El mensaje llegó cortado**: se truncó a los 50.000 caracteres, a mitad del punto 81 (de un total desconocido). **No llegó el prompt vigente del Recepcionista** ni nada de lo que seguía al punto 81 — anotados como A1 y A2.
+- **Antes de escribir se trajeron 5 commits nuevos de `origin/main`** (sesión de la noche del 19/09: organización del vault, "CANJEAR AHORA" terminado de propagar, plantilla `cupon_general` ya aprobada por Meta, y la resolución de las dos colisiones de numeración — `26-meta-muse…` pasó a `32-` y `31-pipeline-masivo…` a `33-`). Por eso el archivo nuevo es el **34** y no el 32.
+- **Creado [[34-arquitectura-conversacional-aprendizajes-agentes]]**: los 81 puntos reorganizados en 28 secciones temáticas, con las reglas, los ejemplos reales de las pruebas y las decisiones, más un mapa punto-original → sección para poder cruzarlo con la fuente. Lo más importante que deja:
+  - **Pregunta de descubrimiento vs. pregunta puente** (la de descubrimiento espera respuesta y NO transfiere), y **"la intención de compra no compensa una falta de identificación"**.
+  - **Nunca preguntar solo porque el CRM necesita una pregunta**: antes de preguntar, ver qué decisión cambia según la respuesta.
+  - **No inventar ni siquiera dentro de una pregunta** (nada de "por ejemplo 900 g, 1,8 kg…" sin saber si existe).
+  - **Lo que el cliente afirma ≠ la verdad comercial** (precio, promo, stock), incluidas las frases que confirman sin querer ("para avanzar con la promo…").
+  - **Seguridad como override total**, que tiene que llegar a todos los agentes, no solo a Recepción.
+  - **Errores serios de Conversión** en una prueba: contradicción de stock de XTR, elegir arbitrariamente ante "quiero esa", seguir vendiendo cuando el cliente pedía pagar, romper la continuidad de Santiago y no transferir. Nueva regla STOP SELLING.
+  - **Fit Brain**: separar el razonamiento comercial de la redacción, con datos que traen su procedencia. Queda abierta una incertidumbre crítica: si rmsystemm puede inyectar una llamada externa antes de responder.
+  - **Testing**: suite de regresión fija (T01-T12) que evalúa acciones y no solo texto; prompts versionados con IDs de regla.
+  - **Logística confirmada nueva**: entrega 12-48 h, despacho el mismo día, DAC o agencia de preferencia del cliente.
+- **Cruzado contra el vault antes de copiarlo, con 3 correcciones**:
+  1. **El vault no tiene el prompt vivo**: ChatGPT recibió uno de 2.751 líneas y [[29-prompts-por-columna]] tiene 964 para los 5 agentes. El 29 no es hoy la versión en producción del Recepcionista.
+  2. **"Black School" → Black Skull**: el vault y el creativo oficial del cupón (bolsa WHEY 100% HD con calavera) dicen Black Skull. Riesgo real si el prompt vivo tiene la grafía mala (A16).
+  3. **Persistencia de variables**: el documento las mezcla con el bug de los guardrails. El bug confirmado es solo el de los guardrails (S2); soporte dijo que las variables persisten (S1), aunque nunca lo probamos nosotros (A20).
+  - También se verificó que **"Blink" no aparece en el vault** (siempre dice "Bling") y que los **métodos de pago sí existen en el CRM**, solo falta conectarlos a Cierre (Q1).
+- **`PENDIENTES.md`**: sección nueva con **20 pendientes (A1-A20)**, cada uno con quién lo desbloquea. Q13b marcado como posiblemente superado (la bienvenida evolucionó y no se sabe qué versión está pegada hoy) y Q1 con la nota de la auditoría.
+- **Barrido obligatorio** (`grep -rn "\*\*PENDIENTE:" *.md`) corrido antes de consolidar: los marcadores sueltos que ya existían estaban todos cubiertos por filas del registro único.
+- **No se tocó el CRM** en esta sesión: fue solo documentación.
+- **Fecha**: hoy es el lunes que marcaba la prioridad del 2026-09-17 ("el Recepcionista andando bien para el lunes"). Este trabajo con ChatGPT es justamente sobre esa prioridad, pero no hay información nueva sobre si se cumplió el plazo.
+
 ### 2026-09-19 (noche) — Columnas reales de PIPELINE MASIVO + prompt de ChatGPT para las 5 plantillas por campaña
 - **Pedido 1**: qué columnas hay en `PIPELINE MASIVO` clasificadas por anuncio. Se verificó en vivo en vez de confiar en la documentación (que tenía un nombre mal): `LEAD MASIVOS` (2.407) + 5 columnas de campaña — `CAMPAÑA TESTO DILATED` (0), `CAMPAÑA HIPERCALORICO` (1, ya hay un lead movido — "Nico", sin investigar cómo llegó ahí), `CAMPAÑA ISOLADO` (0), `CAMPAÑA WOMAN` (0), `CAMPAÑA CREATINA` (0). Total 2.408 negocios, subió desde los ~2.396-2.400 documentados antes.
 - **Corregido de paso**: `31-envio-masivo-remarketing-cupon.md` decía "AD MASIVOS" — único lugar del vault con ese error, los otros 3 archivos ya decían bien "LEAD MASIVOS".
