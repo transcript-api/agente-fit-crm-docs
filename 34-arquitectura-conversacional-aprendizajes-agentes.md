@@ -688,7 +688,36 @@ Fuentes: [documentación de Hermes](https://hermes-agent.nousresearch.com/docs/)
 
 **Infraestructura**: Hermes necesita un servidor propio (VPS) — costo mensual, mantenimiento y cuidado de las claves. Se cruza con la decisión de n8n, cuya prueba gratuita vence alrededor del 2026-09-28 (N16): si Fit Brain corre en Hermes, n8n podría quedar solo para lo de Bling o no hacer falta.
 
-### 29.8 Orden sugerido
+### 29.8 [Cruce con el vault] Verificación en vivo de Hermes (2026-09-22, WebFetch a la documentación oficial de Nous Research)
+
+No se le creyó a ChatGPT de memoria — se fue a `hermes-agent.nousresearch.com` a confirmar. Es un producto real, no inventado: salió en febrero 2026, Nous Research, código abierto con licencia MIT, self-hosted.
+
+**Confirmado tal cual decía ChatGPT:**
+- Skills en 3 niveles de carga: `skills_list()` trae solo metadatos (~3.000 tokens), `skill_view(nombre)` carga el contenido completo recién cuando hace falta, `skill_view(nombre, path)` trae archivos de referencia puntuales.
+- Servidor propio compatible con la API de OpenAI: `POST /v1/chat/completions`, `POST /v1/responses`, `GET /v1/models`. Cualquier frontend que hable el formato OpenAI se conecta apuntándole a `http://localhost:8642/v1`.
+
+**Hallazgo nuevo, que ChatGPT no había mencionado**: Hermes tiene su **propio conector nativo de mensajería** para Telegram, Discord, Slack, **WhatsApp**, Signal, Email y CLI. Cambia el diseño: Hermes podría hablarle al cliente por WhatsApp directo, sin pasar por el agente nativo de rmsystemm, y aparte llamar a la API del CRM (`POST .../move`, `.../tags`) para mantener el pipeline sincronizado. rmsystemm pasaría a ser tablero + canal, no el que redacta — es una versión más directa del "camino 3" de A10.
+
+**Lo único que sigue sin verificar, y es específico de rmsystemm, no de Hermes**: si la pantalla de configuración del agente (Proveedor/Clave/Modelo) tiene un campo de URL propia escondido. Sin eso, no se puede apuntar el agente nativo a un Hermes propio — solo quedaría el camino del WhatsApp directo de arriba. Se revisa en vivo cuando el usuario lo pida (quedó pausado a propósito el 2026-09-22).
+
+**Infraestructura y costo**: Hermes se banca solo (self-hosted en cualquier VPS) o en la nube de Nous ("Nous Portal"), que **no es gratis**: Free ($0, sin créditos reales), Plus ($20/mes), Super ($100/mes), Ultra ($200/mes). Un VPS chico (US$5-20/mes) corriendo Hermes + n8n sale más barato que Nous Portal y da control total. No se confirmó si Hermes conecta con proveedores de memoria externa (Mem0, Hindsight, Supermemory) — no aparece en lo que se revisó, no se puede afirmar ni negar.
+
+**Corrección a algo que se había dicho antes en esta misma sesión**: la voz de OpenAI TTS **si se puede clonar** — la documentación oficial permite crear una voz personalizada aprobada a partir de una grabación de consentimiento + una muestra de audio de la persona real. O sea que la voz de Santiago se podría clonar directo con OpenAI, sin necesitar necesariamente ElevenLabs.
+
+Fuentes verificadas en vivo: [Hermes Agent — sitio oficial](https://hermes-agent.nousresearch.com/), [Documentación](https://hermes-agent.nousresearch.com/docs/), [Skills](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills), [API Server](https://hermes-agent.nousresearch.com/docs/user-guide/features/api-server), [OpenAI Text-to-Speech](https://developers.openai.com/api/docs/guides/text-to-speech).
+
+### 29.9 [Cruce con el vault] "Procesamiento de Acciones" — rmsystemm ya hace una versión chica de "separar razonamiento de redacción"
+
+Esto es lo que el usuario llamaba de forma imprecisa "pensamiento de asociación clásico y avanzado" — el nombre real en el editor del agente (pestaña Entrenamiento) es **"Procesamiento de Acciones"** ([[01-agente-de-ia]] §Entrenamiento, [[10-ds-agente-ds-voice-manual]] §3, [[11-biblioteca-prompts-ejemplo]]). Dos modos:
+
+- **Clásico** (default de la plataforma): una sola llamada al modelo decide acciones y redacta la respuesta al mismo tiempo.
+- **Avanzado** (el que usa Agente Fit hoy, id 9816): **dos llamadas separadas por turno**. La primera corre el **"Analisador de Ações"** — lee el mensaje del cliente y las Instrucciones, y decide qué funciones ejecutar, usando por defecto reglas del sistema (en portugués) que buscan en el propio texto del prompt el patrón *"Etapa X: [pregunta] → si [respuesta], ejecutar [acción]"*. Existe un campo "Reglas personalizadas del analizador" para pisar esas reglas default (vacío hoy). La segunda llamada, separada, redacta la respuesta visible. Costo/latencia ~2x, pero mucho más preciso ejecutando funciones — por eso se dejó en Avanzado.
+
+**Funciones reales que puede invocar** (confirmadas contra 20 prompts de ejemplo de la plataforma, [[11-biblioteca-prompts-ejemplo]]): `save_variable("var", esPII)`, `add_contact_tag("tag")`, `transfer_ticket("Cola")`, `create_order("Pipeline","Columna")`, `transfer_order("Pipeline","Columna")`, `send_schedules()`, `http_request("METODO","url","headers","body")`, `close_ticket()`.
+
+**Por qué importa para Fit Brain**: el modo Avanzado ya separa "decidir qué hacer" de "redactar la respuesta" — el mismo principio que propone Fit Brain (§29.2), pero corriendo adentro del mismo agente, con el mismo modelo, sin memoria externa ni skills bajo demanda. Fit Brain sería estirar esa misma separación hacia afuera del CRM.
+
+### 29.10 Orden sugerido
 1. **Probar A10** — es una tarde de trabajo y define si Fit Brain puede meterse antes de la respuesta del agente. Sin esto, todo lo demás es teoría.
 2. **Probar cómo llega un audio mandado por la API** (A22).
 3. **Prototipo mínimo de Hermes** con una o dos skills (por ejemplo, marca no trabajada), midiendo la latencia real (A21).
