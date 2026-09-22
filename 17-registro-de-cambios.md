@@ -10,6 +10,18 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-22 — Fit Brain, Hermes Agent y audios: viabilidad contra el CRM real
+- **Pedido**: el usuario pegó la continuación de su charla con ChatGPT (Fit Brain como capa externa, hablarle directo para enseñarle, Hermes Agent como motor, especialistas y audios generados) y preguntó *"vos que sabés del CRM, decime si es posible todo esto"*. Después aceptó que quede documentado.
+- **Documentado en [[34-arquitectura-conversacional-aprendizajes-agentes]] §29** (sección nueva, aparte de los 81 puntos originales): el paso de prompt "enciclopédico" a "operativo" (constitución fija + reglas recuperables + memoria + herramientas), la interfaz privada para que el usuario le enseñe a Fit Brain con tres niveles de aprobación, lo que ChatGPT afirma de Hermes (no verificado), el diseño con orquestador y especialistas, el "Audio Decision Engine", y el principio **"Fit Brain = nuestra arquitectura, Hermes = motor intercambiable"**.
+- **Análisis de viabilidad contra el CRM (lo nuevo que aporta esta sesión)**:
+  - **Descartado**: enchufar Hermes al agente del CRM como si fuera el modelo. La configuración del agente solo tiene Proveedor, Clave API y Modelo, **sin campo de URL propia** (verificado en [[01-agente-de-ia]]).
+  - Con orquestador y especialistas, el camino de la herramienta HTTP del agente probablemente sea **demasiado lento**; ganan fuerza el Flujo que precalcula y, sobre todo, que Fit Brain conteste directo por la API.
+  - **Audio**: los audios pregrabados con DS Voice ya existen en el CRM y el agente los puede elegir (primer paso barato). Para audios generados, lo que no se sabe es si la API los entrega como nota de voz o como archivo, y la voz de OpenAI TTS no es rioplatense.
+  - **Si Santiago manda audios, los clientes van a contestar con audios**: S8/P2 (si el agente entiende notas de voz) pasa a ser bloqueante para esta línea.
+  - El especialista de Nutrición choca con la regla de seguridad (sin dosis ni diagnóstico).
+- **`PENDIENTES.md`**: A10 actualizado (camino 3 agregado, camino "como modelo" descartado), **A21-A24 nuevos** (prototipo de Hermes, prueba de audio por API, audios pregrabados, límites de Nutrición), y N16 con la nota de que la decisión de n8n (vence ~2026-09-28) se cruza con Hermes.
+- **No se tocó el CRM**: fue análisis y documentación.
+
 ### 2026-09-21 — Documentar la auditoría de arquitectura de los agentes hecha con ChatGPT
 - **Pedido**: el usuario pegó el documento de estado que armó ChatGPT después de muchas rondas de pruebas del Recepcionista (*"los avances que estamos teniendo acá con ChatGPT en el agente, que está siendo increíble"*) y pidió que quede todo documentado, incluida "la última instrucción".
 - **El mensaje llegó cortado**: se truncó a los 50.000 caracteres, a mitad del punto 81 (de un total desconocido). **No llegó el prompt vigente del Recepcionista** ni nada de lo que seguía al punto 81 — anotados como A1 y A2.

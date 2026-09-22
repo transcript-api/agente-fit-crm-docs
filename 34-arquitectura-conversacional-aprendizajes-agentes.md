@@ -12,6 +12,8 @@
 
 La numeración "(orig. N)" en cada sección remite al número del punto en el documento original de ChatGPT, para poder cruzarlo. Al final hay un mapa completo.
 
+**Agregado el 2026-09-22 — §29**: la continuación de la charla con ChatGPT sobre **Fit Brain, Hermes Agent y audios**, con un análisis de qué permite y qué no el CRM real. No es parte del documento original de 81 puntos, por eso va en una sección aparte.
+
 ### Correcciones que salieron de cruzarlo con el vault
 
 | Lo que dice el documento | Lo que dice el vault | Qué hacer |
@@ -560,6 +562,138 @@ Puntos que ChatGPT **no volvería a cuestionar salvo evidencia nueva** (el mensa
 - *(cortado en "Cliente di…")*
 
 **Falta el resto de este punto y todo lo que venía después** (A2).
+
+---
+
+## 29. Fit Brain: diseño propuesto, Hermes Agent y audios (continuación, 2026-09-22)
+
+Charla posterior del usuario con ChatGPT, pegada en dos partes (2026-09-21/22). El usuario preguntó además *"vos que sabés del CRM, decime si es posible todo esto"*, así que al final de la sección está el análisis de viabilidad contra lo que sabemos de rmsystemm.
+
+### 29.1 El problema de fondo, en palabras del usuario
+El Recepcionista tiene muchísimas reglas para "dejarlo perfecto", el prompt es enorme, y **a propósito no se le dio catálogo** para que se concentre solo en el prompt. Aun así, un prompt muy largo gasta más tokens y se equivoca más.
+
+ChatGPT lo diagnostica así: en un mismo prompt conviven **tres cosas distintas — reglas permanentes, lógica de decisión y ejemplos/casos límite**. Con cada test y cada excepción el prompt crece y las instrucciones empiezan a competir. Un prompt largo no siempre rinde peor, pero suma tokens y latencia, y sobre todo hace difícil mantener una jerarquía clara.
+
+### 29.2 De prompt enciclopédico a prompt operativo
+Arquitectura propuesta, a la que se llegaría de a poco:
+
+```text
+PROMPT RECEPCIÓN                 FIT BRAIN
+~ reglas fundamentales     +     ~ estado actual
+~ identidad                      ~ qué sabe del cliente
+~ límites                        ~ intención detectada
+~ estilo                         ~ reglas relevantes para ESTE caso
+~ objetivo                       ~ recuerdos relevantes
+                                 ~ acción recomendada
+                  ↓
+                 LLM → respuesta de WhatsApp
+```
+
+Ejemplo: hoy el prompt carga la explicación completa de **marca no trabajada** aunque el 95% de las conversaciones no la necesite. Con Fit Brain, ante *"Tenés Growth?"* se inyecta solo:
+
+```text
+MARCA_NO_TRABAJADA
+Growth no está en marcas aprobadas.
+Informar en voz de empresa.
+Puede ofrecerse una sola alternativa.
+No inventar producto ni disponibilidad.
+Si solo quiere Growth, no insistir.
+```
+
+Y ante *"Quiero comprar la creatina de 1kg"*, **esa regla ni siquiera entra al contexto**.
+
+Estructura resultante: **constitución fija + reglas recuperables + memoria + herramientas**.
+- **Siempre cargadas** (constitución): no inventar, seguridad, identidad, límites de cada agente.
+- **Recuperables**: el resto de las reglas y aprendizajes viven completos en una base, y un componente trae solo los relevantes para cada conversación. Fit puede tener miles de reglas guardadas sin meter miles de reglas en cada llamada al modelo.
+
+Que Recepción no tenga catálogo completo es **conceptualmente correcto**: no necesita conocer 200 productos para decidir si alguien avanza. Cuando necesita un dato puntual, una herramienta trae solo ese dato.
+
+### 29.3 Hoja de ruta y escala de la memoria
+- **Ahora**: memoria de clientes + memoria comercial + catálogo + herramientas + LLM.
+- **Después**: un "Fit Coach" que analiza conversaciones y convierte correcciones y resultados en aprendizajes.
+- **Más adelante**: decisiones más finas (cuándo texto y cuándo audio), optimización según conversiones y, eventualmente, fine-tuning.
+
+La memoria de largo plazo puede ser enorme (cientos de miles de clientes, millones de mensajes, años de ventas, miles de correcciones) porque **no va dentro del prompt**. Ante un mensaje como *"La creatina me hincha?"*, Fit Brain recupera solo 5 a 20 recuerdos y casos relacionados más los datos de ese cliente (patrón RAG). El límite no es cuánto recuerda, sino **qué tan bien se organiza, actualiza y recupera lo correcto**.
+
+### 29.4 El usuario le enseña a Fit Brain hablándole
+Una **interfaz privada** (separada del WhatsApp de clientes) donde el usuario le escribe directamente, por ejemplo: *"Fit, cuando alguien pregunte por una marca que no trabajamos, no quiero que listes tres alternativas. Ofrecé solamente una."* Fit responde qué entendió y propone guardarlo. Tres niveles:
+1. **Solo para esta conversación.**
+2. **Recordar como aprendizaje.**
+3. **Convertir en regla maestra.**
+
+Nada pasa a regla sin aprobación del usuario. Así **el prompt deja de ser el único lugar donde vive todo lo que el usuario enseña**. Coincide con §20: aprender con validación y límites, no automáticamente de cada conversación.
+
+### 29.5 Hermes Agent (Nous Research) como motor candidato
+**Lo que afirma ChatGPT — no verificado desde este vault**, con la documentación oficial que citó:
+- Memoria persistente entre conversaciones y búsqueda de sesiones anteriores.
+- **Skills que se cargan bajo demanda**: el agente sabe que existen, pero el contenido completo entra solo cuando hace falta. Encaja justo con el problema del prompt gigante.
+- Crea y mejora skills a partir de la experiencia o de correcciones del usuario, **con opción de exigir aprobación** antes de aplicar cambios.
+- Perfiles/bots especializados con memoria y skills propias, **delegación a subagentes** y un agente principal que sintetiza.
+- Capacidades de TTS/voz (la propia documentación pone TTS como ejemplo de herramienta).
+- **Servidor HTTP compatible con la API de OpenAI**, uso programático y webhooks.
+- Memoria incorporada chica a propósito (~1.300 tokens entre sus archivos principales). Para el volumen de Fitness habría que usar un proveedor externo (Mem0, Hindsight, Supermemory, entre otros) o infraestructura propia.
+
+Fuentes: [documentación de Hermes](https://hermes-agent.nousresearch.com/docs/), [Skills](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills), [Creating Skills](https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills), [API Server](https://hermes-agent.nousresearch.com/docs/user-guide/features/api-server), [OpenAI TTS](https://developers.openai.com/api/docs/guides/text-to-speech).
+
+**Diseño propuesto con especialistas** (idea que al usuario le gustó mucho):
+
+```text
+                 FIT BRAIN / ORQUESTADOR
+          ┌───────────────┼────────────────┐
+     Ventas Fit       Nutrición Fit    Memoria/Cliente
+          └───────────────┼────────────────┘
+                  Decisión final
+              texto / audio / humano
+                          ↓
+                 rmsystemm → WhatsApp
+```
+
+**No hablan todos siempre** (sería lento y caro): el orquestador decide a quién consultar. Pregunta nutricional complicada → Nutrición; objeción → Ventas; cliente recurrente → Memoria.
+
+**Principio de diseño que conviene fijar**: **Fit Brain = nuestra arquitectura; Hermes = el motor de agentes de Fit Brain.** La memoria de clientes, los resultados de ventas, las reglas críticas, el catálogo, las métricas y las conexiones con rmsystemm y Bling quedan bajo nuestro control. Si en un año aparece un framework mejor, se cambia el motor sin perder "el cerebro". ChatGPT recomienda investigar Hermes en serio, **sin decidir que sea la arquitectura definitiva hasta probarlo con conversaciones reales de Fitness**.
+
+### 29.6 Audios generados por Fit Brain
+- Una herramienta `generar_audio()` en Hermes. El orquestador devuelve algo como:
+  ```text
+  respuesta:
+    formato: audio
+    motivo: explicación personal + cliente viene usando audios
+    contenido: "Mirá, en tu caso..."
+    tono: cercano
+    duración_objetivo: 18 segundos
+  ```
+- Flujo: backend → API de voz (OpenAI TTS u otra dedicada) → archivo de audio → rmsystemm/WhatsApp.
+- **El agente no manda audio solo porque puede.** Un pequeño "Audio Decision Engine" decide según historial, tipo de mensaje, complejidad, etapa comercial y resultados anteriores. Con datos suficientes se puede medir si el audio convierte más que el texto para cada tipo de lead.
+
+### 29.7 [Cruce con el vault] Qué permite el CRM real y qué no
+
+**No se puede enchufar Hermes "como si fuera el modelo".** La idea tentadora sería apuntar el agente de rmsystemm directo al servidor de Hermes compatible con OpenAI. Pero la configuración del agente solo tiene **Proveedor** (OpenAI, Claude, Gemini, Groq, DeepSeek, Mistral, Grok), **Clave API** y **Modelo** — **no hay campo de URL propia** ([[01-agente-de-ia]]). Salvo que soporte lo habilite, ese camino no existe.
+
+**Quedan los tres caminos de A10**, y el orquestador con especialistas cambia cuál conviene:
+1. **HTTP del propio agente en medio de la respuesta**: probablemente **demasiado lento** si hay orquestador + especialistas (varios segundos). Según la investigación de [[19-investigacion-externa-escalabilidad]] (Patrón A), una herramienta síncrona tiene que contestar en uno o dos segundos o la respuesta se ve trabada.
+2. **Un Flujo precalcula mientras el agente espera para contestar** (Requisição HTTP → Salvar Variável): sirve si Fit Brain termina dentro de esa espera. Sin probar.
+3. **Fit Brain contesta directo por la API y rmsystemm queda como canal y CRM**: evita la duda de inyección y la latencia deja de ser un problema de la herramienta, pero se pierde el agente nativo (las acciones de mover y taguear se harían por API: `POST /commercial-order/{id}/move` y `/tags`, ya documentados en Q16). **Con especialistas, este camino gana fuerza.**
+
+**Audios generados — lo que no sabemos del lado del CRM:**
+- Se mandarían por la API (`POST /messages/send/v2` con `medias`). **No sabemos si llegan como nota de voz, con el "grabando audio…", o como archivo adjunto** — y eso es exactamente lo que define si "parece humano". Hay que probarlo con un audio antes de construir nada (A22).
+- **La voz**: OpenAI TTS usa voces genéricas, no rioplatenses. Para que suene como Santiago hace falta clonación de voz (por ejemplo ElevenLabs).
+- Si el audio sale por la API y el texto por el agente, hay que coordinarlos para que no manden lo mismo dos veces.
+- A mitad de conversación la ventana de 24 h está abierta, así que no hace falta plantilla.
+
+**Audio sin nada externo — ya existe en el CRM:** DS Voice permite subir audios grabados de verdad en `Recursos → Criativos → Áudios`, y según el manual de la plataforma la opción "Enviar como gravado na hora" muestra "grabando audio…" al cliente ([[10-ds-agente-ds-voice-manual]]; no verificado en nuestra cuenta). El agente tiene la acción **"Enviar funil de Criativos"** (el chip de Q1), así que puede elegir cuándo mandar cada audio. Es el primer paso más barato (A23). Depende de grabar los audios (E4).
+
+**Si Santiago manda audios, los clientes van a contestar con audios.** Todavía no sabemos si el agente entiende las notas de voz entrantes (S8/P2, contradicción sin resolver). Para esta línea de trabajo pasa a ser bloqueante.
+
+**El especialista "Nutrición" choca con la regla de seguridad** (§13): nada de dosis, nada de diagnóstico, y cualquier tema de salud va a un humano. Si se construye, que oriente sobre productos, nunca sobre salud (A24).
+
+**Infraestructura**: Hermes necesita un servidor propio (VPS) — costo mensual, mantenimiento y cuidado de las claves. Se cruza con la decisión de n8n, cuya prueba gratuita vence alrededor del 2026-09-28 (N16): si Fit Brain corre en Hermes, n8n podría quedar solo para lo de Bling o no hacer falta.
+
+### 29.8 Orden sugerido
+1. **Probar A10** — es una tarde de trabajo y define si Fit Brain puede meterse antes de la respuesta del agente. Sin esto, todo lo demás es teoría.
+2. **Probar cómo llega un audio mandado por la API** (A22).
+3. **Prototipo mínimo de Hermes** con una o dos skills (por ejemplo, marca no trabajada), midiendo la latencia real (A21).
+
+En paralelo, sin depender de nada: audios pregrabados con DS Voice (A23) y achicar el prompt actual (A15).
 
 ---
 
