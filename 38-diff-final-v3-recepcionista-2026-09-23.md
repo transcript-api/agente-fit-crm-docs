@@ -1,6 +1,6 @@
-# 38 — Diff FINAL v3 del Recepcionista (2026-09-23) — PROPUESTA, nada aplicado
+# 38 — Diff FINAL v3 del Recepcionista (2026-09-23) — ✅ APLICADO EN PRODUCCIÓN
 
-> ⛔ **No se tocó el CRM.** No se guardó nada, no se abrió el editor para escribir, no se tocaron acciones, modelo, delay ni automatizaciones. El prompt vivo del agente 9882 sigue siendo el v49 de 14.663 caracteres.
+> ✅ **APLICADO el 2026-09-23 21:00 UTC y verificado.** El prompt vivo del agente 9882 es ahora esta v3 (19.683 caracteres, hash `34290cd8`), **idéntico byte a byte** a `artefactos/recepcionista-v3-final-simulado.txt`. Verificaciones post-guardado en la §10. Ninguna otra configuración se tocó.
 > **Qué es esto:** la propuesta final que cierra la v3, construida sobre el v49 vivo + el borrador local + las versiones viejas (`ORDEN_DE_DECISION`, estados de cualificación, `PUENTE_SEGUN_ESTADO_DE_COMPRA`) + la auditoría real [[37-auditoria-conversaciones-reales-2026-09-23]] + las decisiones que el usuario cerró con ChatGPT el 2026-09-23.
 > **Reemplaza** a [[36-propuesta-diff-recepcionista-2026-09-23]] (diff v2), que queda superado.
 > **Artefactos**: `artefactos/build-recepcionista-v3-final.js` (constructor), `artefactos/recepcionista-v3-final-simulado.txt` (prompt simulado), `artefactos/recepcionista-v3-final-simulado.cambios.json` (ANTES/DESPUÉS exactos de cada cambio).
@@ -713,10 +713,38 @@ Pregunta aplicada a cada cambio: *mejora una decisión real o solamente agrega t
 | **D-2: delay de respuesta** | Cerrada por el usuario: **no se toca** | El diff no incluye ningún cambio de configuración |
 | **D-5: posventa** | Cerrada por el usuario: Recepción **no** pasa a ser agente de posventa | Solo la protección mínima de no vender ante un no-lead |
 
-## 9. Si se aprueba: cómo se aplica
+## 9. Cómo se aplicó (receta ejecutada)
 
 1. Abrir el editor del agente 9882 y capturar el prompt vivo **antes** de tocar nada (puede haber cambiado desde el v49 guardado; el constructor se vuelve a correr sobre esa captura).
 2. Vaciar el editor con la receta ya validada (los chips de acción no se borran con `fill()`: hay que rellenar con un texto mínimo, borrar los chips y recién ahí pegar).
 3. Pegar el prompt simulado y guardar.
 4. Verificar **byte a byte** contra `recepcionista-v3-final-simulado.txt`, que AÇÕES vuelva a mostrar 3 al reabrir el editor, y que el engranaje de "Transferir coluna no CRM" siga con el Coluna resuelto (`FV |  CUALIFICACION`, doble espacio).
 5. Correr la matriz de la §6 empezando por T17 (seguridad), T08 (ubicación) y T03 (variables), que son los tres que más rompen si algo quedó mal.
+
+
+## 10. Verificación post-aplicación (2026-09-23, 21:00-21:05 UTC)
+
+| Verificación | Resultado |
+|---|---|
+| Prompt vivo **antes** de tocar nada | 14.663 caracteres, hash `4a66ec38` — **idéntico al v49** sobre el que se construyó la v3, así que no hizo falta reconstruir |
+| Prompt guardado, releído del servidor tras recargar | 19.683 caracteres, hash `34290cd8` |
+| **Comparación byte a byte** contra `recepcionista-v3-final-simulado.txt` | **Idénticos** (comparación estricta `===`, no por hash) |
+| Etiquetas | 24 abiertas / 24 cerradas, **sin huérfanas** |
+| Bloques | 24, en el orden esperado, con `ESTADOS` nuevo en su lugar |
+| Acciones (AÇÕES al reabrir el editor) | **3**, ni una más |
+| `save_variable("interes_inicial",true,"TEXT","")` | Presente. Engranaje: nombre `interes_inicial`, tipo TEXT, "Texto livre", "Padrão (auto)" |
+| `save_variable("anuncio_origen",true,"TEXT","")` | Presente. Engranaje: nombre `anuncio_origen`, tipo TEXT, "Texto livre", "Padrão (auto)" |
+| `transfer_order` exacto con doble espacio | 1 sola vez, literal |
+| **Binding real del `transfer_order`** (no solo el chip) | Pipeline "FV| FUNIL DE VENTAS " → id **23843**; Coluna "FV |  CUALIFICACION" → id **111195**; "Quando executar" = auto. **El Coluna NO quedó vacío** — que era el defecto de A28 |
+| Configuración del agente (comparada campo por campo contra la captura previa) | Sin cambios: `model` gpt-5.1 · `mode` basic · `temperature` 1 · `maxTokens` 216 · `delayToReceiveMessages` **28** · `delayToReplyTickets` 0 · `actionAnalyzeStrategy` **FUNCTION_CALL** · `splitMessages` true · `maxMessages` 15 · `language` pt-BR · `queueId` null · guardrails 0 · knowledgeLinks 0 |
+| Otros agentes y automatizaciones | No se tocaron |
+
+**Notas de método (para la próxima vez):**
+- El token de `localStorage` está guardado **con comillas JSON**: hay que usar `JSON.parse(localStorage.token)`, si no la API responde 403 "Invalid or expired token" aunque la sesión esté viva.
+- Se confirmó otra vez la trampa de los chips: `fill()` borró los dos `save_variable` pero **dejó el de `transfer_order`**. Se resolvió con teclado real (Ctrl+A + Delete) sobre el editor enfocado, que sí lo elimina.
+- Los engranajes "Configurar ação" quedan pintados **debajo** del overlay del modal, así que Playwright no puede clickearlos ("subtree intercepts pointer events"). Se abrieron invocando el `onClick` de las props de React (`__reactProps$…`) — solo lectura, no cambia datos.
+- El backdrop del modal no cierra con Escape ni con click; el botón "Guardar cambios" vive **fuera** del modal y se activó con un evento `click` despachado, que sí funciona para botones MUI normales.
+
+## 11. Estado: listo para probar
+
+La v3 está viva en el Recepcionista. **No se ejecutaron conversaciones de prueba.** La tanda corta acordada para empezar (8 casos) es: `Tienen creatina?` · anuncio de combo → `Proteínas tenes?` · anuncio Vitamin Horse → `Quiero comprar el Hipercalórico Vitamin Horse de 3KG` · anuncio Integralmédica → `Quiero comprar un mix completo de Integral Médica` · anuncio XTR → `qué combo tienen de proteína y creatina` · `Dónde están?` · `Quiero comprar por mayor para revender en mi local` · `Cuánto sale esa proteína que vi?`. La matriz completa T01-T31 de la §6 queda para la regresión posterior.

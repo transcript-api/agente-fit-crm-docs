@@ -10,6 +10,15 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-23 (continuación 3) — v3 del Recepcionista APLICADA en producción y verificada
+- **Pedido**: el usuario confirmó que la marca correcta es **Black Skull** (F17 aprobado) y autorizó aplicar la v3, con la condición de verificar antes que el prompt vivo siguiera siendo el v49 y detenerse si alguna verificación fallaba.
+- **Chequeo previo**: el prompt vivo era **idéntico byte a byte** al v49 usado para construir la propuesta (14.663 caracteres, hash `4a66ec38`), así que no hubo que reconstruir nada.
+- **Aplicado**: el Recepcionista (9882) quedó con la v3 de **19.683 caracteres** (hash `34290cd8`), releída del servidor tras recargar y comparada **byte a byte** contra `artefactos/recepcionista-v3-final-simulado.txt`: idénticas.
+- **Verificado**: 24/24 etiquetas sin huérfanas · **3 acciones** (AÇÕES=3 al reabrir el editor) · las dos `save_variable` con tipo TEXT y ejecución auto · `transfer_order` exacto con el doble espacio · **binding real confirmado abriendo el engranaje**: Pipeline id 23843, Coluna `FV |  CUALIFICACION` id **111195**, no quedó vacío (el defecto de A28 no se repitió) · configuración sin cambios (gpt-5.1, FUNCTION_CALL, delay 28s, maxTokens 216, splitMessages, idioma, cola).
+- **No se tocó nada más**: ni otros agentes, ni automatizaciones, ni el delay. **No se ejecutaron conversaciones de prueba** (el usuario las corre).
+- **Tres hallazgos de método** (detalle en la §10 del archivo 38): (1) el token de `localStorage` viene **con comillas JSON**, hay que `JSON.parse`, si no la API da 403 con la sesión viva; (2) se reconfirmó que `fill()` deja vivo el chip de `transfer_order` — se elimina con Ctrl+A + Delete por teclado real; (3) los engranajes "Configurar ação" quedan **debajo** del overlay y Playwright no puede clickearlos: se abren invocando el `onClick` de las props de React, en solo lectura.
+- **`PENDIENTES.md`**: A36 cerrado ✅. Pendiente ahora: la tanda corta de 8 pruebas y después la matriz T01-T31.
+
 ### 2026-09-23 (continuación 2) — Diff FINAL v3 del Recepcionista construido y verificado (propuesta, nada aplicado)
 - **Pedido** (instrucciones de ChatGPT pegadas por el usuario, tras revisar la auditoría): cerrar la v3 con diff exacto ANTES/DESPUÉS, auditoría de redundancia, prompt simulado con verificaciones y matriz de regresión, **sin tocar producción**. Además corrigió tres conclusiones de la auditoría: "ya compraste con nosotros?" NO se elimina por aparecer 0/82 (sobrevive como prioridad 3, nunca como plantilla), el delay NO se cambia (D-2) y Recepción NO pasa a ser agente de posventa (D-5, solo protección mínima). D-1 resuelto: la ubicación no cualifica por sí sola.
 - **Hecho**: [[38-diff-final-v3-recepcionista-2026-09-23]] con 30 cambios (F1-F30). Núcleo recuperado de las versiones viejas: orden de decisión de 7 pasos en `<REGLA_MAESTRA>`, bloque `<ESTADOS>` nuevo (no cualificado / asesoramiento / directo) y jerarquía explícita de la pregunta puente (1 decisión ligada al pedido, 2 preferencia que cambia la búsqueda, 3 dato relacional, 4 no abrir dimensiones nuevas).
