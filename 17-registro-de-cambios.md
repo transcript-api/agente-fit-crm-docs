@@ -10,6 +10,13 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-23 (continuación) — Auditoría de 82 conversaciones reales del CRM, solo lectura, antes de cerrar la v3 del Recepcionista
+- **Pedido** (mensaje de ChatGPT pegado por el usuario): auditar 20–30 conversaciones reales recientes y variadas —mensaje inicial, anuncio/contexto, intención sin inventar, estado, qué responder primero, pregunta natural de un humano, descubrimiento vs. puente, qué iría en `interes_inicial` y `anuncio_origen`, si transferir— más patrones agregados y respuestas humanas buenas. **No cambiar la v3 todavía; primero devolver el análisis.**
+- **Hecho (solo `GET`; no se respondió, movió ni marcó nada como leído; no se tocó el CRM ni el prompt)**: se extrajeron 82 conversaciones de los 300 tickets más recientes (70 leads nuevos + 12 recurrentes) y se analizaron anonimizadas. Informe completo en [[37-auditoria-conversaciones-reales-2026-09-23]] (tipos de entrada con partición exacta, tabla de 29 casos con los 12 campos, patrones, 13 respuestas humanas buenas y 5 débiles, casos de regresión R1–R17, 10 ajustes propuestos a la v3).
+- **Hallazgos que cambian la v3**: (1) "¿ya compraste con nosotros?" aparece **0/82**; el equipo pregunta por consumo → corregir el ejemplo de V7. (2) 17 % abre con un saludo suelto y 22/66 mandan ≥2 mensajes en la primera ráfaga → regla de saludo suelto (no puente ni transferir sobre un "Hola"). (3) Story de Instagram: producto no visible → preguntar de cuál. (4) 16 % de las entradas no son leads legibles (avisos de envío contestados, comprobantes, terceros, media sin texto). (5) Audios: 16/82 conversaciones; la transcripción sale en portugués y solo 7/72 audios la traen. (6) El delay de 25 s cubre ~la mitad de las pausas dentro de una ráfaga (14 de 33 pasan de 25 s). (7) Precios/promos cambian según el anuncio.
+- **Estado de la v3**: el borrador (`artefactos/build-propuesta-recepcionista-v3.js` y su simulación) **no está cerrado ni aplicado**; espera la revisión de esta auditoría (A35). El diff v2 del archivo 36 queda superado.
+- **Pendiente**: A35 (revisión + decisiones D-1 a D-5). Dato crudo solo en `.playwright-mcp/` (ignorado por git).
+
 ### 2026-09-23 — Recepcionista restaurado en producción por Claude (autorizado), método de edición directa validado
 - **Pedido**: el usuario volvió y dio permiso explícito para editar lo necesario y dejar el CRM funcional.
 - **Estado al arrancar**: producción seguía corrupta (42.179 caracteres, etiqueta `</CONTROL_FINAL>` huérfana + baseline histórica). El Chrome de depuración estaba caído: se relanzó con el comando estándar (perfil `C:\ChromeRemoteDebuggingUserData`) y el usuario se logueó (la sesión había expirado).
