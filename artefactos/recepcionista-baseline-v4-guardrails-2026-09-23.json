@@ -1,0 +1,72 @@
+{
+  "capturadoEn": "2026-09-23T22:13:19.021Z",
+  "prompt": {
+    "chars": 16790,
+    "hash": "50c079a8",
+    "etiquetas": "21/21",
+    "acciones": [
+      "save_variable(\"interes_inicial\",true,\"TEXT\",\"\")",
+      "save_variable(\"anuncio_origen\",true,\"TEXT\",\"\")",
+      "transfer_order(\"FV| FUNIL DE VENTAS \",\"FV |  CUALIFICACION\")"
+    ]
+  },
+  "config": {
+    "model": "gpt-5.1",
+    "mode": "basic",
+    "delayToReceiveMessages": 28,
+    "actionAnalyzeStrategy": "FUNCTION_CALL",
+    "splitMessages": true,
+    "maxTokens": 216,
+    "updatedAt": "2026-09-23T22:07:08.218Z"
+  },
+  "guardrails": [
+    {
+      "id": 274,
+      "nombre": "No sonar a bot ni prometer de mas",
+      "tipo": "blocked_phrases",
+      "activo": true,
+      "accion": "reprocess",
+      "updatedAt": "2026-09-23T22:07:08.282Z"
+    },
+    {
+      "id": 275,
+      "nombre": "No mandar mensajes vacios",
+      "tipo": "empty_response",
+      "activo": true,
+      "accion": "reprocess",
+      "updatedAt": "2026-09-23T22:07:08.282Z"
+    },
+    {
+      "id": 276,
+      "nombre": "No volver a presentarse",
+      "tipo": "duplicate_greeting",
+      "activo": true,
+      "accion": "autofix",
+      "updatedAt": "2026-09-23T22:07:08.282Z"
+    },
+    {
+      "id": 277,
+      "nombre": "Fillers de apertura",
+      "tipo": "blocked_phrases",
+      "activo": true,
+      "accion": "autofix",
+      "updatedAt": "2026-09-23T22:07:08.282Z"
+    },
+    {
+      "id": 278,
+      "nombre": "No filtrar placeholders ni texto interno",
+      "tipo": "placeholder_leak",
+      "activo": true,
+      "accion": "autofix",
+      "updatedAt": "2026-09-23T22:07:08.282Z"
+    },
+    {
+      "id": 279,
+      "nombre": "No filtrar etiquetas de media",
+      "tipo": "media_label_echo",
+      "activo": true,
+      "accion": "reprocess",
+      "updatedAt": "2026-09-23T22:07:08.282Z"
+    }
+  ]
+}

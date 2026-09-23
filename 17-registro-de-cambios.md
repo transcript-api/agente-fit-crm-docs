@@ -10,6 +10,15 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-23 (continuación 5) — Baseline v4 + 6 guardrails fijado; cierre de sesión para retomar desde otra PC
+- **Pedido**: el usuario definió el plan de pruebas (4 casos: Integralmédica, Hipercalórico, Proteínas desde anuncio de combo, Ubicación → creatina) para medir **v4 + 6 guardrails como sistema completo**, sin tocar nada hasta terminar los 4 y autorizar. Pidió luego subir todo a GitHub para seguir en casa.
+- **Baseline fijado en solo lectura (2026-09-23 22:13 UTC)**: prompt 16.790 caracteres (hash `50c079a8`), 21/21 etiquetas, 3 acciones con `transfer_order` exacto, gpt-5.1, FUNCTION_CALL, delay 28s, maxTokens 216, splitMessages activo, 6 guardrails activos (ids 274-279).
+- **Analizador de traces**: `artefactos/analizar-trace-recepcionista.js` (solo lectura, enmascara claves). Probado contra un log viejo. **Incógnita abierta**: no se sabe si el CRM registra la intervención de un guardrail ni si guarda la respuesta original además de `finalResponse`; se va a ver en el primer trace real.
+- **Qué se subió a GitHub para trabajar desde otra PC** (copias limpias, verificadas sin claves): `artefactos/recepcionista-prompt-v4-vivo-2026-09-23.txt` (el prompt vivo, verificado por hash contra el servidor), `artefactos/recepcionista-guardrails-v1-2026-09-23.json`, `artefactos/recepcionista-baseline-v4-guardrails-2026-09-23.json`, `artefactos/analizar-trace-recepcionista.js` y `artefactos/audit-process-loader.js` (código, sin datos).
+- **Qué NO se subió, a propósito**: la carpeta `.playwright-mcp/` sigue ignorada. Contiene **4 JSON con la API key de OpenAI en texto plano** (`prompt-9882-now/after/response.json`, `prompt-9883-response.json`; ver A27) y las **82 conversaciones reales con nombres y teléfonos** (`audit-messages-raw.json`, `audit-tickets-index.json`, `tickets-list-p1.json`). Un repo privado no lo hace seguro: una clave o un dato de cliente en el historial de git no se borra con un commit posterior. Lo que sí sirve de esa auditoría está anonimizado en el archivo 37.
+- **Para retomar en casa**: (1) el CRM se accede con Playwright; ojo que `localStorage.token` viene con comillas JSON, hay que `JSON.parse`. (2) Correr los 4 tests desde el CRM y pasarle a Claude el id de cada ticket. (3) Claude lee `GET /processing-logs/ticket/{id}` y `GET /messages/{id}` y clasifica cada fallo en prompt / guardrail / tool / configuración / CRM / estilo. (4) **No se cambia nada** hasta terminar los 4 y autorizarlo.
+- **Pendiente**: A37.
+
 ### 2026-09-23 (continuación 4) — Guardrails: S2 cerrado y v1 de 6 reglas configurada en el Recepcionista
 - **Pedido**: el usuario avisó que los guardrails ya se guardan y pidió activar los que sirvan. A mitad de camino pidió borrar 2 que había dejado de prueba, y ChatGPT mandó el criterio de qué activar y qué no.
 - **S2 cerrado**: el bug de persistencia está arreglado. Verificado guardando 6 guardrails y releyéndolos del servidor tras recargar. El catálogo tiene 9 plantillas y admite varias reglas del mismo tipo, cada una con nombre.
