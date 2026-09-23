@@ -10,6 +10,17 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-23 (continuación 4) — Guardrails: S2 cerrado y v1 de 6 reglas configurada en el Recepcionista
+- **Pedido**: el usuario avisó que los guardrails ya se guardan y pidió activar los que sirvan. A mitad de camino pidió borrar 2 que había dejado de prueba, y ChatGPT mandó el criterio de qué activar y qué no.
+- **S2 cerrado**: el bug de persistencia está arreglado. Verificado guardando 6 guardrails y releyéndolos del servidor tras recargar. El catálogo tiene 9 plantillas y admite varias reglas del mismo tipo, cada una con nombre.
+- **Borrados los 2 de prueba** (ids 272 y 273). El `tool_required` traía gatillo `rewfrw` y `exigirSucesso` sobre `http_request`, así que convenía sacarlo igual.
+- **v1 configurada** (ids 274-279, todos activos): frases de bot (28, regenerar 2 y corregir como fallback), mensajes vacíos (regenerar 1, después no enviar), no volver a presentarse (11 saludos ES+PT, corregir), fillers de apertura (inicio, corregir), placeholders (corregir), etiquetas de media (regenerar). Detalle completo en [[01-agente-de-ia]].
+- **Tres NO activados, con motivo verificado en la UI**: `Ancoragem de valores` porque el campo dice literal "Valores em **R$**" y porque el anuncio no figura entre las fuentes confiables que acepta — bloquearía el comportamiento que validamos como correcto en el test del Hipercalórico. `Ferramenta obrigatória` porque el trace muestra que `transfer_order` corre `after_response` (message_sent 18:25:00, acción 18:25:23) y el guardrail evalúa antes de enviar, así que siempre fallaría. `Dado sensível` porque valida CPF/CNPJ brasileños y no cubre la cédula uruguaya.
+- **Hallazgo del método**: el matcher de frases ignora mayúsculas y acentos pero **no respeta límites de palabra**, así que se dejaron afuera "che", "bo" y "pikas" (matchearían dentro de noche, trabajo).
+- **El prompt NO se tocó.** Se verificó que siguiera en 16.790 caracteres antes y después de guardar.
+- **Observación importante**: el prompt vivo ya no es la v3 que apliqué. Es una **v4 reescrita por el usuario** (19.683 → 16.790 caracteres, 21 bloques, con `PRIORIDAD_DE_CONTEXTO` y `MIXES_Y_COMBOS` nuevos). Se verificó su integridad: 21/21 etiquetas, 3 acciones, `transfer_order` exacto. Copia guardada en `.playwright-mcp/prompt-9882-version-actual-usuario.json`.
+- **Pendiente**: correr 3-4 tests para verificar los guardrails en vivo y recién después podar el estilo del prompt.
+
 ### 2026-09-23 (continuación 3) — v3 del Recepcionista APLICADA en producción y verificada
 - **Pedido**: el usuario confirmó que la marca correcta es **Black Skull** (F17 aprobado) y autorizó aplicar la v3, con la condición de verificar antes que el prompt vivo siguiera siendo el v49 y detenerse si alguna verificación fallaba.
 - **Chequeo previo**: el prompt vivo era **idéntico byte a byte** al v49 usado para construir la propuesta (14.663 caracteres, hash `4a66ec38`), así que no hubo que reconstruir nada.
