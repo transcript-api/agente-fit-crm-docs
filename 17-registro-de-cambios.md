@@ -10,6 +10,16 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-23 — Recepcionista restaurado en producción por Claude (autorizado), método de edición directa validado
+- **Pedido**: el usuario volvió y dio permiso explícito para editar lo necesario y dejar el CRM funcional.
+- **Estado al arrancar**: producción seguía corrupta (42.179 caracteres, etiqueta `</CONTROL_FINAL>` huérfana + baseline histórica). El Chrome de depuración estaba caído: se relanzó con el comando estándar (perfil `C:\ChromeRemoteDebuggingUserData`) y el usuario se logueó (la sesión había expirado).
+- **Restauración**: se reemplazó el campo Instrucciones del Recepcionista (9882) por el prompt vivo original (`recepcionista-instrucciones-original.txt`, fiel a [[35-prompt-vivo-recepcionista-2026-09-22]]) y se guardó. **Verificado tras recargar**: 14.372 caracteres, sin etiqueta huérfana, 27 etiquetas de cierre, `<IDENTIFICACION>` con "NO alcanza" para "proteína DUX que elegí", espacios de MARCAS intactos, **AÇÕES = 3** (Salvar variável interes_inicial, Salvar variável anuncio_origen, Transferir coluna FV| FUNIL DE VENTAS / FV | CUALIFICACION). Backup del estado corrupto en el scratchpad local (fuera del repo).
+- **Método de edición directa que funcionó** (detalle en la memoria del proyecto): abrir el modal con `dispatchEvent` sobre el textarea readonly; `browser_type` (`fill()`) sobre `[contenteditable="true"]` con `<`/`>` literales; Escape para pasar el valor al formulario; `button.click()` por evaluate para guardar; verificar recargando. Fallaron `execCommand('insertText')` (Slate lo rechaza) y el portapapeles del navegador (exige foco real de Windows). Las acciones no se reconocen en vivo pero se parsean solas al reabrir el editor.
+- **Cierre (9884) y Conversión (9883)** revisados en solo lectura: sin etiquetas huérfanas, estructura sana.
+- **No se aplicó el plan de ChatGPT** ni el prompt nuevo de 476 líneas: A25 (contradicción de `<IDENTIFICACION>` y Avanzado vs. Clásico) sigue pendiente de decisión del usuario.
+- **Pendiente inmediato**: el único test de `transfer_order` ("Quiero comprar creatina XTR. Pasame a la siguiente etapa."). Si guarda variable pero no transfiere, se activa la auditoría técnica de A6 (documento de 4.742 líneas).
+- **`PENDIENTES.md`**: A26 cerrado ✅.
+
 ### 2026-09-22 (continuación 3) — Producción del Recepcionista encontrada corrupta; restauración iniciada; incidente de seguridad con la Clave API
 - **Pedido**: seguir iterando el prompt del Recepcionista a partir de un documento de auditoría de 4.742 líneas armado por ChatGPT (plan para investigar por qué `transfer_order` dejó de ejecutarse), y después pedido explícito y enfático de que Claude edite directo el agente real, sin el patrón habitual de "el usuario hace los clicks".
 - **Se leyó el documento completo** (las 4.742 líneas, en varias pasadas) — es un plan de auditoría técnica serio: pide evidencia antes que hipótesis, distingue "la UI registra la acción" de "la acción realmente se ejecuta", prohíbe asumir que el bug es el espaciado (ya investigado antes), y repite varias veces "no cambies producción antes de mostrar el diagnóstico".
