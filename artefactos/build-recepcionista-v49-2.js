@@ -1,5 +1,6 @@
-// Construye localmente la v49.2 (REVISION 2) del Recepcionista (9882) sobre la v49.1 VIVA. NO toca el CRM.
-// Rev 1 (commit 0a7f196) solo limpiaba duplicaciones. Rev 2 suma 3 correcciones semanticas con evidencia
+// Construye localmente la v49.2 (REVISION 3) del Recepcionista (9882) sobre la v49.1 VIVA. NO toca el CRM.
+// Rev 1 (commit 0a7f196) solo limpiaba duplicaciones. Rev 2 (51c1f62) suma 3 correcciones semanticas con evidencia.
+// Rev 3 reescribe SOLO P1 y C1 segun el usuario. Rev 2 suma 3 correcciones semanticas con evidencia
 // (VARIABLES, PREGUNTAS, CLIENTE_DIRECTO) y delega 8 frases al guardrail de lenguaje de bot.
 // Base exigida: 15349 caracteres, hash c753bc8a. Cada ANTES debe aparecer exactamente una vez o aborta.
 // Uso: node build-recepcionista-v49-2.js <v49-1.txt> <guardrails-v1.json> <salida.txt>
@@ -39,12 +40,12 @@ const changes = [
     nota: 'Evidencia: en el test del Hipercalórico guardó "Quiere comprar Hipercalórico Vitamin Horse 3KG con promo del anuncio de Instagram" con la regla abstracta ya escrita. Es el único contraejemplo, el del fallo real.' },
   { id: 'P1', tipo: 'corrección semántica', bloque: 'PREGUNTAS',
     antes: 'Debe aportar algo útil al siguiente paso.',
-    despues: 'La pregunta debe cambiar una decisión real del siguiente paso, es decir qué hay que buscar, recomendar o ejecutar.',
-    nota: 'Reemplaza "algo útil", demasiado abierto. Redactada para NO hacer la puente opcional (ver la sección de decisiones).' },
+    despues: 'La pregunta puente debe aportar contexto útil para el siguiente paso. Priorizá una pregunta cuya respuesta cambie qué hay que buscar, recomendar o ejecutar. Si no existe una decisión inmediata que cambiar, hacé una pregunta breve que mejore el contexto sin abrir un tema nuevo.',
+    nota: 'Decisión real primero, contexto útil como alternativa, y la puente sigue siendo obligatoria. La cuarta oración pedida ("nunca preguntes algo irrelevante solamente para activar Conversión") NO se repite porque PREGUNTAS ya la trae textual al final de la puente: "Nunca inventes una pregunta solamente para activar Conversión."' },
   { id: 'C1', tipo: 'corrección semántica', bloque: 'CLIENTE_DIRECTO',
     antes: 'Resolvé solamente lo indispensable. ',
-    despues: 'Resolvé solamente lo indispensable. Cuando ya quiere comprar un producto suficientemente identificado, este bloque tiene prioridad sobre MARCAS, LOGISTICA, OBJETIVOS_Y_KITS y el contenido promocional de ANUNCIOS. No abras esos temas salvo que el cliente los pregunte o sean indispensables para ejecutar lo que pidió. ',
-    nota: 'Evidencia: el mismo test abrió "Trabajamos con Vitamin Horse" y "Despachamos por DAC" sin que nadie lo pidiera. No prohíbe esas respuestas, solo fija su precedencia.' },
+    despues: 'Resolvé solamente lo indispensable. Cuando ya quiere comprar un producto suficientemente identificado, CLIENTE_DIRECTO tiene prioridad para decidir qué información mostrar. De MARCAS, LOGISTICA, OBJETIVOS_Y_KITS y ANUNCIOS usá solamente lo necesario para resolver la compra actual. No desarrolles esos temas como dimensiones adicionales salvo que el cliente los pregunte o sean indispensables para ejecutar lo que pidió. ',
+    nota: 'Evidencia: el test del Hipercalórico abrió "Trabajamos con Vitamin Horse" y "Despachamos por DAC" sin que nadie lo pidiera. Ahora la precedencia no excluye el precio ni la promo del anuncio cuando hacen falta para decidir la compra actual, como la cantidad.' },
 ];
 
 let p = base;

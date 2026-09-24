@@ -10,6 +10,15 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-24 (continuación 4) — v49.2 revisión 3, solo P1 y C1 (nada aplicado)
+- **Pedido**: ChatGPT y el usuario aprueban la revisión 2 salvo dos ajustes. **P1** no debe ser tan rígida como "cambiar una decisión real" porque puede haber un lead cualificado sin decisión inmediata que igual necesita una pregunta puente para generar el inbound que activa Conversión. **C1** no debe decir "no abras esos temas" ni excluir el contenido promocional, porque el precio y la promo hacen falta para decidir la cantidad. Nada más cambia. No aplicar.
+- **Resultado**: 15.854 caracteres (+267 sobre la revisión 2, +505 sobre la v49.1), hash `606fb3bf`, 27 bloques iguales, 3 acciones y `transfer_order` idénticos, núcleo comercial 41,5 %. Guardrail de lenguaje de bot sin cambio respecto de la revisión 2 (36 frases), otros 5 idénticos.
+- **Comprobado que solo cambiaron P1 y C1**: reemplazando esos dos textos en la revisión 2 (tomada de git) el resultado es idéntico (`===`) a la revisión 3.
+- **P1**: se integró su redacción en la definición de la puente y se omitió solo su última oración, porque `PREGUNTAS` ya trae textual "Nunca inventes una pregunta solamente para activar Conversión". Sigue seguida de "guardar contexto, transferir inmediatamente", así que la puente continúa obligatoria.
+- **Tensión que queda, sin tocar**: la primera línea de `PREGUNTAS` ("Si no cambia nada importante, no preguntes") convive con el nuevo fallback de la puente. Sin evidencia de que el modelo la use para saltear la puente (en todos los tests de la v49.1 preguntó). Si aparece, "salvo la pregunta puente".
+- **No se tocó el CRM.**
+- **Pendiente**: A40.
+
 ### 2026-09-24 (continuación 3) — v49.2 revisión 2 (nada aplicado)
 - **Pedido**: ChatGPT y el usuario no aprueban la v49.2 tal cual (efecto de solo 481 caracteres, núcleo de 36,8 % a 38,0 %) y piden una revisión. Las 6 frases sin cobertura pasan al guardrail (opción C), se acepta D6, se **rechaza D2**, y se suman tres correcciones semánticas con evidencia. No aplicar hasta autorizar.
 - **Base**: la v49.1 viva, releída a las 19:01 UTC, idéntica byte a byte (15.349 / `c753bc8a`), con los 6 guardrails intactos.

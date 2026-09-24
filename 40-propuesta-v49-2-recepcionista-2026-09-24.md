@@ -1,7 +1,7 @@
-# 40 — v49.2 del Recepcionista + 8 frases al guardrail (2026-09-24), REVISIÓN 2 — NADA aplicado
+# 40 — v49.2 del Recepcionista + 8 frases al guardrail (2026-09-24), REVISIÓN 3 — NADA aplicado
 
 > ⛔ **No se tocó el CRM.** Es un diff para revisar. Vivo sigue la v49.1 (15.349 caracteres, `c753bc8a`) con los 6 guardrails.
-> **Revisión 2.** Reemplaza a la primera versión de este archivo (commit `0a7f196`), que solo limpiaba duplicaciones y movía el núcleo comercial de 36,8 % a 38,0 %. Esta mantiene esa limpieza y suma **tres correcciones semánticas con evidencia** (`VARIABLES`, `PREGUNTAS`, `CLIENTE_DIRECTO`) y las **6 frases sin cobertura pasan al guardrail** (opción C).
+> **Revisión 3.** Reemplaza a la revisión 2 (commit `51c1f62`) y a la primera versión (`0a7f196`). **Respecto de la revisión 2 cambian únicamente P1 (pregunta puente) y C1 (`CLIENTE_DIRECTO`)**, según el pedido del usuario. Todo lo demás es idéntico, y está comprobado reemplazando solo esos dos textos en la revisión 2 y comparando con esta. La base es la misma limpieza de duplicaciones más tres correcciones semánticas con evidencia, y las 6 frases sin cobertura pasan al guardrail (opción C).
 > **Artefactos** `artefactos/build-recepcionista-v49-2.js` (aborta si la base no es la v49.1 exacta o si un ANTES no es único), `recepcionista-v49-2-simulado.txt`, `…cambios.json` y `…guardrails-propuestos.json`.
 
 ## 1. La base es la v49.1 viva
@@ -10,26 +10,26 @@ Releída del servidor hoy 19:01 UTC. **15.349 caracteres, `c753bc8a`, idéntica 
 
 ## 2. Resumen
 
-| | v49.1 (viva) | v49.2 rev. 2 |
+| | v49.1 (viva) | v49.2 rev. 3 |
 |---|---:|---:|
-| Caracteres | 15349 | **15587** (+238, +1.6 %) |
-| Hash | `c753bc8a` | `bb2b2be3` |
+| Caracteres | 15349 | **15854** (+505, +3.3 %) |
+| Hash | `c753bc8a` | `606fb3bf` |
 | Bloques | 27 | 27, **ninguno nuevo**, misma lista y orden |
 | Etiquetas | 27/27 | 27/27, sin huérfanas |
 | Acciones | 3 | 3, **idénticas** |
 | `transfer_order` | 1 exacto | 1 exacto, cola byte a byte igual |
-| **Núcleo comercial** (8 bloques) | 36.9 % | **40.5 %** |
-| Bloques mecánicos (`IDENTIDAD`, `MEMORIA`, `ESTILO`) | 13.3 % | 10.4 % |
+| **Núcleo comercial** (8 bloques) | 36.9 % | **41.5 %** |
+| Bloques mecánicos (`IDENTIDAD`, `MEMORIA`, `ESTILO`) | 13.3 % | 10.2 % |
 
-Para ubicarlo, el v49 original tenía 14.663 caracteres, así que esta versión queda **+924** (+6.3 %) sobre él. El núcleo comercial son `REGLA_MAESTRA`, `VERDAD_COMERCIAL`, `ANUNCIOS`, `PREGUNTAS`, `IDENTIFICACION`, `CLIENTE_DIRECTO`, `VARIABLES` y `TRANSFERENCIA`.
+Para ubicarlo, el v49 original tenía 14.663 caracteres, así que esta versión queda **+1191** (+8.1 %) sobre él. El núcleo comercial son `REGLA_MAESTRA`, `VERDAD_COMERCIAL`, `ANUNCIOS`, `PREGUNTAS`, `IDENTIFICACION`, `CLIENTE_DIRECTO`, `VARIABLES` y `TRANSFERENCIA`.
 
 Cambio por bloque.
 
 | Bloque | Antes | Después | Δ |
 |---|---:|---:|---:|
 | `IDENTIDAD` | 1026 | 962 | -64 |
-| `PREGUNTAS` | 1055 | 1128 | +73 |
-| `CLIENTE_DIRECTO` | 451 | 732 | +281 |
+| `PREGUNTAS` | 1055 | 1291 | +236 |
+| `CLIENTE_DIRECTO` | 451 | 836 | +385 |
 | `VARIABLES` | 855 | 1156 | +301 |
 | `MEMORIA` | 218 | 137 | -81 |
 | `ESTILO` | 791 | 519 | -272 |
@@ -50,12 +50,44 @@ transfer_order("FV| FUNIL DE VENTAS ","FV |  CUALIFICACION")
 | 2 Aceptar D6 | Hecho (D5 en esta numeración) |
 | 3 No aceptar D2 | **Hecho, ese cambio se descarta.** La línea `Nunca: … "trabajamos con creatina" "tengo" "tengo sí" "tenemos sí" "la manejamos" "manejamos ese producto"` queda exactamente como en la v49.1 |
 | 4 `VARIABLES`, un solo contraejemplo | Hecho (V1) |
-| 5 Pregunta puente | Hecho con **una desviación deliberada** (P1), ver la sección 7 |
-| 6 Precedencia en `CLIENTE_DIRECTO` | Hecho (C1) |
+| 5 Pregunta puente (P1) | **Reescrita con tu redacción**, sin duplicar lo que `PREGUNTAS` ya trae. Ver la sección 7 |
+| 6 Precedencia en `CLIENTE_DIRECTO` (C1) | **Reescrita con tu redacción**. Ya no excluye el precio ni la promo del anuncio |
 | 7 Fillers sin ampliar | Sin cambio, siguen solo al inicio del mensaje |
 | 8 Lo demás | Sin bloques nuevos, sin reorganizar, 3 acciones y `transfer_order` idénticos |
 
-## 4. Diff exacto (8 cambios)
+## 3b. Qué cambió respecto de la revisión 2
+
+**P1, `PREGUNTAS`, la definición de la puente**
+
+Revisión 2
+
+```
+La pregunta debe cambiar una decisión real del siguiente paso, es decir qué hay que buscar, recomendar o ejecutar.
+```
+
+Revisión 3
+
+```
+La pregunta puente debe aportar contexto útil para el siguiente paso. Priorizá una pregunta cuya respuesta cambie qué hay que buscar, recomendar o ejecutar. Si no existe una decisión inmediata que cambiar, hacé una pregunta breve que mejore el contexto sin abrir un tema nuevo.
+```
+
+**C1, `CLIENTE_DIRECTO`, la precedencia**
+
+Revisión 2
+
+```
+Cuando ya quiere comprar un producto suficientemente identificado, este bloque tiene prioridad sobre MARCAS, LOGISTICA, OBJETIVOS_Y_KITS y el contenido promocional de ANUNCIOS. No abras esos temas salvo que el cliente los pregunte o sean indispensables para ejecutar lo que pidió.
+```
+
+Revisión 3
+
+```
+Cuando ya quiere comprar un producto suficientemente identificado, CLIENTE_DIRECTO tiene prioridad para decidir qué información mostrar. De MARCAS, LOGISTICA, OBJETIVOS_Y_KITS y ANUNCIOS usá solamente lo necesario para resolver la compra actual. No desarrolles esos temas como dimensiones adicionales salvo que el cliente los pregunte o sean indispensables para ejecutar lo que pidió.
+```
+
+La revisión 3 tiene **15854 caracteres** contra 15.587 de la revisión 2 (+267), hash `606fb3bf`.
+
+## 4. Diff exacto contra la v49.1 (8 cambios)
 
 ### D1 — `<IDENTIDAD>` — delegado a guardrail
 
@@ -161,13 +193,13 @@ Evidencia: en el test del Hipercalórico guardó "Quiere comprar Hipercalórico 
 Debe aportar algo útil al siguiente paso.
 ```
 
-**DESPUÉS** (114 caracteres)
+**DESPUÉS** (277 caracteres)
 
 ```
-La pregunta debe cambiar una decisión real del siguiente paso, es decir qué hay que buscar, recomendar o ejecutar.
+La pregunta puente debe aportar contexto útil para el siguiente paso. Priorizá una pregunta cuya respuesta cambie qué hay que buscar, recomendar o ejecutar. Si no existe una decisión inmediata que cambiar, hacé una pregunta breve que mejore el contexto sin abrir un tema nuevo.
 ```
 
-Reemplaza "algo útil", demasiado abierto. Redactada para NO hacer la puente opcional (ver la sección de decisiones).
+Decisión real primero, contexto útil como alternativa, y la puente sigue siendo obligatoria. La cuarta oración pedida ("nunca preguntes algo irrelevante solamente para activar Conversión") NO se repite porque PREGUNTAS ya la trae textual al final de la puente: "Nunca inventes una pregunta solamente para activar Conversión."
 
 ### C1 — `<CLIENTE_DIRECTO>` — corrección semántica
 
@@ -177,13 +209,13 @@ Reemplaza "algo útil", demasiado abierto. Redactada para NO hacer la puente opc
 Resolvé solamente lo indispensable.
 ```
 
-**DESPUÉS** (316 caracteres)
+**DESPUÉS** (420 caracteres)
 
 ```
-Resolvé solamente lo indispensable. Cuando ya quiere comprar un producto suficientemente identificado, este bloque tiene prioridad sobre MARCAS, LOGISTICA, OBJETIVOS_Y_KITS y el contenido promocional de ANUNCIOS. No abras esos temas salvo que el cliente los pregunte o sean indispensables para ejecutar lo que pidió.
+Resolvé solamente lo indispensable. Cuando ya quiere comprar un producto suficientemente identificado, CLIENTE_DIRECTO tiene prioridad para decidir qué información mostrar. De MARCAS, LOGISTICA, OBJETIVOS_Y_KITS y ANUNCIOS usá solamente lo necesario para resolver la compra actual. No desarrolles esos temas como dimensiones adicionales salvo que el cliente los pregunte o sean indispensables para ejecutar lo que pidió.
 ```
 
-Evidencia: el mismo test abrió "Trabajamos con Vitamin Horse" y "Despachamos por DAC" sin que nadie lo pidiera. No prohíbe esas respuestas, solo fija su precedencia.
+Evidencia: el test del Hipercalórico abrió "Trabajamos con Vitamin Horse" y "Despachamos por DAC" sin que nadie lo pidiera. Ahora la precedencia no excluye el precio ni la promo del anuncio cuando hacen falta para decidir la compra actual, como la cantidad.
 
 ## 5. Guardrails, frases finales
 
@@ -257,25 +289,26 @@ El matcher ignora mayúsculas y acentos pero **no respeta límites de palabra**,
 
 **Efecto de fondo a tener en cuenta.** Con 36 frases y acción "regenerar 2 veces", cada disparo cuesta una llamada más al modelo y suma latencia. En los traces el envío ya tarda entre 15 y 21 segundos. Y si tras los 2 intentos el modelo insiste, "corregir" borra solo la frase, lo que a mitad de oración puede dejar un texto raro. Es un caso límite, no algo esperable.
 
-## 7. Una decisión que tomé por vos, y cómo revertirla
+## 7. P1 y C1, cómo quedaron
 
-**P1, la pregunta puente.** Pediste reemplazar `Debe aportar algo útil al siguiente paso.` por `La respuesta debe cambiar una decisión real del siguiente paso. Si no cambia qué hay que buscar, recomendar o ejecutar, no preguntes.`, y dijiste "una regla equivalente a". **No usé la segunda oración, y dejé este párrafo para explicar por qué.**
-
-- `PREGUNTAS` **ya dice** `Si no cambia nada importante, no preguntes.` en su primera línea. La segunda oración sería una repetición.
-- En el mismo bloque, la definición de la puente va seguida de `guardar contexto, transferir inmediatamente`. Y dejaste congelado que **la puente no es opcional por defecto**. Con `no preguntes` justo en la definición de la puente, el modelo puede saltearla y transferir sin preguntar.
-- Eso pega con **A33**. Conversión no escribe hasta que el cliente manda otro mensaje. Si Recepción transfiere sin pregunta, el cliente no tiene nada a qué responder y el lead queda parado.
-
-Por eso P1 conserva la parte que cambia el criterio (`cambiar una decisión real … qué hay que buscar, recomendar o ejecutar`) y no la que autoriza omitir. Si preferís tu redacción literal, es un cambio de una línea y lo hago, pero con este riesgo a la vista.
+**P1.** Integré tu redacción en la definición de la puente, y **omití solo la última oración** ("nunca preguntes algo irrelevante solamente para activar Conversión"), porque `PREGUNTAS` ya la trae textual al final de la puente ("Nunca inventes una pregunta solamente para activar Conversión."). Repetirla era duplicar. El resultado en contexto.
 
 ```
-La respuesta debe cambiar una decisión real del siguiente paso. Si no cambia qué hay que buscar, recomendar o ejecutar, no preguntes.
+PUENTE Usalo cuando YA existe contexto suficiente. La pregunta puente debe aportar contexto útil para el siguiente paso. Priorizá una pregunta cuya respuesta cambie qué hay que buscar, recomendar o ejecutar. Si no existe una decisión inmediata que cambiar, hacé una pregunta breve que mejore el contexto sin abrir un tema nuevo. Después: guardar contexto transferir inmediatamente a FV|CUALIFICACION NO esperar la respuesta desde Recepción Nunca inventes una pregunta solamente para activar Conversión.
 ```
+
+Queda la puente obligatoria (sigue seguida de "guardar contexto, transferir inmediatamente"), con decisión real primero, contexto útil como alternativa y nunca una pregunta arbitraria.
+
+**Una tensión que queda y que no toqué.** La primera línea de `PREGUNTAS` sigue diciendo "Antes de preguntar: Qué cambia según la respuesta? Si no cambia nada importante, no preguntes." Convive con la nueva alternativa de la puente ("si no existe una decisión inmediata, hacé una pregunta breve"). Las dos hablan de casos distintos, una en general y la otra en la puente, y la específica debería ganar. Pero un modelo puede leer la primera y omitir la puente. **No hay evidencia de que pase**, porque en todos los tests de la v49.1 preguntó la puente. Si aparece, la corrección es agregar "salvo la pregunta puente" a esa primera línea. No lo hice porque pediste no cambiar nada más.
+
+**C1.** Tu redacción, palabra por palabra. Ahora no excluye el precio ni la promo del anuncio. Con el Hipercalórico permite "Está a $1.290 una unidad o $1.990 llevando dos. Cuántas querés llevar?", porque eso hace falta para decidir la compra actual, y sigue frenando "Trabajamos con Vitamin Horse" y "Despachamos por DAC", que son dimensiones que nadie abrió.
 
 ## 8. Lo que este diff sigue sin resolver
 
 - **V1 es un solo caso probado.** Sale de un único test. La regla es concreta y usa el fallo real, pero no hay forma de saber sin probarla si el modelo la respeta. Es lo primero que hay que mirar tras aplicar.
-- **C1 y las promos.** La regla dice que el contenido promocional de `ANUNCIOS` no se abre, pero el comprador directo necesita las opciones de la promo para que se le pregunte "una o dos". Lo cubre la salvedad `indispensables para ejecutar lo que pidió` y la frase de `CLIENTE_DIRECTO` sobre "opción de la promo del anuncio". Es el punto donde puede haber fricción entre las dos reglas.
-- **El efecto sigue siendo una apuesta.** Ahora el núcleo pesa 40,5 % y las tres reglas que fallaron tienen texto propio, pero que el modelo las priorice depende de él.
+- **La tensión de `PREGUNTAS`** que se describe arriba.
+- **C1 depende de un juicio del modelo.** "Lo necesario para resolver la compra actual" y "dimensión adicional" no son reglas mecánicas. Es la formulación más precisa que permite usar la promo, pero deja un margen de interpretación.
+- **El efecto sigue siendo una apuesta.** El núcleo pesa 41.5 % y las reglas que fallaron tienen texto propio, pero que el modelo las priorice depende de él.
 
 ## 9. Si se autoriza, cómo se aplica
 

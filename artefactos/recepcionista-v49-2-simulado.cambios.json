@@ -5,10 +5,10 @@
       "hash": "c753bc8a"
     },
     "final": {
-      "chars": 15587,
-      "hash": "bb2b2be3",
-      "delta": 238,
-      "deltaPct": 1.6
+      "chars": 15854,
+      "hash": "606fb3bf",
+      "delta": 505,
+      "deltaPct": 3.3
     },
     "bloques": {
       "antes": 27,
@@ -26,14 +26,14 @@
       {
         "bloque": "PREGUNTAS",
         "antes": 1055,
-        "despues": 1128,
-        "delta": 73
+        "despues": 1291,
+        "delta": 236
       },
       {
         "bloque": "CLIENTE_DIRECTO",
         "antes": 451,
-        "despues": 732,
-        "delta": 281
+        "despues": 836,
+        "delta": 385
       },
       {
         "bloque": "VARIABLES",
@@ -60,8 +60,8 @@
         "pct": 36.9
       },
       "nucleoDespues": {
-        "chars": 6315,
-        "pct": 40.5
+        "chars": 6582,
+        "pct": 41.5
       },
       "mecanicosAntes": {
         "chars": 2035,
@@ -69,7 +69,7 @@
       },
       "mecanicosDespues": {
         "chars": 1618,
-        "pct": 10.4
+        "pct": 10.2
       }
     },
     "acciones": [
@@ -153,16 +153,16 @@
       "tipo": "corrección semántica",
       "bloque": "PREGUNTAS",
       "antes": "Debe aportar algo útil al siguiente paso.",
-      "despues": "La pregunta debe cambiar una decisión real del siguiente paso, es decir qué hay que buscar, recomendar o ejecutar.",
-      "nota": "Reemplaza \"algo útil\", demasiado abierto. Redactada para NO hacer la puente opcional (ver la sección de decisiones)."
+      "despues": "La pregunta puente debe aportar contexto útil para el siguiente paso. Priorizá una pregunta cuya respuesta cambie qué hay que buscar, recomendar o ejecutar. Si no existe una decisión inmediata que cambiar, hacé una pregunta breve que mejore el contexto sin abrir un tema nuevo.",
+      "nota": "Decisión real primero, contexto útil como alternativa, y la puente sigue siendo obligatoria. La cuarta oración pedida (\"nunca preguntes algo irrelevante solamente para activar Conversión\") NO se repite porque PREGUNTAS ya la trae textual al final de la puente: \"Nunca inventes una pregunta solamente para activar Conversión.\""
     },
     {
       "id": "C1",
       "tipo": "corrección semántica",
       "bloque": "CLIENTE_DIRECTO",
       "antes": "Resolvé solamente lo indispensable. ",
-      "despues": "Resolvé solamente lo indispensable. Cuando ya quiere comprar un producto suficientemente identificado, este bloque tiene prioridad sobre MARCAS, LOGISTICA, OBJETIVOS_Y_KITS y el contenido promocional de ANUNCIOS. No abras esos temas salvo que el cliente los pregunte o sean indispensables para ejecutar lo que pidió. ",
-      "nota": "Evidencia: el mismo test abrió \"Trabajamos con Vitamin Horse\" y \"Despachamos por DAC\" sin que nadie lo pidiera. No prohíbe esas respuestas, solo fija su precedencia."
+      "despues": "Resolvé solamente lo indispensable. Cuando ya quiere comprar un producto suficientemente identificado, CLIENTE_DIRECTO tiene prioridad para decidir qué información mostrar. De MARCAS, LOGISTICA, OBJETIVOS_Y_KITS y ANUNCIOS usá solamente lo necesario para resolver la compra actual. No desarrolles esos temas como dimensiones adicionales salvo que el cliente los pregunte o sean indispensables para ejecutar lo que pidió. ",
+      "nota": "Evidencia: el test del Hipercalórico abrió \"Trabajamos con Vitamin Horse\" y \"Despachamos por DAC\" sin que nadie lo pidiera. Ahora la precedencia no excluye el precio ni la promo del anuncio cuando hacen falta para decidir la compra actual, como la cantidad."
     }
   ],
   "cobertura": [
