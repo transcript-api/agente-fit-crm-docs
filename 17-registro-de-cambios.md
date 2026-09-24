@@ -10,6 +10,15 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-24 — Cambio de estrategia: vuelta al v49 histórico como v49.1 (propuesta, nada aplicado)
+- **Pedido**: el usuario abandona las reescrituras (v3 de 19.683 y v4 de 16.790 caracteres) y pide una **v49.1** sobre el v49 exacto, con solo 7 correcciones confirmadas, sin bloques ni ejemplos nuevos, sin duplicar lo que cubren los guardrails. Antes de aplicar pidió ver caracteres, hash, diff, acciones y confirmación del `transfer_order`. **No aplicar hasta que autorice.**
+- **Base verificada tres veces**: el snapshot versión 49 del servidor (id 17482, guardado 2026-09-23 17:05 UTC), la captura local y el hash coinciden en 14.663 caracteres y `4a66ec38`. El servidor conserva ese snapshot en su historial de 10 versiones, así que también se puede volver a él desde la interfaz.
+- **Hallazgo**: dos de las siete correcciones **ya estaban en el v49** (el saludo literal y la regla de no meter ejemplos dentro de las preguntas), verificado por búsqueda exacta. No se tocaron.
+- **Propuesta** [[39-propuesta-v49-1-recepcionista-2026-09-24]] con 6 cambios (voz de empresa, Black Skull, `interes_inicial`, `anuncio_origen`, mensaje actual sobre anuncio, comprador directo). Resultado 15.349 caracteres (+686, +4,7 %), hash `c753bc8a`, 27 bloques sin altas ni bajas, 3 acciones idénticas y cola desde `transfer_order(` byte a byte igual al v49. Constructor `artefactos/build-recepcionista-v49-1.js` que aborta si la base no es el v49 o si un ANTES no es único.
+- **Riesgo declarado**: sin ejemplos, el error de filtrar el anuncio a `interes_inicial` (que el v49 ya tenía) puede repetirse. Se decide con evidencia si aparece.
+- **No se tocó el CRM.** Sigue vivo el v4 con los 6 guardrails. Copia limpia del v49 subida como `artefactos/recepcionista-prompt-v49-2026-09-23.txt`.
+- **Pendiente**: A38.
+
 ### 2026-09-23 (continuación 5) — Baseline v4 + 6 guardrails fijado; cierre de sesión para retomar desde otra PC
 - **Pedido**: el usuario definió el plan de pruebas (4 casos: Integralmédica, Hipercalórico, Proteínas desde anuncio de combo, Ubicación → creatina) para medir **v4 + 6 guardrails como sistema completo**, sin tocar nada hasta terminar los 4 y autorizar. Pidió luego subir todo a GitHub para seguir en casa.
 - **Baseline fijado en solo lectura (2026-09-23 22:13 UTC)**: prompt 16.790 caracteres (hash `50c079a8`), 21/21 etiquetas, 3 acciones con `transfer_order` exacto, gpt-5.1, FUNCTION_CALL, delay 28s, maxTokens 216, splitMessages activo, 6 guardrails activos (ids 274-279).
