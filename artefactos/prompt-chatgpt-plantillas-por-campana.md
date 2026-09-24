@@ -28,6 +28,20 @@ uno por cada línea de producto.
   porcentaje ni otro código — lo que quiero que mejores es el copy y la idea de la imagen para
   que cada campaña se sienta relevante a SU producto, no genérica como quedó `cupon_general`.
 
+**Muy importante, esto es lo que más me importa de tu respuesta**: las 5 plantillas **NO pueden
+sonar todas iguales con el nombre del producto cambiado**. Quiero que cada una use un **ángulo
+distinto** — un gancho psicológico/emocional diferente, no solo una frase reformulada. Por ejemplo
+(son solo ejemplos de tipos de ángulo, no te los asigno a un producto en particular, elegí vos
+cuál le queda mejor a cada uno):
+- Urgencia/escasez ("quedan pocas horas", "se agota").
+- "Te extrañamos" / reconexión personal (le escribe como si la marca lo hubiese extrañado).
+- Resultado/transformación (enfocado en el objetivo que promete el producto: fuerza, definición, etc.).
+- Prueba social / lo que otros ya lograron.
+- Exclusividad ("volviste, esto es solo para vos").
+
+Elegí un ángulo distinto para cada una de las 5, decime cuál elegiste para cada una y por qué
+tiene sentido para ESE producto puntual, y después escribí el copy siguiendo ese ángulo.
+
 **Las 5 campañas, una plantilla por cada una:**
 
 1. **Testo Dilated** (potenciador de testosterona / ganancia muscular) — ⚠️ **esta es una campaña
@@ -58,7 +72,8 @@ uno por cada línea de producto.
   o proponeme una alternativa corta si creés que mejora la conversión — pero avisame si cambiás
   el texto del botón, porque hay que actualizarlo también del lado técnico.
 
-**Formato de respuesta**: una sección por campaña, con esos 5 campos bien separados y fáciles de
+**Formato de respuesta**: para cada campaña, primero decime en una línea qué ángulo elegiste y por
+qué, y después los 5 campos (nombre, imagen, cuerpo, pie, botón) bien separados y fáciles de
 copiar directo a un formulario.
 
 ---

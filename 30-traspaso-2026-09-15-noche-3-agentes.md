@@ -64,7 +64,19 @@ Hacen falta 8 flujos (uno por columna que necesita agente):
 | `FV\|RECOMPRA` | `RECOMPRA - 60 DIAS` | Recompra (no existe todavía) |
 | `FV\|RECOMPRA` | `RECOMPRA - 90 DIAS` | Recompra (no existe todavía) |
 
-Ninguno de estos 8 flujos existe todavía — es la pieza que faltaba para que la cadena de traspaso funcione sola, sin depender de "Gerenciar Agente" manual por conversación (que es el único mecanismo probado hasta ahora, usado para el testing seguro del Agente Fit original).
+Ninguno de estos 8 flujos existía a esta fecha (2026-09-15) — es la pieza que faltaba para que la cadena de traspaso funcione sola, sin depender de "Gerenciar Agente" manual por conversación (que era el único mecanismo probado hasta entonces, usado para el testing seguro del Agente Fit original).
+
+## Actualización 2026-09-24 — el mecanismo ya se construyó para `FV|FUNIL DE VENTAS` y se replicó a la pipeline real
+
+Desde el 2026-09-15 se construyeron y probaron en vivo dos de los 8 flujos de la tabla de arriba, con nombres reales `FV|Asignar Conversión.` (etapa `FV|CUALIFICACION` → agente Conversión) y `FV|Asignar Cierre` (etapa `FV|PROPUESTA ENVIADA`/`FV|PAGO PENDIENTE` → agente Cierre). Estructura confirmada en vivo de `FV|Asignar Conversión.`: trigger "Negócio mudou de etapa" (Pipeline + Etapa) → acción "Buscar Conversa" (Canal, sin fila/status, "Usar a mais recente", "Criar se não encontrar") → acción "Vincular Agente IA" (Vincular/Remover + selector de agente).
+
+**Hallazgo nuevo, no documentado hasta hoy: existe un agente `Agente Fit - Recepcionista Comercial`**, distinto del `Agente Fit - Recepcionista` (9882) de test — visible en el selector de agentes del editor de Flujos. Por el nombre, es la variante pensada para la pipeline real `CL | COMERCIAL`. No se investigó su prompt/configuración interna esta sesión, solo se confirmó que existe y se lo vinculó al flujo nuevo (ver abajo). **PENDIENTE:** revisar su prompt/acciones y confirmar que esté igual de sólido que el 9882 antes de activar nada en producción.
+
+**Se construyó `CL|Asignar Recepcionista`** (id 6052), duplicando `FV|Asignar Conversión.` y reconfigurando:
+- Trigger: Pipeline `CL | COMERCIAL` (no `FV|FUNIL DE VENTAS`) → Etapa `CL | EN CONVERSACION` (verificada en vivo como la **2ª columna real** de esa pipeline: `CL|LEAD NUEVO` → `CL|EN CONVERSACION` → `CL|SEGUIMIENTO` → `CL|PAGO PENDIENTE` → `CL|VENTA GANADA` → `CL|DERIVAR A REMARKETING` → `CL|CERRAR SIN VENTA`).
+- Acción "Vincular Agente IA" → agente `Agente Fit - Recepcionista Comercial` (no el 9882 de test).
+- **A propósito no se incluyó ningún hand-off al agente de Conversión** — indicación explícita del usuario: el agente de Conversión "no está ajustado" para uso real todavía. Se puede agregar más adelante replicando `FV|Asignar Cierre`/`FV|Asignar Conversión.` de la misma forma.
+- Publicado por el usuario (el clic en "Publicar" quedó bloqueado para mí por el clasificador de auto-mode, categoría "Production Deploy") y **dejado desactivado** (Status Off) a pedido explícito — verificado con recarga completa del listado de Flujos: checkbox destildado, "Última Execução: Nunca". Ver Q18 en `PENDIENTES.md` para la prueba en vivo pendiente.
 
 ## Lo que falta (ver `PENDIENTES.md`, prefijo Q)
 
