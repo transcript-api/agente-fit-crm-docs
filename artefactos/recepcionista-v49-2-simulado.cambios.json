@@ -1,0 +1,258 @@
+{
+  "verificaciones": {
+    "base": {
+      "chars": 15349,
+      "hash": "c753bc8a"
+    },
+    "final": {
+      "chars": 15854,
+      "hash": "606fb3bf",
+      "delta": 505,
+      "deltaPct": 3.3
+    },
+    "bloques": {
+      "antes": 27,
+      "despues": 27,
+      "iguales": true
+    },
+    "etiquetasHuerfanas": [],
+    "porBloque": [
+      {
+        "bloque": "IDENTIDAD",
+        "antes": 1026,
+        "despues": 962,
+        "delta": -64
+      },
+      {
+        "bloque": "PREGUNTAS",
+        "antes": 1055,
+        "despues": 1291,
+        "delta": 236
+      },
+      {
+        "bloque": "CLIENTE_DIRECTO",
+        "antes": 451,
+        "despues": 836,
+        "delta": 385
+      },
+      {
+        "bloque": "VARIABLES",
+        "antes": 855,
+        "despues": 1156,
+        "delta": 301
+      },
+      {
+        "bloque": "MEMORIA",
+        "antes": 218,
+        "despues": 137,
+        "delta": -81
+      },
+      {
+        "bloque": "ESTILO",
+        "antes": 791,
+        "despues": 519,
+        "delta": -272
+      }
+    ],
+    "peso": {
+      "nucleoAntes": {
+        "chars": 5660,
+        "pct": 36.9
+      },
+      "nucleoDespues": {
+        "chars": 6582,
+        "pct": 41.5
+      },
+      "mecanicosAntes": {
+        "chars": 2035,
+        "pct": 13.3
+      },
+      "mecanicosDespues": {
+        "chars": 1618,
+        "pct": 10.2
+      }
+    },
+    "acciones": [
+      "save_variable(\"interes_inicial\",true,\"TEXT\",\"\")",
+      "save_variable(\"anuncio_origen\",true,\"TEXT\",\"\")",
+      "transfer_order(\"FV| FUNIL DE VENTAS \",\"FV |  CUALIFICACION\")"
+    ],
+    "accionesIdenticas": true,
+    "transferOrderExacto": 1,
+    "colaIdentica": true,
+    "guardrails": {
+      "total": 6,
+      "identicos": 5,
+      "modificado": "No sonar a bot ni prometer de mas",
+      "frasesAntes": 28,
+      "frasesDespues": 36,
+      "agregadas": [
+        "te hago una sola consulta",
+        "para avanzar ya",
+        "quedó claro",
+        "anoté",
+        "te recuerdo",
+        "mientras tanto",
+        "te dejo una pregunta cortita",
+        "afinemos"
+      ]
+    },
+    "coberturaSinGuardrail": []
+  },
+  "cambios": [
+    {
+      "id": "D1",
+      "tipo": "delegado a guardrail",
+      "bloque": "IDENTIDAD",
+      "antes": "Nunca hagas parecer que otra persona continúa. NO digas: \"te pasan\" \"te ayudan\" \"te confirman\" \"otro asesor\" \"el equipo\" \"un compañero\" Usá:",
+      "despues": "Nunca hagas parecer que otra persona continúa ni menciones \"el equipo\". Usá:",
+      "nota": "te pasan, te ayudan, te confirman, otro asesor, un compañero. Se conserva \"el equipo\" porque no se puede bloquear como frase sin falsos positivos."
+    },
+    {
+      "id": "D2",
+      "tipo": "delegado a guardrail",
+      "bloque": "MEMORIA",
+      "antes": "Usá contexto silenciosamente. NO digas: \"quedó claro\" \"ya veo que querés\" \"entendí que\" \"anoté\" \"te recuerdo\" No repitas",
+      "despues": "Usá el contexto en silencio. No repitas",
+      "nota": "quedó claro, ya veo que, entendí que, anoté, te recuerdo. La regla conceptual \"usá el contexto en silencio\" permanece."
+    },
+    {
+      "id": "D3",
+      "tipo": "delegado a guardrail",
+      "bloque": "ESTILO",
+      "antes": "No uses filler como: \"Quedó claro que\" \"Ya veo que\" \"Mientras tanto\" \"Te dejo una pregunta cortita\" \"Te pregunto algo rápido\" \"Para afinar\" \"Así lo afinamos\" \"Afinemos\" ",
+      "despues": "",
+      "nota": "Las 8 frases de la oración quedan cubiertas por el guardrail de lenguaje de bot. 5 ya estaban (Quedó claro que, Ya veo que, Te pregunto algo rápido, Para afinar, Así lo afinamos) y 3 se suman (Mientras tanto, Te dejo una pregunta cortita, Afinemos)."
+    },
+    {
+      "id": "D4",
+      "tipo": "delegado a guardrail",
+      "bloque": "ESTILO",
+      "antes": "No valides automáticamente con: Perfecto Genial Buenísimo Excelente ",
+      "despues": "",
+      "nota": "Lo cubre el guardrail Fillers de apertura, que solo actúa al inicio del mensaje (decisión del usuario, no se amplía)."
+    },
+    {
+      "id": "D5",
+      "tipo": "duplicado",
+      "bloque": "ESTILO",
+      "antes": "No repitas el mensaje del cliente. No expliques limitaciones internas.",
+      "despues": "No expliques limitaciones internas.",
+      "nota": "Duplicado exacto de la frase que sigue en MEMORIA."
+    },
+    {
+      "id": "V1",
+      "tipo": "corrección semántica",
+      "bloque": "VARIABLES",
+      "antes": "No guardes opciones que todavía no eligió. ",
+      "despues": "No guardes opciones que todavía no eligió. Si dice que quiere comprar un producto y llega desde un anuncio con promo, guardá solamente esa intención sobre el producto, sin \"con promo del anuncio\" ni el precio, la cantidad promocional o las condiciones del anuncio, hasta que el cliente las mencione, elija o confirme. Eso va en anuncio_origen. ",
+      "nota": "Evidencia: en el test del Hipercalórico guardó \"Quiere comprar Hipercalórico Vitamin Horse 3KG con promo del anuncio de Instagram\" con la regla abstracta ya escrita. Es el único contraejemplo, el del fallo real."
+    },
+    {
+      "id": "P1",
+      "tipo": "corrección semántica",
+      "bloque": "PREGUNTAS",
+      "antes": "Debe aportar algo útil al siguiente paso.",
+      "despues": "La pregunta puente debe aportar contexto útil para el siguiente paso. Priorizá una pregunta cuya respuesta cambie qué hay que buscar, recomendar o ejecutar. Si no existe una decisión inmediata que cambiar, hacé una pregunta breve que mejore el contexto sin abrir un tema nuevo.",
+      "nota": "Decisión real primero, contexto útil como alternativa, y la puente sigue siendo obligatoria. La cuarta oración pedida (\"nunca preguntes algo irrelevante solamente para activar Conversión\") NO se repite porque PREGUNTAS ya la trae textual al final de la puente: \"Nunca inventes una pregunta solamente para activar Conversión.\""
+    },
+    {
+      "id": "C1",
+      "tipo": "corrección semántica",
+      "bloque": "CLIENTE_DIRECTO",
+      "antes": "Resolvé solamente lo indispensable. ",
+      "despues": "Resolvé solamente lo indispensable. Cuando ya quiere comprar un producto suficientemente identificado, CLIENTE_DIRECTO tiene prioridad para decidir qué información mostrar. De MARCAS, LOGISTICA, OBJETIVOS_Y_KITS y ANUNCIOS usá solamente lo necesario para resolver la compra actual. No desarrolles esos temas como dimensiones adicionales salvo que el cliente los pregunte o sean indispensables para ejecutar lo que pidió. ",
+      "nota": "Evidencia: el test del Hipercalórico abrió \"Trabajamos con Vitamin Horse\" y \"Despachamos por DAC\" sin que nadie lo pidiera. Ahora la precedencia no excluye el precio ni la promo del anuncio cuando hacen falta para decidir la compra actual, como la cantidad."
+    }
+  ],
+  "cobertura": [
+    {
+      "frase": "te pasan",
+      "cubierta": true
+    },
+    {
+      "frase": "te ayudan",
+      "cubierta": true
+    },
+    {
+      "frase": "te confirman",
+      "cubierta": true
+    },
+    {
+      "frase": "otro asesor",
+      "cubierta": true
+    },
+    {
+      "frase": "un compañero",
+      "cubierta": true
+    },
+    {
+      "frase": "quedó claro",
+      "cubierta": true
+    },
+    {
+      "frase": "ya veo que querés",
+      "cubierta": true
+    },
+    {
+      "frase": "entendí que",
+      "cubierta": true
+    },
+    {
+      "frase": "anoté",
+      "cubierta": true
+    },
+    {
+      "frase": "te recuerdo",
+      "cubierta": true
+    },
+    {
+      "frase": "Quedó claro que",
+      "cubierta": true
+    },
+    {
+      "frase": "Ya veo que",
+      "cubierta": true
+    },
+    {
+      "frase": "Mientras tanto",
+      "cubierta": true
+    },
+    {
+      "frase": "Te dejo una pregunta cortita",
+      "cubierta": true
+    },
+    {
+      "frase": "Te pregunto algo rápido",
+      "cubierta": true
+    },
+    {
+      "frase": "Para afinar",
+      "cubierta": true
+    },
+    {
+      "frase": "Así lo afinamos",
+      "cubierta": true
+    },
+    {
+      "frase": "Afinemos",
+      "cubierta": true
+    },
+    {
+      "frase": "Perfecto",
+      "cubierta": true
+    },
+    {
+      "frase": "Genial",
+      "cubierta": true
+    },
+    {
+      "frase": "Buenísimo",
+      "cubierta": true
+    },
+    {
+      "frase": "Excelente",
+      "cubierta": true
+    }
+  ]
+}

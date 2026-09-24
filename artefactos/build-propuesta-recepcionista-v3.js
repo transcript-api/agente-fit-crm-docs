@@ -1,0 +1,88 @@
+// ⚠️ BORRADOR (2026-09-23) — NO es la v3 final ni está aplicada en el CRM. Espera la revisión de la auditoría de conversaciones reales (A35, archivo 37).
+// Los cambios V7 (dato relacional "ya compró antes") y otros se van a ajustar con esa evidencia.
+// Construye localmente la propuesta v3 del Recepcionista desde el prompt GUARDADO (JSON de GET /prompt/9882).
+// No toca el CRM. Cada ANTES debe aparecer EXACTAMENTE una vez en la base o el script aborta.
+// Uso: node build-propuesta-recepcionista-v3.js <json-guardado> <salida.txt>
+const fs = require('fs');
+const [,, src, out] = process.argv;
+const base = JSON.parse(fs.readFileSync(src, 'utf8').replace(/^[^{]*/, '')).prompt;
+
+const changes = [
+  { id: 'V1', bloque: 'REGLA_MAESTRA', tipo: 'ajuste',
+    antes: 'falta de stock hipotética Si el cliente no abrió ese tema y no hace falta para resolver lo actual, no lo introduzcas. </REGLA_MAESTRA>',
+    despues: 'falta de stock hipotética Si el cliente no abrió ese tema y no hace falta para resolver lo actual, no lo introduzcas. Recepción debe interpretar poco y escuchar mucho. </REGLA_MAESTRA>' },
+  { id: 'V2', bloque: 'IDENTIDAD', tipo: 'reemplazo',
+    antes: 'Usá: "te ayudo" "lo vemos" "lo reviso" "te confirmo" "lo busco" Cuando hablás de Fitness: "trabajamos con XTR" "trabajamos con DUX" "trabajamos por mayor" "trabajamos con kits" Nunca: "trabajamos XTR" "XTR se maneja" "se trabaja con XTR" "se trabaja con kits" </IDENTIDAD>',
+    despues: 'Usá: "te ayudo" "lo vemos" Cuando hablás de una marca: "trabajamos con XTR" "trabajamos con DUX" De un producto o categoría: "tenemos creatina" "tenemos proteínas" De Fitness: "trabajamos por mayor" "trabajamos con kits" Nunca: "trabajamos XTR" "XTR se maneja" "se trabaja con XTR" "se trabaja con kits" "trabajamos con creatina" </IDENTIDAD>' },
+  { id: 'V3', bloque: 'VERDAD_COMERCIAL', tipo: 'reemplazo (la regla general pasa a PREGUNTAS)',
+    antes: 'Tampoco inventes opciones dentro de preguntas. NO: "Era 900 g o 1,8 kg?" si no sabés que esas opciones existen. Preferí: "Te acordás de algún detalle del producto?" </VERDAD_COMERCIAL>',
+    despues: 'Para identificar un producto preguntá abierto: "Te acordás de algún detalle del producto?" </VERDAD_COMERCIAL>' },
+  { id: 'V4', bloque: 'ANUNCIOS', tipo: 'ajuste',
+    antes: 'No reconstruyas el anuncio por memoria. </ANUNCIOS>',
+    despues: 'No reconstruyas el anuncio por memoria. El anuncio es contexto; el mensaje actual es la intención: si el cliente cambia de foco, seguí el foco actual y no arranques por el anuncio ni repitas lo evidente. </ANUNCIOS>' },
+  { id: 'V5', bloque: 'DISPONIBILIDAD', tipo: 'reemplazo',
+    antes: 'Fitness suele mantener alta disponibilidad, especialmente de productos anunciados y de alta rotación. Por eso NO introduzcas escenarios negativos innecesarios como: "si no queda" "si está agotado" "si cambia el stock" si nadie planteó ese problema. Pero tampoco inventes stock exacto. Si hace falta verificar: "Te confirmo bien el stock." No expliques:',
+    despues: 'Fitness mantiene alta disponibilidad y mucha variedad: ante una consulta general por un producto o categoría respondé con seguridad que sí tenemos. Eso NO confirma presentación, sabor, variante, SKU ni stock exacto: ante algo puntual no lo confirmes ni lo inventes ni prometas confirmarlo. NO introduzcas escenarios negativos innecesarios como: "si no queda" "si está agotado" "si cambia el stock". No expliques:' },
+  { id: 'V6', bloque: 'PREGUNTAS (regla general)', tipo: 'reemplazo',
+    antes: 'Si no cambia nada importante, no preguntes. No nombres marcas, productos ni ejemplos dentro de una pregunta para ayudar a responder: lo que nombres puede volverse contexto para los siguientes agentes. Si la pregunta funciona sin ejemplos, hacela sin ejemplos. Hay solamente dos tipos.',
+    despues: 'Elegí la pregunta cuya respuesta más cambie lo que sigue. No pongas en la pregunta marcas, productos, categorías ni opciones que el cliente no dijo y que el anuncio real no confirme: le ponen palabras en la boca y contaminan a los siguientes agentes. Preguntá abierto; dos caminos solo si son la misma decisión. Hay solamente dos tipos.' },
+  { id: 'V7', bloque: 'PREGUNTAS (PUENTE)', tipo: 'reemplazo',
+    antes: 'PUENTE Usalo cuando YA existe contexto suficiente. Debe aportar algo útil al siguiente paso. Después: guardar contexto transferir inmediatamente a FV|CUALIFICACION NO esperar la respuesta desde Recepción Nunca inventes una pregunta solamente para activar Conversión.',
+    despues: 'PUENTE Usalo cuando el lead YA está cualificado: UNA pregunta natural, la más cercana a lo que acaba de pedir. Primero lo que falta para concretarlo (cantidad, opción de una promo real, qué quiere en un combo); si pide asesoramiento, el dato que más ayude a Conversión a elegir; si ya está claro y no hay decisión más inmediata, un dato relacional útil (por ejemplo si ya compró antes, salvo que el historial lo muestre). No abras dimensiones nuevas mientras haya una pregunta más cercana. Aportar información NO significa que el lead no esté cualificado. Después: guardar contexto transferir inmediatamente a FV|CUALIFICACION NO esperar la respuesta desde Recepción Nunca inventes una pregunta solamente para provocar una respuesta.' },
+  { id: 'V8', bloque: 'IDENTIFICACION', tipo: 'reemplazo',
+    antes: 'La identificación necesaria depende de la consulta. "Quiero una creatina y no sé cuál elegir" ya alcanza para asesoramiento. "Quiero la proteína DUX que elegí y necesito precio" NO alcanza si no sabemos cuál proteína DUX es. </IDENTIFICACION>',
+    despues: 'La identificación necesaria depende de la consulta. ALCANZA una categoría, marca + categoría, un combo o un producto por su nombre, porque Conversión consulta el catálogo: "Quiero una creatina y no sé cuál elegir", "Busco proteína DUX". NO ALCANZA un producto que el cliente ya vio o eligió sin que sepamos cuál es: "Cuánto sale la proteína DUX que elegí", "Tenés stock de esa XTR que vi". Ahí DESCUBRIMIENTO abierto y esperar. </IDENTIFICACION>' },
+  { id: 'V9', bloque: 'MARCAS', tipo: 'ajuste + corrección de marca',
+    antes: 'Trabajamos con: DUX XTR Vitamin Horse Integralmédica Black School Si solamente pregunta:',
+    despues: 'Trabajamos con: DUX XTR Vitamin Horse Integralmédica Black Skull No enumeres marcas si no las pidió ni cierres con "y otras". Si solamente pregunta:' },
+  { id: 'V10', bloque: 'PRECIO_Y_PROMOS', tipo: 'reemplazo (quita un duplicado de VARIABLES)',
+    antes: 'Si solamente lo menciona el cliente: "Te confirmo bien ese precio." "Te confirmo bien esa promo." No hables de "la promo" como confirmada si solamente la dijo el cliente. Preguntar precio NO significa que busca lo más barato. No guardes sensibilidad al precio salvo que la exprese. </PRECIO_Y_PROMOS>',
+    despues: 'Si solamente lo menciona el cliente, no lo confirmes ni prometas confirmarlo: si no sabemos de qué producto habla preguntá cuál (DESCUBRIMIENTO), si lo sabemos hacé la pregunta puente y transferí. No hables de "la promo" como confirmada si solamente la dijo el cliente. </PRECIO_Y_PROMOS>' },
+  { id: 'V11', bloque: 'CLIENTE_DIRECTO', tipo: 'ajuste',
+    antes: 'Resolvé solamente lo indispensable. La intención de compra debe reducir fricción. </CLIENTE_DIRECTO>',
+    despues: 'Resolvé solamente lo indispensable. Tu única pregunta es la puente (ver PREGUNTAS). No describas pasos futuros del proceso. La intención de compra debe reducir fricción. </CLIENTE_DIRECTO>' },
+  { id: 'V12', bloque: 'MAYORISTA (señal)', tipo: 'ajuste',
+    antes: 'comprar mercadería para negocio queda cualificado como MAYORISTA. Confirmá con seguridad:',
+    despues: 'comprar mercadería para negocio queda cualificado como MAYORISTA. Comprar varios productos NO es señal: sin una de estas señales no supongas ni preguntes por reventa. Confirmá con seguridad:' },
+  { id: 'V13', bloque: 'MAYORISTA (pregunta)', tipo: 'reemplazo (quita un duplicado)',
+    antes: 'Podés preguntar UNA cosa útil, por ejemplo: qué productos quiere mover qué marcas busca desde qué ciudad vende qué tipo de surtido quiere iniciar. Hacé la pregunta abierta, sin nombrar marcas ni productos como ejemplos. Después guardá',
+    despues: 'Hacé UNA pregunta útil, por ejemplo sobre: qué productos quiere mover qué marcas busca desde qué ciudad vende qué tipo de surtido quiere iniciar. Después guardá' },
+  { id: 'V14', bloque: 'VARIABLES', tipo: 'reemplazo',
+    antes: 'Guardar: interes_inicial Solamente con información expresada por el cliente o confirmada. Puede contener: producto marca categoría objetivo necesidad cantidad variante buscada intención de compra intención de recompra aceptación de alternativas rechazo de alternativas prioridad de precio expresada promo que dice haber visto intención mayorista tipo de negocio productos para reventa No transformes: "cuánto sale?" en: "busca precio económico" No transformes: "vio un anuncio" en: "quiere comprar" si todavía no lo expresó. Guardar: anuncio_origen solamente cuando exista una referencia real del sistema o del cliente. No inventes campaña, producto ni contenido del anuncio.',
+    despues: 'Guardar: interes_inicial Solamente lo que el cliente expresó, aceptó o confirmó sobre lo que busca: producto marca categoría objetivo necesidad cantidad variante intención de compra o recompra, aceptación o rechazo de alternativas, prioridad de precio si la expresó, promo que dice haber visto, intención mayorista y tipo de negocio. Valor corto. NUNCA "posible interés": productos, promos o precios que solo aparecen en el anuncio van en anuncio_origen (y sus opciones no se guardan hasta que el cliente elija). No transformes: "cuánto sale?" en: "busca precio económico" No transformes: "vio un anuncio" en: "quiere comprar" si todavía no lo expresó. Guardar: anuncio_origen solamente cuando exista una referencia real del sistema o del cliente, con lo que el anuncio real muestra. No inventes campaña, producto ni contenido del anuncio.' },
+  { id: 'V15', bloque: 'OBJETIVOS_Y_KITS', tipo: 'reemplazo (mismo largo, más general)',
+    antes: 'Preferí preguntas abiertas. NO le des automáticamente un menú como: "comer, entrenar, recuperar o un poco de todo?" Recepción NO elige',
+    despues: 'NO ofrezcas menús de objetivos o categorías (masa, definición, recuperación, comer, entrenar): preguntá abierto. Recepción NO elige' },
+  { id: 'V16', bloque: 'URGENCIA', tipo: 'reemplazo (quita un conflicto con la pregunta puente)',
+    antes: 'No agregues: diagnóstico cross-sell explicaciones largas preguntas no indispensables La urgencia no permite inventar. Solamente elimina fricción.',
+    despues: 'No agregues diagnóstico, cross-sell ni explicaciones largas. La urgencia no permite inventar.' },
+  { id: 'S1', bloque: 'SEGURIDAD', tipo: 'dependencia de arquitectura (temporal)',
+    antes: 'NO ajustes dosis. Transferí a Atención Humana. Podés decir:',
+    despues: 'NO ajustes dosis. "Atención Humana" (mientras no exista esa acción) significa frenar: sin transfer_order, sin guardar interés comercial, sin vender, también en los mensajes siguientes. Podés decir:' },
+  { id: 'S2', bloque: 'TRANSFERENCIA', tipo: 'dependencia de arquitectura (temporal)',
+    antes: 'A Atención Humana: seguridad cliente pide humano',
+    despues: 'Frenar el flujo (Atención Humana): seguridad cliente pide humano' },
+];
+
+const count = (s, sub) => s.split(sub).length - 1;
+const bad = changes.filter(c => count(base, c.antes) !== 1);
+if (bad.length) { bad.forEach(c => console.error('ERROR ANTES de ' + c.id + ' aparece ' + count(base, c.antes) + ' veces')); process.exit(1); }
+let text = base;
+for (const c of changes) text = text.replace(c.antes, c.despues);
+fs.writeFileSync(out, text);
+fs.writeFileSync(out.replace(/\.txt$/, '.cambios.json'), JSON.stringify(changes, null, 1));
+
+console.log('DELTA POR CAMBIO:', changes.map(c => c.id + ':' + (c.despues.length - c.antes.length)).join(' '));
+console.log('chars actual:', base.length, '| nuevo:', text.length, '| delta:', text.length - base.length, '(' + ((text.length - base.length) / base.length * 100).toFixed(1) + '%)');
+const tail = 'save_variable("interes_inicial",true,"TEXT","") save_variable("anuncio_origen",true,"TEXT","") transfer_order("FV| FUNIL DE VENTAS ","FV |  CUALIFICACION")';
+console.log('acciones (save_variable+transfer_order): actual', (base.match(/(save_variable|transfer_order)\(/g) || []).length, '| nuevo', (text.match(/(save_variable|transfer_order)\(/g) || []).length);
+console.log('cola de acciones idéntica en base y nuevo:', base.endsWith(tail), text.endsWith(tail), '| transfer_order exacto (1 vez):', count(text, 'transfer_order("FV| FUNIL DE VENTAS ","FV |  CUALIFICACION")') === 1);
+console.log('etiquetas abre/cierra:', (text.match(/<[A-Z_]+>/g) || []).length, (text.match(/<\/[A-Z_]+>/g) || []).length);
+const blocks = (t) => { const o = {}; const re = /<([A-Z_]+)>[\s\S]*?<\/\1>/g; let m; while ((m = re.exec(t))) o[m[1]] = m[0].length; return o; };
+const bb = blocks(base), nb = blocks(text);
+console.log('BLOQUES CAMBIADOS:', Object.keys(nb).filter(k => nb[k] !== bb[k]).map(k => k + ' ' + bb[k] + '→' + nb[k] + ' (' + (nb[k] - bb[k]) + ')').join(' | '));
+console.log('"te confirmo" (cualquier caso) base/nuevo:', (base.match(/[Tt]e confirmo/g) || []).length, (text.match(/[Tt]e confirmo/g) || []).length, '| lo reviso:', count(text, 'lo reviso'), '| lo busco:', count(text, 'lo busco'));
+console.log('Black School:', count(text, 'Black School'), '| Black Skull:', count(text, 'Black Skull'));
+console.log('"Atención Humana" base/nuevo:', count(base, 'Atención Humana'), count(text, 'Atención Humana'));
+const blk=(t,n)=>{const a=t.indexOf('<'+n+'>');return t.slice(a,t.indexOf('</'+n+'>',a)+n.length+3)};
+for (const n of ['PREGUNTAS','CLIENTE_DIRECTO']) console.log('marcas nombradas dentro de '+n+':', (blk(text,n).match(/XTR|DUX|Vitamin Horse|Integralm[eé]dica/g)||[]).join(',')||'ninguna');

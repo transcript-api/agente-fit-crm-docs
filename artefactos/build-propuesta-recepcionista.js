@@ -1,0 +1,83 @@
+// Construye localmente la propuesta v2 del Recepcionista a partir del prompt GUARDADO (JSON de GET /prompt/9882).
+// No toca el CRM. Uso: node build-propuesta-recepcionista.js <ruta-json-guardado> <ruta-salida-txt>
+const fs = require('fs');
+const [,, src, out] = process.argv;
+const raw = fs.readFileSync(src, 'utf8');
+const base = JSON.parse(raw.slice(raw.indexOf('{'))).prompt;
+
+const changes = [
+  {
+    id: 'C1', sev: 'CRÍTICO', bloque: 'SEGURIDAD',
+    antes: 'NO ajustes dosis. Transferí a Atención Humana. Podés decir:',
+    despues: 'NO ajustes dosis. Frená el flujo comercial: no ejecutes transfer_order ni guardes intención de compra. Podés decir:',
+  },
+  {
+    id: 'C2', sev: 'IMPORTANTE', bloque: 'IDENTIFICACION',
+    antes: 'La identificación necesaria depende de la consulta. "Quiero una creatina y no sé cuál elegir" ya alcanza para asesoramiento. "Quiero la proteína DUX que elegí y necesito precio" NO alcanza si no sabemos cuál proteína DUX es. </IDENTIFICACION>',
+    despues: 'La identificación necesaria depende de la consulta. ALCANZA para pasar a Conversión una categoría, una marca con categoría o un nombre de producto, porque Conversión consulta el catálogo: "Quiero una creatina y no sé cuál elegir", "Quiero creatina XTR", "Busco proteína DUX". No inventes sabores, tamaños ni presentaciones para afinarlo. NO ALCANZA cuando el cliente señala UN producto concreto que ya vio o eligió y no sabemos cuál es: "Cuánto sale la proteína DUX que elegí", "Tenés stock de esa XTR que vi", "Sigue la promo que vi". Ahí hacé una pregunta abierta de DESCUBRIMIENTO y esperá. </IDENTIFICACION>',
+  },
+  {
+    id: 'C3a', sev: 'IMPORTANTE', bloque: 'IDENTIDAD',
+    antes: 'Usá: "te ayudo" "lo vemos" "lo reviso" "te confirmo" "lo busco" Cuando hablás de Fitness:',
+    despues: 'Usá: "te ayudo" "lo vemos" Cuando hablás de Fitness:',
+  },
+  {
+    id: 'C3b', sev: 'IMPORTANTE', bloque: 'DISPONIBILIDAD',
+    antes: 'Si hace falta verificar: "Te confirmo bien el stock." No expliques:',
+    despues: 'No confirmes stock ni prometas confirmarlo: eso se resuelve en el siguiente paso. Si hace falta más dato, hacé la pregunta puente (por ejemplo la cantidad) y transferí. No expliques:',
+  },
+  {
+    id: 'C3c', sev: 'IMPORTANTE', bloque: 'PRECIO_Y_PROMOS',
+    antes: 'Si solamente lo menciona el cliente: "Te confirmo bien ese precio." "Te confirmo bien esa promo." No hables de "la promo" como confirmada si solamente la dijo el cliente.',
+    despues: 'Si solamente lo menciona el cliente, no lo confirmes ni prometas confirmarlo. Si no sabemos de qué producto habla, preguntá cuál era (DESCUBRIMIENTO). Si el producto está identificado, seguí con la pregunta puente y transferí. No hables de "la promo" como confirmada si solamente la dijo el cliente.',
+  },
+  {
+    id: 'C3d', sev: 'IMPORTANTE', bloque: 'PAGOS',
+    antes: 'Si pregunta cómo pagar y no tenés la información confirmada: "Te confirmo bien las formas de pago." No preguntes:',
+    despues: 'Si pregunta cómo pagar y no tenés la información confirmada, no la inventes ni prometas confirmarla: si no sabemos qué producto quiere, preguntá cuál (DESCUBRIMIENTO); si ya lo sabemos, hacé la pregunta puente y transferí. No preguntes:',
+  },
+  {
+    id: 'C4', sev: 'IMPORTANTE', bloque: 'PREGUNTAS (PUENTE)',
+    antes: 'PUENTE Usalo cuando YA existe contexto suficiente. Debe aportar algo útil al siguiente paso. Después: guardar contexto transferir inmediatamente a FV|CUALIFICACION NO esperar la respuesta desde Recepción Nunca inventes una pregunta solamente para activar Conversión.',
+    despues: 'PUENTE Usalo cuando YA existe contexto suficiente y una sola respuesta del cliente puede cambiar lo que Conversión va a buscar o recomendar: presentación que tiene en mente, cantidad, qué es lo que más le importa al elegir, o qué productos quiere mover si es mayorista. Que una pregunta pueda aportar información NO significa que el lead todavía no esté cualificado. Después: guardar contexto transferir inmediatamente a FV|CUALIFICACION NO esperar la respuesta desde Recepción Nunca inventes una pregunta solamente para activar Conversión. Si ninguna respuesta cambia algo útil, no preguntes: guardá y transferí.',
+  },
+  {
+    id: 'C5', sev: 'AJUSTE FINO', bloque: 'CLIENTE_DIRECTO',
+    antes: 'No preguntes envío o retiro por defecto. Resolvé solamente lo indispensable. La intención de compra debe reducir fricción. </CLIENTE_DIRECTO>',
+    despues: 'No preguntes envío o retiro por defecto. Resolvé solamente lo indispensable. Se permite UNA pregunta puente si cambia lo que Conversión va a buscar (presentación o cantidad, si no las dijo), nunca sobre objetivo, experiencia, presupuesto ni cross-sell. No describas pasos futuros del proceso. La intención de compra debe reducir fricción. </CLIENTE_DIRECTO>',
+  },
+  {
+    id: 'C6', sev: 'AJUSTE FINO', bloque: 'TRANSFERENCIA',
+    antes: 'Secuencia: pregunta puente útil guardar variables transferir inmediatamente',
+    despues: 'Secuencia: pregunta puente útil si existe guardar variables transferir inmediatamente',
+  },
+];
+
+// Cambio condicional: requiere confirmación del usuario (marca), NO se aplica en la simulación principal.
+const condicional = {
+  id: 'C7', sev: 'CONDICIONAL', bloque: 'MARCAS',
+  antes: 'Trabajamos con: DUX XTR Vitamin Horse Integralmédica Black School Si solamente pregunta:',
+  despues: 'Trabajamos con: DUX XTR Vitamin Horse Integralmédica Black Skull Si solamente pregunta:',
+};
+
+const count = (s, sub) => s.split(sub).length - 1;
+let text = base;
+const report = [];
+for (const c of [...changes, condicional]) {
+  const n = count(base, c.antes);
+  report.push({ id: c.id, sev: c.sev, bloque: c.bloque, ocurrenciasAntes: n, delta: c.despues.length - c.antes.length });
+  if (n !== 1) { console.error('ERROR: ANTES de ' + c.id + ' aparece ' + n + ' veces'); process.exit(1); }
+}
+for (const c of changes) text = text.replace(c.antes, c.despues);
+fs.writeFileSync(out, text);
+fs.writeFileSync(out.replace(/\.txt$/, '.diff.json'), JSON.stringify({ changes, condicional }, null, 1));
+
+const lastAct = (t) => (t.match(/(save_variable|transfer_order)\(/g) || []).length;
+console.log(JSON.stringify(report));
+console.log('chars actual:', base.length, '| chars nuevo:', text.length, '| delta:', text.length - base.length, '(' + ((text.length - base.length) / base.length * 100).toFixed(1) + '%)');
+console.log('acciones (save_variable+transfer_order) actual:', lastAct(base), '| nuevo:', lastAct(text));
+const tail = 'save_variable("interes_inicial",true,"TEXT","") save_variable("anuncio_origen",true,"TEXT","") transfer_order("FV| FUNIL DE VENTAS ","FV |  CUALIFICACION")';
+console.log('cola de acciones idéntica:', base.endsWith(tail) && text.endsWith(tail), '| transfer_order exacto una vez:', count(text, 'transfer_order("FV| FUNIL DE VENTAS ","FV |  CUALIFICACION")') === 1);
+const open = (text.match(/<[A-Z_]+>/g) || []).length, close = (text.match(/<\/[A-Z_]+>/g) || []).length;
+console.log('etiquetas abre/cierra:', open, close);
+console.log('"Te confirmo" restantes:', count(text, 'Te confirmo'), '| "te confirmo":', count(text, 'te confirmo'), '| "Atención Humana":', count(text, 'Atención Humana'), '| "lo reviso":', count(text, 'lo reviso'), '| "lo busco":', count(text, 'lo busco'));

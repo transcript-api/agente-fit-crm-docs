@@ -1,0 +1,75 @@
+{
+  "verificaciones": {
+    "base": {
+      "chars": 14663,
+      "hash": "4a66ec38",
+      "bloques": 27
+    },
+    "final": {
+      "chars": 15349,
+      "hash": "c753bc8a",
+      "bloques": 27,
+      "delta": 686,
+      "deltaPct": 4.7
+    },
+    "etiquetas": {
+      "abiertas": 27,
+      "cerradas": 27,
+      "huerfanas": []
+    },
+    "bloquesNuevos": [],
+    "bloquesQuitados": [],
+    "acciones": [
+      "save_variable(\"interes_inicial\",true,\"TEXT\",\"\")",
+      "save_variable(\"anuncio_origen\",true,\"TEXT\",\"\")",
+      "transfer_order(\"FV| FUNIL DE VENTAS \",\"FV |  CUALIFICACION\")"
+    ],
+    "accionesIdenticasAlV49": true,
+    "transferOrderExacto": 1,
+    "transferOrderIdentico": true
+  },
+  "cambios": [
+    {
+      "id": "C1",
+      "punto": "2 VOZ DE EMPRESA",
+      "bloque": "IDENTIDAD",
+      "antes": "Cuando hablás de Fitness: \"trabajamos con XTR\" \"trabajamos con DUX\" \"trabajamos por mayor\" \"trabajamos con kits\" Nunca: \"trabajamos XTR\" \"XTR se maneja\" \"se trabaja con XTR\" \"se trabaja con kits\" ",
+      "despues": "Cuando hablás de Fitness usá \"trabajamos con XTR\" \"trabajamos con DUX\" para una marca y \"tenemos creatina\" \"tenemos proteínas\" para una categoría o producto. También \"trabajamos por mayor\" \"trabajamos con kits\" Nunca: \"trabajamos XTR\" \"XTR se maneja\" \"se trabaja con XTR\" \"se trabaja con kits\" \"trabajamos con creatina\" \"tengo\" \"tengo sí\" \"tenemos sí\" \"la manejamos\" \"manejamos ese producto\" "
+    },
+    {
+      "id": "C2",
+      "punto": "3 MARCA CORRECTA",
+      "bloque": "MARCAS",
+      "antes": "Black School",
+      "despues": "Black Skull"
+    },
+    {
+      "id": "C3",
+      "punto": "4 VARIABLES (interes_inicial)",
+      "bloque": "VARIABLES",
+      "antes": "Solamente con información expresada por el cliente o confirmada. ",
+      "despues": "Solamente con lo que el CLIENTE expresó, eligió, aceptó o confirmó. El anuncio no se copia acá y nunca escribas \"posible interés\". No guardes opciones que todavía no eligió. "
+    },
+    {
+      "id": "C4",
+      "punto": "4 VARIABLES (anuncio_origen)",
+      "bloque": "VARIABLES",
+      "antes": "Guardar: anuncio_origen solamente cuando exista una referencia real del sistema o del cliente. ",
+      "despues": "Guardar: anuncio_origen el contexto real del anuncio (producto, presentación, precio, promo) solamente cuando exista una referencia real del sistema o del cliente. "
+    },
+    {
+      "id": "C5",
+      "punto": "5 MENSAJE ACTUAL SOBRE ANUNCIO",
+      "bloque": "ANUNCIOS",
+      "antes": "Si el sistema muestra el contenido REAL de un anuncio, sus datos explícitos pueden usarse. ",
+      "despues": "El anuncio es contexto, no la intención: el mensaje actual del cliente manda. Si pregunta por otra cosa, respondé eso y no desarrolles la promo del anuncio porque sí. Si el sistema muestra el contenido REAL de un anuncio, sus datos explícitos pueden usarse. "
+    },
+    {
+      "id": "C6",
+      "punto": "6 COMPRADOR DIRECTO",
+      "bloque": "CLIENTE_DIRECTO",
+      "antes": "No repitas su pedido. No hagas cross-sell. No preguntes cómo suele pagar. No preguntes envío o retiro por defecto. Resolvé solamente lo indispensable. ",
+      "despues": "No repitas su pedido ni expliques beneficios o composición. No hagas cross-sell. No preguntes cómo suele pagar. No preguntes envío o retiro por defecto. Si hay una decisión operativa inmediata (cantidad, opción de la promo del anuncio), preguntá solamente eso. Resolvé solamente lo indispensable. "
+    }
+  ]
+}
