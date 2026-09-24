@@ -1,0 +1,245 @@
+{
+  "verificaciones": {
+    "base": {
+      "chars": 15349,
+      "hash": "c753bc8a"
+    },
+    "final": {
+      "chars": 14868,
+      "hash": "7d3bd52b",
+      "delta": -481,
+      "deltaPct": -3.1
+    },
+    "bloques": {
+      "antes": 27,
+      "despues": 27,
+      "iguales": true
+    },
+    "etiquetasHuerfanas": [],
+    "porBloque": [
+      {
+        "bloque": "IDENTIDAD",
+        "antes": 1026,
+        "despues": 898,
+        "delta": -128
+      },
+      {
+        "bloque": "MEMORIA",
+        "antes": 218,
+        "despues": 137,
+        "delta": -81
+      },
+      {
+        "bloque": "ESTILO",
+        "antes": 791,
+        "despues": 519,
+        "delta": -272
+      }
+    ],
+    "acciones": [
+      "save_variable(\"interes_inicial\",true,\"TEXT\",\"\")",
+      "save_variable(\"anuncio_origen\",true,\"TEXT\",\"\")",
+      "transfer_order(\"FV| FUNIL DE VENTAS \",\"FV |  CUALIFICACION\")"
+    ],
+    "accionesIdenticas": true,
+    "transferOrderExacto": 1,
+    "colaIdentica": true,
+    "guardrails": {
+      "total": 6,
+      "identicosSalvoUno": 5,
+      "modificado": "No sonar a bot ni prometer de mas",
+      "frasesAntes": 28,
+      "frasesDespues": 30,
+      "agregadas": [
+        "te hago una sola consulta",
+        "para avanzar ya"
+      ]
+    },
+    "coberturaSinGuardrail": [
+      "quedó claro",
+      "anoté",
+      "te recuerdo",
+      "Mientras tanto",
+      "Te dejo una pregunta cortita",
+      "Afinemos"
+    ]
+  },
+  "cambios": [
+    {
+      "id": "D1",
+      "bloque": "IDENTIDAD",
+      "antes": "Nunca hagas parecer que otra persona continúa. NO digas: \"te pasan\" \"te ayudan\" \"te confirman\" \"otro asesor\" \"el equipo\" \"un compañero\" Usá:",
+      "despues": "Nunca hagas parecer que otra persona continúa ni menciones \"el equipo\". Usá:",
+      "delegado": "te pasan · te ayudan · te confirman · otro asesor · un compañero"
+    },
+    {
+      "id": "D2",
+      "bloque": "IDENTIDAD",
+      "antes": "\"trabajamos con creatina\" \"tengo\" \"tengo sí\" \"tenemos sí\" \"la manejamos\" \"manejamos ese producto\" ",
+      "despues": "\"trabajamos con creatina\" \"tengo\" ",
+      "delegado": "(no delegado: son variantes del mismo error de voz; se compactan a las dos formas que el prompt debe distinguir)"
+    },
+    {
+      "id": "D3",
+      "bloque": "MEMORIA",
+      "antes": "Usá contexto silenciosamente. NO digas: \"quedó claro\" \"ya veo que querés\" \"entendí que\" \"anoté\" \"te recuerdo\" No repitas",
+      "despues": "Usá el contexto en silencio. No repitas",
+      "delegado": "quedó claro · ya veo que · entendí que"
+    },
+    {
+      "id": "D4",
+      "bloque": "ESTILO",
+      "antes": "No uses filler como: \"Quedó claro que\" \"Ya veo que\" \"Mientras tanto\" \"Te dejo una pregunta cortita\" \"Te pregunto algo rápido\" \"Para afinar\" \"Así lo afinamos\" \"Afinemos\" ",
+      "despues": "",
+      "delegado": "Quedó claro que · Ya veo que · Te pregunto algo rápido · Para afinar · Así lo afinamos"
+    },
+    {
+      "id": "D5",
+      "bloque": "ESTILO",
+      "antes": "No valides automáticamente con: Perfecto Genial Buenísimo Excelente ",
+      "despues": "",
+      "delegado": "Perfecto · Genial · Buenísimo · Excelente (guardrail Fillers de apertura)"
+    },
+    {
+      "id": "D6",
+      "bloque": "ESTILO",
+      "antes": "No repitas el mensaje del cliente. No expliques limitaciones internas.",
+      "despues": "No expliques limitaciones internas.",
+      "delegado": "(duplicado exacto: la regla de no repetir al cliente sigue en MEMORIA)"
+    }
+  ],
+  "cobertura": [
+    {
+      "frase": "te pasan",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "te ayudan",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "te confirman",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "otro asesor",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "un compañero",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "quedó claro",
+      "bot": "no",
+      "fillers": "no",
+      "cubierta": false
+    },
+    {
+      "frase": "ya veo que querés",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "entendí que",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "anoté",
+      "bot": "no",
+      "fillers": "no",
+      "cubierta": false
+    },
+    {
+      "frase": "te recuerdo",
+      "bot": "no",
+      "fillers": "no",
+      "cubierta": false
+    },
+    {
+      "frase": "Quedó claro que",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "Ya veo que",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "Mientras tanto",
+      "bot": "no",
+      "fillers": "no",
+      "cubierta": false
+    },
+    {
+      "frase": "Te dejo una pregunta cortita",
+      "bot": "no",
+      "fillers": "no",
+      "cubierta": false
+    },
+    {
+      "frase": "Te pregunto algo rápido",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "Para afinar",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "Así lo afinamos",
+      "bot": "sí",
+      "fillers": "no",
+      "cubierta": true
+    },
+    {
+      "frase": "Afinemos",
+      "bot": "no",
+      "fillers": "no",
+      "cubierta": false
+    },
+    {
+      "frase": "Perfecto",
+      "bot": "no",
+      "fillers": "sí",
+      "cubierta": true
+    },
+    {
+      "frase": "Genial",
+      "bot": "no",
+      "fillers": "sí",
+      "cubierta": true
+    },
+    {
+      "frase": "Buenísimo",
+      "bot": "no",
+      "fillers": "sí",
+      "cubierta": true
+    },
+    {
+      "frase": "Excelente",
+      "bot": "no",
+      "fillers": "sí",
+      "cubierta": true
+    }
+  ]
+}

@@ -10,6 +10,15 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-24 (continuación 2) — Propuesta v49.2 + 2 frases de guardrail (nada aplicado)
+- **Pedido**: ChatGPT y el usuario proponen separar responsabilidades. Los guardrails para forma inequívoca (fillers, frases de bot, promesas, saludo repetido, placeholders) y el prompt para criterio comercial. Pidió una v49.2 que **no agregue reglas**, solo saque las duplicaciones mecánicas, más dos frases nuevas en el guardrail de lenguaje de bot (`te hago una sola consulta`, `para avanzar ya`), y que **no se aplique** hasta autorizar.
+- **Base**: la v49.1 viva, leída del servidor a las 18:32 UTC, idéntica byte a byte al simulado (15.349 / `c753bc8a`). El agente se había guardado varias veces desde mi aplicación (ids de guardrails 316-321) sin alterar contenido.
+- **Propuesta** [[40-propuesta-v49-2-recepcionista-2026-09-24]]. 6 cambios en `IDENTIDAD`, `MEMORIA` y `ESTILO`. 14.868 caracteres (−481, −3,1 %), hash `7d3bd52b`, 27 bloques iguales, 3 acciones y `transfer_order` idénticos, otros 5 guardrails idénticos. Constructor `artefactos/build-recepcionista-v49-2.js`, que aborta si la base no es la v49.1 exacta.
+- **Hallazgo principal**: el chequeo de cobertura frase por frase muestra que **6 frases quedan sin guardrail** al sacarlas del prompt (`quedó claro` suelta, `anoté`, `te recuerdo`, `Mientras tanto`, `Te dejo una pregunta cortita`, `Afinemos`) y que los fillers `Perfecto` y compañía solo se frenan **al inicio del mensaje**, mientras el prompt los prohibía en cualquier lugar. Se dejó como decisión del usuario.
+- **Limitaciones declaradas**: efecto chico (el núcleo comercial sube de 36,8 % a 38,0 %). No toca la contaminación de `interes_inicial`, que según el usuario se repitió en el test del Hipercalórico aunque la regla de C3 ya estaba escrita. Esto confirma el riesgo declarado en C3 (sin ejemplos) y queda abierto. La regla de la pregunta puente está escrita más débil que lo pedido y `PREGUNTAS` figuraba como intocable.
+- **No se tocó el CRM.**
+- **Pendiente**: A40.
+
 ### 2026-09-24 (continuación) — v49.1 APLICADA en producción y verificada
 - **Pedido**: el usuario y ChatGPT aprobaron la v49.1 tal como estaba propuesta, sin cambios adicionales, con los 6 guardrails intactos. Condición: verificar antes de guardar que el artefacto fuera el de 15.349 caracteres y hash `c753bc8a`, y después recargar y comparar byte a byte, verificar acciones y binding, y **no correr tests**.
 - **Antes de escribir**: el CRM estaba exactamente en el baseline de ayer (v4 `50c079a8`, config y 6 guardrails). El artefacto dio 15.349 y `c753bc8a`.
