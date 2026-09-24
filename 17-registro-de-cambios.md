@@ -10,6 +10,17 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-24 (continuación) — v49.1 APLICADA en producción y verificada
+- **Pedido**: el usuario y ChatGPT aprobaron la v49.1 tal como estaba propuesta, sin cambios adicionales, con los 6 guardrails intactos. Condición: verificar antes de guardar que el artefacto fuera el de 15.349 caracteres y hash `c753bc8a`, y después recargar y comparar byte a byte, verificar acciones y binding, y **no correr tests**.
+- **Antes de escribir**: el CRM estaba exactamente en el baseline de ayer (v4 `50c079a8`, config y 6 guardrails). El artefacto dio 15.349 y `c753bc8a`.
+- **Aplicado**: la v49.1 quedó viva en el 9882 (15:42 UTC). Releída del servidor, coincide **byte a byte** (`===`) con `recepcionista-v49-1-simulado.txt`.
+- **Verificado**: 27/27 etiquetas · **3 acciones** al reabrir el editor · las dos `save_variable` con TEXT y auto · `transfer_order` exacto con doble espacio y cola idéntica a la del v49 · **binding real** abriendo el engranaje, Pipeline 23843 y Coluna `FV |  CUALIFICACION` id **111195** · gpt-5.1, FUNCTION_CALL, delay 28, maxTokens 216 sin cambios · 6 guardrails con contenido idéntico.
+- **Hallazgo 1, ids de guardrails**: al guardar el agente, el backend recrea los guardrails con ids nuevos (274-279 pasaron a 280-285) y el mismo contenido. Comparar por id da falsos positivos, hay que comparar por nombre y contenido.
+- **Hallazgo 2, método del editor**: esta vez el texto pegado no se propagó solo al formulario. Se resolvió abriendo "Ver alterações" (visor de diferencias) y se guardó recién tras comprobar largo y hash en el propio formulario, con una guarda que abortaba si no coincidían. Además Ctrl+A y Delete dejó vivo el chip de `transfer_order` y hizo falta Backspace.
+- **No se corrió ningún test.** Las verificaciones no modificaron nada (`updatedAt` quedó en el instante del guardado).
+- **Baseline nuevo** subido como `artefactos/recepcionista-baseline-v49-1-2026-09-24.json`.
+- **Pendiente**: A39, los 4 tests sobre la v49.1.
+
 ### 2026-09-24 — Cambio de estrategia: vuelta al v49 histórico como v49.1 (propuesta, nada aplicado)
 - **Pedido**: el usuario abandona las reescrituras (v3 de 19.683 y v4 de 16.790 caracteres) y pide una **v49.1** sobre el v49 exacto, con solo 7 correcciones confirmadas, sin bloques ni ejemplos nuevos, sin duplicar lo que cubren los guardrails. Antes de aplicar pidió ver caracteres, hash, diff, acciones y confirmación del `transfer_order`. **No aplicar hasta que autorice.**
 - **Base verificada tres veces**: el snapshot versión 49 del servidor (id 17482, guardado 2026-09-23 17:05 UTC), la captura local y el hash coinciden en 14.663 caracteres y `4a66ec38`. El servidor conserva ese snapshot en su historial de 10 versiones, así que también se puede volver a él desde la interfaz.

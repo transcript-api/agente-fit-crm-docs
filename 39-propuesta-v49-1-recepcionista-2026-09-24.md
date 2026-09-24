@@ -1,6 +1,6 @@
-# 39 — Propuesta v49.1 del Recepcionista (2026-09-24) — NADA aplicado
+# 39 — v49.1 del Recepcionista (2026-09-24) — ✅ APLICADA EN PRODUCCIÓN
 
-> ⛔ **No se tocó el CRM.** Esta es una propuesta para revisar. El prompt vivo del agente 9882 sigue siendo la v4 de 16.790 caracteres (hash `50c079a8`) con los 6 guardrails activos.
+> ✅ **APLICADA el 2026-09-24 15:42 UTC y verificada.** El prompt vivo del agente 9882 es ahora la v49.1 (15.349 caracteres, hash `c753bc8a`), **idéntico byte a byte** a `artefactos/recepcionista-v49-1-simulado.txt`. Verificaciones en la §7. Los 6 guardrails y la configuración no cambiaron.
 > **Estrategia (decisión del usuario, 2026-09-24):** abandonar las reescrituras (v3 de 19.683 y v4 de 16.790) y volver al **v49 histórico** con solo correcciones ya confirmadas. Sin bloques nuevos, sin ejemplos nuevos, sin duplicar lo que ya cubren los guardrails.
 > **Artefactos** `artefactos/build-recepcionista-v49-1.js` (constructor, aborta si la base no es el v49 exacto o si un ANTES no es único), `artefactos/recepcionista-v49-1-simulado.txt` (prompt propuesto), `artefactos/recepcionista-prompt-v49-2026-09-23.txt` (el v49 limpio, solo texto).
 
@@ -139,10 +139,39 @@ No repitas su pedido ni expliques beneficios o composición. No hagas cross-sell
 - **Los 6 guardrails no se tocan.** Ninguno de los 6 cambios los duplica ni los contradice. Una frase de la lista de bot como `te confirman` sigue prohibida y el v49 ya dice `NO digas: "te confirman"`.
 - **La regla de no abusar de los dos puntos no está en el v49** (la traía la v4). No la agregué porque pediste no duplicar estilo. Es lo único de la v4 que quizás quieras rescatar, y son dos líneas.
 
-## 6. Si se aprueba, cómo se aplica
+## 6. Cómo se aplicó (receta ejecutada)
 
 1. Capturar el prompt vivo y confirmar que sigue siendo la v4 (`50c079a8`, 16.790).
 2. Vaciar el editor con Ctrl+A y Delete (el `fill()` deja vivo el chip de `transfer_order`) y pegar `recepcionista-v49-1-simulado.txt`.
 3. Guardar, recargar y comparar **byte a byte** contra el simulado.
 4. Verificar AÇÕES = 3, las dos `save_variable`, y abrir el engranaje del `transfer_order` para confirmar Pipeline id 23843 y Coluna id 111195.
 5. Verificar que los 6 guardrails y la configuración (gpt-5.1, FUNCTION_CALL, delay 28) no cambiaron.
+
+## 7. Verificación post-aplicación (2026-09-24, 15:38 a 15:44 UTC)
+
+| Verificación | Resultado |
+|---|---|
+| Estado previo, antes de escribir | v4 de 16.790 caracteres (`50c079a8`), config y 6 guardrails idénticos al baseline |
+| Artefacto antes de guardar | 15.349 caracteres, hash `c753bc8a` (el esperado) |
+| Formulario justo antes de guardar | 15.349 y `c753bc8a`. El guardado tenía una guarda que abortaba si no coincidía |
+| Prompt guardado, releído del servidor | 15.349 caracteres, hash `c753bc8a` |
+| **Comparación byte a byte** contra el simulado | **Idénticos** (`===`) |
+| Etiquetas | 27/27, sin huérfanas |
+| Acciones al reabrir el editor | **3** (chips y engranajes) |
+| `save_variable("interes_inicial")` | TEXT, texto libre, auto |
+| `save_variable("anuncio_origen")` | TEXT, texto libre, auto |
+| `transfer_order` exacto con doble espacio | 1 sola vez |
+| Cola desde `transfer_order(` | Byte a byte igual a la del v49 |
+| **Binding real del `transfer_order`** | Pipeline id **23843**, Coluna `FV |  CUALIFICACION` id **111195**, ejecución auto |
+| Configuración | Sin cambios: gpt-5.1, mode basic, FUNCTION_CALL, delay **28**, splitMessages, maxTokens 216 |
+| 6 guardrails | Contenido **idéntico en los 6** (nombre, tipo, config, acción, fallback). **Los ids cambiaron de 274-279 a 280-285**, ver nota |
+| Otros agentes y automatizaciones | No se tocaron |
+| Después de verificar | El `updatedAt` del agente sigue en 15:42:11, o sea que las verificaciones no modificaron nada |
+
+**Nota sobre los ids de guardrails.** Cada vez que se pulsa "Guardar cambios" en el agente, el backend recrea los guardrails con ids nuevos y el mismo contenido. Ya había pasado al borrar los dos de prueba (272 y 273 pasaron a 274 en adelante). No es un problema, pero significa que **comparar guardrails por id no sirve**, hay que comparar por nombre y contenido.
+
+**Nota de método.** Esta vez el editor no propagó el texto pegado al formulario por sí solo (la vez anterior sí). Se resolvió abriendo "Ver alterações" (solo un visor de diferencias), tras lo cual el formulario quedó con el valor exacto. Se guardó únicamente después de comprobar en el propio formulario el largo y el hash. Además, esta vez Ctrl+A y Delete dejó vivo el chip de `transfer_order`, y hizo falta Ctrl+A y **Backspace** para eliminarlo.
+
+## 8. Estado, listo para probar
+
+La v49.1 está viva. **No se ejecutaron conversaciones de prueba.** Casos acordados para comparar contra la v4: 1) Integralmédica, 2) Hipercalórico Vitamin Horse, 3) `Proteínas tenes?` desde el anuncio del combo, 4) `Dónde están?` y luego `quiero una creatina`.
