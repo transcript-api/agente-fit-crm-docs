@@ -1,29 +1,36 @@
-# 40 — Propuesta v49.2 del Recepcionista + 2 frases al guardrail (2026-09-24) — NADA aplicado
+# 40 — v49.2 del Recepcionista + 8 frases al guardrail (2026-09-24), REVISIÓN 2 — NADA aplicado
 
 > ⛔ **No se tocó el CRM.** Es un diff para revisar. Vivo sigue la v49.1 (15.349 caracteres, `c753bc8a`) con los 6 guardrails.
-> **Qué es.** Separar responsabilidades. Los guardrails se encargan de los errores mecánicos y léxicos, y el prompt se queda con razonamiento comercial, verdad y routing. **No agrega ninguna regla ni ejemplo ni bloque.** Solo saca lo que un guardrail ya garantiza, y suma dos frases al guardrail de lenguaje de bot.
-> **Artefactos** `artefactos/build-recepcionista-v49-2.js` (constructor, aborta si la base no es la v49.1 exacta o si un ANTES no es único), `artefactos/recepcionista-v49-2-simulado.txt` (prompt), `…cambios.json` (ANTES/DESPUÉS y cobertura) y `…guardrails-propuestos.json` (los 6 guardrails con las 2 frases nuevas).
+> **Revisión 2.** Reemplaza a la primera versión de este archivo (commit `0a7f196`), que solo limpiaba duplicaciones y movía el núcleo comercial de 36,8 % a 38,0 %. Esta mantiene esa limpieza y suma **tres correcciones semánticas con evidencia** (`VARIABLES`, `PREGUNTAS`, `CLIENTE_DIRECTO`) y las **6 frases sin cobertura pasan al guardrail** (opción C).
+> **Artefactos** `artefactos/build-recepcionista-v49-2.js` (aborta si la base no es la v49.1 exacta o si un ANTES no es único), `recepcionista-v49-2-simulado.txt`, `…cambios.json` y `…guardrails-propuestos.json`.
 
 ## 1. La base es la v49.1 viva
 
-Leída del servidor hoy 18:32 UTC: **15.349 caracteres, hash `c753bc8a`, idéntica byte a byte a `recepcionista-v49-1-simulado.txt`**. Config sin cambios (gpt-5.1, FUNCTION_CALL, delay 28) y los 6 guardrails con el contenido de siempre. El agente figura guardado por última vez a las 18:16 UTC y los ids de guardrails van por 316-321, o sea que se guardó varias veces desde mi aplicación de las 15:42, pero sin alterar el prompt ni los guardrails.
+Releída del servidor hoy 19:01 UTC. **15.349 caracteres, `c753bc8a`, idéntica byte a byte** a `recepcionista-v49-1-simulado.txt`. Los 6 guardrails con contenido idéntico al de siempre, gpt-5.1, FUNCTION_CALL y delay 28.
 
 ## 2. Resumen
 
-| | v49.1 (viva) | v49.2 propuesta |
+| | v49.1 (viva) | v49.2 rev. 2 |
 |---|---:|---:|
-| Caracteres | 15349 | **14868** (-481, -3.1 %) |
-| Hash | `c753bc8a` | `7d3bd52b` |
-| Bloques | 27 | 27, misma lista y orden |
+| Caracteres | 15349 | **15587** (+238, +1.6 %) |
+| Hash | `c753bc8a` | `bb2b2be3` |
+| Bloques | 27 | 27, **ninguno nuevo**, misma lista y orden |
 | Etiquetas | 27/27 | 27/27, sin huérfanas |
 | Acciones | 3 | 3, **idénticas** |
 | `transfer_order` | 1 exacto | 1 exacto, cola byte a byte igual |
+| **Núcleo comercial** (8 bloques) | 36.9 % | **40.5 %** |
+| Bloques mecánicos (`IDENTIDAD`, `MEMORIA`, `ESTILO`) | 13.3 % | 10.4 % |
 
-Solo cambian tres bloques.
+Para ubicarlo, el v49 original tenía 14.663 caracteres, así que esta versión queda **+924** (+6.3 %) sobre él. El núcleo comercial son `REGLA_MAESTRA`, `VERDAD_COMERCIAL`, `ANUNCIOS`, `PREGUNTAS`, `IDENTIFICACION`, `CLIENTE_DIRECTO`, `VARIABLES` y `TRANSFERENCIA`.
+
+Cambio por bloque.
 
 | Bloque | Antes | Después | Δ |
 |---|---:|---:|---:|
-| `IDENTIDAD` | 1026 | 898 | -128 |
+| `IDENTIDAD` | 1026 | 962 | -64 |
+| `PREGUNTAS` | 1055 | 1128 | +73 |
+| `CLIENTE_DIRECTO` | 451 | 732 | +281 |
+| `VARIABLES` | 855 | 1156 | +301 |
 | `MEMORIA` | 218 | 137 | -81 |
 | `ESTILO` | 791 | 519 | -272 |
 
@@ -35,9 +42,22 @@ save_variable("anuncio_origen",true,"TEXT","")
 transfer_order("FV| FUNIL DE VENTAS ","FV |  CUALIFICACION")
 ```
 
-## 3. Diff exacto del prompt (6 cambios)
+## 3. Qué pediste y cómo quedó
 
-### D1 — `<IDENTIDAD>`
+| Tu punto | Resultado |
+|---|---|
+| 1 Las 6 frases sin cobertura pasan al guardrail | Hecho. Se suman las 6 más las 2 anteriores, **8 frases**. Cobertura de lo que sale del prompt, 22 de 22 |
+| 2 Aceptar D6 | Hecho (D5 en esta numeración) |
+| 3 No aceptar D2 | **Hecho, ese cambio se descarta.** La línea `Nunca: … "trabajamos con creatina" "tengo" "tengo sí" "tenemos sí" "la manejamos" "manejamos ese producto"` queda exactamente como en la v49.1 |
+| 4 `VARIABLES`, un solo contraejemplo | Hecho (V1) |
+| 5 Pregunta puente | Hecho con **una desviación deliberada** (P1), ver la sección 7 |
+| 6 Precedencia en `CLIENTE_DIRECTO` | Hecho (C1) |
+| 7 Fillers sin ampliar | Sin cambio, siguen solo al inicio del mensaje |
+| 8 Lo demás | Sin bloques nuevos, sin reorganizar, 3 acciones y `transfer_order` idénticos |
+
+## 4. Diff exacto (8 cambios)
+
+### D1 — `<IDENTIDAD>` — delegado a guardrail
 
 **ANTES** (140 caracteres)
 
@@ -51,25 +71,9 @@ Nunca hagas parecer que otra persona continúa. NO digas: "te pasan" "te ayudan"
 Nunca hagas parecer que otra persona continúa ni menciones "el equipo". Usá:
 ```
 
-**Por qué se puede sacar.** te pasan · te ayudan · te confirman · otro asesor · un compañero
+te pasan, te ayudan, te confirman, otro asesor, un compañero. Se conserva "el equipo" porque no se puede bloquear como frase sin falsos positivos.
 
-### D2 — `<IDENTIDAD>`
-
-**ANTES** (98 caracteres)
-
-```
-"trabajamos con creatina" "tengo" "tengo sí" "tenemos sí" "la manejamos" "manejamos ese producto"
-```
-
-**DESPUÉS** (33 caracteres)
-
-```
-"trabajamos con creatina" "tengo"
-```
-
-**Por qué se puede sacar.** (no delegado: son variantes del mismo error de voz; se compactan a las dos formas que el prompt debe distinguir)
-
-### D3 — `<MEMORIA>`
+### D2 — `<MEMORIA>` — delegado a guardrail
 
 **ANTES** (120 caracteres)
 
@@ -83,9 +87,9 @@ Usá contexto silenciosamente. NO digas: "quedó claro" "ya veo que querés" "en
 Usá el contexto en silencio. No repitas
 ```
 
-**Por qué se puede sacar.** quedó claro · ya veo que · entendí que
+quedó claro, ya veo que, entendí que, anoté, te recuerdo. La regla conceptual "usá el contexto en silencio" permanece.
 
-### D4 — `<ESTILO>`
+### D3 — `<ESTILO>` — delegado a guardrail
 
 **ANTES** (169 caracteres)
 
@@ -99,9 +103,9 @@ No uses filler como: "Quedó claro que" "Ya veo que" "Mientras tanto" "Te dejo u
 (se elimina)
 ```
 
-**Por qué se puede sacar.** Quedó claro que · Ya veo que · Te pregunto algo rápido · Para afinar · Así lo afinamos
+Las 8 frases de la oración quedan cubiertas por el guardrail de lenguaje de bot. 5 ya estaban (Quedó claro que, Ya veo que, Te pregunto algo rápido, Para afinar, Así lo afinamos) y 3 se suman (Mientras tanto, Te dejo una pregunta cortita, Afinemos).
 
-### D5 — `<ESTILO>`
+### D4 — `<ESTILO>` — delegado a guardrail
 
 **ANTES** (68 caracteres)
 
@@ -115,9 +119,9 @@ No valides automáticamente con: Perfecto Genial Buenísimo Excelente
 (se elimina)
 ```
 
-**Por qué se puede sacar.** Perfecto · Genial · Buenísimo · Excelente (guardrail Fillers de apertura)
+Lo cubre el guardrail Fillers de apertura, que solo actúa al inicio del mensaje (decisión del usuario, no se amplía).
 
-### D6 — `<ESTILO>`
+### D5 — `<ESTILO>` — duplicado
 
 **ANTES** (70 caracteres)
 
@@ -131,91 +135,153 @@ No repitas el mensaje del cliente. No expliques limitaciones internas.
 No expliques limitaciones internas.
 ```
 
-**Por qué se puede sacar.** (duplicado exacto: la regla de no repetir al cliente sigue en MEMORIA)
+Duplicado exacto de la frase que sigue en MEMORIA.
 
-## 4. Guardrail, solo 2 frases nuevas
+### V1 — `<VARIABLES>` — corrección semántica
 
-En `No sonar a bot ni prometer de mas` pasa de **28** a **30** frases. Se agregan exactamente estas dos, que aparecieron en el último test y son meta lenguaje inequívoco.
+**ANTES** (43 caracteres)
 
-- `te hago una sola consulta`
-- `para avanzar ya`
+```
+No guardes opciones que todavía no eligió.
+```
 
-No se agrega `aprovechás la promo`, ni logística, ni marcas ni frases comerciales, como pediste. **Los otros 5 guardrails quedan idénticos** (verificado por contenido, ya que el backend regenera los ids en cada guardado). La acción sigue siendo regenerar 2 veces y corregir como último recurso.
+**DESPUÉS** (343 caracteres)
 
-## 5. Cobertura, frase por frase
+```
+No guardes opciones que todavía no eligió. Si dice que quiere comprar un producto y llega desde un anuncio con promo, guardá solamente esa intención sobre el producto, sin "con promo del anuncio" ni el precio, la cantidad promocional o las condiciones del anuncio, hasta que el cliente las mencione, elija o confirme. Eso va en anuncio_origen.
+```
 
-Cada frase que sale del prompt, y qué guardrail la sigue impidiendo. Es el chequeo que hace que sacarla no sea perder la regla.
+Evidencia: en el test del Hipercalórico guardó "Quiere comprar Hipercalórico Vitamin Horse 3KG con promo del anuncio de Instagram" con la regla abstracta ya escrita. Es el único contraejemplo, el del fallo real.
 
-| Frase que sale | Quién la sigue impidiendo |
-|---|---|
-| te pasan | No sonar a bot ni prometer de mas → "te pasan" |
-| te ayudan | No sonar a bot ni prometer de mas → "te ayudan" |
-| te confirman | No sonar a bot ni prometer de mas → "te confirman" |
-| otro asesor | No sonar a bot ni prometer de mas → "otro asesor" |
-| un compañero | No sonar a bot ni prometer de mas → "un compañero" |
-| quedó claro | **NADIE. Queda sin control** |
-| ya veo que querés | No sonar a bot ni prometer de mas → "ya veo que" |
-| entendí que | No sonar a bot ni prometer de mas → "entendi que" |
-| anoté | **NADIE. Queda sin control** |
-| te recuerdo | **NADIE. Queda sin control** |
-| Quedó claro que | No sonar a bot ni prometer de mas → "quedo claro que" |
-| Ya veo que | No sonar a bot ni prometer de mas → "ya veo que" |
-| Mientras tanto | **NADIE. Queda sin control** |
-| Te dejo una pregunta cortita | **NADIE. Queda sin control** |
-| Te pregunto algo rápido | No sonar a bot ni prometer de mas → "te pregunto algo" |
-| Para afinar | No sonar a bot ni prometer de mas → "para afinar" |
-| Así lo afinamos | No sonar a bot ni prometer de mas → "asi lo afinamos" |
-| Afinemos | **NADIE. Queda sin control** |
-| Perfecto | Fillers de apertura (solo al inicio del mensaje) → "perfecto" |
-| Genial | Fillers de apertura (solo al inicio del mensaje) → "genial" |
-| Buenísimo | Fillers de apertura (solo al inicio del mensaje) → "buenisimo" |
-| Excelente | Fillers de apertura (solo al inicio del mensaje) → "excelente" |
+### P1 — `<PREGUNTAS>` — corrección semántica
 
-**Seis frases quedan sin guardrail** y hay que decidir qué hacer con ellas. Son `quedó claro` suelta (el guardrail solo frena `quedó claro que`), `anoté`, `te recuerdo`, `Mientras tanto`, `Te dejo una pregunta cortita` y `Afinemos`. Todas son muletillas de relleno, no errores de negocio, y las tres primeras siguen cubiertas en concepto por "Usá el contexto en silencio", que permanece. Tres caminos, y no elegí por vos. **(a)** Aceptarlo, si en los tests que corriste no aparecieron (no tengo evidencia propia de con qué frecuencia las dice). **(b)** Dejar una línea corta en `<ESTILO>` con esas seis. **(c)** Sumarlas al guardrail, cosa que excede las dos frases que autorizaste.
+**ANTES** (41 caracteres)
 
-**Otra salvedad.** `Perfecto`, `Genial`, `Buenísimo` y `Excelente` solo se controlan **al inicio del mensaje**, que es como está configurado el guardrail de fillers. Si el modelo los mete a mitad de frase, ya no hay ninguna regla. Hoy el prompt sí los prohibía en cualquier lugar.
+```
+Debe aportar algo útil al siguiente paso.
+```
 
-## 6. Qué se queda en el prompt (reglas conceptuales)
+**DESPUÉS** (114 caracteres)
 
-Intactos los bloques `REGLA_MAESTRA`, `VERDAD_COMERCIAL`, `ANUNCIOS`, `PREGUNTAS`, `IDENTIFICACION`, `CLIENTE_DIRECTO`, `VARIABLES`, `TRANSFERENCIA`, `SEGURIDAD`, `LOGISTICA`, `MARCAS`, `PRECIO_Y_PROMOS` y `BIENVENIDA`, más las 3 acciones. Dentro de los tres bloques tocados se conserva lo siguiente.
+```
+La pregunta debe cambiar una decisión real del siguiente paso, es decir qué hay que buscar, recomendar o ejecutar.
+```
 
-- Santiago como única identidad y "otra persona no continúa" (`IDENTIDAD`).
-- `tenemos` para categoría o producto y `trabajamos con` para marca, con sus prohibiciones de gramática (`IDENTIDAD`).
-- "Usá el contexto en silencio", no repetir lo que dijo el cliente, demostrar comprensión avanzando (`MEMORIA`).
-- WhatsApp breve, una pregunta principal, sin Markdown ni listas ni signos de apertura ni emojis al inicio, y las jergas prohibidas (`ESTILO`).
-- No agregar atributos positivos que el cliente no pidió y no explicar limitaciones internas (`ESTILO`).
+Reemplaza "algo útil", demasiado abierto. Redactada para NO hacer la puente opcional (ver la sección de decisiones).
 
-## 7. Las 8 reglas que querés con más peso
+### C1 — `<CLIENTE_DIRECTO>` — corrección semántica
 
-Todas existen ya en la v49.1 y siguen exactamente igual. El peso relativo sube porque desaparece el texto que competía con ellas, no porque se les agregue nada.
+**ANTES** (36 caracteres)
 
-| # | Regla | Dónde vive |
-|---|---|---|
-| 1 | El mensaje actual manda | `REGLA_MAESTRA` ("Qué quiere resolver ahora?") y `ANUNCIOS` ("el mensaje actual del cliente manda") |
-| 2 | No introducir una dimensión que el cliente no abrió | `REGLA_MAESTRA` ("NO agregues una dimensión nueva… si no cambia una decisión real") |
-| 3 | Comprador directo, mínima fricción | `CLIENTE_DIRECTO` ("DEJÁ DE VENDERLE… reducir fricción") |
-| 4 | Anuncio es contexto, no intención | `ANUNCIOS` |
-| 5 | `interes_inicial` solo hechos del cliente | `VARIABLES` |
-| 6 | `anuncio_origen` es información del anuncio | `VARIABLES` |
-| 7 | Pregunta puente solo si cambia el siguiente paso | `PREGUNTAS` ("Qué cambia según la respuesta?" antes de preguntar, y la puente "Debe aportar algo útil al siguiente paso") |
-| 8 | Transferir inmediatamente | `PREGUNTAS` (puente) y `TRANSFERENCIA` |
+```
+Resolvé solamente lo indispensable.
+```
 
-El peso relativo de los 8 bloques que llevan esas reglas pasa de **36,8 %** a **38,0 %** del prompt, y el de los tres bloques mecánicos baja de **13,2 %** a **10,4 %**.
+**DESPUÉS** (316 caracteres)
 
-## 8. Lo que este diff NO resuelve, dicho sin adornos
+```
+Resolvé solamente lo indispensable. Cuando ya quiere comprar un producto suficientemente identificado, este bloque tiene prioridad sobre MARCAS, LOGISTICA, OBJETIVOS_Y_KITS y el contenido promocional de ANUNCIOS. No abras esos temas salvo que el cliente los pregunte o sean indispensables para ejecutar lo que pidió.
+```
 
-- **El efecto es chico.** Son 481 caracteres, un 3,1 %, y el núcleo comercial sube 1,2 puntos. Es una limpieza sana y reversible, pero no espero que por sí sola cambie cómo decide GPT-5.1. Si el modelo ignora una regla que está escrita, sacar 481 caracteres de estilo probablemente no lo arregle.
-- **No toca la contaminación de `interes_inicial`.** Según lo que describís del test del Hipercalórico, el modelo guardó `Quiere comprar… con promo del anuncio` **aunque la regla de C3 ya estaba escrita**. Eso confirma tu lectura de que ningún guardrail de respuesta lo arregla, porque no es texto para el cliente. Y confirma que el riesgo que declaré en C3 (sin ejemplos) se dio. Como pediste no tocar `VARIABLES`, queda **abierto**. Cuando quieras es una línea con un solo ejemplo, ahora con evidencia real de que la regla sola no alcanzó.
-- **La regla 7 tiene una redacción más débil que lo que pedís.** El prompt dice "Debe aportar algo útil al siguiente paso", y vos querés "algo que cambie el siguiente paso". `PREGUNTAS` figura entre los bloques a mantener intactos, así que no lo toqué. Lo dejo señalado.
-- **Que dijo `Despachamos por DAC…` sin que lo pidieran** ya lo cubre `REGLA_MAESTRA`, que incluye `envío` en su lista de dimensiones innecesarias. El prompt ya tiene la regla, que es distinto de que el modelo la aplique. Este diff no agrega nada ahí.
-- **D6 va un paso más allá de lo pedido.** Sacar `No repitas el mensaje del cliente` de `ESTILO` no estaba en tu lista. Es un duplicado exacto de la frase que sigue en `MEMORIA`, y lo marqué aparte para que lo puedas rechazar solo.
-- **D2 compacta y no elimina.** Las cuatro prohibiciones originales del v49 (`trabajamos XTR`, `XTR se maneja`, etc.) se quedan. Solo salen las variantes que agregué en la v49.1 (`tengo sí`, `tenemos sí`, `la manejamos`, `manejamos ese producto`), que son el mismo error de voz que `tengo`.
+Evidencia: el mismo test abrió "Trabajamos con Vitamin Horse" y "Despachamos por DAC" sin que nadie lo pidiera. No prohíbe esas respuestas, solo fija su precedencia.
+
+## 5. Guardrails, frases finales
+
+### `No sonar a bot ni prometer de mas` — 28 → 36 frases (acción sin cambio: regenerar 2 veces y corregir como último recurso)
+
+- te asesoramos
+- te ayudamos
+- te asesoremos
+- te pasan
+- te ayudan
+- te confirman
+- otro asesor
+- un compañero
+- te paso con
+- te reservo
+- te lo reservo
+- ya te digo
+- enseguida te paso
+- ahora mismo te confirmo
+- dame un segundo
+- te paso una pregunta
+- te pregunto algo
+- para afinar
+- asi lo seguimos
+- asi lo afinamos
+- quedo claro que
+- ya veo que
+- entendi que
+- para avanzarlo bien
+- como ya queres comprar
+- te separo
+- te lo separo
+- para orientarte bien
+- te hago una sola consulta  ← **NUEVA**
+- para avanzar ya  ← **NUEVA**
+- quedó claro  ← **NUEVA**
+- anoté  ← **NUEVA**
+- te recuerdo  ← **NUEVA**
+- mientras tanto  ← **NUEVA**
+- te dejo una pregunta cortita  ← **NUEVA**
+- afinemos  ← **NUEVA**
+
+### `Fillers de apertura` — sin cambio (solo al inicio del mensaje, corregir automáticamente)
+
+perfecto, genial, buenisimo, excelente, dale perfecto
+
+Los otros **4 guardrails** (`No mandar mensajes vacios`, `No volver a presentarse`, `No filtrar placeholders ni texto interno`, `No filtrar etiquetas de media`) **quedan idénticos**. En total, 5 de los 6 sin ninguna modificación. Verificado por contenido, ya que el backend regenera los ids en cada guardado.
+
+La frase `quedo claro que`, que ya estaba, queda **redundante** con la nueva `quedó claro` (la contiene). No la toqué para no modificar frases existentes, y no molesta.
+
+## 6. Falsos positivos de las frases nuevas
+
+El matcher ignora mayúsculas y acentos pero **no respeta límites de palabra**, así que evalué cada frase contra vocabulario real. **Corpus** 1.785 mensajes de texto de las 82 conversaciones de la auditoría (1.010 del equipo y 775 de clientes, sin audios ni imágenes) más el propio prompt. Como control, el mismo análisis encuentra cientos de coincidencias con frases comunes (`gracias` 106, `promo` 69, `envío` 60), o sea que el corpus y el método detectan cuando hay algo.
+
+| Frase (como la ve el matcher) | Coincidencias en el corpus | Dentro de una palabra más larga |
+|---|---:|---|
+| `te hago una sola consulta` | 0 | ninguna |
+| `para avanzar ya` | 0 | ninguna |
+| `quedo claro` | 0 | ninguna |
+| `anote` | 0 | ninguna |
+| `te recuerdo` | 0 | ninguna |
+| `mientras tanto` | 0 | ninguna |
+| `te dejo una pregunta cortita` | 0 | ninguna |
+| `afinemos` | 0 | ninguna |
+
+**Cero falsos positivos medidos.** Quedan tres riesgos teóricos que el corpus no puede descartar del todo.
+
+- **`anote`** aparece dentro de `manotear`, palabra rara en una venta. El resto de sus formas (`anotes`, `anoten`, `anotemos`) son del mismo verbo que el agente tampoco debe decir.
+- **`te recuerdo`** también bloquearía un recordatorio legítimo como "te recuerdo que retirás en Av. Tamandaré". Ya estaba prohibido en el v49, así que no es un comportamiento nuevo, pero ahora lo hace cumplir una máquina.
+- **`mientras tanto`** es una locución normal del español. Se bloquea igual que antes en el prompt, y en una venta por WhatsApp casi nunca hace falta.
+
+**Efecto de fondo a tener en cuenta.** Con 36 frases y acción "regenerar 2 veces", cada disparo cuesta una llamada más al modelo y suma latencia. En los traces el envío ya tarda entre 15 y 21 segundos. Y si tras los 2 intentos el modelo insiste, "corregir" borra solo la frase, lo que a mitad de oración puede dejar un texto raro. Es un caso límite, no algo esperable.
+
+## 7. Una decisión que tomé por vos, y cómo revertirla
+
+**P1, la pregunta puente.** Pediste reemplazar `Debe aportar algo útil al siguiente paso.` por `La respuesta debe cambiar una decisión real del siguiente paso. Si no cambia qué hay que buscar, recomendar o ejecutar, no preguntes.`, y dijiste "una regla equivalente a". **No usé la segunda oración, y dejé este párrafo para explicar por qué.**
+
+- `PREGUNTAS` **ya dice** `Si no cambia nada importante, no preguntes.` en su primera línea. La segunda oración sería una repetición.
+- En el mismo bloque, la definición de la puente va seguida de `guardar contexto, transferir inmediatamente`. Y dejaste congelado que **la puente no es opcional por defecto**. Con `no preguntes` justo en la definición de la puente, el modelo puede saltearla y transferir sin preguntar.
+- Eso pega con **A33**. Conversión no escribe hasta que el cliente manda otro mensaje. Si Recepción transfiere sin pregunta, el cliente no tiene nada a qué responder y el lead queda parado.
+
+Por eso P1 conserva la parte que cambia el criterio (`cambiar una decisión real … qué hay que buscar, recomendar o ejecutar`) y no la que autoriza omitir. Si preferís tu redacción literal, es un cambio de una línea y lo hago, pero con este riesgo a la vista.
+
+```
+La respuesta debe cambiar una decisión real del siguiente paso. Si no cambia qué hay que buscar, recomendar o ejecutar, no preguntes.
+```
+
+## 8. Lo que este diff sigue sin resolver
+
+- **V1 es un solo caso probado.** Sale de un único test. La regla es concreta y usa el fallo real, pero no hay forma de saber sin probarla si el modelo la respeta. Es lo primero que hay que mirar tras aplicar.
+- **C1 y las promos.** La regla dice que el contenido promocional de `ANUNCIOS` no se abre, pero el comprador directo necesita las opciones de la promo para que se le pregunte "una o dos". Lo cubre la salvedad `indispensables para ejecutar lo que pidió` y la frase de `CLIENTE_DIRECTO` sobre "opción de la promo del anuncio". Es el punto donde puede haber fricción entre las dos reglas.
+- **El efecto sigue siendo una apuesta.** Ahora el núcleo pesa 40,5 % y las tres reglas que fallaron tienen texto propio, pero que el modelo las priorice depende de él.
 
 ## 9. Si se autoriza, cómo se aplica
 
 1. Capturar el estado vivo y confirmar que sigue la v49.1 (`c753bc8a`) con sus 6 guardrails.
-2. Editar el guardrail `No sonar a bot ni prometer de mas`, sumar las 2 frases y guardar.
-3. Vaciar el editor con Ctrl+A y **Backspace** (Delete deja vivo el chip de `transfer_order`), pegar `recepcionista-v49-2-simulado.txt` y comprobar en el formulario largo y hash antes de guardar.
+2. Editar el guardrail `No sonar a bot ni prometer de mas`, sumar las 8 frases y guardar.
+3. Vaciar el editor con Ctrl+A y **Backspace**, pegar `recepcionista-v49-2-simulado.txt` y comprobar en el formulario largo y hash antes de guardar. Si el formulario no toma el texto, abrir "Ver alterações".
 4. "Guardar cambios", recargar y comparar **byte a byte**. Verificar AÇÕES = 3, las dos `save_variable` y el binding del `transfer_order` (Pipeline 23843, Coluna 111195).
 5. Verificar que los otros 5 guardrails, gpt-5.1, FUNCTION_CALL y delay 28 no cambiaron, comparando por contenido y no por id.
 6. No correr tests.

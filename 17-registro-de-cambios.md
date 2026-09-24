@@ -10,6 +10,16 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-24 (continuación 3) — v49.2 revisión 2 (nada aplicado)
+- **Pedido**: ChatGPT y el usuario no aprueban la v49.2 tal cual (efecto de solo 481 caracteres, núcleo de 36,8 % a 38,0 %) y piden una revisión. Las 6 frases sin cobertura pasan al guardrail (opción C), se acepta D6, se **rechaza D2**, y se suman tres correcciones semánticas con evidencia. No aplicar hasta autorizar.
+- **Base**: la v49.1 viva, releída a las 19:01 UTC, idéntica byte a byte (15.349 / `c753bc8a`), con los 6 guardrails intactos.
+- **Resultado** [[40-propuesta-v49-2-recepcionista-2026-09-24]] revisión 2. 8 cambios, 15.587 caracteres (+238 sobre la v49.1), hash `bb2b2be3`, 27 bloques sin altas ni bajas, 3 acciones y `transfer_order` idénticos. Núcleo comercial de 36,9 % a 40,5 %. Guardrail de lenguaje de bot de 28 a 36 frases, los otros 5 idénticos.
+- **Análisis de falsos positivos** de las 8 frases nuevas contra 1.785 mensajes de texto reales de las 82 conversaciones: 0 coincidencias, con controles que sí detectan (`gracias` 106, `promo` 69). Riesgos teóricos que quedan `anote` dentro de `manotear`, `te recuerdo` bloqueando un recordatorio legítimo y `mientras tanto` como locución normal.
+- **Desviación deliberada, P1**: no se incluyó "no preguntes" en la definición de la pregunta puente. `PREGUNTAS` ya lo dice arriba, y ponerlo en la definición puede volver opcional la puente, lo que contradice la decisión congelada de que no es opcional por defecto y agrava A33 (Conversión no escribe hasta que el cliente responde). Se dejó la redacción literal lista y documentada.
+- **Riesgos declarados**: V1 se apoya en un solo test y hay que mirarla primero tras aplicar. C1 puede rozar con la pregunta de cantidad de la promo, que necesita mostrar las opciones.
+- **No se tocó el CRM.**
+- **Pendiente**: A40.
+
 ### 2026-09-24 (continuación 2) — Propuesta v49.2 + 2 frases de guardrail (nada aplicado)
 - **Pedido**: ChatGPT y el usuario proponen separar responsabilidades. Los guardrails para forma inequívoca (fillers, frases de bot, promesas, saludo repetido, placeholders) y el prompt para criterio comercial. Pidió una v49.2 que **no agregue reglas**, solo saque las duplicaciones mecánicas, más dos frases nuevas en el guardrail de lenguaje de bot (`te hago una sola consulta`, `para avanzar ya`), y que **no se aplique** hasta autorizar.
 - **Base**: la v49.1 viva, leída del servidor a las 18:32 UTC, idéntica byte a byte al simulado (15.349 / `c753bc8a`). El agente se había guardado varias veces desde mi aplicación (ids de guardrails 316-321) sin alterar contenido.

@@ -5,10 +5,10 @@
       "hash": "c753bc8a"
     },
     "final": {
-      "chars": 14868,
-      "hash": "7d3bd52b",
-      "delta": -481,
-      "deltaPct": -3.1
+      "chars": 15587,
+      "hash": "bb2b2be3",
+      "delta": 238,
+      "deltaPct": 1.6
     },
     "bloques": {
       "antes": 27,
@@ -20,8 +20,26 @@
       {
         "bloque": "IDENTIDAD",
         "antes": 1026,
-        "despues": 898,
-        "delta": -128
+        "despues": 962,
+        "delta": -64
+      },
+      {
+        "bloque": "PREGUNTAS",
+        "antes": 1055,
+        "despues": 1128,
+        "delta": 73
+      },
+      {
+        "bloque": "CLIENTE_DIRECTO",
+        "antes": 451,
+        "despues": 732,
+        "delta": 281
+      },
+      {
+        "bloque": "VARIABLES",
+        "antes": 855,
+        "despues": 1156,
+        "delta": 301
       },
       {
         "bloque": "MEMORIA",
@@ -36,6 +54,24 @@
         "delta": -272
       }
     ],
+    "peso": {
+      "nucleoAntes": {
+        "chars": 5660,
+        "pct": 36.9
+      },
+      "nucleoDespues": {
+        "chars": 6315,
+        "pct": 40.5
+      },
+      "mecanicosAntes": {
+        "chars": 2035,
+        "pct": 13.3
+      },
+      "mecanicosDespues": {
+        "chars": 1618,
+        "pct": 10.4
+      }
+    },
     "acciones": [
       "save_variable(\"interes_inicial\",true,\"TEXT\",\"\")",
       "save_variable(\"anuncio_origen\",true,\"TEXT\",\"\")",
@@ -46,199 +82,176 @@
     "colaIdentica": true,
     "guardrails": {
       "total": 6,
-      "identicosSalvoUno": 5,
+      "identicos": 5,
       "modificado": "No sonar a bot ni prometer de mas",
       "frasesAntes": 28,
-      "frasesDespues": 30,
+      "frasesDespues": 36,
       "agregadas": [
         "te hago una sola consulta",
-        "para avanzar ya"
+        "para avanzar ya",
+        "quedó claro",
+        "anoté",
+        "te recuerdo",
+        "mientras tanto",
+        "te dejo una pregunta cortita",
+        "afinemos"
       ]
     },
-    "coberturaSinGuardrail": [
-      "quedó claro",
-      "anoté",
-      "te recuerdo",
-      "Mientras tanto",
-      "Te dejo una pregunta cortita",
-      "Afinemos"
-    ]
+    "coberturaSinGuardrail": []
   },
   "cambios": [
     {
       "id": "D1",
+      "tipo": "delegado a guardrail",
       "bloque": "IDENTIDAD",
       "antes": "Nunca hagas parecer que otra persona continúa. NO digas: \"te pasan\" \"te ayudan\" \"te confirman\" \"otro asesor\" \"el equipo\" \"un compañero\" Usá:",
       "despues": "Nunca hagas parecer que otra persona continúa ni menciones \"el equipo\". Usá:",
-      "delegado": "te pasan · te ayudan · te confirman · otro asesor · un compañero"
+      "nota": "te pasan, te ayudan, te confirman, otro asesor, un compañero. Se conserva \"el equipo\" porque no se puede bloquear como frase sin falsos positivos."
     },
     {
       "id": "D2",
-      "bloque": "IDENTIDAD",
-      "antes": "\"trabajamos con creatina\" \"tengo\" \"tengo sí\" \"tenemos sí\" \"la manejamos\" \"manejamos ese producto\" ",
-      "despues": "\"trabajamos con creatina\" \"tengo\" ",
-      "delegado": "(no delegado: son variantes del mismo error de voz; se compactan a las dos formas que el prompt debe distinguir)"
-    },
-    {
-      "id": "D3",
+      "tipo": "delegado a guardrail",
       "bloque": "MEMORIA",
       "antes": "Usá contexto silenciosamente. NO digas: \"quedó claro\" \"ya veo que querés\" \"entendí que\" \"anoté\" \"te recuerdo\" No repitas",
       "despues": "Usá el contexto en silencio. No repitas",
-      "delegado": "quedó claro · ya veo que · entendí que"
+      "nota": "quedó claro, ya veo que, entendí que, anoté, te recuerdo. La regla conceptual \"usá el contexto en silencio\" permanece."
     },
     {
-      "id": "D4",
+      "id": "D3",
+      "tipo": "delegado a guardrail",
       "bloque": "ESTILO",
       "antes": "No uses filler como: \"Quedó claro que\" \"Ya veo que\" \"Mientras tanto\" \"Te dejo una pregunta cortita\" \"Te pregunto algo rápido\" \"Para afinar\" \"Así lo afinamos\" \"Afinemos\" ",
       "despues": "",
-      "delegado": "Quedó claro que · Ya veo que · Te pregunto algo rápido · Para afinar · Así lo afinamos"
+      "nota": "Las 8 frases de la oración quedan cubiertas por el guardrail de lenguaje de bot. 5 ya estaban (Quedó claro que, Ya veo que, Te pregunto algo rápido, Para afinar, Así lo afinamos) y 3 se suman (Mientras tanto, Te dejo una pregunta cortita, Afinemos)."
     },
     {
-      "id": "D5",
+      "id": "D4",
+      "tipo": "delegado a guardrail",
       "bloque": "ESTILO",
       "antes": "No valides automáticamente con: Perfecto Genial Buenísimo Excelente ",
       "despues": "",
-      "delegado": "Perfecto · Genial · Buenísimo · Excelente (guardrail Fillers de apertura)"
+      "nota": "Lo cubre el guardrail Fillers de apertura, que solo actúa al inicio del mensaje (decisión del usuario, no se amplía)."
     },
     {
-      "id": "D6",
+      "id": "D5",
+      "tipo": "duplicado",
       "bloque": "ESTILO",
       "antes": "No repitas el mensaje del cliente. No expliques limitaciones internas.",
       "despues": "No expliques limitaciones internas.",
-      "delegado": "(duplicado exacto: la regla de no repetir al cliente sigue en MEMORIA)"
+      "nota": "Duplicado exacto de la frase que sigue en MEMORIA."
+    },
+    {
+      "id": "V1",
+      "tipo": "corrección semántica",
+      "bloque": "VARIABLES",
+      "antes": "No guardes opciones que todavía no eligió. ",
+      "despues": "No guardes opciones que todavía no eligió. Si dice que quiere comprar un producto y llega desde un anuncio con promo, guardá solamente esa intención sobre el producto, sin \"con promo del anuncio\" ni el precio, la cantidad promocional o las condiciones del anuncio, hasta que el cliente las mencione, elija o confirme. Eso va en anuncio_origen. ",
+      "nota": "Evidencia: en el test del Hipercalórico guardó \"Quiere comprar Hipercalórico Vitamin Horse 3KG con promo del anuncio de Instagram\" con la regla abstracta ya escrita. Es el único contraejemplo, el del fallo real."
+    },
+    {
+      "id": "P1",
+      "tipo": "corrección semántica",
+      "bloque": "PREGUNTAS",
+      "antes": "Debe aportar algo útil al siguiente paso.",
+      "despues": "La pregunta debe cambiar una decisión real del siguiente paso, es decir qué hay que buscar, recomendar o ejecutar.",
+      "nota": "Reemplaza \"algo útil\", demasiado abierto. Redactada para NO hacer la puente opcional (ver la sección de decisiones)."
+    },
+    {
+      "id": "C1",
+      "tipo": "corrección semántica",
+      "bloque": "CLIENTE_DIRECTO",
+      "antes": "Resolvé solamente lo indispensable. ",
+      "despues": "Resolvé solamente lo indispensable. Cuando ya quiere comprar un producto suficientemente identificado, este bloque tiene prioridad sobre MARCAS, LOGISTICA, OBJETIVOS_Y_KITS y el contenido promocional de ANUNCIOS. No abras esos temas salvo que el cliente los pregunte o sean indispensables para ejecutar lo que pidió. ",
+      "nota": "Evidencia: el mismo test abrió \"Trabajamos con Vitamin Horse\" y \"Despachamos por DAC\" sin que nadie lo pidiera. No prohíbe esas respuestas, solo fija su precedencia."
     }
   ],
   "cobertura": [
     {
       "frase": "te pasan",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "te ayudan",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "te confirman",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "otro asesor",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "un compañero",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "quedó claro",
-      "bot": "no",
-      "fillers": "no",
-      "cubierta": false
+      "cubierta": true
     },
     {
       "frase": "ya veo que querés",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "entendí que",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "anoté",
-      "bot": "no",
-      "fillers": "no",
-      "cubierta": false
+      "cubierta": true
     },
     {
       "frase": "te recuerdo",
-      "bot": "no",
-      "fillers": "no",
-      "cubierta": false
+      "cubierta": true
     },
     {
       "frase": "Quedó claro que",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "Ya veo que",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "Mientras tanto",
-      "bot": "no",
-      "fillers": "no",
-      "cubierta": false
+      "cubierta": true
     },
     {
       "frase": "Te dejo una pregunta cortita",
-      "bot": "no",
-      "fillers": "no",
-      "cubierta": false
+      "cubierta": true
     },
     {
       "frase": "Te pregunto algo rápido",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "Para afinar",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "Así lo afinamos",
-      "bot": "sí",
-      "fillers": "no",
       "cubierta": true
     },
     {
       "frase": "Afinemos",
-      "bot": "no",
-      "fillers": "no",
-      "cubierta": false
+      "cubierta": true
     },
     {
       "frase": "Perfecto",
-      "bot": "no",
-      "fillers": "sí",
       "cubierta": true
     },
     {
       "frase": "Genial",
-      "bot": "no",
-      "fillers": "sí",
       "cubierta": true
     },
     {
       "frase": "Buenísimo",
-      "bot": "no",
-      "fillers": "sí",
       "cubierta": true
     },
     {
       "frase": "Excelente",
-      "bot": "no",
-      "fillers": "sí",
       "cubierta": true
     }
   ]
