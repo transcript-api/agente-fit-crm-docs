@@ -1,0 +1,205 @@
+{
+  "prompt": {
+    "antes": {
+      "chars": 21656,
+      "sha256": "27583800fce2f232c84f09cc4995fe0daecec0af5eea61db5429e66386e9748b"
+    },
+    "despues": {
+      "chars": 24427,
+      "sha256": "1ed7fe205001b047fefb5690ddee50ea7fb9d3925fa9d01daad0bbd8fe341c05",
+      "delta": 2771,
+      "pct": 12.8
+    }
+  },
+  "analizador": {
+    "antes": 3393,
+    "despues": 4012
+  },
+  "bloques": {
+    "antes": 29,
+    "despues": 28,
+    "lista": [
+      "REGLAS_CRITICAS",
+      "IDENTIDAD",
+      "OBJETIVO",
+      "ORDEN_DE_DECISION",
+      "VERDAD_COMERCIAL",
+      "ANUNCIOS",
+      "INTEGRIDAD_DE_PRECIOS",
+      "BIENVENIDA",
+      "RESPONDER_PRIMERO",
+      "PREGUNTAS",
+      "IDENTIFICACION",
+      "CLIENTE_DIRECTO",
+      "DISPONIBILIDAD",
+      "OBJETIVOS_Y_KITS",
+      "MARCAS",
+      "PAGOS",
+      "MAYORISTA",
+      "COMPRAS_ANTERIORES",
+      "PRODUCTO_AMBIGUO",
+      "RESPUESTAS_AMBIGUAS",
+      "SEGURIDAD",
+      "LOGISTICA",
+      "URGENCIA",
+      "VARIABLES",
+      "TRANSFERENCIA",
+      "MEMORIA",
+      "ESTILO",
+      "CONTROL_FINAL"
+    ]
+  },
+  "saltosDeLinea": 1073,
+  "aperturas": 28,
+  "cierres": 28,
+  "referenciasObsoletas": 0,
+  "guardrail": {
+    "frasesAntes": 31,
+    "frasesDespues": 34,
+    "nuevas": [
+      "venis del anuncio",
+      "vi que queres",
+      "veo que estas buscando"
+    ]
+  },
+  "cambios": [
+    {
+      "id": "X1",
+      "categoria": "ELIMINADO (exportado a la suite)",
+      "bloque": "PRUEBAS_CRITICAS",
+      "delta": -1103
+    },
+    {
+      "id": "R1",
+      "categoria": "REFACTORIZADO (duplicación)",
+      "bloque": "REGLAS_CRITICAS",
+      "delta": -74
+    },
+    {
+      "id": "R2",
+      "categoria": "CONSERVADO (reforzado)",
+      "bloque": "INTEGRIDAD_DE_PRECIOS",
+      "delta": 68
+    },
+    {
+      "id": "R3",
+      "categoria": "CONSERVADO (reforzado)",
+      "bloque": "INTEGRIDAD_DE_PRECIOS",
+      "delta": 18
+    },
+    {
+      "id": "O1",
+      "categoria": "REFACTORIZADO",
+      "bloque": "ORDEN_DE_DECISION",
+      "delta": 1037
+    },
+    {
+      "id": "N1",
+      "categoria": "AGREGADO DEL HANDOFF",
+      "bloque": "ANUNCIOS",
+      "delta": 355
+    },
+    {
+      "id": "M1",
+      "categoria": "REFACTORIZADO (NO_REPETIR sin bloque nuevo)",
+      "bloque": "MEMORIA",
+      "delta": 420
+    },
+    {
+      "id": "I1",
+      "categoria": "AGREGADO DEL HANDOFF",
+      "bloque": "IDENTIFICACION",
+      "delta": 695
+    },
+    {
+      "id": "B1",
+      "categoria": "REFACTORIZADO + AGREGADO DEL HANDOFF",
+      "bloque": "OBJETIVOS_Y_KITS",
+      "delta": 371
+    },
+    {
+      "id": "U1",
+      "categoria": "AGREGADO DEL HANDOFF",
+      "bloque": "LOGISTICA",
+      "delta": 378
+    },
+    {
+      "id": "K1",
+      "categoria": "REFACTORIZADO + AGREGADO DEL HANDOFF",
+      "bloque": "MARCAS",
+      "delta": 535
+    },
+    {
+      "id": "C1",
+      "categoria": "CONSERVADO + REFORZADO",
+      "bloque": "CLIENTE_DIRECTO",
+      "delta": 195
+    },
+    {
+      "id": "F1",
+      "categoria": "REFERENCIAS OBSOLETAS CORREGIDAS",
+      "bloque": "PREGUNTAS",
+      "delta": 10
+    },
+    {
+      "id": "F2",
+      "categoria": "REFERENCIAS OBSOLETAS CORREGIDAS",
+      "bloque": "MAYORISTA",
+      "delta": 11
+    },
+    {
+      "id": "F3",
+      "categoria": "REFERENCIAS OBSOLETAS CORREGIDAS",
+      "bloque": "COMPRAS_ANTERIORES",
+      "delta": 36
+    },
+    {
+      "id": "F4",
+      "categoria": "REFERENCIAS OBSOLETAS CORREGIDAS",
+      "bloque": "TRANSFERENCIA",
+      "delta": 20
+    },
+    {
+      "id": "D1",
+      "categoria": "REFACTORIZADO (duplicación)",
+      "bloque": "REGLAS_CRITICAS",
+      "delta": -51
+    },
+    {
+      "id": "D2",
+      "categoria": "ELIMINADO POR DUPLICACIÓN",
+      "bloque": "URGENCIA",
+      "delta": -62
+    },
+    {
+      "id": "D3",
+      "categoria": "ELIMINADO POR DUPLICACIÓN",
+      "bloque": "ESTILO",
+      "delta": -36
+    },
+    {
+      "id": "D4",
+      "categoria": "ELIMINADO POR DUPLICACIÓN",
+      "bloque": "BIENVENIDA",
+      "delta": -52
+    },
+    {
+      "id": "A1",
+      "categoria": "ANALIZADOR",
+      "bloque": "actionAnalyzerPrompt",
+      "delta": 300
+    },
+    {
+      "id": "A2",
+      "categoria": "ANALIZADOR",
+      "bloque": "actionAnalyzerPrompt",
+      "delta": 260
+    },
+    {
+      "id": "A3",
+      "categoria": "ANALIZADOR",
+      "bloque": "actionAnalyzerPrompt",
+      "delta": 59
+    }
+  ]
+}

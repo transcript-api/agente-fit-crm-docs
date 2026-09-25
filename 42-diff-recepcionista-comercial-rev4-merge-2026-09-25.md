@@ -1,5 +1,7 @@
 # 42 — Rev4 (FUSIÓN) del Recepcionista Comercial 10005: candidato y diff (2026-09-25) — NADA aplicado
 
+> ⚠️ **SUPERADO POR LA FUSIÓN QUIRÚRGICA (2026-09-25).** Este candidato "Rev4" era una fusión **aditiva** (pegaba bloques encima del vivo). El usuario pidió una fusión quirúrgica, con un único árbol de decisión, sin duplicar reglas y con los tests fuera del prompt. Ver `artefactos/recepcionista-comercial-release-candidato-2026-09-25.txt` y `artefactos/recepcionista-comercial-tests-regresion-2026-09-25.md`. Este archivo queda como antecedente y su matriz de casos dorados se reutilizó en la suite.
+>
 > ⛔ **No se escribió nada en RM System.** Este documento y el artefacto `artefactos/recepcionista-comercial-propuesta-rev4-merge-2026-09-25.txt` son un candidato para revisar. El prompt vivo del 10005 sigue siendo el de las 16:30 UTC del 2026-09-25.
 > **Por qué existe.** Al sincronizar el repo y auditar el 10005 apareció que el CRM vivo tenía una **cuarta versión del prompt**, posterior al último commit, que no coincide ni con la Rev3 de git ni con el prompt canónico del handoff maestro. Se decidió **fusionar** en vez de reemplazar (Opción A): el vivo pasa a ser la base y solo se incorpora lo que le falta del handoff. Ver [[41-propuesta-recepcionista-comercial-clasico-2026-09-24]] (Rev3, superada).
 
