@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-25 (noche) — Vendedoras cargadas en la fila `comercial`; cambio del agente preparado y bloqueado
+- **Hecho**: Lucia, Kalime y Valentina se sumaron a la fila `comercial` (Santiago ya estaba), desde Configuración > Usuarios > Editar > Filas. Verificado por API. La fila ya distribuía en modo Sequencial. Facundo no está en ninguna fila.
+- **Preparado, no aplicado**: prompt con `transfer_ticket("comercial")`, analizador con la sección TRANSFER_TICKET, e interruptor "Responder tickets con asignado" OFF. El clasificador de modo automático bloqueó la edición del analizador. Servidor de 10005 intacto (prompt `cbc2f5dc…`, analizador 4.012).
+- **Pendiente**: ver Q24.
+
 ### 2026-09-25 (noche) — Nombre Maxi unificado en 10005 y hallazgos de reparto por fila
 - **Pedido**: el usuario cambió a mano 6 menciones a "Maxi" en el prompt vivo (19:23 UTC) y aclaró que **Maxi es el nombre del agente**; las vendedoras son Lucia, Kalime, Valentina y Santiago; Facundo ya no trabaja acá; "User Santi" es el propio usuario.
 - **Hecho**: se unificaron las 8 menciones restantes de "Santiago" (persona) a "Maxi", conservando lo editado por el usuario. Aplicado y verificado: 24.371 caracteres, SHA256 `cbc2f5dc…` idéntico al artefacto, 3 acciones, `transfer_order` con ids 15871/75213.
