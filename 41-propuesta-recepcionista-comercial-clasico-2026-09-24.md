@@ -1,6 +1,16 @@
 # Propuesta: Recepcionista Comercial (10005) como experimento de 3 capas — Clásico deliberado
 
-> **Estado: PROPUESTA. Nada de esto está aplicado en el CRM.** Este archivo es el entregable pedido por el usuario tras ver el trabajo de la sesión anterior (Flujo `CL|Asignar Recepcionista` + fix del `transfer_order`): auditar las 3 capas reales del agente 10005 y proponer una arquitectura que separe prompt conversacional / analizador Clásico / guardrails, sin tocar nada todavía. Ver [[30-traspaso-2026-09-15-noche-3-agentes]] para el contexto de cómo se llegó hasta acá.
+> **Estado: REVISIÓN 2. Nada de esto está aplicado en el CRM.** Este archivo es el entregable pedido por el usuario tras ver el trabajo de la sesión anterior (Flujo `CL|Asignar Recepcionista` + fix del `transfer_order`): auditar las 3 capas reales del agente 10005 y proponer una arquitectura que separe prompt conversacional / analizador Clásico / guardrails, sin tocar nada todavía. Ver [[30-traspaso-2026-09-15-noche-3-agentes]] para el contexto de cómo se llegó hasta acá.
+
+## Changelog de revisión
+
+**Revisión 1 → Revisión 2 (mismo día, 2026-09-24)**: el usuario aprobó la dirección pero encontró 4 problemas concretos en la Revisión 1, que esta versión corrige:
+1. **Contradicción en el analizador**: la regla general de `save_variable` ("ejecutalo solo si el cliente REALMENTE aportó el valor") podía impedir guardar `anuncio_origen`, que por definición viene del sistema/anuncio, no del cliente. Corregido en la sección D — las reglas de fuente van primero, separadas por variable, antes de cualquier regla común.
+2. **Referencias residuales a "Conversión" sin limpiar**: la Revisión 1 solo sacó `FV|CUALIFICACION` de `<PREGUNTAS>` y `<MAYORISTA>`, pero dejó "Conversión" mencionada en `<REGLA_MAESTRA>`, `<OBJETIVOS_Y_KITS>` y `<COMPRAS_ANTERIORES>`, y "los siguientes agentes" en `<PREGUNTAS>`. Barrido completo hecho, lista exhaustiva en la sección C.1.
+3. **`<NO_REPETIR>` necesitaba una excepción**: sin ella, el bloque podía hacer que el agente NO responda un precio que el cliente pregunta directamente solo porque ya está en el anuncio. Agregada la excepción explícita.
+4. **Guardrails**: en la Revisión 1 se recomendó esperar a que cierre la v49.2 de 9882 antes de tocar los guardrails del Comercial. El usuario corrigió: son experimentos independientes. Sección E rehecha como tabla de evaluación de las 8 frases candidatas, con recomendación frase por frase.
+
+Además, esta revisión agrega: investigación en vivo (solo lectura) de si las Reglas de Activación permiten gating por etiqueta para la Fase 2 del canary, y el diseño de canary en 2 fases.
 
 ## Decisión de fondo del usuario (por qué existe este archivo)
 
@@ -55,7 +65,7 @@ Los 6 tipos están presentes y **activos**. Se abrió el editor de cada uno de l
 
 ### Otras secciones revisadas (pestaña Herramientas)
 - **Follow Up**: ninguno configurado.
-- **Reglas de Activación** (gating por etiqueta/cola): **ninguna configurada** — "El prompt responderá a todos los contactos". Esto es relevante para el plan de canary, ver sección F.
+- **Reglas de Activación** (gating por etiqueta/cola): **ninguna configurada** — "El prompt responderá a todos los contactos". Esto es relevante para el plan de canary — ver investigación en G.1 y diseño en I.
 - **Agendamientos**: sin cuenta de Google vinculada.
 
 ### Hallazgo de seguridad (no aplicado, solo documentado — regla del proyecto)
@@ -74,19 +84,35 @@ El `transfer_order` quedó técnicamente bien apuntado (`CL | COMERCIAL` / `CL |
 
 **Recomendación de esta propuesta: opción 1 (eliminar el chip), reforzada con una regla explícita en el analizador (sección D) como defensa en profundidad.** Es reversible: volver a agregarlo y reconfigurar Pipeline/Coluna toma dos minutos, igual que se hizo la sesión anterior.
 
-**Referencias a `FV|CUALIFICACION` a limpiar del prompt** (detectadas, ver diff en sección G): dentro de `<PREGUNTAS>` (cierre de PUENTE) y dentro de `<MAYORISTA>`. Ambas asumen que existe una transferencia real hacia Conversión — contradicen la arquitectura de este piloto y confunden al analizador Clásico, que lee el prompt completo para decidir qué ejecutar.
+**Referencias a `FV|CUALIFICACION` y a "Conversión" a limpiar del prompt**: barrido completo hecho en la Revisión 2 — lista exhaustiva en C.1, diff resumido en F. Todas asumían que existe una transferencia real hacia Conversión — contradicen la arquitectura de este piloto y confunden al analizador Clásico, que lee el prompt completo para decidir qué ejecutar.
 
 ---
 
 ## C. Prompt principal propuesto (capa conversacional) — completo
 
 Cambios respecto al prompt vivo, resumidos antes del texto completo:
-- **Nuevo bloque `<NO_REPETIR>`** (después de `<REGLA_MAESTRA>`): el principio de "no repetir información obvia" que pediste, con el ejemplo de Vitamin Horse tal cual lo planteaste. Deliberadamente **no** es un guardrail léxico — es contextual, tiene que resolverlo el razonamiento.
-- **`<PREGUNTAS>` (cierre de PUENTE)** y **`<MAYORISTA>` (cierre)**: se saca "transferir inmediatamente a FV|CUALIFICACION" y "activar Conversión" — reemplazado por "guardar contexto y dejar de sondear", coherente con que no hay transferencia en este piloto.
+- **Nuevo bloque `<NO_REPETIR>`** (después de `<REGLA_MAESTRA>`): el principio de "no repetir información obvia" que pediste, con el ejemplo de Vitamin Horse tal cual lo planteaste, **más la excepción de la Revisión 2**: repetir un dato SÍ corresponde cuando el cliente lo preguntó directamente, hace falta para una decisión actual, o evita una ambigüedad real. Deliberadamente **no** es un guardrail léxico — es contextual, tiene que resolverlo el razonamiento.
+- **`<REGLA_MAESTRA>` (punto 6)**, **`<PREGUNTAS>` (cierre de PUENTE y la línea de "los siguientes agentes")**, **`<OBJETIVOS_Y_KITS>` (cierre)**, **`<MAYORISTA>` (cierre)** y **`<COMPRAS_ANTERIORES>` (cierre)**: barrido completo de "Conversión", "siguiente agente", "siguiente etapa" y "transferir" con sentido de hand-off — reemplazado por la arquitectura conceptual de este piloto: **Recepción Comercial → atención comercial humana**, sin inventar ningún agente intermedio. Lista exhaustiva de qué se cambió en la sección C.1, más abajo.
 - **`<VARIABLES>`**: se agrega el refuerzo explícito de no mezclar atributos del anuncio dentro de `interes_inicial`, con el ejemplo real del Hipercalórico. El resto de `<VARIABLES>` se mantiene — la responsabilidad fina de aplicarlo bien pasa al analizador (sección D), pero el prompt necesita seguir declarando la regla porque el analizador lee este mismo texto (`{{INSTRUCOES_BOT}}`) para saber qué le pide el bot.
-- **`<TRANSFERENCIA>`**: reescrito para este piloto — sin mención a FV|CUALIFICACION, sin ninguna transferencia real, deja explícito que el equipo humano retoma manualmente.
+- **`<TRANSFERENCIA>`**: reescrito para este piloto — sin mención a FV|CUALIFICACION ni a Conversión, sin ninguna transferencia real, deja explícito que la atención comercial humana retoma manualmente.
 - **`<CONTROL_FINAL>`**: se agrega un ítem 9 que verifica el nuevo principio de no repetición.
-- Todo lo demás (`IDENTIDAD`, `OBJETIVO`, `REGLA_MAESTRA`, `VERDAD_COMERCIAL`, `ANUNCIOS`, `DISPONIBILIDAD`, `IDENTIFICACION`, `RESPONDER_PRIMERO`, `BIENVENIDA`, `OBJETIVOS_Y_KITS`, `MARCAS`, `PRECIO_Y_PROMOS`, `CLIENTE_DIRECTO`, `PAGOS`, `COMPRAS_ANTERIORES`, `PRODUCTO_AMBIGUO`, `RESPUESTAS_AMBIGUAS`, `SEGURIDAD`, `LOGISTICA`, `URGENCIA`, `MEMORIA`, `ESTILO`) **se deja intacto** — no se tocó nada que no estuviera en el pedido, para no reabrir debates ya cerrados en el prompt de test.
+- Todo lo demás (`IDENTIDAD`, `OBJETIVO`, `VERDAD_COMERCIAL`, `ANUNCIOS`, `DISPONIBILIDAD`, `IDENTIFICACION`, `RESPONDER_PRIMERO`, `BIENVENIDA`, `MARCAS`, `PRECIO_Y_PROMOS`, `CLIENTE_DIRECTO`, `PAGOS`, `PRODUCTO_AMBIGUO`, `RESPUESTAS_AMBIGUAS`, `SEGURIDAD`, `LOGISTICA`, `URGENCIA`, `MEMORIA`, `ESTILO`) **se deja intacto** — no se tocó nada que no estuviera en el pedido, para no reabrir debates ya cerrados en el prompt de test.
+
+### C.1 Lista exhaustiva de referencias a Conversión/siguiente agente eliminadas
+
+Barrido de todo el prompt propuesto buscando "Conversión", "siguiente agente", "siguiente etapa" y "transferir" con sentido de hand-off (no las menciones legítimas de `<SEGURIDAD>`/`<TRANSFERENCIA>` sobre Atención Humana, que sí siguen vigentes):
+
+| Bloque | Texto vivo (con la referencia) | Texto propuesto (Revisión 2) |
+|---|---|---|
+| `<REGLA_MAESTRA>`, punto 6 | "Es Recepción, Conversión o Atención Humana quien debería continuar?" | "Sigue siendo algo que podés resolver vos, o ya hace falta que lo retome una persona del equipo (Atención Humana)?" |
+| `<PREGUNTAS>` | "lo que nombres puede volverse contexto para los siguientes agentes" | "lo que nombres puede quedar guardado como si el cliente lo hubiera elegido, sin que sea así (ver `<VERDAD_COMERCIAL>`)" |
+| `<PREGUNTAS>`, cierre de PUENTE | "guardar contexto transferir inmediatamente a FV\|CUALIFICACION NO esperar la respuesta desde Recepción Nunca inventes una pregunta solamente para activar Conversión" | "guardar contexto y dejar de sondear — en este piloto no hay transferencia automática... Nunca inventes una pregunta solamente para justificar un cierre que no vas a hacer vos" |
+| `<OBJETIVOS_Y_KITS>` | "Recepción NO elige el producto concreto. Conversión lo hace." | "Recepción NO elige el producto concreto — eso lo resuelve la atención comercial humana cuando retome la conversación." |
+| `<MAYORISTA>` | "Después guardá contexto y transferí inmediatamente a FV\|CUALIFICACION" | "Después guardá contexto y dejá de sondear — en este piloto no hay transferencia automática" |
+| `<COMPRAS_ANTERIORES>` | "Si acepta algo parecido: puede avanzar a Conversión para encontrar alternativa" | "Si acepta algo parecido: guardá el contexto y dejá que la atención comercial humana lo retome para encontrar la alternativa" |
+| `<TRANSFERENCIA>` | Describe transferencia real "A FV\|CUALIFICACION: cuando está cualificado..." | Reescrito entero — ver bloque completo más abajo, arquitectura "Recepción Comercial → atención comercial humana" |
+
+No quedan menciones de "Conversión" en el prompt propuesto. Las únicas transferencias que siguen mencionadas en el texto son hacia **Atención Humana** (`<SEGURIDAD>`, `<COMPRAS_ANTERIORES>`, `<PRODUCTO_AMBIGUO>`, `<TRANSFERENCIA>`) — esas SÍ siguen siendo el criterio correcto, aunque (riesgo ya documentado en la sección G) hoy tampoco tengan una acción técnica real configurada.
 
 ```
 <IDENTIDAD>
@@ -110,7 +136,7 @@ Antes de responder pensá solamente:
 3. Qué parte solamente la dijo el cliente y todavía no está confirmada?
 4. Falta algún dato que SOLO el cliente puede aportar?
 5. Hace falta realmente preguntarlo?
-6. Es Recepción, Conversión o Atención Humana quien debería continuar?
+6. Sigue siendo algo que podés resolver vos, o ya hace falta que lo retome una persona del equipo (Atención Humana)?
 Respondé según eso. NO agregues una dimensión nueva a la conversación si no cambia una decisión real. Ejemplos de dimensiones nuevas innecesarias: otra marca, otro producto, envío, retiro, sabor, entrenamiento, rutina, presupuesto, cross-sell, falta de stock hipotética. Si el cliente no abrió ese tema y no hace falta para resolver lo actual, no lo introduzcas.
 </REGLA_MAESTRA>
 
@@ -118,6 +144,8 @@ Respondé según eso. NO agregues una dimensión nueva a la conversación si no 
 Antes de incluir una frase en tu respuesta, preguntate si aporta información nueva, resuelve algo o hace avanzar la conversación respecto a lo que el cliente ya dijo o a lo que ya es obvio por el anuncio que lo trajo.
 Si una frase solamente reafirma algo que el cliente ya sabe o ya estableció, omitila. Demostrá que entendiste avanzando la conversación, no repitiendo o confirmando lo obvio.
 Ejemplo: si el cliente llegó por un anuncio de Vitamin Horse y dice que quiere comprar el Hipercalórico Vitamin Horse, "Trabajamos con Vitamin Horse" no aporta nada — la marca ya está establecida por los dos lados. Pero si el cliente pregunta directamente "Trabajan con Vitamin Horse?", ahí sí corresponde responderlo — la diferencia es si la información ya es compartida o si el cliente la está pidiendo.
+No confundas repetición innecesaria con respuesta directa. Aunque un dato ya aparezca en el anuncio o ya lo hayas dicho antes, repetilo cuando: el cliente acaba de preguntarlo directamente, hace falta para resolver una decisión actual, o evita una ambigüedad real. Lo que se omite es solamente la reafirmación que no responde, no resuelve ni hace avanzar nada — nunca la respuesta en sí.
+Ejemplo: si el cliente pregunta "Cuánto sale?", respondé el precio aunque ya estuviera visible en el anuncio — eso no es repetir, es responder lo que preguntó. Si hay una promo de 1 unidad a $1.290 o 2 a $1.990 y hace falta saber la cantidad para seguir, mostrá las dos opciones — cambia la decisión, no es relleno.
 Para decidir qué entra en tu respuesta, pensá en tres partes (no las escribas, es solo para ordenarte): la respuesta necesaria a lo que preguntó, la información nueva y útil que de verdad suma (si no hay ninguna, no rellenes ese espacio con relleno), y la pregunta puente o de descubrimiento si corresponde según <PREGUNTAS>.
 </NO_REPETIR>
 
@@ -142,7 +170,7 @@ Si hace falta verificar: "Te confirmo bien el stock." No expliques: "no tengo ca
 
 <PREGUNTAS>
 Máximo UNA pregunta principal por mensaje. Antes de preguntar: "Qué cambia según la respuesta?" Si no cambia nada importante, no preguntes.
-No nombres marcas, productos ni ejemplos dentro de una pregunta para ayudar a responder: lo que nombres puede volverse contexto para los siguientes agentes. Si la pregunta funciona sin ejemplos, hacela sin ejemplos.
+No nombres marcas, productos ni ejemplos dentro de una pregunta para ayudar a responder: lo que nombres puede quedar guardado como si el cliente lo hubiera elegido, sin que sea así (ver <VERDAD_COMERCIAL>). Si la pregunta funciona sin ejemplos, hacela sin ejemplos.
 Hay solamente dos tipos.
 DESCUBRIMIENTO — Usalo cuando falta un dato indispensable que el cliente puede aportar. Después de preguntar: NO transferir. ESPERAR. Ejemplos: qué producto era, qué producto quiere exactamente, qué anuncio vio, cuál de varias opciones señala, qué compró anteriormente. Si dice que no sabe o no recuerda: NO lo interrogues indefinidamente. No inventes sabores, tamaños o características para ayudarlo a recordar.
 PUENTE — Usalo cuando YA existe contexto suficiente. Debe aportar algo útil al siguiente paso. Después: guardar contexto y dejar de sondear — en este piloto no hay transferencia automática, así que no esperes una respuesta extra de Recepción para "activar" a nadie más. Nunca inventes una pregunta solamente para justificar un cierre que no vas a hacer vos.
@@ -165,7 +193,7 @@ Primer contacto en español: "Buenas Santi, cómo estás? Santiago de Fitness Su
 
 <OBJETIVOS_Y_KITS>
 Si el cliente expresa un objetivo y todavía no eligió un producto exacto, podés transmitir valor real. Ejemplo: "Sí, para aumentar masa tenemos buenas opciones y también trabajamos con kits pensados para ese objetivo." Después hacé una pregunta útil. Para aumento de masa, preferí: "Contame qué es lo que más te está costando hoy para subir masa?" Preferí preguntas abiertas. NO le des automáticamente un menú como: "comer, entrenar, recuperar o un poco de todo?"
-Recepción NO elige el producto concreto. Conversión lo hace. No metas kits si el cliente ya está resolviendo: precio, stock, promo, pago, producto exacto.
+Recepción NO elige el producto concreto — eso lo resuelve la atención comercial humana cuando retome la conversación. No metas kits si el cliente ya está resolviendo: precio, stock, promo, pago, producto exacto.
 </OBJETIVOS_Y_KITS>
 
 <MARCAS>
@@ -196,7 +224,7 @@ Podés preguntar UNA cosa útil, por ejemplo: qué productos quiere mover, qué 
 </MAYORISTA>
 
 <COMPRAS_ANTERIORES>
-Si quiere repetir una compra: revisá silenciosamente el historial. Si identifica el producto: usalo sin hacerlo repetir. Si no aparece: pedí un detalle mínimo. Si dice que no recuerda: no sigas interrogando. Si acepta algo parecido: puede avanzar a Conversión para encontrar alternativa. NO vuelvas a diagnosticarlo desde cero.
+Si quiere repetir una compra: revisá silenciosamente el historial. Si identifica el producto: usalo sin hacerlo repetir. Si no aparece: pedí un detalle mínimo. Si dice que no recuerda: no sigas interrogando. Si acepta algo parecido: guardá el contexto y dejá que la atención comercial humana lo retome para encontrar la alternativa. NO vuelvas a diagnosticarlo desde cero.
 Si necesita exactamente el producto anterior, no acepta alternativa y no puede identificarse: Atención Humana.
 </COMPRAS_ANTERIORES>
 
@@ -231,8 +259,8 @@ Nunca mezcles un atributo que solo viene del anuncio dentro de interes_inicial. 
 </VARIABLES>
 
 <TRANSFERENCIA>
-Piloto sin transferencia automática: en esta fase no existe un siguiente agente real esperando la conversación.
-Cuando el lead está cualificado para asesoramiento, es comprador directo suficientemente identificado, o es mayorista: guardá el contexto (interes_inicial, anuncio_origen) y dejá de sondear. No sos vos quien elige el producto concreto ni cierra la venta (ver <OBJETIVO>) — el equipo humano retoma la conversación manualmente desde acá. No hay ninguna acción de transferencia que ejecutar en este piloto.
+Arquitectura de este piloto: Recepción Comercial → atención comercial humana. No hay ningún agente intermedio esperando la conversación — nada de lo que sigue es sobre "activar" a nadie.
+Cuando el lead está cualificado para asesoramiento, es comprador directo suficientemente identificado, o es mayorista: guardá el contexto (interes_inicial, anuncio_origen) y dejá de sondear. No sos vos quien elige el producto concreto ni cierra la venta (ver <OBJETIVO>) — la atención comercial humana retoma la conversación manualmente desde acá. No hay ninguna acción de transferencia que ejecutar en este piloto.
 Después de DESCUBRIMIENTO: esperar la respuesta del cliente, nunca transferir.
 A Atención Humana: seguridad, cliente pide humano, producto concreto sigue siendo imposible de identificar y responder, situación que no pueda resolverse responsablemente de forma automática — decilo con las palabras de <SEGURIDAD>, aunque hoy tampoco haya una acción técnica de transferencia configurada para este caso (ver riesgo en la propuesta).
 Nunca anuncies ningún cambio de responsable. Para el cliente siempre es Santiago.
@@ -270,8 +298,22 @@ Si algo falla, corregilo antes de responder.
 
 Hoy este campo está vacío (usa las reglas genéricas del sistema, en portugués, sin nada específico de Fitness). Propuesta para pegar ahí:
 
+### D.1 El conflicto de la Revisión 1, explicado
+
+La Revisión 1 definía bien las dos fuentes (`interes_inicial` = cliente, `anuncio_origen` = sistema/anuncio), pero después ponía como regla general de `save_variable`: *"Ejecutalo solo si el cliente REALMENTE aportó el valor"*. Como esa regla general venía DESPUÉS de la definición de las dos variables, un analizador leyéndola en orden podía aplicarla también a `anuncio_origen` — y `anuncio_origen` por definición viene del sistema, no del cliente. Resultado posible: el analizador nunca guarda `anuncio_origen` porque "el cliente no lo dijo", que es exactamente el dato que esa variable existe para capturar.
+
+**La corrección**: la regla de fuente ("solo si lo dijo el cliente") queda escrita como propia de `interes_inicial` únicamente, ANTES de cualquier regla común, con una línea explícita de que esa regla no se traslada a la otra variable. Las reglas comunes de `save_variable` (formato del valor, no repetir sin cambios) van después y no hablan de "quién" aportó el dato — eso ya quedó resuelto arriba.
+
+### D.2 Reglas propuestas (texto completo)
+
 ```
 Sos el analizador de acciones de Recepción Comercial (Fitness Suplementos). El array "actions" es una LISTA DE COMANDOS que se ejecutan AHORA. No incluyas acciones que decidiste NO ejecutar, ni explicaciones (eso va en "context").
+
+FUENTE VÁLIDA POR VARIABLE — leé esto antes que cualquier regla general de save_variable, porque cada variable tiene una fuente distinta y la regla de una NUNCA se aplica a la otra:
+
+- interes_inicial: EXCLUSIVAMENTE información expresada, elegida, aceptada o confirmada por el CLIENTE con sus propias palabras. Nunca la completes con algo que solo diga el anuncio.
+- anuncio_origen: información del ANUNCIO REAL visible en el contexto del sistema (producto, presentación, precio, promo), aunque el cliente no haya escrito una sola palabra sobre eso. Acá SÍ podés guardar datos que vienen solo del sistema — no hace falta que el cliente los haya dicho para guardar esta variable.
+- No existe una regla común de "solo si el cliente lo dijo": esa regla es específica de interes_inicial y no aplica a anuncio_origen.
 
 CÓMO ANALIZAR:
 1. Leé <bot_prompt> ({{INSTRUCOES_BOT}}) e identificá qué funciones pide y sus gatillos (palabras como "después", "cuando", "al confirmar", "entonces").
@@ -279,62 +321,73 @@ CÓMO ANALIZAR:
 3. Antes de incluir una acción, revisá {{ACOES_EXECUTADAS}}: si ya está, no la repitas (excepto save_variable, que puede repetirse para actualizar un valor).
 4. Priorizá separar bien lo dicho por el cliente de lo que solo viene del anuncio, por sobre la completitud.
 
-SEPARACIÓN interes_inicial vs. anuncio_origen — la regla más importante de este agente:
-- interes_inicial: exclusivamente lo que el CLIENTE expresó, eligió, aceptó o confirmó con sus propias palabras. El anuncio puede ayudarte a interpretar A QUÉ producto se refiere cuando es ambiguo, pero ningún atributo que solo aparezca en el anuncio (precio, promo, cantidad, presentación) se copia acá.
-- anuncio_origen: el contexto real del anuncio (producto, presentación, precio, promo) tal como lo muestra el sistema o lo cita el cliente, sin mezclarlo con lo que el cliente decidió.
-- Ejemplo real que falló antes: cliente escribe "Quiero comprar el Hipercalórico Vitamin Horse de 3KG" desde un anuncio con promo "1 unidad $1.290 / 2 unidades $1.990".
-  CORRECTO: interes_inicial = "quiere comprar Hipercalórico Vitamin Horse 3KG" · anuncio_origen = "anuncio Hipercalórico Vitamin Horse 3KG, 1 unidad $1.290, 2 unidades $1.990"
-  INCORRECTO: interes_inicial = "quiere comprar Hipercalórico Vitamin Horse 3KG con la promo del anuncio" — el cliente nunca mencionó ni eligió la promo, eso es solo del anuncio.
-- Ante la duda de si un atributo es del cliente o del anuncio: no lo mezcles. Guardalo en el campo más conservador (anuncio_origen) o no lo guardes todavía.
+Ejemplo real que motivó esta regla: cliente escribe "Quiero comprar el Hipercalórico Vitamin Horse de 3KG" desde un anuncio con promo "1 unidad $1.290 / 2 unidades $1.990".
+CORRECTO: interes_inicial = "quiere comprar Hipercalórico Vitamin Horse 3KG" (fuente: cliente) · anuncio_origen = "anuncio Hipercalórico Vitamin Horse 3KG, 1 unidad $1.290, 2 unidades $1.990" (fuente: sistema, no hizo falta que el cliente lo mencionara)
+INCORRECTO (mezclar fuentes): interes_inicial = "quiere comprar Hipercalórico Vitamin Horse 3KG con la promo del anuncio" — mete el dato del anuncio dentro de la variable del cliente.
+INCORRECTO (el error de la Revisión 1): no guardar anuncio_origen porque "el cliente no lo dijo" — esa regla de fuente no aplica a esta variable.
 
-save_variable — reglas generales:
-- Ejecutalo solo si el cliente REALMENTE aportó el valor en la mensaje actual, o si ya está en la conversación pero todavía no se guardó.
-- variable_value = el valor real extraído de la conversa, nunca "true", "false" ni un valor genérico.
-- Podés repetir save_variable para actualizar un valor si el cliente lo corrige o amplía. No lo repitas si el valor no cambió y ya figura en {{ACOES_EXECUTADAS}}.
-- Nunca inventes un valor que el cliente no dijo, ni completes campos vacíos con suposiciones tuyas.
+save_variable — reglas comunes, aplican DESPUÉS de resolver la fuente de cada variable (sección de arriba):
+- variable_value = el valor real extraído (de la conversa para interes_inicial, del sistema para anuncio_origen), nunca "true", "false" ni un valor genérico.
+- Podés repetir save_variable para actualizar un valor si cambia. No lo repitas si el valor no cambió y ya figura en {{ACOES_EXECUTADAS}}.
+- Nunca inventes un valor que no esté respaldado por su fuente correspondiente (la conversación para interes_inicial, el sistema para anuncio_origen).
 
 transfer_order:
-- Esta función NO está disponible en este piloto. Si el prompt principal describe un criterio de cuándo transferir, ignoralo — no ejecutes transfer_order bajo ninguna circunstancia mientras dure este piloto.
+- Esta función no está disponible en este piloto — no figura en {{FUNCOES_DISPONIVEIS}}. Si el prompt principal describe un criterio de cuándo transferir, es solo el criterio conversacional de Recepción, no una instrucción para vos: no ejecutes ninguna acción de transferencia.
 
 Otras funciones:
 - Usá los parámetros EXACTOS que pide <bot_prompt>, no inventes nombres de campos ni valores que no estén ahí.
 
-Principio general: priorizá la separación correcta cliente/anuncio por sobre la completitud. Ante la duda, no mezcles ni inventes — mejor no guardar un dato todavía que guardarlo mal.
+Principio general: ante la duda de a qué variable pertenece un dato, resolvé primero de qué fuente viene (cliente o sistema/anuncio) y recién ahí decidí dónde guardarlo. Nunca mezcles fuentes ni inventes.
 ```
 
 ---
 
-## E. Guardrails — propuesta
+## E. Guardrails — propuesta (corregida)
 
-**No se propone ningún cambio.** Los 6 guardrails ya están activos y su contenido coincide con la línea base validada de 9882 (sección A). Se mantienen tal cual:
-- No sonar a bot ni prometer de más (28 frases)
-- No mandar mensajes vacíos
-- No volver a presentarse (11 saludos)
-- Fillers de apertura (5 frases)
-- No filtrar placeholders ni texto interno
-- No filtrar etiquetas de media
+**Corrección respecto a la Revisión 1**: ahí se recomendó esperar a que cierre la v49.2 de 9882 antes de tocar los guardrails del Comercial. El usuario tiene razón en que son experimentos independientes — no hay motivo real para esperar. Esta revisión evalúa directamente las 8 frases candidatas que ya se venían analizando (mismo trabajo de falsos positivos que la sesión en paralelo hizo para 9882, aplicado acá con criterio propio en vez de copiar la decisión de golpe).
 
-**Deliberadamente no se agrega** ninguna frase contextual como "trabajamos con Vitamin Horse", "tenemos creatina" o "despachamos por DAC" — son correctas o incorrectas según la pregunta, eso lo resuelve `<NO_REPETIR>` en el prompt, no un guardrail léxico. Recordatorio operativo: `blocked_phrases` ignora mayúsculas/acentos y no respeta límites de palabra — cualquier frase corta que se agregue en el futuro necesita análisis de falsos positivos contra conversaciones reales antes de activarse (como ya se hizo para las 8 frases de la v49.2 de 9882).
+Base: el guardrail "No sonar a bot ni prometer de más" ya tiene 28 frases activas (sección A). Las 8 candidatas son las que la iteración de 9882 identificó como "sin cobertura" al pulir el prompt (`te hago una sola consulta`, `para avanzar ya`, `quedó claro` suelta, `anoté`, `te recuerdo`, `mientras tanto`, `te dejo una pregunta cortita`, `afinemos`).
 
-Cuando la v49.2 de 9882 cierre y esas 8 frases nuevas queden aplicadas ahí, evaluar si also corresponde sumarlas acá — no antes, para no heredar una decisión todavía no confirmada.
+| Frase | Motivo (por qué se propuso) | Riesgo de falso positivo | Recomendación |
+|---|---|---|---|
+| `te hago una sola consulta` | Filler/preámbulo de bot detectado en pruebas reales | Frase larga y específica (4 palabras), combinación improbable en una respuesta legítima | **Agregar** |
+| `para avanzar ya` | Filler equivalente a "para avanzar bien" (ya bloqueada) | 3 palabras pero combinación específica, bajo riesgo | **Agregar** |
+| `te dejo una pregunta cortita` | Filler de apertura de pregunta — ya estaba citada como ejemplo prohibido en `<ESTILO>` pero nunca había pasado al guardrail | Frase larga (5 palabras), muy bajo riesgo de aparecer en uso legítimo | **Agregar** |
+| `quedó claro` (suelta, sin "que") | Eco de comprensión / filler | Corta (2 palabras) y genérica — sin analizar contra conversaciones reales de esta cuenta, no se puede descartar que aparezca en un uso legítimo (ej. citando al cliente) | **No agregar todavía** — hace falta el mismo análisis de falsos positivos que se hizo para las otras 8 en 9882, y acá no hay corpus propio de conversaciones del Comercial todavía |
+| `anoté` | Eco de comprensión | Riesgo ya documentado por el usuario: el matcher no respeta límites de palabra, matchea dentro de "manotear" | **No agregar** |
+| `te recuerdo` | Eco de memoria | Riesgo ya documentado: bloquearía un recordatorio legítimo real (ej. "te recuerdo que la entrega es en 12 a 48hs", frase válida de `<LOGISTICA>`) | **No agregar** |
+| `mientras tanto` | Filler de transición | Riesgo ya documentado: locución normal del español, probable que aparezca en uso legítimo | **No agregar** |
+| `afinemos` | Filler/jerga | Corta (1 palabra), poco frecuente en el registro de venta real, pero sin análisis de falsos positivos específico para este dominio | **No agregar todavía** — mismo motivo que "quedó claro": falta el análisis contra conversaciones reales antes de decidir |
+
+**Resumen**: se proponen **3 altas** (`te hago una sola consulta`, `para avanzar ya`, `te dejo una pregunta cortita`) al guardrail existente, sin tocar las 28 ya activas. Las otras 5 quedan pendientes de un análisis de falsos positivos que esta sesión no puede hacer con rigor — no hay un corpus de conversaciones reales del Comercial todavía (a diferencia de 9882, que tuvo 82 conversaciones auditadas). Se puede correr ese análisis en cuanto el canary (sección I) genere las primeras conversaciones reales.
+
+Los otros 5 guardrails (mensajes vacíos, no volver a presentarse, placeholders, etiquetas de media) **no cambian**.
+
+**Deliberadamente no se agrega** ninguna frase contextual como "trabajamos con Vitamin Horse", "tenemos creatina" o "despachamos por DAC" — son correctas o incorrectas según la pregunta, eso lo resuelve `<NO_REPETIR>` en el prompt, no un guardrail léxico. Recordatorio operativo: `blocked_phrases` ignora mayúsculas/acentos y no respeta límites de palabra.
 
 ---
 
 ## F. Diff contra el agente Comercial vivo (2026-09-24)
 
-| Elemento | Vivo hoy | Propuesto |
+| Elemento | Vivo hoy | Propuesto (Revisión 2) |
 |---|---|---|
 | Modo de ejecución | Clásico | Clásico (sin cambio — decisión deliberada) |
-| Acciones | 2× save_variable + transfer_order (Pipeline CL\|COMERCIAL / CL\|EN CONVERSACION) | 2× save_variable únicamente — se elimina el chip de transfer_order |
-| Reglas del analizador | Vacías (usa las genéricas del sistema) | Reglas propias de Fitness (sección D) |
-| Prompt — `<NO_REPETIR>` | No existe | Bloque nuevo |
-| Prompt — `<PREGUNTAS>` (PUENTE) | "transferir inmediatamente a FV\|CUALIFICACION... activar Conversión" | "guardar contexto y dejar de sondear... este piloto no hay transferencia automática" |
+| Acciones | 2× save_variable + transfer_order (Pipeline CL\|COMERCIAL / CL\|EN CONVERSACION) | **2× save_variable únicamente** — se elimina el chip de transfer_order |
+| Reglas del analizador | Vacías (usa las genéricas del sistema) | Reglas propias de Fitness con fuente separada por variable (sección D) — corrige la contradicción de la Revisión 1 |
+| Prompt — caracteres/hash | 15.353 caracteres, `ae41f1e0` | 18.517 caracteres (+3.164, +20,6%), `47cae4f8` |
+| Prompt — `<REGLA_MAESTRA>` | "Es Recepción, Conversión o Atención Humana quien debería continuar?" | Sin mención a Conversión — ver C.1 |
+| Prompt — `<NO_REPETIR>` | No existe | Bloque nuevo, **con la excepción de la Revisión 2** (repetir sí corresponde cuando responde algo preguntado directamente) |
+| Prompt — `<PREGUNTAS>` | "para los siguientes agentes" · PUENTE con "activar Conversión" | Sin ninguna de las dos — ver C.1 |
+| Prompt — `<OBJETIVOS_Y_KITS>` | "Conversión lo hace" | "eso lo resuelve la atención comercial humana" |
 | Prompt — `<MAYORISTA>` | "transferí inmediatamente a FV\|CUALIFICACION" | "guardá contexto y dejá de sondear" |
+| Prompt — `<COMPRAS_ANTERIORES>` | "puede avanzar a Conversión" | "la atención comercial humana lo retome" |
 | Prompt — `<VARIABLES>` | Sin ejemplo explícito de no-mezcla | + ejemplo Hipercalórico de no mezclar anuncio con interes_inicial |
-| Prompt — `<TRANSFERENCIA>` | Describe transferencia real a FV\|CUALIFICACION | Reescrito: sin transferencia, equipo humano retoma manualmente |
+| Prompt — `<TRANSFERENCIA>` | Describe transferencia real a FV\|CUALIFICACION | Reescrito: "Recepción Comercial → atención comercial humana", sin transferencia |
 | Prompt — `<CONTROL_FINAL>` | 8 ítems | 9 ítems (+ chequeo de no-repetición) |
-| Guardrails | 6, activos, 28+11+5 frases | Sin cambios |
-| Resto del prompt (18 bloques) | — | Sin cambios |
+| Guardrails — "No sonar a bot..." | 28 frases | **31 frases** (+3: `te hago una sola consulta`, `para avanzar ya`, `te dejo una pregunta cortita`) |
+| Guardrails, resto (5) | Sin cambios | Sin cambios |
+| Reglas de Activación | Ninguna configurada | Sin cambios en esta propuesta — ver investigación de gating en G.1 para la Fase 2 del canary |
+| Resto del prompt (17 bloques sin tocar) | — | Sin cambios |
 
 ---
 
@@ -345,7 +398,18 @@ Cuando la v49.2 de 9882 cierre y esas 8 frases nuevas queden aplicadas ahí, eva
 3. **Reglas del analizador nuevas, sin probar en producción.** Reemplazan las reglas genéricas del sistema por unas específicas — es exactamente el cambio que se quiere probar, pero significa que el primer canary también está validando el analizador, no solo el prompt.
 4. **Costo/latencia de Clásico** (~2x llamadas por mensaje) — ya asumido y aceptado por el usuario, se menciona para que quede en el registro de la medición.
 5. **Clave de API expuesta** (sección A) — recomendación del usuario de rotarla antes del tráfico real, todavía no hecho.
-6. **Sin Reglas de Activación (gating por etiqueta/cola)** — el agente responde a cualquier contacto una vez vinculado. No es un riesgo nuevo de esta propuesta, pero refuerza por qué el canary debe ser manual (punto 1) y no por activación masiva del Flujo.
+6. **Sin Reglas de Activación (gating por etiqueta/cola)** — el agente responde a cualquier contacto una vez vinculado. No es un riesgo nuevo de esta propuesta, pero refuerza por qué el canary debe ser manual en la Fase 1 (punto 1) — **resuelto para la Fase 2**, ver G.1.
+
+### G.1 Investigación (solo lectura, sin guardar nada): ¿sirve un gating por etiqueta para la Fase 2?
+
+Se abrió en vivo "Reglas de Activación" del agente 10005 (`Agregar Grupo` → `Agregar Regla`), sin guardar nada, para responder las 4 preguntas del pedido:
+
+- **¿El Flujo puede vincular el agente igual?** Sí — "Reglas de Activación" y el Flujo son cosas distintas. El Flujo (`CL|Asignar Recepcionista`) sigue vinculando el agente a la conversación cuando el negocio entra a `CL|EN CONVERSACION`, sin importar las Reglas de Activación.
+- **¿El agente puede quedar impedido de responder salvo que el contacto tenga una etiqueta?** Sí, estructuralmente: el constructor ofrece **Operador** (`TIENE` / `NO TIENE`) × **Tipo** (`ETIQUETA` / `COLA`), con un selector para elegir cuál etiqueta exactamente. Una regla `TIENE ETIQUETA = PILOTO_IA` es armable tal cual. El texto de la sección lo confirma: "controlar cuándo el agente debe responder".
+- **¿Quitar la etiqueta evita que responda?** No se probó en vivo (hubiera requerido guardar la regla y probarla con una conversación real, fuera del alcance de "solo lectura"), pero la lógica `TIENE`/`NO TIENE` está pensada exactamente para eso — es razonable esperar que sí, a confirmar con una prueba real antes de apoyarse en esto para el canary.
+- **¿Esto permite activar la automatización sin abrirla a todos los leads?** Sí, en combinación con el Flujo: el Flujo vincula el agente a cualquier negocio que entre a la columna, pero si el agente tiene la regla `TIENE ETIQUETA PILOTO_IA`, solo va a **responder** en los negocios que además tengan esa etiqueta puesta a mano. Sería un filtro en dos capas: el Flujo decide a quién se le asigna el agente, la Regla de Activación decide a quién realmente le contesta.
+
+**No se guardó ninguna regla — quedó exactamente como estaba ("Ninguna regla configurada").** Esto es una opción real para la Fase 2 del canary (sección I), pendiente de una prueba puntual antes de confiar en ella para tráfico real.
 
 ## H. Reversibilidad y cómo volver atrás
 
@@ -353,24 +417,40 @@ Cuando la v49.2 de 9882 cierre y esas 8 frases nuevas queden aplicadas ahí, eva
 - **Prompt**: antes de aplicar cualquier cambio, se guarda un baseline verificado (texto + hash) en `artefactos/recepcionista-comercial-baseline-2026-09-24.txt`, igual método que ya se usa para 9882. Volver atrás = pegar ese texto y guardar.
 - **Acción `transfer_order`**: eliminar el chip es reversible — volver a agregarlo y elegir Pipeline `CL | COMERCIAL` / Coluna `CL | EN CONVERSACION` toma dos minutos (mismo procedimiento ya ejecutado y verificado la sesión anterior).
 - **Reglas del analizador**: dejar el campo vacío restaura las reglas genéricas del sistema — no hay riesgo de quedar en un estado intermedio raro.
-- **Guardrails**: sin cambios propuestos, nada que revertir.
+- **Guardrails**: se proponen 3 altas al guardrail existente (sección E) — sacarlas es apagar/editar esa regla desde "Opciones", no hace falta recrear nada desde cero.
 - El agente además tiene su propio **"Historial de versiones"** en el editor (botón visto en la UI) — no explorado en detalle esta auditoría, pero es una vía adicional de rollback nativa de la plataforma si hiciera falta.
 - El Flujo `CL|Asignar Recepcionista` sigue **desactivado** — nada de esto lo activa. Activarlo es una decisión aparte, posterior a que el canary manual salga bien.
 
-## I. Cómo medir el primer piloto
+## I. Canary en 2 fases
 
-1. Antes de tocar nada: capturar y hashear el baseline actual (prompt + guardrails + reglas del analizador vacías) — punto de referencia para el diff real una vez aplicado.
-2. Aplicar los cambios de C, D y B (con el usuario mirando, como toda edición de prompt en este proyecto) y verificar con recarga completa del servidor.
+**Fase 1 — probar el cerebro (manual, sin automatización real).**
+1. Antes de tocar nada: capturar y hashear el baseline actual (ya hecho — `artefactos/recepcionista-comercial-baseline-2026-09-24.txt`, 15.353 caracteres, `ae41f1e0`).
+2. Aplicar los cambios de C, D, E y B (con el usuario mirando, como toda edición de prompt en este proyecto) y verificar con recarga completa del servidor. Guardar el nuevo baseline post-cambio también con hash.
 3. **No activar el Flujo.** Elegir 5-10 conversaciones reales de `CL | EN CONVERSACION` y vincular el agente a mano vía "Selecionar agente"/"Gerenciar Agente".
 4. Para cada una, leer `GET /processing-logs/ticket/{id}` y `GET /messages/{id}` (método ya validado en la sesión de auditoría de 9882) y clasificar:
-   - ¿Separó bien interes_inicial de anuncio_origen? (el caso que motivó esta propuesta)
-   - ¿Repitió información obvia del anuncio/cliente (el problema de "trabajamos con Vitamin Horse")?
-   - ¿Algún guardrail disparó en falso?
-   - ¿Intentó ejecutar transfer_order pese a no estar disponible? (no debería poder, pero revisar el log del analizador para confirmar que ni lo intenta)
+   - ¿Separó bien interes_inicial de anuncio_origen? (el caso que motivó la corrección de la sección D)
+   - ¿Repitió información obvia del anuncio/cliente, o al revés, dejó de responder algo preguntado directamente? (los dos lados de `<NO_REPETIR>`)
+   - ¿Algún guardrail disparó en falso, incluidas las 3 frases nuevas?
+   - ¿Intentó ejecutar transfer_order pese a no estar disponible? (no debería poder — revisar el log del analizador para confirmar que ni lo intenta)
+   - ¿Se le escapó alguna referencia a "Conversión" o a un traspaso que no existe?
    - Latencia percibida de las 2 llamadas de Clásico.
-5. Si los 5-10 salen bien: ampliar a 20-30 del mismo modo manual antes de considerar activar el Flujo para tráfico no supervisado uno por uno.
-6. Recién ahí, con el usuario de acuerdo, evaluar activar `CL|Asignar Recepcionista` — y en ese momento reconsiderar si hace falta algún gating por Reglas de Activación para no exponer los 181 negocios ya existentes de una sola vez.
+
+**Fase 2 — probar la infraestructura real (recién si la Fase 1 sale bien).**
+5. Probar primero, en solo lectura y sin apoyarse todavía en el resultado, que la Regla de Activación `TIENE ETIQUETA PILOTO_IA` efectivamente bloquea/permite respuestas como se espera (ver investigación G.1 — quedó confirmado que es armable, pero no que funciona en la práctica).
+6. Si funciona: crear la etiqueta `PILOTO_IA`, configurar la Regla de Activación en el agente, activar el Flujo `CL|Asignar Recepcionista`, y ponerle esa etiqueta a mano a 10-20 negocios reales de `CL|EN CONVERSACION` (no a los 181 de una sola vez). Solo esos van a recibir respuesta del agente aunque el Flujo vincule a todos.
+7. Mismo análisis de trazas que en la Fase 1, pero esta vez validando además que la automatización (Flujo + gating) funciona como se espera, no solo el agente.
+8. Si la Regla de Activación NO logra bloquear respuestas en la prueba del punto 5: la Fase 2 no tiene gating disponible todavía — decidir con el usuario si se anima a activar el Flujo sin filtro (exponiendo cualquier negocio nuevo) o si se sigue en modo manual más tiempo.
 
 ---
 
-**No se aplicó nada de lo anterior.** Queda para que lo revises y digas qué cambia, qué se aplica tal cual, y cuándo arrancamos el canary manual.
+## J. Acciones finales que quedarían disponibles en el agente
+
+Si se aplica esta propuesta tal cual, el agente 10005 queda con exactamente **2 acciones**:
+1. `Salvar variável: interes_inicial`
+2. `Salvar variável: anuncio_origen`
+
+Sin `Transferir coluna no CRM` — eliminado a propósito para este piloto (sección B). Ningún otro chip de los disponibles (Conversa, Apps, Contato, Negócio, Enviar Mensagem, Pergunta, Reagir à Mensagem, Pedir telefone, Tags, Agente de IA, Requisição HTTP, Data & Hora, Script) se agrega — no se pidió ninguno y agregar de más no es parte de este experimento.
+
+---
+
+**No se aplicó nada de lo anterior.** Queda para que lo revises y digas qué cambia, qué se aplica tal cual, y cuándo arrancamos la Fase 1 del canary.
