@@ -10,6 +10,10 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-25 (noche) — Prueba en vivo del traspaso con fila: funcionó
+- **Prueba** (ticket 7518615): "quiero creatina" → pregunta sin acciones; "si quiero de dux" → 3 mensajes y luego `save_variable`, `transfer_order` y `transfer_ticket` (`after_response`), en ese orden. Negocio en `EN CONVERSACION`, ticket en la fila `comercial` asignado a Lucia, `promptId` en null (el agente se sacó solo).
+- **Falta**: confirmar el silencio con un mensaje posterior y la rotación entre las 4 vendedoras (Q24). Fallas de estilo de las respuestas de Maxi en Q22.
+
 ### 2026-09-25 (noche) — `transfer_ticket` a la fila `comercial` aplicado en 10005
 - **Pedido**: con el video de soporte (vía ChatGPT) y la auditoría de filas, el usuario autorizó explícitamente editar el analizador y el agente 10005 (camino A).
 - **Hecho y verificado tras recargar**: prompt `fc1ebffe…` (24.430) con `transfer_ticket("comercial",{"priority":"after_response"})`; analizador `8c11454e…` (4.315) con TRANSFER_TICKET; "Responder tickets con asignado" OFF; 4 acciones reconocidas; `transfer_order` 15871/75213 intacto; guardrails 6/6 iguales. Servidor temporal apagado.
