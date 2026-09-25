@@ -1071,4 +1071,4 @@ NO envíes todavía.
 Corregí el mensaje primero.
 
 </CONTROL_FINAL>
- save_variable("interes_inicial",true,"TEXT","") save_variable("anuncio_origen",true,"TEXT","") transfer_order("Pipeline CL |  COMERCIAL","CL | EN CONVERSACION") transfer_ticket("comercial")
+ save_variable("interes_inicial",true,"TEXT","") save_variable("anuncio_origen",true,"TEXT","") transfer_order("Pipeline CL |  COMERCIAL","CL | EN CONVERSACION") transfer_ticket("comercial",{"priority":"after_response"})

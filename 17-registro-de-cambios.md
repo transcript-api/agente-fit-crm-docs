@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-25 (noche) — `transfer_ticket` a la fila `comercial` aplicado en 10005
+- **Pedido**: con el video de soporte (vía ChatGPT) y la auditoría de filas, el usuario autorizó explícitamente editar el analizador y el agente 10005 (camino A).
+- **Hecho y verificado tras recargar**: prompt `fc1ebffe…` (24.430) con `transfer_ticket("comercial",{"priority":"after_response"})`; analizador `8c11454e…` (4.315) con TRANSFER_TICKET; "Responder tickets con asignado" OFF; 4 acciones reconocidas; `transfer_order` 15871/75213 intacto; guardrails 6/6 iguales. Servidor temporal apagado.
+- **Nota técnica**: ese interruptor se guarda como `replyOldTickets`. Tanto el analizador como el agente los bloqueó el clasificador la primera vez y pasaron después de la instrucción explícita del usuario.
+- **Pendiente**: la prueba en vivo (Q24).
+
 ### 2026-09-25 (noche) — Vendedoras cargadas en la fila `comercial`; cambio del agente preparado y bloqueado
 - **Hecho**: Lucia, Kalime y Valentina se sumaron a la fila `comercial` (Santiago ya estaba), desde Configuración > Usuarios > Editar > Filas. Verificado por API. La fila ya distribuía en modo Sequencial. Facundo no está en ninguna fila.
 - **Preparado, no aplicado**: prompt con `transfer_ticket("comercial")`, analizador con la sección TRANSFER_TICKET, e interruptor "Responder tickets con asignado" OFF. El clasificador de modo automático bloqueó la edición del analizador. Servidor de 10005 intacto (prompt `cbc2f5dc…`, analizador 4.012).
