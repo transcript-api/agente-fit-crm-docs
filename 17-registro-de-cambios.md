@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-25 (noche) — Nombre Maxi unificado en 10005 y hallazgos de reparto por fila
+- **Pedido**: el usuario cambió a mano 6 menciones a "Maxi" en el prompt vivo (19:23 UTC) y aclaró que **Maxi es el nombre del agente**; las vendedoras son Lucia, Kalime, Valentina y Santiago; Facundo ya no trabaja acá; "User Santi" es el propio usuario.
+- **Hecho**: se unificaron las 8 menciones restantes de "Santiago" (persona) a "Maxi", conservando lo editado por el usuario. Aplicado y verificado: 24.371 caracteres, SHA256 `cbc2f5dc…` idéntico al artefacto, 3 acciones, `transfer_order` con ids 15871/75213.
+- **Hallazgos**: las filas tienen distribución nativa (Sequencial = ciclo); `comercial` ya lo es pero solo tiene a Santiago; Facundo ya está pausado; la acción del agente "Transferir Conversa" solo acepta fila y canal; "Responder tickets con asignado" está ON en 10005. Detalle en Q24.
+- **Pendiente**: ver Q24 (cargar a las vendedoras en la fila, agregar `transfer_ticket`, apagar "Responder tickets con asignado", medir). Las pruebas de la respuesta de "bajar de peso" siguen en Q22.
+
 ### 2026-09-25 (noche) — Prueba 1 en vivo del Recepcionista Comercial 10005
 - **Prueba**: negocio manual "Santi" en `CL | LEAD NUEVO`, el usuario mandó "." y luego "Quiero bajar de peso". El ticket 7515422 había heredado el agente **9882** (origen MANUAL) y se cambió a mano al 10005. 0 respuestas de 9882.
 - **Medido**: el analizador decidió `save_variable` + `transfer_order` (`after_response`). Se enviaron los 3 mensajes y recién después se ejecutaron ambas acciones, así que la respuesta visible no se corta. Sin arreglo necesario a nivel CRM.
