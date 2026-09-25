@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-25 (noche) — Prueba 1 en vivo del Recepcionista Comercial 10005
+- **Prueba**: negocio manual "Santi" en `CL | LEAD NUEVO`, el usuario mandó "." y luego "Quiero bajar de peso". El ticket 7515422 había heredado el agente **9882** (origen MANUAL) y se cambió a mano al 10005. 0 respuestas de 9882.
+- **Medido**: el analizador decidió `save_variable` + `transfer_order` (`after_response`). Se enviaron los 3 mensajes y recién después se ejecutaron ambas acciones, así que la respuesta visible no se corta. Sin arreglo necesario a nivel CRM.
+- **Hallazgos**: (1) `save_variable` guarda en `variables` del ticket, no en el contacto: los campos viejos del contacto no influyeron. (2) La respuesta no respetó el caso 16 (listó categorías y sembró "energía"). (3) El endpoint de mensajes expone el `metaToken` (Q23).
+- **Pendiente**: repetir la prueba 2-3 veces, probar el stop de la IA tras el traspaso y el gatillo del flujo 6052. No se modificó ningún flujo ni agente.
+
 ### 2026-09-25 (tarde) — Fusión quirúrgica APLICADA al Recepcionista Comercial 10005
 - **Pedido**: instrucción de 23 puntos que reemplazó al Rev4 aditivo. Conservar el prompt vivo como base, un solo árbol de decisión, endurecer ANUNCIOS, sumar entidad-vs-atributo (Testo Dilated), respuestas objetivas aprobadas, ubicación exacta, Growth, prioridad de CLIENTE_DIRECTO, exportar `PRUEBAS_CRITICAS` a una suite de regresión, búsqueda global de referencias obsoletas y +3 frases al guardrail. Decisión del usuario: la fusión quirúrgica está decidida, no volver a preguntar A/B.
 - **Hecho**: `artefactos/build-recepcionista-comercial-quirurgico.js` (con guarda de hash de la base y reemplazos de coincidencia única) generó el candidato de 24.427 caracteres (28 bloques). Se aplicó a 10005 con respaldo previo en `artefactos/_backup-vivo-20260925/` (sin commitear). El analizador Clásico pasó de 3.393 a 4.012 caracteres y el guardrail de frases de bot de 31 a 34.
