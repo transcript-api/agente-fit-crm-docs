@@ -1,0 +1,141 @@
+[
+  {
+    "id": 411,
+    "name": "No sonar a bot ni prometer de mas",
+    "type": "blocked_phrases",
+    "enabled": true,
+    "actionType": "reprocess",
+    "actionConfig": {
+      "maxAttempts": 2,
+      "fallbackAction": {
+        "type": "autofix"
+      }
+    },
+    "config": {
+      "frases": [
+        "te asesoramos",
+        "te ayudamos",
+        "te asesoremos",
+        "te pasan",
+        "te ayudan",
+        "te confirman",
+        "otro asesor",
+        "un compañero",
+        "te paso con",
+        "te reservo",
+        "te lo reservo",
+        "ya te digo",
+        "enseguida te paso",
+        "ahora mismo te confirmo",
+        "dame un segundo",
+        "te paso una pregunta",
+        "te pregunto algo",
+        "para afinar",
+        "asi lo seguimos",
+        "asi lo afinamos",
+        "quedo claro que",
+        "ya veo que",
+        "entendi que",
+        "para avanzarlo bien",
+        "como ya queres comprar",
+        "te separo",
+        "te lo separo",
+        "para orientarte bien",
+        "te hago una sola consulta",
+        "para avanzar ya",
+        "te dejo una pregunta cortita",
+        "venis del anuncio",
+        "vi que queres",
+        "veo que estas buscando",
+        "trabajamos con creatina",
+        "dux trabajamos",
+        "xtr trabajamos",
+        "joia",
+        "joy,",
+        "po en pote",
+        "obrigad"
+      ],
+      "posicao": "qualquer"
+    }
+  },
+  {
+    "id": 412,
+    "name": "No mandar mensajes vacios",
+    "type": "empty_response",
+    "enabled": true,
+    "actionType": "reprocess",
+    "actionConfig": {
+      "maxAttempts": 1,
+      "fallbackAction": {
+        "type": "block_silent"
+      }
+    },
+    "config": {
+      "minimoCaracteres": 0,
+      "somenteComFerramenta": false
+    }
+  },
+  {
+    "id": 413,
+    "name": "No volver a presentarse",
+    "type": "duplicate_greeting",
+    "enabled": true,
+    "actionType": "autofix",
+    "actionConfig": {},
+    "config": {
+      "saudacoes": [
+        "hola",
+        "buenas",
+        "buen dia",
+        "buenas tardes",
+        "buenas noches",
+        "que tal",
+        "oi",
+        "ola",
+        "bom dia",
+        "boa tarde",
+        "boa noite"
+      ]
+    }
+  },
+  {
+    "id": 414,
+    "name": "Fillers de apertura",
+    "type": "blocked_phrases",
+    "enabled": true,
+    "actionType": "autofix",
+    "actionConfig": {},
+    "config": {
+      "frases": [
+        "perfecto",
+        "genial",
+        "buenisimo",
+        "excelente",
+        "dale perfecto"
+      ],
+      "posicao": "inicio"
+    }
+  },
+  {
+    "id": 415,
+    "name": "No filtrar placeholders ni texto interno",
+    "type": "placeholder_leak",
+    "enabled": true,
+    "actionType": "autofix",
+    "actionConfig": {},
+    "config": {
+      "padroesExtras": []
+    }
+  },
+  {
+    "id": 416,
+    "name": "No filtrar etiquetas de media",
+    "type": "media_label_echo",
+    "enabled": true,
+    "actionType": "reprocess",
+    "actionConfig": {},
+    "config": {
+      "rotulos": []
+    }
+  }
+]

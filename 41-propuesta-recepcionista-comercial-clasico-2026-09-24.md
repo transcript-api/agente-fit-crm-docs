@@ -1,5 +1,11 @@
 # Propuesta: Recepcionista Comercial (10005) como experimento de 3 capas — Clásico deliberado
 
+> ⚠️ **NOTA DE SUPERSESIÓN (2026-09-25).** Esta Revisión 3 quedó **SUPERADA**. Al sincronizar y auditar el CRM el 2026-09-25 apareció que el prompt vivo del agente 10005 (editado ese día a las 16:30 UTC, después del último commit de esta propuesta) es una cuarta versión que no coincide con esta Rev3 ni con el handoff maestro posterior. Se decidió fusionar tomando el vivo como base: ver [[42-diff-recepcionista-comercial-rev4-merge-2026-09-25]]. Esta Rev3 queda como **antecedente histórico**, no como prompt canónico.
+>
+> **Discrepancia de hash documentada, sin reescribir la historia.** La documentación de esta Rev3 declara 16.802 caracteres / `6de1b171`, pero el artefacto efectivamente committeado en `a07945b` mide 16.967 caracteres / `c07c680b` bajo la lectura actual (con CRLF; 16.803 y otro hash tras normalizar a LF). La discrepancia fue detectada el 2026-09-25 y no se modifica retroactivamente porque la Rev3 quedó superada. El hash normalizado a LF es solo un dato técnico, no un hash canónico de producción.
+>
+> **Sobre `transfer_order`.** Esta Rev3 proponía eliminarlo para el canary. Esa arquitectura fue superada: el diseño vigente restaura `transfer_order` hacia `CL | COMERCIAL` → `CL|EN CONVERSACION`, que es la salida real de Recepción hacia atención humana. La acción ya estaba configurada de nuevo en el CRM vivo al momento de la auditoría.
+
 > **Estado: REVISIÓN 3 (final antes de ejecutar). Nada de esto está aplicado en el CRM.** Este archivo es el entregable pedido por el usuario tras ver el trabajo de la sesión anterior (Flujo `CL|Asignar Recepcionista` + fix del `transfer_order`): auditar las 3 capas reales del agente 10005 y proponer una arquitectura que separe prompt conversacional / analizador Clásico / guardrails, sin tocar nada todavía. Ver [[30-traspaso-2026-09-15-noche-3-agentes]] para el contexto de cómo se llegó hasta acá.
 
 ## Changelog de revisión

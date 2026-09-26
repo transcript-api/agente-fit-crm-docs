@@ -10,6 +10,51 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-09-25 (noche) — Prueba en vivo del traspaso con fila: funcionó
+- **Prueba** (ticket 7518615): "quiero creatina" → pregunta sin acciones; "si quiero de dux" → 3 mensajes y luego `save_variable`, `transfer_order` y `transfer_ticket` (`after_response`), en ese orden. Negocio en `EN CONVERSACION`, ticket en la fila `comercial` asignado a Lucia, `promptId` en null (el agente se sacó solo).
+- **Falta**: confirmar el silencio con un mensaje posterior y la rotación entre las 4 vendedoras (Q24). Fallas de estilo de las respuestas de Maxi en Q22.
+
+### 2026-09-25 (noche) — `transfer_ticket` a la fila `comercial` aplicado en 10005
+- **Pedido**: con el video de soporte (vía ChatGPT) y la auditoría de filas, el usuario autorizó explícitamente editar el analizador y el agente 10005 (camino A).
+- **Hecho y verificado tras recargar**: prompt `fc1ebffe…` (24.430) con `transfer_ticket("comercial",{"priority":"after_response"})`; analizador `8c11454e…` (4.315) con TRANSFER_TICKET; "Responder tickets con asignado" OFF; 4 acciones reconocidas; `transfer_order` 15871/75213 intacto; guardrails 6/6 iguales. Servidor temporal apagado.
+- **Nota técnica**: ese interruptor se guarda como `replyOldTickets`. Tanto el analizador como el agente los bloqueó el clasificador la primera vez y pasaron después de la instrucción explícita del usuario.
+- **Pendiente**: la prueba en vivo (Q24).
+
+### 2026-09-25 (noche) — Vendedoras cargadas en la fila `comercial`; cambio del agente preparado y bloqueado
+- **Hecho**: Lucia, Kalime y Valentina se sumaron a la fila `comercial` (Santiago ya estaba), desde Configuración > Usuarios > Editar > Filas. Verificado por API. La fila ya distribuía en modo Sequencial. Facundo no está en ninguna fila.
+- **Preparado, no aplicado**: prompt con `transfer_ticket("comercial")`, analizador con la sección TRANSFER_TICKET, e interruptor "Responder tickets con asignado" OFF. El clasificador de modo automático bloqueó la edición del analizador. Servidor de 10005 intacto (prompt `cbc2f5dc…`, analizador 4.012).
+- **Pendiente**: ver Q24.
+
+### 2026-09-25 (noche) — Nombre Maxi unificado en 10005 y hallazgos de reparto por fila
+- **Pedido**: el usuario cambió a mano 6 menciones a "Maxi" en el prompt vivo (19:23 UTC) y aclaró que **Maxi es el nombre del agente**; las vendedoras son Lucia, Kalime, Valentina y Santiago; Facundo ya no trabaja acá; "User Santi" es el propio usuario.
+- **Hecho**: se unificaron las 8 menciones restantes de "Santiago" (persona) a "Maxi", conservando lo editado por el usuario. Aplicado y verificado: 24.371 caracteres, SHA256 `cbc2f5dc…` idéntico al artefacto, 3 acciones, `transfer_order` con ids 15871/75213.
+- **Hallazgos**: las filas tienen distribución nativa (Sequencial = ciclo); `comercial` ya lo es pero solo tiene a Santiago; Facundo ya está pausado; la acción del agente "Transferir Conversa" solo acepta fila y canal; "Responder tickets con asignado" está ON en 10005. Detalle en Q24.
+- **Pendiente**: ver Q24 (cargar a las vendedoras en la fila, agregar `transfer_ticket`, apagar "Responder tickets con asignado", medir). Las pruebas de la respuesta de "bajar de peso" siguen en Q22.
+
+### 2026-09-25 (noche) — Prueba 1 en vivo del Recepcionista Comercial 10005
+- **Prueba**: negocio manual "Santi" en `CL | LEAD NUEVO`, el usuario mandó "." y luego "Quiero bajar de peso". El ticket 7515422 había heredado el agente **9882** (origen MANUAL) y se cambió a mano al 10005. 0 respuestas de 9882.
+- **Medido**: el analizador decidió `save_variable` + `transfer_order` (`after_response`). Se enviaron los 3 mensajes y recién después se ejecutaron ambas acciones, así que la respuesta visible no se corta. Sin arreglo necesario a nivel CRM.
+- **Hallazgos**: (1) `save_variable` guarda en `variables` del ticket, no en el contacto: los campos viejos del contacto no influyeron. (2) La respuesta no respetó el caso 16 (listó categorías y sembró "energía"). (3) El endpoint de mensajes expone el `metaToken` (Q23).
+- **Pendiente**: repetir la prueba 2-3 veces, probar el stop de la IA tras el traspaso y el gatillo del flujo 6052. No se modificó ningún flujo ni agente.
+
+### 2026-09-25 (tarde) — Fusión quirúrgica APLICADA al Recepcionista Comercial 10005
+- **Pedido**: instrucción de 23 puntos que reemplazó al Rev4 aditivo. Conservar el prompt vivo como base, un solo árbol de decisión, endurecer ANUNCIOS, sumar entidad-vs-atributo (Testo Dilated), respuestas objetivas aprobadas, ubicación exacta, Growth, prioridad de CLIENTE_DIRECTO, exportar `PRUEBAS_CRITICAS` a una suite de regresión, búsqueda global de referencias obsoletas y +3 frases al guardrail. Decisión del usuario: la fusión quirúrgica está decidida, no volver a preguntar A/B.
+- **Hecho**: `artefactos/build-recepcionista-comercial-quirurgico.js` (con guarda de hash de la base y reemplazos de coincidencia única) generó el candidato de 24.427 caracteres (28 bloques). Se aplicó a 10005 con respaldo previo en `artefactos/_backup-vivo-20260925/` (sin commitear). El analizador Clásico pasó de 3.393 a 4.012 caracteres y el guardrail de frases de bot de 31 a 34.
+- **Verificado en frío tras recargar**: prompt del servidor idéntico byte a byte al artefacto (SHA256 `1ed7fe20…`), analizador idéntico, 6 de 6 guardrails idénticos por contenido (los ids se regeneran al guardar, por eso se compara por contenido), config intacta y 3 chips. El engranaje de `transfer_order` se abrió y se validó contra `/pipeline/15871`: Pipeline 15871, Coluna 75213, ejecución auto. 0 referencias obsoletas.
+- **Declarado**: el prompt creció +12,8 % (se recortaron duplicados de ORDEN, URGENCIA, REGLAS_CRITICAS, BIENVENIDA y ESTILO; lo que queda son reglas nuevas pedidas). Riesgo del guardrail: `veo que estas buscando` también bloquea usos válidos porque el matcher es léxico.
+- **Hallazgo del flujo 6052**: hoy dispara por cambio de etapa hacia `CL | EN CONVERSACION` (75213), inactivo, y su única ejecución previa (604151) movió de LEAD NUEVO a esa etapa. El catálogo de gatillos no tiene "Negócio criado". Endpoint de lectura: `GET /automation-flows/{id}`.
+- **Pendiente**: ver Q22 en [[PENDIENTES]] (rework del flujo 6052 con prueba real, stop de la IA, temporización de `transfer_order`, suite de regresión, punta a punta). No se tocó 9882, 9883, 9884, 10011 ni 10012, y no se modificó ningún flujo.
+
+### 2026-09-25 — Sincronización entre PCs y candidato Rev4 (fusión) del Recepcionista Comercial 10005 (nada aplicado)
+- **Punto de partida**: el usuario pasó un handoff maestro del proyecto "Recepcionista Comercial" (agente 10005, pipeline `CL | COMERCIAL`) pensado para otra sesión de Claude. Al ejecutar la sincronización pedida, **esta PC estaba 6 commits atrás de `origin/main`** (`22b74e5` contra `a07945b`), sin cambios locales ni divergencia. Se hizo `git pull --ff-only` sin conflictos y aparecieron el documento 41, el baseline y las Rev2 y Rev3 del Comercial, y las notas en PENDIENTES, el registro, el 30 y CLAUDE.md.
+- **Dos discrepancias en lo sincronizado**: (1) la Rev3 committeada no incluía `transfer_order`, aunque después se decidió restaurarlo. (2) El documento 41 declara 16.802 caracteres / `6de1b171` para la Rev3 y el archivo real mide 16.967 / `c07c680b` (16.803 tras normalizar a LF, con otro hash). Se anotaron en el 41 como histórico, sin reescribirlo.
+- **Hallazgo principal, auditoría del vivo**: el prompt de 10005 fue editado el 2026-09-25 a las 16:30 UTC, **después del último commit**, y es una cuarta versión: 21.656 caracteres, 29 bloques, con `REGLAS_CRITICAS`, `ORDEN_DE_DECISION`, `INTEGRIDAD_DE_PRECIOS` y `PRUEBAS_CRITICAS`. No coincide con la Rev3 ni con el handoff. Ya tenía `transfer_order` a `CL | COMERCIAL` → `CL | EN CONVERSACION`. Su analizador Clásico de 3.393 caracteres ya cumple casi todo lo que se pedía de un analizador canónico. Se hizo una copia de solo lectura antes de decidir nada.
+- **Decisión del usuario**: fusionar (Opción A), con el vivo como nueva base y sin escribir nada en producción hasta revisar un candidato y un diff.
+- **Hecho** [[42-diff-recepcionista-comercial-rev4-merge-2026-09-25]]: candidato `artefactos/recepcionista-comercial-propuesta-rev4-merge-2026-09-25.txt` (23.641 caracteres, +9,2 %, 29 bloques sin altas ni bajas), constructor `build-recepcionista-comercial-rev4.js` que aborta si la base no coincide por SHA256, y un diff unificado real contra el vivo. 12 cambios: 6 referencias obsoletas a `FV|CUALIFICACION` y "Conversión" corregidas (**7 apariciones, 2 de ellas no las vi en el primer barrido y las detectó una verificación automática**) y 6 incorporaciones del handoff. Analizador y 6 guardrails **sin tocar**. Las 3 frases de "no narrar el anuncio" **no** se agregaron al guardrail, por ser reglas semánticas y no léxicas.
+- **Deuda técnica anotada**: `PRUEBAS_CRITICAS` dentro del prompt, redundancia entre `REGLAS_CRITICAS` y los bloques que la elaboran, y un detector de deriva entre git y el CRM. Aviso de método: en Windows, Git puede convertir a CRLF y cambia el SHA256, hay que normalizar a LF para comparar contra el CRM.
+- **No se tocó el CRM**, ni 9882, 9883, 9884, 10011 ni 10012. La copia del vivo quedó **solo local** en `artefactos/_backup-vivo-20260925/` (sin commit, a la espera de aprobación).
+- **Pendiente**: Q21.
+
 ### 2026-09-24 — Flujo de traspaso Recepcionista para la pipeline real + reconfirmación de N24 (Novo Fluxo apagado)
 - **Pedido 1**: pegar en el chat el prompt de ChatGPT para las 5 plantillas por campaña (pendiente de la sesión anterior, nunca entregado en texto). Se releyó el archivo para confirmar que las dos ediciones previas habían quedado bien aplicadas, y se pegó completo.
 - **Pedido 2** (voice-to-text, con una aclaración de corrección a mitad de turno): crear un Flujo de Automatización que replique el mecanismo columna→agente ya probado en `FV|FUNIL DE VENTAS` (Recepcionista/Conversión), pero para la pipeline real `CL | COMERCIAL`, dejándolo **funcional pero desactivado** para probar más adelante. El usuario corrigió a mitad de camino: el disparador va en la 2ª columna real (`CL|EN CONVERSACION`, confirmado en vivo) y el hand-off a Conversión **no va** en este flujo porque ese agente "no está ajustado" para uso real todavía.
