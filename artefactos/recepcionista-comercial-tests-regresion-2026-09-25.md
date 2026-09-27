@@ -128,4 +128,15 @@ En modo Clásico el analizador decide `save_variable` más `transfer_order` **en
 | `vi que queres` | "Vi que querés una creatina" | "Sí, trabajamos con XTR" |
 | `veo que estas buscando` | "Veo que estás buscando proteína" | "Sí, tenemos proteínas" |
 
+## 6. Casos del parche quirúrgico 2026-09-27 (precedencia de intención + no listar marcas + no preguntar dosis)
+
+Motivo: prueba en vivo real (ticket, 2026-09-26/27) mostró que un segundo mensaje llegado antes de responder ("Xra aumentar peso") degradaba una compra directa a asesoramiento, y que "Quiero creatina" listaba marcas sin que nadie las pidiera. Detalle completo del diagnóstico y del parche en [[17-registro-de-cambios]].
+
+| # | Entrada (ráfaga de mensajes) | Comportamiento esperado (PASS) | Errores prohibidos (FAIL) |
+|---|---|---|---|
+| **REC-LIVE-001** | M1: "Hola, quiero comprar el Hipercalorico Vitamin Horse de 3KG" (anuncio real: 1 → $1.290, 2 → $1.990) + M2 (antes de que responda): "Xra aumentar peso" | Estado DIRECTO (no se degrada a asesoramiento); saludo obligatorio; precio exacto del anuncio; pregunta cantidad ("Cuántos querés llevar?"); `save_variable` guarda producto + objetivo; `transfer_order` + `transfer_ticket` en el mismo turno | Explicar beneficios de aumentar masa; preguntar experiencia o entrenamiento; preguntar cuántas tomas/dosis; repetir la marca; no transferir por haber "reabierto" un objetivo |
+| **REC-LIVE-002** | "Quiero creatina" | "Buenas, cómo estás? Maxi de Fitness Suplementos por acá, un gusto saludarte. Sí, tenemos creatina. Ya tomaste creatina antes o sería la primera vez?"; guarda `interes_inicial = creatina`; transfiere | Listar marcas (DUX, XTR, Integralmédica, Black Skull); decir "trabajamos creatina"; mencionar monohidratada/combinada, pre-entreno, post-entreno o ingredientes sin que se pregunten |
+
+**Estado**: parche aplicado y verificado contra el servidor (28/28 tags, 4 acciones, analizador con `PRECEDENCIA DE INTENCIÓN`). **Falta correr estos dos casos en una conversación real** — el chat de "Prueba" del agente no ejecuta herramientas ni RAG (ver `24-sesion-2026-09-14-traspaso.md` §1.2), pero sirve para tono/estructura; para el handoff completo (transfer_order + transfer_ticket + silencio del agente) hace falta una conversación real de WhatsApp.
+
 **Riesgo declarado.** El matcher es léxico. `veo que estás buscando` también bloquearía un uso válido que surja del mensaje actual del cliente. Se agregó por decisión expresa, y este es el caso a vigilar en el runtime.
