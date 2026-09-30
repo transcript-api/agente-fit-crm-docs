@@ -5,6 +5,8 @@ Esta carpeta es la documentación viva del proyecto "Agente Fit" — un agente d
 ## 🧭 Existe una capa `wiki/` — empezar por ahí para entender "cómo funciona X"
 Desde el 2026-09-30 hay una carpeta `wiki/` (patrón LLM Wiki / Karpathy) con páginas curadas e interlinkeadas por entidad/concepto (cada agente, cada integración, cada mecanismo del CRM, la arquitectura de los prompts). Es más rápida de leer que releer los 42 archivos numerados de punta a punta. **Empezar por `wiki/WIKI.md`** (explica cómo se mantiene) y `wiki/index.md` (el catálogo). Los archivos numerados y `PENDIENTES.md` siguen siendo la fuente de verdad narrativa/de pendientes — `wiki/` resume y linkea, nunca reemplaza ni duplica. Si una página de `wiki/` queda desactualizada, corregirla es parte del trabajo, no opcional (ver la sección "Cómo mantener esto al día" en `wiki/WIKI.md`).
 
+**Si el pedido es "actualizá/reconstruí la wiki" (o equivalente) en cualquier sesión, en cualquier PC**: seguir el runbook literal, paso a paso, de la sección **"Cómo reproducir esto exactamente"** al principio de `wiki/WIKI.md` — no reinventar el proceso, ya está escrito ahí con el nivel de detalle necesario para reproducirlo sin volver a explicarlo.
+
 ## ⚠️ Antes de consolidar cualquier cosa: leer PENDIENTES.md
 `PENDIENTES.md` es el registro único de todo lo que está sin resolver. **Es obligatorio leerlo completo antes de producir cualquier entregable que consolide estado**: preparar una reunión, armar un plan, priorizar, decidir qué construir, o cerrar una sesión con un resumen.
 
