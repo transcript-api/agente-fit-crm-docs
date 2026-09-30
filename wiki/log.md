@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-09-30] ingest | Cierre de los 2 huecos anotados en la entrada anterior
+A pedido explícito del usuario ("dejá todo completo"), se agregaron las 2 páginas que la entrada de abajo había marcado como pendientes: `entities/biblioteca-prompts-y-caso-rafael.md` (fusiona [[11-biblioteca-prompts-ejemplo]] y [[12-caso-real-rafael-prompt-produccion]] — están tan entrelazados en la práctica, el catálogo de funciones y el caso real de producción, que separarlos en 2 páginas hubiera sido fragmentación sin beneficio) y `concepts/reglas-diseno-presentaciones.md` ([[27-reglas-diseno-presentaciones]]). Se linkearon ambas desde `index.md` y desde `patrones-reales-de-venta.md`. Con esto, **los 44 archivos numerados del vault tienen ahora al menos una página de `wiki/` que los cubre o los cita como fuente** (excepto los que son volcado literal/traducción de otro ya cubierto: `22` es `21` en portugués, `23b` es el crudo de `23`) — ya no queda ningún archivo fuente "huérfano" de la wiki.
+
 ## [2026-09-30] ingest | Creación completa de la capa wiki/
 
 Primera construcción de esta capa, a pedido explícito del usuario ("armemos un vault con el método Karpathy/LLM Wiki"). Se leyeron completos los 44 archivos del vault (`00-...md` a `42-...md`, sin contar los que son literalmente el volcado crudo que otro archivo ya resume: `22` en portugués es el mismo contenido que `21`, y `23b` es el volcado literal que `23` ya analiza) más `PENDIENTES.md` completo y el índice cronológico de headers de `17-registro-de-cambios.md` (172KB, se leyó por headers en vez de completo por tamaño — si hace falta el detalle narrativo de una sesión puntual, ese archivo sigue siendo la fuente, no esta wiki).
