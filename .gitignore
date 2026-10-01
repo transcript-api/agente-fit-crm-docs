@@ -5,3 +5,6 @@
 .playwright-mcp/
 # Playwright CLI output (may contain credentials)
 .playwright-cli/
+
+# Config local de la app Obsidian (workspace, plugins habilitados) — específica de esta PC, no documentación del proyecto
+.obsidian/

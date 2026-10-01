@@ -1,0 +1,240 @@
+{
+  "_nota": "Captura del flujo 6052 ANTES del fix del gatillo (2026-09-26). Gatillo trigger_card_stage_changed hacia stepId 75213 = CL | EN CONVERSACION, que es por lo que un lead nuevo en 59083 = CL | LEAD NUEVO nunca lo dispara. Fuente: GET /automation-flows/6052.",
+  "id": 6052,
+  "name": "CL|Asignar Recepcionista",
+  "active": true,
+  "lastExecutionAt": "2026-09-26T15:37:37.507Z",
+  "updatedAt": "2026-09-26T15:37:37.507Z",
+  "metadata": {
+    "duplicatedAt": "2026-09-24T22:28:44.934Z",
+    "duplicatedFrom": 5523
+  },
+  "nodes": [
+    {
+      "id": "when_trigger_1",
+      "data": {
+        "label": "Negócio mudou de etapa",
+        "config": {
+          "stepId": 75213,
+          "pipelineId": 15871
+        },
+        "customLabel": "Node",
+        "description": "Dispara quando um negócio muda de etapa no CRM",
+        "triggerConfig": {
+          "stepId": 75213,
+          "pipelineId": 15871
+        },
+        "selectedTrigger": "trigger_card_stage_changed"
+      },
+      "type": "trigger_card_stage_changed",
+      "width": 340,
+      "height": 247,
+      "position": {
+        "x": -285,
+        "y": -45
+      },
+      "selected": true
+    },
+    {
+      "id": "node_1",
+      "data": {
+        "label": "Vincular Agente IA",
+        "config": {
+          "promptId": 10005,
+          "promptName": "Agente Fit - Recepcionista  Comercial"
+        },
+        "customLabel": "Vincular Agente IA",
+        "description": "Vincula um agente IA à conversa"
+      },
+      "type": "action_link_ai_agent",
+      "width": 320,
+      "height": 125,
+      "dragging": false,
+      "position": {
+        "x": 495,
+        "y": 120
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 495,
+        "y": 120
+      }
+    },
+    {
+      "id": "node_3",
+      "data": {
+        "label": "Buscar Conversa",
+        "config": {
+          "connectionName": "Fitness Suplementos",
+          "socialConnectionId": 15272
+        },
+        "customLabel": "Buscar Conversa",
+        "description": "Busca uma conversa existente"
+      },
+      "type": "action_find_ticket",
+      "width": 320,
+      "height": 355,
+      "dragging": false,
+      "position": {
+        "x": 165,
+        "y": -240
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 165,
+        "y": -240
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-node_3-node_1-1789510050944",
+      "data": {},
+      "type": "custom",
+      "label": "",
+      "style": {
+        "stroke": "#78909C",
+        "strokeWidth": 3
+      },
+      "source": "node_3",
+      "target": "node_1",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#78909C",
+        "width": 16,
+        "height": 16
+      },
+      "labelStyle": {
+        "fill": "#78909C",
+        "fontSize": 11,
+        "fontWeight": 600
+      },
+      "labelBgStyle": {
+        "fill": "#fff",
+        "fillOpacity": 0.9
+      },
+      "sourceHandle": "found",
+      "targetHandle": null
+    },
+    {
+      "id": "edge-when_trigger_1-node_3-1789510090910",
+      "data": {},
+      "type": "custom",
+      "label": "",
+      "style": {
+        "stroke": "#78909C",
+        "strokeWidth": 3
+      },
+      "source": "when_trigger_1",
+      "target": "node_3",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#78909C",
+        "width": 16,
+        "height": 16
+      },
+      "labelStyle": {
+        "fill": "#78909C",
+        "fontSize": 11,
+        "fontWeight": 600
+      },
+      "labelBgStyle": {
+        "fill": "#fff",
+        "fillOpacity": 0.9
+      },
+      "sourceHandle": null,
+      "targetHandle": null
+    }
+  ],
+  "executions_resumen": [
+    {
+      "id": 621712,
+      "status": "completed",
+      "triggerType": "trigger_card_stage_changed",
+      "stepId": 75213,
+      "previousStepId": 59083,
+      "stepName_reportado": "CL | LEAD NUEVO",
+      "createdAt": "2026-09-26T15:37:37.051Z"
+    },
+    {
+      "id": 621040,
+      "status": "completed",
+      "triggerType": "trigger_card_stage_changed",
+      "stepId": 75213,
+      "previousStepId": 59083,
+      "stepName_reportado": "CL | LEAD NUEVO",
+      "createdAt": "2026-09-26T14:43:07.303Z"
+    },
+    {
+      "id": 620988,
+      "status": "completed",
+      "triggerType": "trigger_card_stage_changed",
+      "stepId": 75213,
+      "previousStepId": 59083,
+      "stepName_reportado": "CL | LEAD NUEVO",
+      "createdAt": "2026-09-26T14:37:34.610Z"
+    },
+    {
+      "id": 620960,
+      "status": "completed",
+      "triggerType": "trigger_card_stage_changed",
+      "stepId": 75213,
+      "previousStepId": 59083,
+      "stepName_reportado": "CL | LEAD NUEVO",
+      "createdAt": "2026-09-26T14:33:39.262Z"
+    },
+    {
+      "id": 620851,
+      "status": "completed",
+      "triggerType": "trigger_card_stage_changed",
+      "stepId": 75213,
+      "previousStepId": 59083,
+      "stepName_reportado": "CL | LEAD NUEVO",
+      "createdAt": "2026-09-26T14:19:42.983Z"
+    },
+    {
+      "id": 620800,
+      "status": "completed",
+      "triggerType": "trigger_card_stage_changed",
+      "stepId": 75213,
+      "previousStepId": 59083,
+      "stepName_reportado": "CL | LEAD NUEVO",
+      "createdAt": "2026-09-26T14:13:17.539Z"
+    },
+    {
+      "id": 620784,
+      "status": "completed",
+      "triggerType": "trigger_card_stage_changed",
+      "stepId": 75213,
+      "previousStepId": 59083,
+      "stepName_reportado": "CL | LEAD NUEVO",
+      "createdAt": "2026-09-26T14:12:01.093Z"
+    },
+    {
+      "id": 620474,
+      "status": "completed",
+      "triggerType": "trigger_card_stage_changed",
+      "stepId": 75213,
+      "previousStepId": 59083,
+      "stepName_reportado": "CL | LEAD NUEVO",
+      "createdAt": "2026-09-26T13:38:35.236Z"
+    },
+    {
+      "id": 620364,
+      "status": "completed",
+      "triggerType": "trigger_card_stage_changed",
+      "stepId": 75213,
+      "previousStepId": 59083,
+      "stepName_reportado": "CL | LEAD NUEVO",
+      "createdAt": "2026-09-26T13:26:11.556Z"
+    },
+    {
+      "id": 614331,
+      "status": "completed",
+      "triggerType": "trigger_card_stage_changed",
+      "createdAt": "2026-09-25T22:21:42.743Z"
+    }
+  ]
+}
