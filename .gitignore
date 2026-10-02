@@ -8,3 +8,6 @@
 
 # Config local de la app Obsidian (workspace, plugins habilitados) — específica de esta PC, no documentación del proyecto
 .obsidian/
+
+# Material de presentacion con conversaciones reales de clientes (el repo es publico, no subir)
+presentacion/

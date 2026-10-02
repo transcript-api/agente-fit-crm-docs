@@ -28,5 +28,12 @@ Paleta: fondo `#070F16`, acento `#A8E831` (verde lima del logo), alerta `#E8321E
 ## Regla dura de privacidad al publicar
 Un artifact compartido por link **nunca** lleva capturas de pantalla con datos de clientes reales, ni siquiera desenfocadas — se confirmó en la práctica: el clasificador de publish rechazó una lámina con una captura real del pipeline (nombres/teléfonos con Gaussian blur) hasta sacarla. Las cifras agregadas sí van (ej. "2.535 negocios en el pipeline").
 
+## Caso 2026-10-02: tablero de respuestas reales de Maxi (Obsidian + Miro)
+Segundo entregable para la gerencia, distinto del deck: 5 respuestas buenas y 3 con errores de Maxi con leads reales, en formato pizarra/flujo (el usuario rechazó explícitamente que quedara en una sola columna hacia abajo: pidió una pizarra con flujo). Cada caso lleva: lo que escribió el lead, lo que hizo bien o dónde falló Maxi, la reacción del lead o qué se propone corregir, y una captura real del CRM. Se aplicaron los mismos filtros de arriba (no decir lo obvio, separar lo medido de lo supuesto: la portada dice que es una **selección ilustrativa, no una estadística**; las hipótesis sin confirmar se rotulan así, ej. el portugués).
+
+- **Privacidad**: esta vez sí llevan capturas de conversaciones reales, a propósito, porque el tablero es para una persona concreta y no un artifact público: los nombres se reemplazan por `[nombre]` y el material (`presentacion/`) **no se sube a git** (el repo es público). Antes de compartir el link de Miro fuera del equipo hay que revisar que no se vean teléfonos ni otros datos personales.
+- **Herramientas**: se armó primero como `.canvas` de Obsidian (formato JSON Canvas, skill de kepano/obsidian-skills) y se pasó a Miro (MCP `miro-mcp`) porque ahí se acerca y se mueve más fácil. Trampas de Miro: la posición x,y de una imagen al crearla es el **centro**; el alto de un panel hay que calcularlo con el alto renderizado del texto + 48 px, no estimarlo; la verificación es por `data-rendered-bounds`, no visual.
+- Fuente: [[17-registro-de-cambios]] 2026-10-02.
+
 ## Pendientes relacionados
-Ninguno abierto — el deck y el informe de esa sesión ya se publicaron. Consultar si se arma otro entregable para gerencia en el futuro.
+Q32 en `PENDIENTES.md` (cierre del tablero de Miro: captura del Error 2, imagen duplicada, pasada visual, revisión de privacidad). El deck y el informe de la sesión de 2026-09-15 ya se publicaron. Consultar si se arma otro entregable para gerencia en el futuro.

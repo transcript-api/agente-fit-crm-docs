@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-10-02] update | Presentación de casos reales de Maxi y hallazgo del filtro de frases
+Se actualizaron 2 páginas, sin crear ninguna nueva: `entities/agente-recepcionista-comercial-10005.md` (bug nuevo Q31 — un lead quedó sin respuesta porque el guardrail de frases bloqueó los dos borradores; referencias a Q29, Q31 y Q33; rango de pendientes Q18-Q33) y `concepts/reglas-diseno-presentaciones.md` (sección del tablero de Miro/Obsidian del 2026-10-02, con la regla de privacidad que aplicó esta vez y las trampas de Miro; "Pendientes relacionados" ya no dice "Ninguno abierto" porque quedó Q32). Fuente narrativa: [[17-registro-de-cambios]] 2026-10-02.
+
 ## [2026-09-30] ingest | Cierre de los 2 huecos anotados en la entrada anterior
 A pedido explícito del usuario ("dejá todo completo"), se agregaron las 2 páginas que la entrada de abajo había marcado como pendientes: `entities/biblioteca-prompts-y-caso-rafael.md` (fusiona [[11-biblioteca-prompts-ejemplo]] y [[12-caso-real-rafael-prompt-produccion]] — están tan entrelazados en la práctica, el catálogo de funciones y el caso real de producción, que separarlos en 2 páginas hubiera sido fragmentación sin beneficio) y `concepts/reglas-diseno-presentaciones.md` ([[27-reglas-diseno-presentaciones]]). Se linkearon ambas desde `index.md` y desde `patrones-reales-de-venta.md`. Con esto, **los 44 archivos numerados del vault tienen ahora al menos una página de `wiki/` que los cubre o los cita como fuente** (excepto los que son volcado literal/traducción de otro ya cubierto: `22` es `21` en portugués, `23b` es el crudo de `23`) — ya no queda ningún archivo fuente "huérfano" de la wiki.
 
