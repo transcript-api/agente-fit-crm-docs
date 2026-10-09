@@ -2,6 +2,12 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-10-06] ingest | Centro de Ayuda de RM System
+Página nueva `entities/centro-de-ayuda-rmsystemm.md` (qué es, para qué sirve, límites de lo leído), enlazada desde `index.md`. La síntesis completa vive en `43-centro-de-ayuda-rmsystemm-2026-10-06.md` y los pendientes en `PENDIENTES.md` Q34, Q35 y Q36; no se duplicó. Fuente narrativa: [[17-registro-de-cambios]] 2026-10-06.
+
+## [2026-10-05] update | Meta Ads: módulo Marketing del CRM y señales de conversión
+Se actualizó `entities/hub-de-integraciones.md` (hallazgo 3 sobre Meta Ads: conexión activa, módulo `Marketing` con ranking de campañas y "Criativo Campeão", pantalla `Conversiones` vacía). El detalle y lo que falta viven en `PENDIENTES.md` Q34, no se duplicó acá. Fuente narrativa: [[17-registro-de-cambios]] 2026-10-05.
+
 ## [2026-10-02] update | Presentación de casos reales de Maxi y hallazgo del filtro de frases
 Se actualizaron 2 páginas, sin crear ninguna nueva: `entities/agente-recepcionista-comercial-10005.md` (bug nuevo Q31 — un lead quedó sin respuesta porque el guardrail de frases bloqueó los dos borradores; referencias a Q29, Q31 y Q33; rango de pendientes Q18-Q33) y `concepts/reglas-diseno-presentaciones.md` (sección del tablero de Miro/Obsidian del 2026-10-02, con la regla de privacidad que aplicó esta vez y las trampas de Miro; "Pendientes relacionados" ya no dice "Ninguno abierto" porque quedó Q32). Fuente narrativa: [[17-registro-de-cambios]] 2026-10-02.
 
