@@ -33,3 +33,13 @@ Si el bug del 2026-09-29 persiste: probar en una sesión nueva del navegador (po
 
 ## Pendientes relacionados
 Q27 (parche de Maxi/re-saludo bloqueado por este bug), A26 (incidente histórico de prompt corrupto por un fallo similar de pegado).
+
+## Actualización 2026-10-06 (editor rediseñado, el bug sigue)
+- El campo "Instrucciones" ahora se ve como un `textarea` de **solo lectura** (`name="prompt"`); al hacer clic se abre el editor real (Slate) en un modal. Ese `textarea` es el espejo que alimenta "Guardar cambios".
+- `fill` sobre el Slate del modal escribe el texto en pantalla pero **el espejo no se actualiza y Guardar sigue deshabilitado**: mismo comportamiento que Q27, reproducido en la copia 10176. El cambio se descartó y se comprobó que el servidor no cambió. A mano, con el portapapeles real de su navegador, el usuario sí logró guardar (Maxi se modificó el 6/10).
+- Botones nuevos en el editor: "Ayuda con IA" (asistente de construcción), "Historial de versiones" y "Ver Predeterminado".
+- Para abrir el editor desde la lista: el clic normal no funciona (animación de arrastre de las tarjetas); sirve clickear el título `h6` con eventos de puntero. Detalle en [[17-registro-de-cambios]] 2026-10-06 y `PENDIENTES.md` Q38.
+
+## Actualización 2026-10-08 (se puede sortear por API, con autorización)
+- Se reprodujo el bug con tres técnicas más (`fill`, portapapeles real con Ctrl+A y Ctrl+V, `insertText`): el espejo del formulario no se sincroniza y Guardar sigue deshabilitado.
+- `PUT /prompt/{id}` con el objeto completo del agente (más los campos modificados) **sí guarda**; `PATCH` responde 404. Se usó una sola vez, en la copia 10176, con autorización explícita del usuario y verificación por hash. No se usó con Maxi. Ver `PENDIENTES.md` Q40.
