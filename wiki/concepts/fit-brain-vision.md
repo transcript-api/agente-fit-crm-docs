@@ -1,7 +1,13 @@
-# Fit Brain — la arquitectura futura (diseño, nada construido)
+# Fit Brain — arquitectura y piloto externo
+
+**Estado actualizado (16/10/2026):** FIT-BRAIN registra un piloto de Hermes/r12 con API autenticada CRM por polling, relay Codex, ledger/checkpoints y gates de aislamiento. Atribución/modelo y smoke técnicos registrados; último receptor esperando canario nuevo, sin prueba actual completa de entrega. Eso supera el antiguo “nada construido” para el piloto propio, no acredita despliegue comercial ni las alternativas conceptuales de abajo.
+**Fuente primaria actual:** [47 — diagnóstico con referencias privadas fijadas a commit](../../47-diagnostico-hermes-local-2026-10-16.md). [Empezá por acá](../../44-empeza-por-aca-hermes-crm-vps-2026-10-16.md) reúne contrato del motor, CRM y plan VPS. Pendientes actuales: H1–H8 en `PENDIENTES.md`; antecedentes A10/A21/A41 se mantienen como historia.
+
+## Diseño histórico y alternativas (conservados)
+
 
 **Qué es**: una capa externa propuesta, compartida entre todos los agentes, que separaría el **razonamiento comercial** (qué está pasando, qué sabe del cliente, qué hacer) de la **redacción** (el mensaje de WhatsApp en sí). Hoy ambas cosas conviven forzadas dentro de un único prompt/modelo por agente.
-**Estado real**: diseño conceptual maduro (nacido de la auditoría con ChatGPT), **una incertidumbre técnica crítica sin resolver bloquea todo lo demás** (A10). Nada construido.
+**Estado histórico (septiembre, conservado)**: diseño conceptual maduro (nacido de la auditoría con ChatGPT), **una incertidumbre técnica crítica sin resolver bloquea todo lo demás** (A10). Nada construido.
 **Fuente primaria**: [[34-arquitectura-conversacional-aprendizajes-agentes]] §20 y §29 (el detalle completo, incluida la investigación de Hermes Agent).
 
 ## La idea central

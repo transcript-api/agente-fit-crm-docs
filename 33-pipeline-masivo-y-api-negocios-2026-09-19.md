@@ -1,5 +1,7 @@
 # Pipeline Masivo + API de Negócios — investigación nocturna 2026-09-19
 
+> **Actualización 16/10/2026:** [contrato CRM](45-contrato-crm-y-evidencia-2026-10-16.md) y [valor de pedidos/atribución](49-pedidos-atribucion-y-aprendizaje-2026-10-16.md). Las rutas de abajo son evidencia histórica: no inferir schema vigente, moneda, unidad ni semántica parcial de PUT. Los planes masivos conservan sus restricciones originales.
+
 **Pedido real, textual del usuario, de madrugada:** *"la idea es hacer un remarketing masivo en la pipeline de masivos nueva"*, con instrucción explícita de **no mandar ningún mensaje real** y trabajar solo, sin preguntar.
 
 **Qué es este archivo y qué NO es.** Es investigación y diseño verificado contra el CRM real y la documentación real de la API. **No se movió, tagueó ni envió nada a ninguno de los 2396 negocios reales** — cero mutaciones. Todo lo de acá es: (a) estructura observada tal cual está hoy, (b) endpoints de API leídos de la documentación oficial de rmsystemm (no probados en vivo — no tengo `api-key` ni `Connection-Token`, y no fui a buscarlos: el clasificador de permisos bloqueó por buena razón la navegación a la pantalla de credenciales, y aunque no la hubiera bloqueado, no correspondía ir a buscarlas sin decírselo al usuario primero), y (c) un diseño de flujo para ejecutar mañana, con el usuario presente.

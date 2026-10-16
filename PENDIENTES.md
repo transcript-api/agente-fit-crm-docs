@@ -1,5 +1,27 @@
 # PENDIENTES — registro único de todo lo que está sin resolver
 
+## Actualización Hermes y VPS — 2026-10-16
+
+[Empezá por acá](44-empeza-por-aca-hermes-crm-vps-2026-10-16.md). Esta sección actualiza la integración externa sin cerrar retrospectivamente los pendientes del agente nativo. Último checkpoint del piloto: esperando canario nuevo; no hay verificación E2E actual. Capacidad confirmada por soporte no implica herramienta habilitada.
+
+| ID | Qué falta / quién lo desbloquea | Fuente y estado |
+|---|---|---|
+| H1 | Estado fresco de PID/heartbeat/boot, binding y relay. **Operador de la máquina + constructor.** | [47 diagnóstico](47-diagnostico-hermes-local-2026-10-16.md), abierto; checkpoint no es estado vivo |
+| H2 | Canario posterior al arranque y luego input nuevo, trazado completo y regresión histórica/multiturno Codex. **Usuario autoriza prueba propia; constructor mide.** | [47 traza](47-diagnostico-hermes-local-2026-10-16.md), no ejecutado; no inferir fallo NVIDIA actual |
+| H3 | Contrato de entrada por sector, auth, eventos, recuperación/paginación y límites por acción. **Soporte + constructor.** | [45 contrato](45-contrato-crm-y-evidencia-2026-10-16.md), capacidad confirmada parcialmente, parámetros por verificar |
+| H4 | Ownership/handoff durante generación y agendados, batching, multimedia, estados de espera, fuentes y cancelaciones. **Soporte aclara carreras; equipo/usuario define política y routing; constructor verifica.** | [46 flujos](46-contrato-agente-y-flujos-2026-10-16.md); A3/A8/A11/A18/A20 relacionados |
+| H5 | VPS real, dimensionado medido, adaptación Windows/DPAPI/boot, autenticación autorizada, restore y aceptación/rollback. **Operador + constructor + usuario.** | [48 plan](48-plan-ejecucion-vps-2026-10-16.md), propuesta sin despliegue |
+| H6 | Pedido confirmado, contrato Bling, moneda/unidad/redondeo, PUT/valor tarjeta vs histórico, dedup y correcciones. **Equipo + responsable Bling + constructor/soporte CRM.** | [49 pedidos](49-pedidos-atribucion-y-aprendizaje-2026-10-16.md), sin herramienta habilitada; B1–B3/A11 relacionados |
+| H7 | Conexión Meta, eventos/elegibilidad actuales y vínculo real anuncio/contacto/pedido con regla/ventana. **Responsable Meta + soporte + constructor.** | [49 atribución](49-pedidos-atribucion-y-aprendizaje-2026-10-16.md), no conectado en este alcance; P7/Q34 siguen abiertos |
+| H8 | Adaptar loader de 82/300 y segmentación por 12 h para primera compra/Recompra; pedidos, huecos y evaluación independiente. **Constructor + equipo.** | [49 aprendizaje](49-pedidos-atribucion-y-aprendizaje-2026-10-16.md), propuesta, no usar loader antiguo sin adaptar |
+
+**PENDIENTE:** H1/H2 — operador y constructor: localizar primer corte con estado fresco antes de atribuir la no respuesta a modelo o infraestructura.
+**PENDIENTE:** H3/H4 — soporte, equipo y constructor: validar contratos de recuperación, carreras de handoff/agendas y flujo comercial antes de producción.
+**PENDIENTE:** H5/H6/H7/H8 — responsables de la tabla: completar VPS, pedidos, atribución y aprendizaje sin convertir diseños en capacidades existentes.
+
+**Aclaraciones a antecedentes:** A10/A21/A41 describen alternativas y límites de septiembre/octubre; FIT-BRAIN registra ahora un piloto con polling autenticado y modelo Codex técnicamente verificado. No demuestra habilitación general ni resuelve las dudas del agente nativo Q26. S3/P5 deben leerse junto con 45: webhooks de eventos no transportan mensajes. Nombres de etapas/sectores requieren mapeo actualizado; no asumir IDs soportados para resolverlos.
+
+
 **Este archivo es la fuente de verdad de "qué falta".** Si algo está pendiente y no está acá, el sistema falló.
 
 Nació el 2026-09-13 después de un error real: se armó el documento de preguntas para la reunión con soporte del CRM **olvidando el Copiloto de IA**, que estaba documentado hace días en [[09-copiloto-ia-partner]] con la frase literal "habría que preguntarles si/cuándo planean habilitarlo". El pendiente existía, estaba escrito, y aun así se pasó por alto — porque el trabajo se armó desde lo que estaba fresco en la conversación en vez de barrer lo documentado.

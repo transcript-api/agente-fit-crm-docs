@@ -1,5 +1,8 @@
 # API de rmsystemm — referencia técnica de endpoints conocidos
 
+**Actualización 16/10/2026:** [contrato CRM y matriz de evidencia](../../45-contrato-crm-y-evidencia-2026-10-16.md) incorpora confirmaciones de soporte comunicadas por el usuario. Envío de texto/archivos, agenda, contacto, notas/etiquetas, movimiento de negocio y transferencia son capacidades confirmadas; no herramientas habilitadas automáticamente. Límite: 60/min **por tipo de acción**. Eventos no contienen mensajes; entrada de mensajes se configura aparte en sector de atención. Caídas requieren recuperar historial con paginación y última actividad, no filtro por apertura. Parámetros exactos aún pendientes H3/H4/H6. La tabla histórica de abajo mezcla evidencia de documentación y frontend; confirmar el contrato elegido antes de implementar. Se conserva la advertencia sobre `dataJson`/`metaToken`: allowlist antes de logs, nunca payload completo.
+
+
 **Qué es**: rmsystemm es una capa white-label sobre **DKW System** (confirmado con 3 evidencias independientes: favicon en `storage.integrador-crm.com` bajo un UUID de partner, IDs de CSS `dkw-liquid-glass-filter` en el HTML, y que la API real es `api.integrador-crm.com`, no un dominio propio de RM System — solo los webhooks salen por `api.rmsystemm.com.br`). Esto importa: el soporte con el que se habla es el revendedor, no el fabricante — no pueden arreglar un bug de la plataforma en sí, solo escalarlo a DKW.
 **Fuente primaria**: [[33-pipeline-masivo-y-api-negocios-2026-09-19]], [[24-sesion-2026-09-14-traspaso]] §4.0, `Automatizaciones → API` dentro del propio CRM (panel de documentación interactivo real).
 
@@ -36,6 +39,8 @@ POST https://api.rmsystemm.com.br/webhook/leads/<TOKEN>
 Opciones: Responsables, Tags, "Bloquear creación de negocios duplicados". El token vive en la UI, nunca en estos archivos.
 
 ## Lo que NO existe / no se confirmó
+
+Las tres observaciones siguientes conservan el checkpoint histórico; la actualización del 16/10 de arriba precisa mensajes y eventos.
 - No hay campo de "URL propia" en la config del agente (Proveedor/Clave/Modelo nada más) — no se puede apuntar un agente nativo a un servidor propio (ej. Hermes, ver [[fit-brain-vision]]) sin que soporte lo habilite.
 - No hay endpoint para forzar que un agente recién vinculado procese el último mensaje pendiente del ticket (ver A33 en `PENDIENTES.md`, pregunta S20 enviada a soporte).
 - Webhooks **salientes** (CRM → afuera, cuando cambia una etapa) — parcialmente confirmado que existen (panel `Automatizaciones → API` los lista), no leído entero (S3/P5).
