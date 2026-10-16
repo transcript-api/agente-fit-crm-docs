@@ -10,6 +10,14 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-10-16 — Paquete Hermes/CRM/VPS y diagnóstico estático, sin ejecución
+- **Pedido y autorización:** guardar documentación en `transcript-api/agente-fit-crm-docs`, visible entre las últimas informaciones; preparar ejecución VPS y revisar no respuesta actual. Publicación documental autorizada en el hilo; no agentes, mensajes, claves, despliegue ni cambios CRM.
+- **Verificado:** destino público, permisos de escritura por herramienta oficial GitHub; checkout separado sincronizado desde `f1e39dc`. FIT-BRAIN montado solo leído, HEAD y remoto `ca31ca7`. Sus fuentes son privadas: se publica síntesis sin payloads, identidades ni secretos, con referencias de commit para lectores autorizados.
+- **Hallazgo:** Codex tiene atribución/smoke técnicos PASS en la instancia registrada; último checkpoint del receptor 16/10 03:53:17Z es `WAITING_FOR_FRESH_CANARY`. Canario previo excluido y reemplazo explícito del ticket; estado posterior y entrega actual UNKNOWN. NVIDIA 502 es antecedente histórico, no causa actual demostrada. Polling autenticado actual separado de eventos e integración por sector.
+- **Documentado:** archivos 44–49, README visible, matriz de capacidades/evidencia/implementación, contrato comercial, recuperación, pedidos/Meta/aprendizaje y plan VPS con aceptación/rollback. Enlaces al inicio de CLAUDE, resumen e índice; wiki API y Fit Brain actualizadas conservando contexto histórico.
+- **Fuentes:** soporte comunicado por usuario el 16/10; archivos 33/37/43; código y último handoff de FIT-BRAIN fijados a commit. No prueba propia de los endpoints públicos ni consulta nueva a soporte.
+- **Control y límites:** verificación estática de enlaces locales/anclas y referencias privadas, diff sin cambios runtime; no se corrieron modelos, clientes ni pruebas de entrega. Offline PASS reportado como evidencia histórica, no reejecutado ni usado para prometer 100 % listo. Pendientes H1–H8, responsables y puertas definidos. Entrega por rama/PR, sin merge automático.
+
 ### 2026-10-11 — Verificación en vivo de "Disparar Conversión a Meta" (P7) y hallazgo de seguridad en el login
 - **Pedido**: confirmar en el CRM real si existe la acción "Disparar Conversión" hacia Meta Ads (para marcar leads descualificados) y cómo se armaría el mecanismo, "fingiendo" que la conexión con Meta ya estaba hecha.
 - **Hallazgo de seguridad previo a entrar**: al navegar a `rmsystemm.com.br/login`, el formulario apareció autocompletado con una Clave API de OpenAI completa en los campos de usuario/contraseña (autofill del navegador, no algo que se tipeó). No se tocó "Ingresa", no se escribió el valor en ningún archivo. Conecta con A27 (ya documentado, la misma clave expuesta en el árbol de accesibilidad del editor del agente) — ahora además expuesta en el login. El usuario inició sesión manualmente.

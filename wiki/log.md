@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-10-16] update | Hermes, API y plan VPS
+Se enlazó el paquete 44–49 desde el índice; se actualizaron `concepts/fit-brain-vision.md` y `entities/api-rmsystemm.md` sin borrar sus antecedentes. Fuentes nuevas: soporte comunicado por el usuario el 16/10 y revisión estática de FIT-BRAIN en ca31ca7 (privado); 33/37/43 como antecedentes. No se reconstruyó toda la wiki ni se verificó configuración CRM viva. Pendientes H1–H8 en el registro único. Se separan capacidad documentada, piloto implementado, pruebas técnicas y propuestas; no se acredita E2E actual.
+
 ## [2026-10-06] ingest | Centro de Ayuda de RM System
 Página nueva `entities/centro-de-ayuda-rmsystemm.md` (qué es, para qué sirve, límites de lo leído), enlazada desde `index.md`. La síntesis completa vive en `43-centro-de-ayuda-rmsystemm-2026-10-06.md` y los pendientes en `PENDIENTES.md` Q34, Q35 y Q36; no se duplicó. Fuente narrativa: [[17-registro-de-cambios]] 2026-10-06.
 

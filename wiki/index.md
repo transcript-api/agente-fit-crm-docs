@@ -1,5 +1,9 @@
 # Índice maestro — wiki/
 
+## Empezá por acá — últimas informaciones · 16/10/2026
+
+[Paquete Hermes / CRM / VPS](../44-empeza-por-aca-hermes-crm-vps-2026-10-16.md) — capacidades y evidencia, diagnóstico de no respuesta, contrato comercial y ejecución propuesta. Ver [Fit Brain](concepts/fit-brain-vision.md) y [API CRM](entities/api-rmsystemm.md) para separar la evolución del piloto de los diseños históricos.
+
 Catálogo de todo lo que hay en esta capa, por categoría. Ver `WIKI.md` para cómo se mantiene esto. Cada línea: página — una frase de gancho.
 
 ## Agentes de IA

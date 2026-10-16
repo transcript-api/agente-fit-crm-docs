@@ -1,5 +1,7 @@
 # Resumen General — Proyecto Agente IA para Fitness Suplementos
 
+> **Últimas informaciones · 16/10/2026:** [Empezá por acá — Hermes, CRM y VPS](44-empeza-por-aca-hermes-crm-vps-2026-10-16.md). Estado y diagnóstico actuales documentados, contrato comercial y ejecución propuesta. El contenido histórico de abajo se conserva con su fecha.
+
 ## Qué es esto
 Proyecto para convertir el CRM de una empresa de suplementos (WhatsApp + Instagram, ~5000 clientes/mes según el dueño, 6 call centers) en un sistema donde un Agente de IA venda de forma autónoma, reduciendo la dependencia del call center. Hoy ~30% de los leads quedan sin atender.
 

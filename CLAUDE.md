@@ -1,5 +1,9 @@
 # Contexto del proyecto
 
+## Empezá por acá — últimas informaciones (16/10/2026)
+
+[Paquete Hermes / CRM / VPS](44-empeza-por-aca-hermes-crm-vps-2026-10-16.md). Leelo antes de retomar la integración externa: distingue piloto, capacidad documentada y propuesta; incluye diagnóstico estático y plan de aceptación. El registro único de pendientes sigue siendo `PENDIENTES.md` (H1–H8).
+
 Esta carpeta es la documentación viva del proyecto "Agente Fit" — un agente de IA de ventas para Fitness Suplementos, construido sobre el CRM white-label rmsystemm.com.br. Cuando trabajes en este proyecto, leé estos archivos primero para tener el contexto real (decisiones ya tomadas, estado actual, pendientes) en vez de asumir o repetir exploración ya hecha.
 
 ## 🧭 Existe una capa `wiki/` — empezar por ahí para entender "cómo funciona X"

@@ -1,5 +1,7 @@
 # 43 — Centro de Ayuda de RM System: qué dice y qué sirve para escalar (2026-10-06)
 
+> **Aclaración 16/10/2026:** [contrato y matriz actualizada](45-contrato-crm-y-evidencia-2026-10-16.md) incorpora lo confirmado por soporte: límites por tipo de acción, eventos separados de mensajes y recuperación tras caída. Esta síntesis del 06/10 sigue siendo documentación del proveedor, no prueba actual de implementación.
+
 ## Fuente y alcance (leer primero)
 - Se leyó el Centro de Ayuda de la propia plataforma (`/academy`, antes "Academy") desde la cuenta de Fitness Suplementos, solo lectura, el 2026-10-06. Es **documentación del proveedor**: describe lo que la plataforma dice que hace. **Nada de esto está verificado en nuestra cuenta**, salvo donde se indique.
 - **Leído completo:** Agente de IA (11 artículos), Automaciones (7 de 8), Webhooks (2), API Externa (7), Agendamientos (5), Informes, Voip, FAQ (10 respuestas), 20 changelogs, y de Canales: WhatsApp API Oficial (primera mitad), Diferencia oficial vs no oficial y los resúmenes por palabra clave de WhatsApp No Oficial, Z-API e Instagram.
