@@ -22,7 +22,7 @@ Catálogo de todo lo que hay en esta capa, por categoría. Ver `WIKI.md` para c�
 - [[hub-de-integraciones]] — los 25 conectores del Hub, cómo se usan de verdad (3 pasos), y los 4 hallazgos que cambian planes.
 - [[centro-de-ayuda-rmsystemm]] — la documentación oficial de la plataforma (agentes, automatizaciones, API, canales, changelog) y cómo usarla; qué se leyó y qué falta.
 - [[catalogo-productos]] — de dónde sale el catálogo que consulta el agente, y las 2 planillas que no hay que confundir.
-- [[copiloto-ia]] — producto separado del Agente de IA, no disponible en la cuenta hoy.
+- [[copiloto-ia]] — producto separado del Agente de IA, no disponible en la cuenta hoy; exige IA Gerenciada y lo activa el partner (Q41).
 - [[ds-voice-criativos]] — audios/mensajes/funis reutilizables, la base para la idea de audios personalizados.
 - [[meta-muse-y-business-agent]] — qué compite con el agente propio (Business Agent) y qué no (Muse, con un riesgo real si se conecta mal).
 

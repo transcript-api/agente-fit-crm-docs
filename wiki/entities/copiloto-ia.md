@@ -7,8 +7,17 @@
 ## La contradicción sobre BYOK (resuelta, con matiz)
 La documentación de la plataforma base dice que el Copiloto requiere "IA Gerenciada" (clave centralizada del proveedor), no BYOK (clave propia, que es lo que usa el agente hoy). El conector "OpenAI Key" del Hub (ver [[hub-de-integraciones]]) dice literalmente que la clave sirve para "los Agentes de IA, el Copiloto y los Flujos" — **soporte aclaró que eso es incorrecto/desactualizado**: BYOK sirve solo para el agente, no habilita el Copiloto.
 
+## Lo que dijo el proveedor en un webinar y un podcast (2026-10-29, sin verificar en nuestra cuenta)
+Detalle y nivel de confianza por fuente en [[44-copiloto-webinar-y-podcast-dkw-2026-10-29]]. Lo más sólido, de las preguntas y respuestas literales del webinar:
+- **Exige IA Gerenciada** y la activa el **partner**, no la cuenta (`Parceiros > Política de IA`). Sin eso no hay Copiloto ni prueba gratis. Dijeron que activarían la prueba gratis a todos los partners al terminar el webinar.
+- **Prueba gratis**: 5 mensajes y 2 análisis por día, solo el administrador. **Asiento**: R$ 24,90 por mes de costo del partner (lo que cobre al cliente lo decide el partner).
+- **Créditos**: los mismos del agente. Sussurro e insights consumen "irrisório"; R$ 0,25 por mensaje es solo una estimación.
+- **Modelos**: los fija el proveedor, nadie los cambia. **Copiloto de soporte** gratis solo para partners.
+- **Reescribe agentes**: en la demostración transformó un agente de recepción en uno de calificación y cambió el prompt al aprobar. La prueba en bucle no se mostró. Promesas, no existen aún: crear y probar flujos, acciones masivas con aprobación.
+- **Sin respuesta**: permisos y privacidad (quién ve qué, memoria por persona). Es lo que más importa para el control de vendedores.
+
 ## Por qué importa igual, aunque no esté disponible
 Si algún día se libera, la función de "generar/mejorar el prompt con test en loop automático" sería directamente relevante para todo el trabajo manual de iteración de prompts que se viene haciendo con ChatGPT (ver [[arquitectura-conversacional]] y [[metodologia-parche-quirurgico]]).
 
 ## Pendientes relacionados
-S4 (precio y condiciones, sin confirmar), P8 (acceso "súper"/administrador pedido, sin confirmar cuándo llega).
+Q41 (habilitarlo y las preguntas a soporte), S4 (precio y condiciones, sin confirmar), P8 (acceso "súper"/administrador pedido, sin confirmar cuándo llega).

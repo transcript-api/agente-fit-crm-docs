@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-10-29] ingest | Webinar y podcast del proveedor sobre el Copiloto
+Se actualizó `entities/copiloto-ia.md` (sección con lo que dijo el proveedor y Q41 como pendiente) y la línea del Copiloto en `index.md`. La síntesis con nivel de confianza por fuente vive en `44-copiloto-webinar-y-podcast-dkw-2026-10-29.md`; los pendientes en `PENDIENTES.md` Q41 y S4, sin duplicar. Todo viene de transcripciones de Gemini sin verificar contra el video. Fuente narrativa: [[17-registro-de-cambios]] 2026-10-29.
+
 ## [2026-10-06] ingest | Centro de Ayuda de RM System
 Página nueva `entities/centro-de-ayuda-rmsystemm.md` (qué es, para qué sirve, límites de lo leído), enlazada desde `index.md`. La síntesis completa vive en `43-centro-de-ayuda-rmsystemm-2026-10-06.md` y los pendientes en `PENDIENTES.md` Q34, Q35 y Q36; no se duplicó. Fuente narrativa: [[17-registro-de-cambios]] 2026-10-06.
 
