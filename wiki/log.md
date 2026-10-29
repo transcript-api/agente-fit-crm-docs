@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-10-29] update | Remarketing manual por WhatsApp Web y lectura de leads por la API
+Se agregó una sección a `entities/remarketing-masivo.md` (segundo camino, envío manual) y otra a `entities/api-rmsystemm.md` (paginación inestable, `interes_inicial`, límites). Detalle en [[17-registro-de-cambios]] 2026-10-29 (tarde) y pendientes en Q42, sin duplicar.
+
 ## [2026-10-29] ingest | Webinar y podcast del proveedor sobre el Copiloto
 Se actualizó `entities/copiloto-ia.md` (sección con lo que dijo el proveedor y Q41 como pendiente) y la línea del Copiloto en `index.md`. La síntesis con nivel de confianza por fuente vive en `44-copiloto-webinar-y-podcast-dkw-2026-10-29.md`; los pendientes en `PENDIENTES.md` Q41 y S4, sin duplicar. Todo viene de transcripciones de Gemini sin verificar contra el video. Fuente narrativa: [[17-registro-de-cambios]] 2026-10-29.
 

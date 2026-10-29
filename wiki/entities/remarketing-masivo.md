@@ -30,5 +30,8 @@ A un contacto sin conversación abierta hace más de 24h, **ningún sistema** pu
 ## Segmentación por API (camino alternativo, diseñado, no ejecutado)
 `POST /commercial-order/{id}/move` con `{"commercialStep": "CAMPAÑA CREATINA"}` puede mover cada negocio de `LEAD MASIVOS` a su columna de campaña según el nombre del anuncio de origen (visible en la tarjeta, campo exacto no confirmado). Blueprint de n8n listo sin ejecutar: `artefactos/n8n-pipeline-masivo-segmentar.json`. **Nunca se movió ni un solo negocio real** — toda esta fase requiere al usuario presente mirando, por ser una mutación real de 2396 registros de producción.
 
+## Segundo camino, 2026-10-29: envío manual por WhatsApp Business Web
+Con una promo que vencía el mismo día se probó otro camino, sin plantillas ni flujos: leads sacados de la API (3.743 en remarketing, 2.868 con WhatsApp), 50 mensajes personalizados y envío desde la app de WhatsApp Business de a pocos con pausas. Se mandaron 29 de 50; ninguno de los chats tenía historial previo, hubo respuestas en minutos y llegan a la app, no a Maxi ni al CRM. Detalle y aprendizajes técnicos (la pestaña oculta no envía, cómo evitarlo) en [[17-registro-de-cambios]] 2026-10-29 (tarde); pendientes en Q42. Los datos reales viven en `privado/`, fuera de git.
+
 ## Pendientes relacionados
 Q17c (construir el paso 1 del diseño de 3 pasos), Q17d (confirmar cobro de rmsystemm en ventana 72h), Q17h (🟠 cruzar con los límites legales de Q16 antes de escalar), Q17j (5 plantillas por campaña, esperando copy), N24 (verificar `Novo Fluxo` antes de tocar más automatizaciones, por las dudas de que compartan infraestructura).

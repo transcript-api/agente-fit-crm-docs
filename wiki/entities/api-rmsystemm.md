@@ -43,5 +43,12 @@ Opciones: Responsables, Tags, "Bloquear creación de negocios duplicados". El to
 ## Gotchas de autenticación encontrados en esta sesión (2026-09-29)
 El token de sesión (`localStorage.token` + `tenantId`) puede devolver `400 {"error":"Não é possível consultar registros de outra empresa"}` para el mismo ticket/endpoint que minutos antes funcionaba bien con los mismos headers — no confirmado si es expiración parcial de sesión o un problema de scoping puntual de algunos endpoints (`/messages/{id}`, `/tickets/{id}` singular) mientras `/tickets` (lista) seguía funcionando normal. Si esto se repite, recargar la página del CRM (fuerza refresh del token) antes de asumir que el dato no es accesible.
 
+## Lectura de leads en bloque (2026-10-29, solo lectura)
+- `/commercial-order?pageNumber=N`: 40 por página, **paginación inestable** (repite y salta; sin filtro ni orden que funcione). Con 8 pasadas se juntaron 15.397 negocios únicos de ~16.900.
+- `/tickets?status=open|closed|pending&pageNumber=N`: 20 por página; trae nombre, número, `variables.interes_inicial` y último mensaje (el filtro `contactId` se ignora).
+- `/messages/{ticketId}`: 15 por página, la primera es la más nueva.
+- `interes_inicial` solo existe en leads atendidos desde que Maxi arrancó. Los contactos de Instagram tienen números de 15 dígitos o más.
+Detalle en [[17-registro-de-cambios]] 2026-10-29 (tarde).
+
 ## Pendientes relacionados
 S3 (leer el panel completo de la API), Q16 (uso de `/commercial-order/.../move` para segmentar remarketing masivo), Q23 (token de Meta expuesto en `/messages/{ticketId}`), S20 (pregunta a soporte sobre timing de vinculación de agente).
