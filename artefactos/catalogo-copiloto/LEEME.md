@@ -28,5 +28,7 @@ Cuatro planillas separadas, como pidió el usuario, con el formato que recomend�
 - Pre entrenos, colágenos, magnesio, multivitamínicos: el análisis de precios del Copiloto encontró precios distintos en los chats para el mismo producto; hay que definir cuál vale.
 - Costo de envío.
 
-## Dónde se cargan
-Según el Copiloto: `Agente de IA → Base de Conhecimento` (no como tabla en la Rede neural). **Todavía no están cargadas.**
+## Dónde están cargadas
+**Cargadas el 2026-11-02** en `Agente de IA → Base de Conhecimento → Santi` (las 3 con datos; mayoristas no, está vacía), y la base "Santi" está conectada al Copiloto en `Rede neural → Fontes de conhecimento`. Probado: el Copiloto encontró precios, modo de uso y el anuncio de la XTR 650 g.
+
+Para actualizar: editar el CSV acá, y en la base "Santi" quitar la fuente vieja (menú de tres puntos → Remover) y subir la nueva con "Adicionar fonte" (de a un archivo). Se indexa en el primer uso.

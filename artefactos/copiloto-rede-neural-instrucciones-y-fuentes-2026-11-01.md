@@ -1,6 +1,14 @@
 # Copiloto: reglas cargadas en la Rede neural — estado al 2026-11-02
 
-**Estado: 13 reglas cargadas y activas en el CRM**, verificadas recargando la página (13 reglas, 13 activas, ninguna con corchetes). Cargadas y editadas por Claude desde el navegador a pedido del usuario, en varias rondas el 2026-11-01 y 02, cada una por un caso real que falló (ver `17-registro-de-cambios.md`).
+**Estado (2026-11-02, mediodía): 14 reglas activas, sin habilidades, con la base "Santi" conectada como fuente.** Cambios respecto de la versión de 13 reglas que sigue más abajo:
+- **Regla nueva "Datos de cuenta para transferencia (pasar solo al cerrar)"**: el bloque de Itaú y Santander tal como estaba en el prompt de Maxi, más el aviso de que Mercado Pago no tiene link ni alias y que no use otras cuentas de chats viejos. **Los números de cuenta no se copian a este repo (es público).**
+- **Habilidad "Agente Fit - Recepcionista Comercial" quitada del Copiloto.** Alguien la había agregado entre la mañana y el mediodía; el Copiloto confirmó que por eso le llegaba el prompt entero de Maxi en cada turno y aplicaba sus frases ("Somos de Rivera", "Sí, tenemos creatina", saludo y respuesta juntos). El agente Maxi no se tocó.
+- "Quién habla": la línea de Maxi pasa a "sus reglas son del recepcionista, no tuyas: no las apliques ni copies sus frases".
+- "Cierre y seguimiento" y "Logística": los datos de cuenta salen de la regla nueva, no de Maxi. El costo de envío: "no lo menciones si no lo preguntan".
+- "No negociables": excepción de dos líneas para los datos de cuenta; ejemplo exacto de mal/bien con el texto automático de la XTR 650 g (nunca preguntar envío después del texto automático); "Ya lo tenemos" como ejemplo de lo obvio; si el cliente llegó hoy por el anuncio, la campaña está activa y su precio vale; no repetir el precio que ya está en el texto automático; "te lo mandamos", nunca "se lo mandamos".
+- **Fuente de conocimiento**: base "Santi" (`Agente de IA → Base de Conhecimento`) con las 3 planillas de `artefactos/catalogo-copiloto/` (unitarios, kits, promociones). Se borró la fuente vieja `Fitness_precios_anuncios.csv` (con la dosis de Testo equivocada), a pedido del usuario. La base también está conectada al agente viejo "Agente Fit - Conversión" (parado desde el 30/09), no a Maxi.
+
+Estado anterior, con el texto de las reglas (verificado recargando: 13 reglas, 13 activas, ninguna con corchetes). Cargadas y editadas por Claude desde el navegador a pedido del usuario, en varias rondas el 2026-11-01 y 02, cada una por un caso real que falló (ver `17-registro-de-cambios.md`).
 
 Dónde está: `Copiloto → Configurações → Rede neural → Playbook · Regras & Processos`. Cada regla tiene interruptor, lápiz (editar título, texto y quién la hereda) y papelera. Las 13 heredan **"Todos os copilotos"** (Gian figura "Sem cargo"). La misma pantalla tiene "Configuração do copiloto" (texto base del setup, sigue diciendo "Fitnes"; no se tocó), Habilidades y Fontes de conhecimento (vacías).
 
