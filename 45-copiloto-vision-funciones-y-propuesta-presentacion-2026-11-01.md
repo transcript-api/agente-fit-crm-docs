@@ -46,9 +46,9 @@ Ninguna fila de esta tabla está verificada en nuestra cuenta — es lo que el p
 | Copiloto personalizado por miembro del equipo | 🟢 Confirmado (fuente B) | Relevante para separar vista vendedor / vista gerente |
 | Conexión con Gmail / Google Sheets | 🟢 Confirmado (fuente B) | Relevante para la planilla de contactos del DAC |
 | Mejorar/reescribir el agente de ventas | 🟢 Confirmado con demo (fuente A) | El Copiloto propone cambios y los aplica **con aprobación humana paso a paso**, no solo |
-| Envío masivo del código DAC (acción en lote sobre una planilla) | 🟡 **Depende de una promesa, no de algo mostrado** | El proveedor promete "acciones en masa" (ej. mover contactos por etiqueta) pero **no la mostró funcionando** — ver punto 8 de la fuente 44. Probar en vivo antes de prometerlo |
-| Crear flujos/pipelines nuevos | 🟡 Promesa, no mostrada | Igual que arriba |
-| Auto-mejora continua y **autónoma** | ⚪ No dicho por el proveedor | Lo único documentado es mejora **con aprobación humana** en cada paso (salvo que se active el modo "Auto" visto en el widget de Revenda, sin confirmar su alcance real) |
+| Envío masivo del código DAC (acción en lote sobre una planilla) | 🟢 **Confirmado en cuenta real, 2026-11-01** | El Copiloto ya armó 2 flujos de automatización reales ("Recontacto \| Recompra" y "Recontacto \| Remarketing") sobre una planilla de 60 contactos reales que él mismo generó leyendo los pipelines de Recompra/Remarketing — quedaron como tarjetas **pendientes de aprobación**, no se mandó nada solo. Mismo mecanismo serviría para el DAC. Detalle en `wiki/entities/copiloto-ia.md` |
+| Crear flujos/pipelines nuevos | 🟢 Confirmado en cuenta real, 2026-11-01 | Mismo hallazgo de arriba |
+| Auto-mejora continua y **autónoma** | 🟢 **Aclarado por el propio Copiloto, 2026-11-01 — no es autónoma** | En una conversación real explicó su modelo: no guarda memoria infinita sola; persiste por (1) instrucciones permanentes, (2) notas que graba en la ficha de cada contacto, (3) patrones repetidos que se promueven a un manual compartido. Todo con aprobación humana, "no mando mensagem sozinho" |
 | "Quién vendió más" / ranking por ventas ganadas | 🔴 **Bloqueado hoy, no es problema del Copiloto** | El CRM de Fitness Suplementos no registra negocios como ganados (0 negocios ganados a la fecha). Sin ese dato cargado, ninguna IA puede sacarlo — ver punto 4 |
 
 ## 3. Ideas nuevas — lluvia de ideas, todavía no pedidas ni probadas
@@ -76,6 +76,7 @@ Esto es brainstorming mío a partir de lo que el proveedor dice que el Copiloto 
 
 ## 4. Lo que hay que resolver antes de poder prometer esto en una presentación
 
+- **✅ Resuelto 2026-11-01**: dónde se asigna el asiento a un usuario puntual — es adentro del propio Copiloto (`Copiloto → Equipe → Adicionar membros`), no en Usuários ni en Revenda. Detalle en `wiki/entities/copiloto-ia.md` y Q41.
 - **El CRM no registra ventas ganadas** (0 negocios ganados hoy). Sin esto, cualquier métrica de conversión o "quién vendió más" es ficticia por más que el Copiloto exista. Esto ya estaba anotado en Q41 de `PENDIENTES.md`; lo repito acá porque es el riesgo más grande de prometer algo que no se puede mostrar.
 - **Permisos y privacidad entre dueño/admin/vendedor siguen sin respuesta del proveedor** (Q41, punto 4). Importa en particular porque el pedido "que el líder vea los errores de tal vendedor" asume que eso es técnicamente posible y no genera un problema de privacidad con el equipo.
 - **Acciones en masa / crear flujos** (el mecanismo real detrás del envío automático del DAC) sigue siendo una promesa del proveedor, no algo mostrado funcionando. Probarlo en la cuenta de test antes de prometerlo en la presentación.
