@@ -19,5 +19,8 @@ Detalle y nivel de confianza por fuente en [[44-copiloto-webinar-y-podcast-dkw-2
 ## Por qué importa igual, aunque no esté disponible
 Si algún día se libera, la función de "generar/mejorar el prompt con test en loop automático" sería directamente relevante para todo el trabajo manual de iteración de prompts que se viene haciendo con ChatGPT (ver [[arquitectura-conversacional]] y [[metodologia-parche-quirurgico]]).
 
+## Primera prueba en vivo (2026-11-01)
+El usuario compró 1 asiento por fuera del flujo de soporte (vía Revenda, cuenta "súper" de P8) y empezó el setup guiado (`/ai/copilot`) logueado como Gian en Fitness Suplementos. No se encontró en la UI ninguna pantalla para elegir a qué usuario específico se le asigna el asiento (se revisó Usuários, Permissões, Cargos, Meu Plano y el wizard de Copiloto) — sigue sin respuesta, igual que "permisos y privacidad" en Q41. El pedido completo del usuario sobre qué debería hacer el Copiloto, cruzado contra lo confirmado/prometido por el proveedor, está en [[45-copiloto-vision-funciones-y-propuesta-presentacion-2026-11-01]] — incluye el riesgo más grande para la futura presentación: el CRM no registra ventas ganadas, así que ninguna métrica de "quién vendió más" es real todavía.
+
 ## Pendientes relacionados
 Q41 (habilitarlo y las preguntas a soporte), S4 (precio y condiciones, sin confirmar), P8 (acceso "súper"/administrador pedido, sin confirmar cuándo llega).
