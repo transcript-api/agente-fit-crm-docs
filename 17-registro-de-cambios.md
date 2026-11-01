@@ -10,6 +10,13 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-01 (mediodía) — Presentación v2: por vendedor, líder y dueño, con capturas reales
+- **Pedido**: al usuario le gustó el diseño, pero lo interno ("falta definir el precio bueno", "todavía no están") no va en una presentación: mostrar las funciones, lo que detectó, todo lo que se puede llegar a hacer, ordenado como Copiloto para vendedores, para el líder y para el dueño, con capturas sin arruinar lo visual.
+- **Hecho**: 17 láminas en tres partes (detalle en [[46-copiloto-informe-completo-2026-11-01]] §13), publicada en el mismo link (versión 2). Se sacó la lámina "Lo que falta" y todo estado interno; los pendientes siguen en el informe del final.
+- **Dato nuevo**: el pedido de métricas al Copiloto que se creyó fallido sí tuvo respuesta (se ve en las capturas del usuario): 522 conversaciones del 26/10 al 01/11, 227 (43,4%) empezaron con el texto del anuncio, y "sin dato" para la mediana de primera respuesta. Va en las láminas 2 y 14 y en el 46 §8.
+- **Capturas**: tres de las que mandó el usuario, recortadas sin datos de clientes. El MCP de Playwright se colgó por tercera vez (30 minutos), así que no hubo capturas nuevas del CRM.
+- **Verificado**: las 17 láminas a 1920×1080 y en 390 px; HTML sin etiquetas abiertas; sin las frases de estado interno.
+
 ### 2026-11-01 (mañana, después) — Presentación del Copiloto publicada, dos críticas aplicadas y fechas corregidas
 - **Pedido**: una presentación de todos los casos de uso del Copiloto (cómo se lo mejoró y por qué ayuda a escalar), con diseño cuidado, videos e imágenes, agentes críticos para iterar, el informe completo al final, y todo subido a GitHub. Al final mostró dos capturas de Conversas "para ver después de terminar".
 - **Publicado**: https://claude.ai/artifact/JvaDopbhHKD4e79Qn7Brko (privado; se comparte desde Share). 14 láminas + informe. Fuente en `presentacion/copiloto-2026-11/` (ignorada por git). Orden y criterios en [[46-copiloto-informe-completo-2026-11-01]] §13.
