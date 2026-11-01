@@ -1,6 +1,6 @@
-# Copiloto: reglas cargadas en la Rede neural — estado al 2026-11-02
+# Copiloto: reglas cargadas en la Rede neural — estado al 2026-11-01
 
-**Estado (2026-11-02, mediodía): 14 reglas activas, sin habilidades, con la base "Santi" conectada como fuente.** Cambios respecto de la versión de 13 reglas que sigue más abajo:
+**Estado (2026-11-01, mediodía): 14 reglas activas, sin habilidades, con la base "Santi" conectada como fuente.** Cambios respecto de la versión de 13 reglas que sigue más abajo:
 - **Regla nueva "Datos de cuenta para transferencia (pasar solo al cerrar)"**: el bloque de Itaú y Santander tal como estaba en el prompt de Maxi, más el aviso de que Mercado Pago no tiene link ni alias y que no use otras cuentas de chats viejos. **Los números de cuenta no se copian a este repo (es público).**
 - **Habilidad "Agente Fit - Recepcionista Comercial" quitada del Copiloto.** Alguien la había agregado entre la mañana y el mediodía; el Copiloto confirmó que por eso le llegaba el prompt entero de Maxi en cada turno y aplicaba sus frases ("Somos de Rivera", "Sí, tenemos creatina", saludo y respuesta juntos). El agente Maxi no se tocó.
 - "Quién habla": la línea de Maxi pasa a "sus reglas son del recepcionista, no tuyas: no las apliques ni copies sus frases".
@@ -12,7 +12,7 @@ Estado anterior, con el texto de las reglas (verificado recargando: 13 reglas, 1
 
 Dónde está: `Copiloto → Configurações → Rede neural → Playbook · Regras & Processos`. Cada regla tiene interruptor, lápiz (editar título, texto y quién la hereda) y papelera. Las 13 heredan **"Todos os copilotos"** (Gian figura "Sem cargo"). La misma pantalla tiene "Configuração do copiloto" (texto base del setup, sigue diciendo "Fitnes"; no se tocó), Habilidades y Fontes de conhecimento (vacías).
 
-## Lo que dijo el propio Copiloto sobre cómo lee todo (2026-11-02, conversación "Ajuste de regras e fontes do assistente")
+## Lo que dijo el propio Copiloto sobre cómo lee todo (2026-11-01, conversación "Ajuste de regras e fontes do assistente")
 - En cada turno recibe: el Playbook, su memoria ("preferencias guardadas") y el historial completo de la conversación. Las fuentes de conocimiento **no le llegan enteras**: se consultan por turno y vuelven fragmentos; si el dato no se recupera, para él no existe.
 - Prioridad si se contradicen: seguridad > Playbook > dato confirmado de la fuente > memoria y estilo.
 - La sugerencia de Conversas es **un solo texto**; él no controla el envío.
@@ -22,7 +22,7 @@ Dónde está: `Copiloto → Configurações → Rede neural → Playbook · Regr
 - Del anuncio ve el **nombre de la campaña o anuncio** y, a veces, el texto del creativo con producto y precio. **No ve el ID.** La búsqueda tiene que ser por nombre exacto más una columna de alias.
 
 ## Memoria del Copiloto
-`Copiloto → Configurações → Memória`: "Ele decide sozinho o que guardar das conversas". Tenía 39 fragmentos, muchos copiados de la primera versión de las reglas. El 2026-11-02 se borraron 11 que contradecían las reglas actuales o estaban viejos (con autorización explícita del usuario): "si ya sabe lo que quiere, confirmar y cerrar", tres que mandaban a nombrar Rivera, "precios con formato $990, $1.290", "presentarse la primera vez y nunca más", el que tomaba el anuncio como fuente de precio, "no tiene tabla de precios", "faltan datos del catálogo" y dos de "21 conversaciones pendientes". Quedaron 28, coherentes con las reglas.
+`Copiloto → Configurações → Memória`: "Ele decide sozinho o que guardar das conversas". Tenía 39 fragmentos, muchos copiados de la primera versión de las reglas. El 2026-11-01 se borraron 11 que contradecían las reglas actuales o estaban viejos (con autorización explícita del usuario): "si ya sabe lo que quiere, confirmar y cerrar", tres que mandaban a nombrar Rivera, "precios con formato $990, $1.290", "presentarse la primera vez y nunca más", el que tomaba el anuncio como fuente de precio, "no tiene tabla de precios", "faltan datos del catálogo" y dos de "21 conversaciones pendientes". Quedaron 28, coherentes con las reglas.
 
 **No pegar en este repo** los datos bancarios: el repo es público.
 

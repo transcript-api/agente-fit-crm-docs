@@ -1,4 +1,4 @@
-# Planillas de precios para el Copiloto (2026-11-02)
+# Planillas de precios para el Copiloto (2026-11-01)
 
 Cuatro planillas separadas, como pidió el usuario, con el formato que recomendó el propio Copiloto: una fila por variante, las mismas 17 columnas en las cuatro, cada fila completa por sí sola (el Copiloto no lee la planilla entera, recibe pedazos sueltos). CSV separado por punto y coma, UTF-8 con BOM: abre bien en Excel en español.
 
@@ -18,7 +18,7 @@ Cuatro planillas separadas, como pidió el usuario, con el formato que recomend�
 
 ## Origen de los datos
 - El CSV que pasó el usuario (`Fitness_precios_anuncios.csv`, generado el 2026-11-01): 10 productos de catálogo y 17 ofertas de anuncios. La dosis de Testo Dilated se corrigió de 2 a 3 cápsulas por día, a pedido del usuario, en ese archivo y acá.
-- La lista que pegó el usuario el 2026-11-02 (agregó Testo 2 por $1.650 con sachets).
+- La lista que pegó el usuario el 2026-11-01 (agregó Testo 2 por $1.650 con sachets).
 - Anuncios vistos en capturas de chats (Creatina XTR 650 g $1.490, Testo con 30 cápsulas extra $990).
 - Dos precios que vendedores pasaron a clientes, marcados "Sin confirmar" (creatina DUX 300 g $990, Vasculor $1.450).
 
@@ -29,6 +29,6 @@ Cuatro planillas separadas, como pidió el usuario, con el formato que recomend�
 - Costo de envío.
 
 ## Dónde están cargadas
-**Cargadas el 2026-11-02** en `Agente de IA → Base de Conhecimento → Santi` (las 3 con datos; mayoristas no, está vacía), y la base "Santi" está conectada al Copiloto en `Rede neural → Fontes de conhecimento`. Probado: el Copiloto encontró precios, modo de uso y el anuncio de la XTR 650 g.
+**Cargadas el 2026-11-01** en `Agente de IA → Base de Conhecimento → Santi` (las 3 con datos; mayoristas no, está vacía), y la base "Santi" está conectada al Copiloto en `Rede neural → Fontes de conhecimento`. Probado: el Copiloto encontró precios, modo de uso y el anuncio de la XTR 650 g.
 
 Para actualizar: editar el CSV acá, y en la base "Santi" quitar la fuente vieja (menú de tres puntos → Remover) y subir la nueva con "Adicionar fonte" (de a un archivo). Se indexa en el primer uso.
