@@ -10,6 +10,14 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-01 (madrugada del 2) — 9 reglas cargadas en el Playbook del Copiloto
+- **Pedido**: "vamos a ponerle esas instrucciones".
+- **Antes de cargar**: en el chat del Copiloto apareció una corrección del usuario que yo no había tenido en cuenta: muchos "Hola, quiero comprar [producto]" son el **texto automático del anuncio**, no palabras del cliente. El Copiloto contó 12 de 21 pendientes que arrancaban así, de dos anuncios ("TESTO DILATED [VIDEO]" y "CREATINA 650G XTR - TEST SANTI"). Mi análisis anterior del caso del Testo Dilated ("el cliente había dicho quiero comprar") estaba mal por eso. Se agregó una regla propia para esto.
+- **Hecho en el CRM (con el navegador, a pedido del usuario)**: `Copiloto → Configurações → Rede neural → Playbook · Regras & Processos`, 9 reglas: Quién habla y nombre del cliente, Estilo de los mensajes, Cómo vendemos, Mensajes automáticos del anuncio, Objeciones, No inventar, Seguridad, Cierre y seguimiento, Mejora continua. Todas con herencia **"Todos os copilotos"** (Gian figura "Sem cargo"). Antes estaba vacío. **Verificado recargando la página**: las 9 aparecen una vez cada una. Texto exacto en `artefactos/copiloto-rede-neural-instrucciones-y-fuentes-2026-11-01.md`.
+- **Visto en la pantalla**: la Rede neural tiene "Configuração do copiloto" (el texto base del setup, todavía con "Fitnes"), Habilidades y Fontes de conhecimento (las dos vacías), y el Playbook. Hay una pestaña **Memória** al lado, así que algún tipo de memoria existe, aunque el Copiloto dijo que no puede escribirla desde el chat. El selector del chat seguía en **Auto**.
+- **No se tocó**: el texto base con "Fitnes", el modo Auto, las fuentes de conocimiento (faltan precio, promo y costo de envío), Maxi, flujos. Mientras se cargaban las reglas, el usuario navegaba en otra pestaña del mismo navegador; no se interactuó con esa pestaña.
+- **Pendiente**: pasar a Manual, corregir "Fitnes" en el texto base, completar y cargar las dos fuentes de conocimiento, probar el Copiloto en un chat nuevo para ver si aplica las reglas sin repetírselas.
+
 ### 2026-11-01 (cierre) — Respuesta del Copiloto al prompt de ventas: no guarda nada solo y no ve el contenido del anuncio
 - **Pedido**: el usuario pegó la respuesta del Copiloto de Gian al prompt de respuestas (llegó cortada al final, en la lista de datos faltantes).
 - **Lo que dijo el Copiloto (sin verificar por nosotros)**: no puede editar sus instrucciones ni guardar memoria desde el chat, así que las reglas valen solo en esa conversación; lo permanente va en `Rede neural → Instruções` y en fuentes de conocimiento. Leyó a Maxi y tomó como confirmados logística, formas de pago (transferencia, depósito, Mercado Pago, cuentas Itaú y Santander) y marcas. Rehízo bien la sugerencia para el cliente del Testo Dilated. Dijo que puede mandar mensajes separados uno por uno.
