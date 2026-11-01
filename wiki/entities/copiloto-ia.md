@@ -53,5 +53,10 @@ Lo que se había registrado antes como "2 flujos de automatización reales ya cr
 - **Falla técnica observada**: un intento de análisis en segundo plano devolvió un error de parseo JSON de la propia herramienta interna del Copiloto ("Invalid arguments for tool run_tool: JSON parsing failed..."). Dato de confiabilidad a tener en cuenta, no se repitió ni se investigó más.
 - **Dato de manejo de datos a tener presente**: la planilla de contactos reales (nombres y teléfonos) se generó en una sesión del copiloto de soporte del partner, no dentro de la cuenta propia de Fitness — confirma lo que ya decía el punto 5 de [[44-copiloto-webinar-y-podcast-dkw-2026-10-29]] (el soporte puede personificar y operar sobre la cuenta real), importante para la pregunta de privacidad todavía sin responder formalmente.
 
+## Prompts armados para el Copiloto (2026-11-01, sin resultado todavía)
+- `artefactos/prompt-copiloto-asistente-ventas-2026-11-01.md`: cómo sugerir respuestas en Conversas (nombre del vendedor, nombre del cliente, mensajes separados, estilo, venta, no inventar, seguridad, aprendizaje con aprobación).
+- `artefactos/prompt-copiloto-informes-lider-2026-11-01.md`: informes semanal, mensual y a pedido por vendedor, con mejoras concretas para que el líder corrija.
+Salieron de la primera sugerencia real del Copiloto (cliente que preguntó por un producto desde un anuncio), que tenía 6 errores: usó el usuario de Instagram como nombre, en minúscula; escribió "Fitnes" (copiado del texto de empresa del setup, que quedó mal escrito); no se presentó como Gian; usó "¡"; hizo dos preguntas en un solo mensaje largo; y ofreció "pasarte el precio" cuando el anuncio del mensaje ya lo mostraba y el cliente había dicho "quiero comprar".
+
 ## Pendientes relacionados
 Q41 (habilitarlo y las preguntas a soporte), S4 (precio y condiciones, sin confirmar), P8 (acceso "súper"/administrador pedido, sin confirmar cuándo llega).
