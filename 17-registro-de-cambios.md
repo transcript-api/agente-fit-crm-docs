@@ -10,6 +10,14 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-02 — Presentación v3: catálogo de funciones por puesto, y subida a Vercel
+- **Pedido**: el link de Vercel ("o la que subimos en Cloudflare"); "¿seguro que no se puede mejorar aún más?"; y que la presentación muestre las funciones que se le pueden dar al Copiloto (mandar el código de rastreo, etc.), no cómo lo estuvimos usando.
+- **Hecho**: 19 láminas por puesto (vendedor, postventa, líder, dueño) con una pared de pedidos de ejemplo; detalle y criterios en [[46-copiloto-informe-completo-2026-11-01]] §13. Se publicó en el mismo artifact (versión 3) y en un proyecto nuevo de Vercel de la cuenta del usuario. El link de Vercel no se escribe acá: la página es pública para quien tenga el link y este repo es público.
+- **Vercel/Cloudflare**: no existía ninguna versión anterior en ninguno de los dos. En Vercel solo había `reto-cintura-28` y `max-suplementos-app`; `wrangler` no está instalado y el vault no mencionaba ningún deploy.
+- **Fallas visuales de la v2 corregidas**: la captura del setup salía rota o ilegible, la de la compra pisaba la fuente al pie, la del chat del Copiloto no se leía, y una nota manuscrita pisaba la tarjeta de acciones.
+- **Verificado**: las 19 láminas a 1600×900 y seis en 390 px; búsqueda de teléfonos, usuarios, datos bancarios y claves en el HTML subido (sin resultados); Vercel responde 200 en la página, las imágenes y los videos; capturas de la página publicada en escritorio y celular. El enlace directo a una lámina (`/#rastreo`) salía en negro en Edge sin ventana, pero carga bien dentro de un marco: es una falla de la captura, no de la página.
+- **Pendiente**: el usuario decide si la página de Vercel necesita contraseña (la protección nativa de Vercel es de pago; se puede poner una clave simple en la página). Siguen los de la sesión anterior: la regla para no saludar en una charla en curso y pasar el Copiloto a Manual.
+
 ### 2026-11-01 (mediodía) — Presentación v2: por vendedor, líder y dueño, con capturas reales
 - **Pedido**: al usuario le gustó el diseño, pero lo interno ("falta definir el precio bueno", "todavía no están") no va en una presentación: mostrar las funciones, lo que detectó, todo lo que se puede llegar a hacer, ordenado como Copiloto para vendedores, para el líder y para el dueño, con capturas sin arruinar lo visual.
 - **Hecho**: 17 láminas en tres partes (detalle en [[46-copiloto-informe-completo-2026-11-01]] §13), publicada en el mismo link (versión 2). Se sacó la lámina "Lo que falta" y todo estado interno; los pendientes siguen en el informe del final.
