@@ -48,3 +48,15 @@ La recomendación de producto, los beneficios en detalle y el cierre son del ven
 
 - **Q43**: disparador del pase.
 - **Q44**: beneficios aprobados por producto (BCAA no tiene; planilla sin verificar) y costo de envío.
+
+## Actualización 2026-11-07 (noche): vendedor con criterio
+
+Fuente: [[48-hermes-vendedor-y-conocimiento-2026-11-07]], la guía operativa y el criterio de Santi del 2026-11-07.
+
+- ★ **Recepción sí recomienda.** Da una opción principal con su motivo ("en tu caso yo iría con proteína y creatina, porque…") y ofrece promos vigentes. Esto reemplaza "recepción no asesora a fondo": el dueño corrigió el 1/11 que no quiere reglas tan estrictas, y la guía lo recoge (H26, T04).
+- ★ **Beneficios en una o dos frases**, desde `knowledge.json`, sin garantías ni plazos.
+- ★ **Nunca sugerir médico, nutricionista ni profesional.** Volumen, definir, bajar de peso, beneficios, precio o stock son consultas de venta. Solo un riesgo real escrito por el cliente va al equipo de la empresa, que tiene profesionales.
+- **BCAA para bajar de peso**: "no es para adelgazar" en media frase, y se orienta a isolada o termogénico.
+- ★ **Toda respuesta termina con una pregunta puente.** El puente la exige en código, con una corrección automática.
+- **Identidad**: habla como Maxi, una persona del equipo. Nunca menciona bots, agentes ni otro vendedor. Si le preguntan en serio y directo si es un bot, no miente (guía T07).
+- **Resultados de la prueba** (20:45 UTC, revisor PASS en los 6 casos). Ante "xtr hiper bcaa / qué beneficios trae / qué me recomendás para volumen", Hermes respondió: "Los BCAA ayudan a acompañar la recuperación y a entrenar con más energía. Para volumen, en tu caso yo iría con proteína y creatina para sumar proteína, fuerza y rendimiento. Ya estás tomando algún suplemento?"

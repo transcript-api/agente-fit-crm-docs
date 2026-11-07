@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-07] ingest | Hermes vendedor: guía operativa y criterio de Santi aplicados
+Se actualizaron `entities/hermes-puente-crm.md` (sección de conocimiento comercial: planillas CSV con recarga, `knowledge.json`, corrección de los SOUL de A05 y A06, script de prueba) y `concepts/reglas-recepcion-hermes.md` (vendedor con criterio, sin derivación médica por reflejo, pregunta puente obligatoria, resultados de la prueba). Fuente narrativa: [[48-hermes-vendedor-y-conocimiento-2026-11-07]]. Pendiente nuevo: Q46.
+
 ## [2026-11-07] update | Pregunta puente forzada ante el texto automático del anuncio
 `concepts/reglas-recepcion-hermes.md`: caso real en el que se preguntó cantidad a quien solo quería averiguar, y la regla nueva del puente (20:05 UTC).
 

@@ -10,6 +10,25 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-07 (noche) — Hermes vendedor: sin derivación médica por reflejo, precios desde la planilla, beneficios con criterio
+- **Pedido**:
+  - estudiar la guía operativa y el criterio de Santi;
+  - sacar los protocolos que mandan al cliente a consultar;
+  - que hable con criterio y como una persona, sin anunciar el pase a otro vendedor y siempre con una pregunta puente;
+  - que sea escalable;
+  - revisar de dónde toma los precios.
+- **Causa de la respuesta defensiva**: los SOUL de A05 y A06 en el contenedor de Hermes prohibían afirmar beneficios sin fuente, y no había fuente.
+- **Hecho**:
+  - planillas CSV con recarga automática;
+  - `knowledge.json` con beneficios por categoría;
+  - corrección comercial en los SOUL (con copia);
+  - filtro de salud más fino;
+  - pregunta puente obligatoria en código;
+  - 14 reglas de venta.
+- **Probado**: 6 casos de la guía, el revisor dio PASS en todos. Detalle en [[48-hermes-vendedor-y-conocimiento-2026-11-07]].
+- **Precios**: coinciden con la planilla del 2/11. No hay base de datos viva conectada.
+- **Pendiente**: Q44 (que el dueño confirme los beneficios y el envío) y Q46 (mover por turnos vs. por contexto).
+
 ### 2026-11-07 — Hermes atiende los leads nuevos por un puente propio (Maxi nativo apagado)
 - **Pedido**:
   - conectar Hermes a la API del CRM y que responda 24 horas sin pasos manuales;

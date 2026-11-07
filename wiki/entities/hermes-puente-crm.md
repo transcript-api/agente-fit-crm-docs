@@ -60,3 +60,17 @@ Se calla o pasa el lead cuando:
 - **Q43**: disparador del pase (2ª respuesta vs. mismo turno de la pregunta puente).
 - **Q44**: beneficios de productos aprobados y costo de envío.
 - **Q45**: el monitoreo cuenta mal los chats que ya aceptó una vendedora.
+
+## Conocimiento comercial (desde 2026-11-07 20:40 UTC)
+
+Fuente narrativa: [[48-hermes-vendedor-y-conocimiento-2026-11-07]].
+
+- **Precios**:
+  - `facts.json` tiene el índice aprobado del 21 al 23/10 y las ofertas por ID de anuncio;
+  - `/etc/fitbrain-bridge/catalogo/*.csv` tiene las planillas del 2/11. Entran solo las filas "Confirmado" y se descartan los montos calculados.
+  - Se verificó que los precios de las dos fuentes coinciden.
+- **Beneficios y criterio**: `/etc/fitbrain-bridge/knowledge.json` (11 categorías y qué recomendar por objetivo).
+- **Recarga**: los tres se recargan solos cuando cambia un archivo, sin reiniciar. Un archivo roto no tira el servicio.
+- **Perfiles de Hermes**: A05 y A06 tienen al final de su `SOUL.md` la corrección comercial del 2026-11-07 (vender, no derivar por reflejo, pregunta puente). Copias en `SOUL.md.bak20261107`.
+- **Prueba sin enviar nada**: `python3 /opt/fitbrain-bridge/test_cases.py` corre los casos de la guía (BCAA para volumen y para bajar de peso, "una crea", precio, texto del anuncio, volumen sin producto) y muestra respuesta y revisión.
+- **Otra empresa**: config propia más carpeta de planillas, `knowledge.json` y `company_policy` propios. El código es el mismo.
