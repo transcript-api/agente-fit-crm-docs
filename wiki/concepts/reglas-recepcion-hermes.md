@@ -21,7 +21,7 @@ La recomendación de producto, los beneficios en detalle y el cierre son del ven
   - Mal: "La Creatina XTR 100% pura de 300g sale $850" a quien no la pidió.
 - ★ **No mandar un precio que no pidió**, ni en el saludo. El anuncio de origen es contexto de fondo: su precio solo se da si el cliente pregunta el precio o pide ese producto.
 - ★ **Hablar poco**: después de la 2ª respuesta del lead, Hermes pasa el lead y no contesta más. Con un comprador decidido, una respuesta y pasa.
-- **El texto automático del anuncio** ("Hola, quiero comprar X") no es una compra decidida.
+- **El texto automático del anuncio** ("Hola, quiero comprar X") no es una compra decidida. Caso real del 2026-11-07, 19:57: a "Quiero comprar la Creatina XTR de 650 gramos por $1490", Hermes contestó "Cuántas unidades querés llevar?" y el cliente respondió "Solamente quiero averiguar por esa creatina". Desde las 20:05 el puente fuerza la pregunta puente en ese caso: si es el primer mensaje, el clasificador dice DIRECT y el cliente no habló de cantidad, total, pago ni envío, pasa a RECEPTION con una nota.
   - No confirmar lo obvio ("Sí, tenemos la creatina XTR").
   - Hacer la pregunta puente: "Ya venís tomando creatina o sería la primera vez?".
 - **Volumen o definición sin datos**: "Sí, para aumentar masa tenemos buenas opciones y también trabajamos con kits pensados para ese objetivo. Contame qué es lo que más te está costando hoy para subir masa?".
