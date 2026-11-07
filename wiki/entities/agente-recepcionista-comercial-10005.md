@@ -1,6 +1,7 @@
 # Agente Fit - Recepcionista Comercial (id 10005)
 
 **Qué es**: el agente de IA que atiende la primera etapa de la pipeline REAL de la empresa (`CL | COMERCIAL`), en producción, atendiendo clientes de verdad. Es el experimento activo del proyecto — no confundir con el Recepcionista de test (9882, ver [[agentes-legado-9882-9883-9884]]).
+**Actualización 2026-11-07**: el usuario **apagó este agente nativo**. Los leads nuevos los atiende Hermes por el puente propio ([[hermes-puente-crm]]), con el mismo alcance (solo `CL | LEAD NUEVO`) y la misma salida (negocio a `CL | EN CONVERSACION` y ticket a `comercial`). Lo de abajo sigue valiendo como diseño y como historia.
 **Estado real (2026-09-29)**: aplicado y respondiendo en vivo, con bugs de infraestructura confirmados sin resolver (ver abajo) y un parche de contenido redactado sin poder aplicarse (bloqueo técnico del editor).
 **Fuente primaria**: [[30-traspaso-2026-09-15-noche-3-agentes]], [[41-propuesta-recepcionista-comercial-clasico-2026-09-24]], [[42-diff-recepcionista-comercial-rev4-merge-2026-09-25]], `PENDIENTES.md` Q18-Q33.
 

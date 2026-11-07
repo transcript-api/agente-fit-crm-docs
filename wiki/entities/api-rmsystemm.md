@@ -50,5 +50,27 @@ El token de sesión (`localStorage.token` + `tenantId`) puede devolver `400 {"er
 - `interes_inicial` solo existe en leads atendidos desde que Maxi arrancó. Los contactos de Instagram tienen números de 15 dígitos o más.
 Detalle en [[17-registro-de-cambios]] 2026-10-29 (tarde).
 
+## API pública con clave (2026-11-07, usada en vivo por [[hermes-puente-crm]])
+
+La base es `https://api.rmsystemm.com.br/api`, con el header `api-key`. El host viejo `api.integrador-crm.com` no sirve para estas llamadas.
+
+- **Límites**: `limit` ≤ 100 en `/ticket`, `/contact` y `/commercial-order`; ≤ 20 en `/ticket/{id}/messages` (más da 400 sin mensaje).
+- **Envoltorios** según el endpoint:
+  - `/pipeline` → `records`;
+  - `/ticket` y `/commercial-order` → `data` + `pagination`;
+  - mensajes → `messages`;
+  - `/queue` y `/whatsapp` → array suelto.
+- **Etapa del negocio**: en `/commercial-order` viene como `commercialSalesStepId`; en `/contact/{id}/commercial-orders` viene como `commercialStepId`.
+- **Mover un negocio**: `POST /commercial-order/{id}/move` con body `{"commercialStep": "<nombre exacto de la etapa>"}`, responde 200. Va el nombre, no el ID; sale de `/pipeline/{id}` → `commercialSteps`.
+- **Enviar y derivar**:
+  - `POST /ticket/{id}/messages {"body": ...}` envía;
+  - `PUT /ticket/{id} {"queue":"comercial","status":"pending"}` deriva a la fila;
+  - `{"status":"closed"}` cierra;
+  - no hay DELETE de tickets.
+- **Estado del ticket**: `pending` sin `userId` = nadie lo aceptó; al aceptar pasa a `open` con `userId` del vendedor.
+- **Mensajes del equipo**: llegan `sendBySystem=true`. A veces traen firma `*Nombre:*` y a veces no (algunas vendedoras), así que la firma no es una señal confiable.
+- **`adPreview`** del mensaje del cliente: trae `sourceId` (ID del anuncio de Meta), `description` (texto) y `sourceUrl`.
+- **Productos**: `/product` está vacío.
+
 ## Pendientes relacionados
 S3 (leer el panel completo de la API), Q16 (uso de `/commercial-order/.../move` para segmentar remarketing masivo), Q23 (token de Meta expuesto en `/messages/{ticketId}`), S20 (pregunta a soporte sobre timing de vinculación de agente).

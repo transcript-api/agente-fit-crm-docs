@@ -10,6 +10,26 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-07 — Hermes atiende los leads nuevos por un puente propio (Maxi nativo apagado)
+- **Pedido**:
+  - conectar Hermes a la API del CRM y que responda 24 horas sin pasos manuales;
+  - después: solo en LEAD NUEVO; callarse si un vendedor acepta; pasar el lead a EN CONVERSACION rápido;
+  - que convierta;
+  - y armar los informes con el método wiki.
+- **Causa**: el controlador FIT-BRAIN viejo estaba apagado y bloqueado (salida 78). Se dejó intacto y se escribió un puente nuevo como servicio systemd en el VPS. Detalle en [[47-hermes-puente-crm-2026-11-07]].
+- **Hecho**:
+  - envío real desde las 17:12 UTC;
+  - desde las 19:36, solo tickets `pending` sin vendedor y con el negocio en `CL | LEAD NUEVO`;
+  - desde las 19:45, mueve el negocio a `CL | EN CONVERSACION` tras la 2ª respuesta del lead o con un comprador decidido (primer movimiento verificado en el CRM);
+  - desde las 19:56, reglas de venta nuevas y pase del ticket a `comercial`.
+- **Correcciones del dueño aplicadas**:
+  - no desalentar compras;
+  - no tirar el producto ni el precio del anuncio si el cliente no los pidió;
+  - responder sobre lo que el cliente nombró;
+  - hablar poco.
+- **Wiki**: páginas nuevas [[hermes-puente-crm]] y [[reglas-recepcion-hermes]]; actualizadas `api-rmsystemm` y `agente-recepcionista-comercial-10005`.
+- **Pendiente**: Q43 (cuándo pasar el lead), Q44 (beneficios y costo de envío aprobados), Q45 (monitoreo).
+
 ### 2026-11-02 — Presentación v3: catálogo de funciones por puesto, y subida a Vercel
 - **Pedido**: el link de Vercel ("o la que subimos en Cloudflare"); "¿seguro que no se puede mejorar aún más?"; y que la presentación muestre las funciones que se le pueden dar al Copiloto (mandar el código de rastreo, etc.), no cómo lo estuvimos usando.
 - **Hecho**: 19 láminas por puesto (vendedor, postventa, líder, dueño) con una pared de pedidos de ejemplo; detalle y criterios en [[46-copiloto-informe-completo-2026-11-01]] §13. Se publicó en el mismo artifact (versión 3) y en un proyecto nuevo de Vercel de la cuenta del usuario. El link de Vercel no se escribe acá: la página es pública para quien tenga el link y este repo es público.

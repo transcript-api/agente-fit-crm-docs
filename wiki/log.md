@@ -2,6 +2,17 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-07] ingest | Hermes reemplaza a Maxi nativo en recepción
+Páginas nuevas:
+- `entities/hermes-puente-crm.md`: el servicio, cuándo habla, cuándo pasa el lead, cómo operarlo.
+- `concepts/reglas-recepcion-hermes.md`: reglas de respuesta con las correcciones del dueño.
+
+Páginas actualizadas:
+- `entities/api-rmsystemm.md`: sección de la API pública con clave, con mover negocio, límites y firma de mensajes.
+- `entities/agente-recepcionista-comercial-10005.md`: nota de que el nativo quedó apagado.
+
+Fuente narrativa: [[47-hermes-puente-crm-2026-11-07]]. Además del vault se leyeron completos, con dos agentes, los repos FIT-BRAIN y FIT-BRAIN-CORPUS y el expediente del 2026-11-07; lo que aportan quedó resumido en `reglas-recepcion-hermes`. Pendientes nuevos: Q43, Q44 y Q45.
+
 ## [2026-10-29] update | Remarketing manual por WhatsApp Web y lectura de leads por la API
 Se agregó una sección a `entities/remarketing-masivo.md` (segundo camino, envío manual) y otra a `entities/api-rmsystemm.md` (paginación inestable, `interes_inicial`, límites). Detalle en [[17-registro-de-cambios]] 2026-10-29 (tarde) y pendientes en Q42, sin duplicar.
 

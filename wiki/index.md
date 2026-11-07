@@ -5,6 +5,8 @@ Catálogo de todo lo que hay en esta capa, por categoría. Ver `WIKI.md` para c�
 ## Agentes de IA
 - [[agente-recepcionista-comercial-10005]] — el agente en producción real hoy (pipeline `CL|COMERCIAL`), llamado Maxi, con 2 bugs de plataforma confirmados sin resolver y un parche redactado sin poder aplicarse.
 - [[agentes-legado-9882-9883-9884]] — los 3 agentes de la pipeline de práctica (Recepcionista/Conversión/Cierre), el mecanismo real de traspaso entre ellos, y por qué vincular a un agente no lo hace procesar el mensaje pendiente.
+- [[hermes-puente-crm]] — **desde el 2026-11-07 atiende los leads nuevos en lugar de Maxi nativo**: el puente propio en el VPS, cuándo habla, cuándo pasa el lead a EN CONVERSACION, cómo operarlo y apagarlo.
+- [[reglas-recepcion-hermes]] — cómo tiene que contestar Hermes en recepción, con las correcciones del dueño (no frenar la venta, no tirar el producto del anuncio, hablar poco).
 
 ## CRM — estructura y mecanismos
 - [[pipelines-y-columnas]] — mapa de todas las pipelines reales y de práctica, con sus columnas y automatizaciones.
