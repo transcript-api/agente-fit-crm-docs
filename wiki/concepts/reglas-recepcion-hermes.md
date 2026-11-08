@@ -62,3 +62,12 @@ Fuente: [[48-hermes-vendedor-y-conocimiento-2026-11-07]], la guía operativa y e
 - **Resultados de la prueba** (20:45 UTC, revisor PASS en los 6 casos). Ante "xtr hiper bcaa / qué beneficios trae / qué me recomendás para volumen", Hermes respondió: "Los BCAA ayudan a acompañar la recuperación y a entrenar con más energía. Para volumen, en tu caso yo iría con proteína y creatina para sumar proteína, fuerza y rendimiento. Ya estás tomando algún suplemento?"
 - **Caso real del 2026-11-07, 20:39 UTC** (antes del refuerzo). A "Hola, quiero comprar el Kit Kimera Woman" (texto del anuncio), Hermes preguntó "Cuántos kits querés llevar?". El cliente contestó "1" y después "Quería información", así que no estaba decidido. La nota dentro de la clasificación no alcanzó.
 - **Refuerzo desde las 20:55 UTC**: el puente manda `instruccion_del_turno` (pregunta puente; prohibido preguntar cantidad, localidad, envío o pago). El revisor A06 tiene la regla 6: no cumplirla es DENY.
+
+## Actualización 2026-11-08 01:30 UTC: ajustes tras revisar los chats reales
+
+Se aplicó lo que se repetía en la revisión chat por chat:
+- **Precios de anuncio.** La planilla de promociones entra aunque diga "Precio del anuncio" (por ejemplo, la XTR 650 g a $1.490), porque es el precio que el cliente está viendo. Ya no responde "Te confirmo bien ese precio" cuando el precio está en las fuentes. Antes, un cliente que preguntaba si era el precio del anuncio terminó derivado sin respuesta.
+- **Calidad de marca.** Ante "qué tan buena es Integralmédica" o "es igual que Cibeles", responde con seguridad usando `knowledge.json` → `marcas`, sin hablar mal de otras marcas. Queda prohibido lo evasivo ("hay que comparar la composición").
+- **Contestar todo primero.** Pago (transferencia, depósito o tarjeta por Mercado Pago, sin pago contra entrega), envío (DAC o agencia) y ubicación. Si no tiene el costo del envío, lo dice una sola vez y no vuelve a preguntar la localidad.
+- **Pregunta de objetivo.** Después de presentar un kit o producto pregunta por el objetivo o la experiencia, nunca "qué te gustaría saber".
+- **Promo sin aclarar.** Si escriben "quiero aprovechar la promo" sin decir cuál, pregunta cuál vio y nunca supone el producto.

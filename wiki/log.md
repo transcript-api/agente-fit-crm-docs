@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-08] update | Ajustes de Hermes tras la revisión chat por chat
+`concepts/reglas-recepcion-hermes.md`: precios de anuncio, calidad de marca, contestar pago y envío primero, pregunta de objetivo, promo sin aclarar.
+
 ## [2026-11-07] update | Refuerzo ante el texto automático del anuncio (instruccion_del_turno)
 `concepts/reglas-recepcion-hermes.md`: caso real del Kit Kimera y el refuerzo del puente y del revisor (20:55 UTC).
 
