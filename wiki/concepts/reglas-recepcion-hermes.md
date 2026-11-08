@@ -71,3 +71,4 @@ Se aplicó lo que se repetía en la revisión chat por chat:
 - **Contestar todo primero.** Pago (transferencia, depósito o tarjeta por Mercado Pago, sin pago contra entrega), envío (DAC o agencia) y ubicación. Si no tiene el costo del envío, lo dice una sola vez y no vuelve a preguntar la localidad.
 - **Pregunta de objetivo.** Después de presentar un kit o producto pregunta por el objetivo o la experiencia, nunca "qué te gustaría saber".
 - **Promo sin aclarar.** Si escriben "quiero aprovechar la promo" sin decir cuál, pregunta cuál vio y nunca supone el producto.
+- **Regla 7 del revisor A06 (2026-11-08 01:45 UTC).** Frena (DENY context) la pregunta final genérica ("Qué te gustaría saber del producto?", "Tenés alguna duda?"), que seguía saliendo con el Testo. Si el revisor la frena, el redactor tiene una vuelta para corregirla; si vuelve a fallar, el chat pasa a los vendedores. Hay que vigilar que no aumenten esos pases.
