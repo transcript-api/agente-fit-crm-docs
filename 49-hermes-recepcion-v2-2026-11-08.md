@@ -1,6 +1,6 @@
 # 49 · Hermes: recepción v2 (2026-11-08)
 
-Estado: **instalado en producción el 2026-11-08 ~19:55 UTC**, sin verificar todavía con clientes reales. Versión "se va a ir mejorando".
+Estado: **instalado en producción el 2026-11-08 a las 20:22 UTC** (17:22 en Uruguay; lo anterior a esa hora es la versión vieja), sin verificar todavía con clientes reales. Versión "se va a ir mejorando".
 
 ## Por qué
 
