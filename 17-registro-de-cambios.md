@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-08 — Hermes recepción v2: leer a la persona, precio solo si lo piden, promos como pregunta, sin señales de IA
+- **Pedido**: respuestas humanas y dinámicas, sin "¿" de apertura; usar las estrategias de venta del corpus; firmeza cuando el cliente duda; subir el ticket; vender aunque mencione salud y después pasar; precio solo si lo preguntan; promos como pregunta.
+- **Hecho**: manual `recepcion.json` (ficha del cliente, 7 señales con su modo, precios y promos, ticket, estilo, fallas, verdad); `humanize()` antes de enviar; salud se responde y pasa; el texto del anuncio ya no da precio ni pregunta "ya venís tomando"; pase inmediato solo con cantidad/pago/envío; `max_bot_turns` 3; saludos variados; burbujas (hasta 3); "Te confirmo bien ese precio" prohibido en los 4 lugares que lo permitían. Detalle en [[49-hermes-recepcion-v2-2026-11-08]].
+- **Fuentes**: 18 conversaciones de vendedores del CRM, corpus de ventas, skill de humanización.
+- **Pendiente**: verificar con leads reales; Q47 (audios); Q48 (nota interna para el vendedor); precio BCAA XTR; confirmar el corte de despacho de las 18 h.
 ### 2026-11-07 (noche) — Hermes vendedor: sin derivación médica por reflejo, precios desde la planilla, beneficios con criterio
 - **Pedido**:
   - estudiar la guía operativa y el criterio de Santi;
