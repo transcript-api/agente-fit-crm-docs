@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-08] update | Estructura fija de respuesta y contestar antes de pasar el lead
+`concepts/reglas-recepcion-hermes.md`: plan de cada respuesta (directa, valor, por qué ahora, recomendación, pregunta puente) y arreglo para no pasar un lead con una pregunta sin contestar.
+
 ## [2026-11-08] update | Ajustes de Hermes tras la revisión chat por chat
 `concepts/reglas-recepcion-hermes.md`: precios de anuncio, calidad de marca, contestar pago y envío primero, pregunta de objetivo, promo sin aclarar.
 

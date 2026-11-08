@@ -73,3 +73,18 @@ Se aplicó lo que se repetía en la revisión chat por chat:
 - **Promo sin aclarar.** Si escriben "quiero aprovechar la promo" sin decir cuál, pregunta cuál vio y nunca supone el producto.
 - **Regla 7 del revisor A06 (2026-11-08 01:45 UTC).** Frena (DENY context) la pregunta final genérica ("Qué te gustaría saber del producto?", "Tenés alguna duda?"), que seguía saliendo con el Testo. Si el revisor la frena, el redactor tiene una vuelta para corregirla; si vuelve a fallar, el chat pasa a los vendedores. Hay que vigilar que no aumenten esos pases.
 - **Regla 8 del revisor A06, excepción a la 7 (2026-11-08 02:30 UTC).** Caso real: a "Quiero aprovechar la promo", la regla 7 frenó dos veces "De qué producto es la promo que querés aprovechar?" y el lead pasó a los vendedores sin respuesta. Desde la regla 8, si el producto, la promo o el tamaño todavía no están identificados, preguntar cuál es está permitido. La regla 7 solo aplica cuando el producto ya se conoce.
+
+## Actualización 2026-11-08 03:20 UTC: estructura fija de cada respuesta (versión 1, a mejorar)
+
+Pedido del dueño: todas las respuestas planificadas igual, sin llenarlas de información. Orden:
+1. **Respuesta directa** a lo que preguntó, en la primera frase.
+2. **Lo que gana él**, en una frase atada a lo que contó.
+3. **Por qué ahora**, si duda o quiere esperar, con un motivo real.
+4. **Recomendación personal**: "en tu caso yo…".
+5. **Pregunta puente.**
+
+Se usan solo los pasos que aplican (si pidió el precio, alcanza con el precio y la pregunta), en máximo dos mensajes cortos.
+
+**Fundamento:** en WhatsApp primero se contesta lo que preguntó (guía H01). El beneficio va antes del pedido, porque dar un motivo concreto aumenta la aceptación de una recomendación (estudio de Langer sobre el "porque"). El "por qué ahora" va solo cuando hay duda (guía T02: valor antes que precio solo si no pidió el precio).
+
+**Arreglo de código:** si en la tercera respuesta del lead hay una pregunta directa (precio, pago, envío, stock), Hermes la contesta y recién después pasa el lead a EN CONVERSACION. Antes lo pasaba sin contestar; caso real: "Q precio tiene?" quedó sin respuesta de noche.
