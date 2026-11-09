@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-09 — Hermes: anuncios por ID, lectura de audios e imágenes, comprobantes, seguridad al vender; segundo cerebro
+- **Pedido**: que Hermes use el ID del anuncio; afirmar originalidad y todo lo que ayuda a vender; regalos de promos naturales; revendedores; horario solo si preguntan; leer audios, imágenes y comprobantes; no improvisar si falta un dato; monitoreo cada 30 min; ordenar todo para crear los próximos agentes sin perder aprendizaje.
+- **Hecho**: versiones bak39 a bak49 en producción (detalle en [[50-hermes-noche-2026-11-09]]); registro de 19 anuncios (servidor + Supabase `meta_ads`); monitor separa Hermes de vendedores; segundo cerebro en el vault privado `cerebro-negocios/segundo-cerebro/` (sistema, reglas del dueño, errores y lecciones, datos de la empresa, mapa del embudo, plan maestro, estudios de API, Miro, repos, ventas y creativos); estudio del equipo de bots de Hermes de Eme Insights (carpeta de Drive del dueño).
+- **Decidido**: no prometer cifras ni plazos en el cuerpo; no conectar WhatsApp en paralelo al CRM.
+- **Pendiente**: verificar con leads reales; Q46-Q53.
 ### 2026-11-08 — Hermes recepción v2: leer a la persona, precio solo si lo piden, promos como pregunta, sin señales de IA
 - **Pedido**: respuestas humanas y dinámicas, sin "¿" de apertura; usar las estrategias de venta del corpus; firmeza cuando el cliente duda; subir el ticket; vender aunque mencione salud y después pasar; precio solo si lo preguntan; promos como pregunta.
 - **Hecho**: manual `recepcion.json` (ficha del cliente, 7 señales con su modo, precios y promos, ticket, estilo, fallas, verdad); `humanize()` antes de enviar; salud se responde y pasa; el texto del anuncio ya no da precio ni pregunta "ya venís tomando"; pase inmediato solo con cantidad/pago/envío; `max_bot_turns` 3; saludos variados; burbujas (hasta 3); "Te confirmo bien ese precio" prohibido en los 4 lugares que lo permitían. Detalle en [[49-hermes-recepcion-v2-2026-11-08]].

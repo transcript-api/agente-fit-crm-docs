@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-09] update | Anuncios por ID, medios, comprobantes, seguridad al vender
+Informe [[50-hermes-noche-2026-11-09]]. Pendientes Q49-Q53 agregados; Q45 resuelto; Q47 parcial (lee audios). La memoria completa y el plan de los próximos agentes viven en el vault privado `cerebro-negocios/segundo-cerebro/`.
+
 ## [2026-11-08] update | Estructura fija de respuesta y contestar antes de pasar el lead
 `concepts/reglas-recepcion-hermes.md`: plan de cada respuesta (directa, valor, por qué ahora, recomendación, pregunta puente) y arreglo para no pasar un lead con una pregunta sin contestar.
 
