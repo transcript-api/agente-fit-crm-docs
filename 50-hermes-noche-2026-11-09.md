@@ -26,6 +26,8 @@ El monitoreo de la noche mostró fallas puntuales en leads reales y el dueño pi
 
 | datos (06:10) | Anuncio nuevo registrado: Hipercalórico XTR 3 kg (20 anuncios) |
 | bak51 (07:20, hash `640339ec8746562f`) | Tras una auditoría de todas las instrucciones: **identidad honesta** (si el cliente pregunta en serio si es un bot, dice que es el asistente virtual del equipo y ofrece una persona; antes A05/A06 lo prohibían); el registro de anuncios cuenta como fuente válida de precios y manda sobre la lista de octubre; el detector de salud ya no frena consultas normales de Testo ("hormona", "libido"); la reescritura ya no sugiere "envío o retiro" |
+| bak52 (09:45, hash `6cb6b789fbb72d27`) | Si el cliente acepta algo que Hermes ofreció ("si", "dale") en el turno límite, Hermes lo cumple antes de pasar al vendedor (antes pasaba en silencio) |
+| bak54 (10:22, hash `83aab03d783a009c`) | Si Hermes preguntó "retirar o envío" y el cliente solo elige envío, el puente manda la frase del dueño ("Perfecto, voy a necesitar que me envíes tus datos para el envío.") y la plantilla de datos exacta, sin pasar por el modelo, y mueve a EN CONVERSACION. Antes el modelo preguntaba la localidad. La regla solo en el manual no alcanzó (probado en seco) |
 
 Monitoreo: `crm-monitor.ps1` ahora separa "esperando a Hermes" de "esperando a un vendedor" (antes contaba como de Hermes tickets asignados a vendedores). Frecuencia: cada 30 minutos.
 
