@@ -1,6 +1,6 @@
 # 50 · Hermes: anuncios por ID, medios, comprobantes y seguridad al vender (2026-11-09)
 
-Estado: **instalado en producción** entre las 00:50 y las 05:35 UTC del 2026-11-09 (versión final `bak49`, hash `674fa104cf2d7305`). Todo probado sin enviar con el contexto real (`t41.py`); falta verlo con leads reales de la mañana.
+Estado: **instalado en producción** entre las 00:50 y las 07:20 UTC del 2026-11-09 (versión final `bak51`, hash `640339ec8746562f`). Todo probado sin enviar con el contexto real (`t41.py`); falta verlo con leads reales de la mañana.
 
 ## Por qué
 El monitoreo de la noche mostró fallas puntuales en leads reales y el dueño pidió cambios de fondo:
@@ -23,6 +23,9 @@ El monitoreo de la noche mostró fallas puntuales en leads reales y el dueño pi
 | bak46-47 | **Seguridad al vender**: afirmar originalidad y buenas reseñas; sin descargos; sin cifras ni plazos garantizados en el cuerpo; revisor A06 avisado |
 | bak48 | **Lectura de medios** con la clave de OpenAI del dueño, solo para leer: audios (whisper-1, en español) e imágenes (gpt-4o-mini). La descarga sigue el redireccionamiento del CRM sin mandar la clave del CRM al CDN |
 | bak49 | **Comprobante legible**: "Perfecto, recibimos el comprobante. Lo confirmamos y te avisamos por acá." y pase; documento o algo ilegible: pase silencioso. **Falta de dato**: pase silencioso a un vendedor |
+
+| datos (06:10) | Anuncio nuevo registrado: Hipercalórico XTR 3 kg (20 anuncios) |
+| bak51 (07:20, hash `640339ec8746562f`) | Tras una auditoría de todas las instrucciones: **identidad honesta** (si el cliente pregunta en serio si es un bot, dice que es el asistente virtual del equipo y ofrece una persona; antes A05/A06 lo prohibían); el registro de anuncios cuenta como fuente válida de precios y manda sobre la lista de octubre; el detector de salud ya no frena consultas normales de Testo ("hormona", "libido"); la reescritura ya no sugiere "envío o retiro" |
 
 Monitoreo: `crm-monitor.ps1` ahora separa "esperando a Hermes" de "esperando a un vendedor" (antes contaba como de Hermes tickets asignados a vendedores). Frecuencia: cada 30 minutos.
 
