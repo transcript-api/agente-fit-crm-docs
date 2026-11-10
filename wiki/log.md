@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-10] update | Informe 50: dos productos con el mismo nombre en la promo de fin de año
+Informe [[50-hermes-noche-2026-11-09]]: el dueño aclaró que la proteína de la promo con creatina de regalo y la de los potes blancos de la planilla son productos distintos con el mismo nombre; la ficha de los anuncios y la regla general lo dicen, y una prueba sin envíos con cuatro casos mostró que cada una sigue con sus sabores. Registro de cambios [[17-registro-de-cambios]] al día.
+
 ## [2026-11-10] update | Informe 50: sabores de la promo de fin de año
 Informe [[50-hermes-noche-2026-11-09]]: el dueño vio en vivo que Maxi nombraba vainilla y frutilla en la promo de proteína con creatina de regalo, que solo trae cookies y chocolate; el dato quedó en la ficha de los dos anuncios y en una regla general, con una prueba sin envíos antes y después. Registro de cambios [[17-registro-de-cambios]] al día.
 
