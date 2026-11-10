@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-10] update | Informe 50: pote negro y pote blanco
+Informe [[50-hermes-noche-2026-11-09]]: el dueño mandó fotos de los dos potes y Maxi ahora distingue la proteína de la promo (pote negro) de la de la lista general (pote blanco); quedó en la ficha, la regla y dos filas del catálogo, y se confirmó que en la promo de dos puede ir una de cookies y una de chocolate. Se anotó por qué los datos de producto van en el catálogo (el revisor no da por ciertos los de las reglas). Registro de cambios [[17-registro-de-cambios]] al día.
+
 ## [2026-11-10] update | Informe 50: dos productos con el mismo nombre en la promo de fin de año
 Informe [[50-hermes-noche-2026-11-09]]: el dueño aclaró que la proteína de la promo con creatina de regalo y la de los potes blancos de la planilla son productos distintos con el mismo nombre; la ficha de los anuncios y la regla general lo dicen, y una prueba sin envíos con cuatro casos mostró que cada una sigue con sus sabores. Registro de cambios [[17-registro-de-cambios]] al día.
 
