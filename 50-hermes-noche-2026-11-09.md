@@ -1,6 +1,6 @@
-# 50 · Hermes: anuncios por ID, medios, comprobantes y seguridad al vender (2026-11-09)
+# 50 · Hermes: anuncios por ID, medios, comprobantes y seguridad al vender (2026-11-09 al 2026-11-10)
 
-Estado: **instalado en producción** entre las 00:50 y las 07:20 UTC del 2026-11-09 (versión final `bak51`, hash `640339ec8746562f`). Todo probado sin enviar con el contexto real (`t41.py`); falta verlo con leads reales de la mañana.
+Estado: **instalado en producción** entre las 00:50 UTC del 2026-11-09 y las ~15:00 UTC del 2026-11-10 (versión actual `bak62`, hash `26833b13ac82963f`). Todo se prueba sin enviar con el contexto real antes de instalar; el cierre nuevo (bak57 en adelante) y la urgencia de despacho todavía no tienen casos reales con clientes.
 
 ## Por qué
 El monitoreo de la noche mostró fallas puntuales en leads reales y el dueño pidió cambios de fondo:
@@ -23,18 +23,33 @@ El monitoreo de la noche mostró fallas puntuales en leads reales y el dueño pi
 | bak46-47 | **Seguridad al vender**: afirmar originalidad y buenas reseñas; sin descargos; sin cifras ni plazos garantizados en el cuerpo; revisor A06 avisado |
 | bak48 | **Lectura de medios** con la clave de OpenAI del dueño, solo para leer: audios (whisper-1, en español) e imágenes (gpt-4o-mini). La descarga sigue el redireccionamiento del CRM sin mandar la clave del CRM al CDN |
 | bak49 | **Comprobante legible**: "Perfecto, recibimos el comprobante. Lo confirmamos y te avisamos por acá." y pase; documento o algo ilegible: pase silencioso. **Falta de dato**: pase silencioso a un vendedor |
-
 | datos (06:10) | Anuncio nuevo registrado: Hipercalórico XTR 3 kg (20 anuncios) |
 | bak51 (07:20, hash `640339ec8746562f`) | Tras una auditoría de todas las instrucciones: **identidad honesta** (si el cliente pregunta en serio si es un bot, dice que es el asistente virtual del equipo y ofrece una persona; antes A05/A06 lo prohibían); el registro de anuncios cuenta como fuente válida de precios y manda sobre la lista de octubre; el detector de salud ya no frena consultas normales de Testo ("hormona", "libido"); la reescritura ya no sugiere "envío o retiro" |
 | bak52 (09:45, hash `6cb6b789fbb72d27`) | Si el cliente acepta algo que Hermes ofreció ("si", "dale") en el turno límite, Hermes lo cumple antes de pasar al vendedor (antes pasaba en silencio) |
 | bak54 (10:22, hash `83aab03d783a009c`) | Si Hermes preguntó "retirar o envío" y el cliente solo elige envío, el puente manda la frase del dueño ("Perfecto, voy a necesitar que me envíes tus datos para el envío.") y la plantilla de datos exacta, sin pasar por el modelo, y mueve a EN CONVERSACION. Antes el modelo preguntaba la localidad. La regla solo en el manual no alcanzó (probado en seco) |
+| bak56 (19:40, hash `d9f4bde854df5317`) | **Reintento de pases fallidos**: cada 60 s el puente revisa los pases que fallaron en las últimas 6 horas; si el ticket sigue en la cola de Hermes, pendiente y sin vendedor, reintenta el pase; si ya lo tomó un vendedor o cambió de cola, lo da por resuelto sin tocarlo; al sexto intento fallido deja de intentar. Primera instalación hecha por SSH |
+| bak57 (~21:00, hash `e8582ac6cbf82d12`) | **Cierre corregido por el dueño**: nunca se pregunta "envío o retiro" ni cómo pagar. Si el cliente ya tiene precio y está decidido (o eligió envío), sale una frase fija del dueño más la plantilla de datos, antes del límite de 3 turnos; después de la plantilla el negocio pasa a PROPUESTA ENVIADA y Hermes sigue con el lead. Cuando llegan los datos se manda el creativo "Métodos de pago" del CRM y el negocio pasa a PAGO PENDIENTE con aviso a los vendedores; ese creativo está **apagado** hasta probarlo en vivo (mientras tanto, datos → PAGO PENDIENTE + vendedor) |
+| bak58 (noche, hash `2bc7548b656dd440`) | **Mercado Pago y comprobante**: el link ya incluye el recargo, que paga el cliente; no se menciona salvo que pregunte después del link ("ya está todo incluido"). Después de los medios de pago se pide la captura del comprobante "para ir armando el pedido" |
+| bak59 (noche, hash `285b252ecc837573`) | **Urgencia de despacho (dueño)**: según la hora de Uruguay y el corte de despacho, "lo despachamos hoy mismo" o "mañana a primera hora". Con un cliente cortante y el precio ya dado, una sola vez por conversación: "Avisame cualquier duda, así lo despachamos…" |
+| bak60 (noche, hash `cfe3554dc3b52bdf`) | Corte de despacho de lunes a viernes confirmado por el dueño (se mira con minutos); el del sábado sigue supuesto |
+| bak61 (noche, hash `6f4fcd14224fae07`) | **Planilla de productos del dueño** (hoja de cálculo publicada que el puente baja cada 30 minutos; si falla o viene rota queda la última buena): 55 productos con precio. En cada turno se suman al contexto los de la categoría de la charla y sus complementos, para ofrecer algo más una sola vez, un producto y con razón (nunca si el cliente está cortante, sin plata o dijo "solo eso"). **Firmeza al postergar** ("cuando cobre", "lo pienso"): una vez, reconocer + lo que gana + pregunta de compromiso; "sin apuro" pasa a frase prohibida |
+| bak62 (2026-11-10 ~14:58, hash `26833b13ac82963f`) | **Nunca se pregunta "envío o retiro", en ninguna redacción.** El filtro solo conocía unas frases y el modelo lo preguntó 32 veces con otras palabras (del 7 al 10/11). Ahora se detecta por intención (una pregunta que junta una palabra de envío y una de retiro unidas por "o"): una reescritura y, si insiste, se quita solo esa pregunta (nunca silencio). Probado contra las 531 respuestas reales antes de instalar |
 
 Monitoreo: `crm-monitor.ps1` ahora separa "esperando a Hermes" de "esperando a un vendedor" (antes contaba como de Hermes tickets asignados a vendedores). Frecuencia: cada 30 minutos.
+
+## Segunda tanda (2026-11-09 noche al 2026-11-10): por qué
+- Los pases a un vendedor que fallaban ("erro na API") dejaban al cliente sin atención: bak56 los reintenta.
+- El dueño corrigió el cierre: no se pregunta cómo recibir ni cómo pagar; cuando el cliente decide se piden los datos, y después las cuentas y el comprobante (bak57 y bak58).
+- Pedidos del dueño sobre urgencia de despacho, subir el ticket con la planilla de productos y firmeza cuando el cliente posterga (bak59 a bak61).
+- El monitoreo encontró que "envío o retiro" seguía saliendo con otras palabras: la regla ahora se hace cumplir por intención y se prueba contra el historial real (bak62).
 
 ## Decisiones
 - **No prometer resultados concretos** (cifras o plazos en el cuerpo o la salud) aunque el dueño lo pidió: seguridad total y prueba social sí; el resultado garantizado trae reclamos y riesgo de bloqueo de WhatsApp/Meta. Explicado al dueño.
 - **No conectar WhatsApp en paralelo al CRM**: riesgo de bloqueo del número y respuestas duplicadas. La transcripción de audios es propia (en español), no la del CRM (en portugués). Los envíos fallidos ("erro na API") se van a vigilar desde el monitoreo.
 - Los movimientos de columna funcionan (verificado: el negocio quedó en EN CONVERSACION). Los leads que el dueño ve en LEAD NUEVO son los que no llegan al umbral de 3 turnos (ver Q46).
+
+- **Una regla del dueño se hace cumplir por intención, no por lista de frases**, y se prueba contra el historial real antes de instalar (bak62).
+- **Decisiones del dueño del 2026-11-10:** la venta cuenta como ganada recién cuando el cliente envía el comprobante; la conversión a Meta desde VENTA GANADA se deja para después; los descuentos se definen de a poco con la empresa; los audios, además de educar, ofrecen (los graba el dueño y después hay una prueba en vivo); fuera del horario de despacho se cierra igual (datos y cuentas) y solo se dice que sale al día siguiente si hace falta; el agente le consulta dudas al dueño por WhatsApp o Telegram (diseño en el vault privado).
 
 ## Memoria completa
 Todo lo aprendido (sistema, reglas del dueño, errores y lecciones, datos de la empresa, mapa del embudo, plan de los próximos agentes y estudios) quedó en el vault privado `cerebro-negocios`, carpeta `segundo-cerebro/`.
