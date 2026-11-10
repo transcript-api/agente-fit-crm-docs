@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-10] update | Informe 50: bak63 (cierre de noche, datos personales tapados, error latente)
+Informe [[50-hermes-noche-2026-11-09]]: fila bak63 y estado actualizado; registro de cambios [[17-registro-de-cambios]] al día.
+
 ## [2026-11-10] update | Informe 50 al día (bak56 a bak62) y decisiones del dueño
 Informe [[50-hermes-noche-2026-11-09]]: segunda tanda de cambios (reintento de pases, cierre corregido, Mercado Pago, urgencia de despacho, planilla de productos, regla "envío o retiro" por intención) y decisiones del dueño del 2026-11-10. Pendientes Q50 y Q55 actualizados.
 

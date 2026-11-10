@@ -1,6 +1,6 @@
 # 50 · Hermes: anuncios por ID, medios, comprobantes y seguridad al vender (2026-11-09 al 2026-11-10)
 
-Estado: **instalado en producción** entre las 00:50 UTC del 2026-11-09 y las ~15:00 UTC del 2026-11-10 (versión actual `bak62`, hash `26833b13ac82963f`). Todo se prueba sin enviar con el contexto real antes de instalar; el cierre nuevo (bak57 en adelante) y la urgencia de despacho todavía no tienen casos reales con clientes.
+Estado: **instalado en producción** entre las 00:50 UTC del 2026-11-09 y las ~18:20 UTC del 2026-11-10 (versión actual `bak63`, hash `a2ce83412874fc31`). Todo se prueba sin enviar con el contexto real antes de instalar; el cierre nuevo (bak57 en adelante) y la urgencia de despacho todavía no tienen casos reales con clientes.
 
 ## Por qué
 El monitoreo de la noche mostró fallas puntuales en leads reales y el dueño pidió cambios de fondo:
@@ -34,6 +34,7 @@ El monitoreo de la noche mostró fallas puntuales en leads reales y el dueño pi
 | bak60 (noche, hash `cfe3554dc3b52bdf`) | Corte de despacho de lunes a viernes confirmado por el dueño (se mira con minutos); el del sábado sigue supuesto |
 | bak61 (noche, hash `6f4fcd14224fae07`) | **Planilla de productos del dueño** (hoja de cálculo publicada que el puente baja cada 30 minutos; si falla o viene rota queda la última buena): 55 productos con precio. En cada turno se suman al contexto los de la categoría de la charla y sus complementos, para ofrecer algo más una sola vez, un producto y con razón (nunca si el cliente está cortante, sin plata o dijo "solo eso"). **Firmeza al postergar** ("cuando cobre", "lo pienso"): una vez, reconocer + lo que gana + pregunta de compromiso; "sin apuro" pasa a frase prohibida |
 | bak62 (2026-11-10 ~14:58, hash `26833b13ac82963f`) | **Nunca se pregunta "envío o retiro", en ninguna redacción.** El filtro solo conocía unas frases y el modelo lo preguntó 32 veces con otras palabras (del 7 al 10/11). Ahora se detecta por intención (una pregunta que junta una palabra de envío y una de retiro unidas por "o"): una reescritura y, si insiste, se quita solo esa pregunta (nunca silencio). Probado contra las 531 respuestas reales antes de instalar |
+| bak63 (2026-11-10 ~18:18, hash `a2ce83412874fc31`) | **Cierre de noche:** la frase "así lo despachamos…" solo se usa cuando de verdad sale hoy; después del horario el cierre sigue igual (datos de envío) pero sin decir cuándo sale, salvo que el cliente lo pregunte o diga que lo necesita pronto: ahí se le responde con el día correcto y sin horario de corte. **Datos personales tapados** (emails, teléfonos, cédulas, direcciones y datos de envío) antes de escribir eventos en la base de datos; los precios y cantidades se conservan. **Error latente corregido:** si la base de datos fallaba, una respuesta ya enviada habría quedado marcada como "incierta" (nunca ocurrió en producción; se demostró en una prueba). Probado sin enviar: 112 comprobaciones y un repaso de 206 mensajes reales (4 se taparían, ningún falso positivo) |
 
 Monitoreo: `crm-monitor.ps1` ahora separa "esperando a Hermes" de "esperando a un vendedor" (antes contaba como de Hermes tickets asignados a vendedores). Frecuencia: cada 30 minutos.
 
@@ -42,6 +43,7 @@ Monitoreo: `crm-monitor.ps1` ahora separa "esperando a Hermes" de "esperando a u
 - El dueño corrigió el cierre: no se pregunta cómo recibir ni cómo pagar; cuando el cliente decide se piden los datos, y después las cuentas y el comprobante (bak57 y bak58).
 - Pedidos del dueño sobre urgencia de despacho, subir el ticket con la planilla de productos y firmeza cuando el cliente posterga (bak59 a bak61).
 - El monitoreo encontró que "envío o retiro" seguía saliendo con otras palabras: la regla ahora se hace cumplir por intención y se prueba contra el historial real (bak62).
+- El dueño aprobó dos ajustes más (el cierre de noche y tapar los datos personales en la base de datos); la prueba con la base de datos caída mostró un error latente que también se corrigió (bak63).
 
 ## Decisiones
 - **No prometer resultados concretos** (cifras o plazos en el cuerpo o la salud) aunque el dueño lo pidió: seguridad total y prueba social sí; el resultado garantizado trae reclamos y riesgo de bloqueo de WhatsApp/Meta. Explicado al dueño.
@@ -49,7 +51,7 @@ Monitoreo: `crm-monitor.ps1` ahora separa "esperando a Hermes" de "esperando a u
 - Los movimientos de columna funcionan (verificado: el negocio quedó en EN CONVERSACION). Los leads que el dueño ve en LEAD NUEVO son los que no llegan al umbral de 3 turnos (ver Q46).
 
 - **Una regla del dueño se hace cumplir por intención, no por lista de frases**, y se prueba contra el historial real antes de instalar (bak62).
-- **Decisiones del dueño del 2026-11-10:** la venta cuenta como ganada recién cuando el cliente envía el comprobante; la conversión a Meta desde VENTA GANADA se deja para después; los descuentos se definen de a poco con la empresa; los audios, además de educar, ofrecen (los graba el dueño y después hay una prueba en vivo); fuera del horario de despacho se cierra igual (datos y cuentas) y solo se dice que sale al día siguiente si hace falta; el agente le consulta dudas al dueño por WhatsApp o Telegram (diseño en el vault privado).
+- **Decisiones del dueño del 2026-11-10:** la venta cuenta como ganada recién cuando el cliente envía el comprobante; la conversión a Meta desde VENTA GANADA se deja para después; los descuentos se definen de a poco con la empresa; los audios, además de educar, ofrecen (los graba el dueño y después hay una prueba en vivo); fuera del horario de despacho se cierra igual (datos y cuentas) y solo se dice que sale al día siguiente si hace falta (el cierre de noche ya está en bak63); el agente le consulta dudas al dueño por WhatsApp o Telegram (diseño en el vault privado).
 
 ## Memoria completa
 Todo lo aprendido (sistema, reglas del dueño, errores y lecciones, datos de la empresa, mapa del embudo, plan de los próximos agentes y estudios) quedó en el vault privado `cerebro-negocios`, carpeta `segundo-cerebro/`.
