@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-10] update | Informe 50: canal del dueño (bak64 preparado, sin instalar)
+Informe [[50-hermes-noche-2026-11-09]]: la viñeta de avisos de cupo suma que el dueño ya pasó el número (es el mismo teléfono con el que prueba ventas) y pidió que el agente le pregunte cualquier duda por ahí; el puente tiene preparado, sin instalar y con 48 pruebas nuevas, un buzón para que esas respuestas no las conteste Hermes como si fuera un cliente. Registro de cambios [[17-registro-de-cambios]] al día.
+
 ## [2026-11-10] update | Informe 50: avisos de cupo por WhatsApp
 Informe [[50-hermes-noche-2026-11-09]]: viñeta con la elección del dueño (WhatsApp) y lo que falta (plantilla de Utilidad y número); registro de cambios [[17-registro-de-cambios]] al día.
 
