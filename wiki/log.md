@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-10] update | Informe 50: bak64 instalado y primer envío al dueño
+Informe [[50-hermes-noche-2026-11-09]]: el buzón del puente quedó instalado; el primer envío mostró que el CRM pide un token de canal para escribir a un número, así que los avisos usan el ticket del dueño (ventana de 24 h abierta) o una plantilla de Utilidad programada. Pendientes del dueño: crear la plantilla y dar el OK del temporizador. Registro de cambios [[17-registro-de-cambios]] al día.
+
 ## [2026-11-10] update | Informe 50: canal del dueño (bak64 preparado, sin instalar)
 Informe [[50-hermes-noche-2026-11-09]]: la viñeta de avisos de cupo suma que el dueño ya pasó el número (es el mismo teléfono con el que prueba ventas) y pidió que el agente le pregunte cualquier duda por ahí; el puente tiene preparado, sin instalar y con 48 pruebas nuevas, un buzón para que esas respuestas no las conteste Hermes como si fuera un cliente. Registro de cambios [[17-registro-de-cambios]] al día.
 
