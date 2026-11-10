@@ -44,6 +44,7 @@ Monitoreo: `crm-monitor.ps1` ahora separa "esperando a Hermes" de "esperando a u
 - Pedidos del dueño sobre urgencia de despacho, subir el ticket con la planilla de productos y firmeza cuando el cliente posterga (bak59 a bak61).
 - El monitoreo encontró que "envío o retiro" seguía saliendo con otras palabras: la regla ahora se hace cumplir por intención y se prueba contra el historial real (bak62).
 - El dueño aprobó dos ajustes más (el cierre de noche y tapar los datos personales en la base de datos); la prueba con la base de datos caída mostró un error latente que también se corrigió (bak63).
+- El 10/11 a la tarde Hermes se quedó sin cupo de IA por unos 34 minutos (la suscripción, que comparte con el uso personal de ChatGPT del dueño, llegó a su límite semanal): afectó a 1 cliente y se resolvió sin tocar el código. El dueño pidió un respaldo con la API de OpenAI para cuando vuelva a pasar, aceptando un agente más limitado, y que el sistema le avise (en preparación).
 
 ## Decisiones
 - **No prometer resultados concretos** (cifras o plazos en el cuerpo o la salud) aunque el dueño lo pidió: seguridad total y prueba social sí; el resultado garantizado trae reclamos y riesgo de bloqueo de WhatsApp/Meta. Explicado al dueño.
