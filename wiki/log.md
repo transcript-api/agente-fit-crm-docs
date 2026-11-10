@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-10] update | Informe 50: creatina de 150 g y dos potes blancos
+Informe [[50-hermes-noche-2026-11-09]]: el dueño aclaró que la creatina de regalo de la primera promo es de 150 g (el texto de los anuncios dice 100 g) y que la Hyper Whey 100% también es de pote blanco; Maxi ya dice 150 g y distingue las dos de pote blanco por el nombre y el precio, probado sin envíos con doce casos. Registro de cambios [[17-registro-de-cambios]] al día.
+
 ## [2026-11-10] update | Informe 50: pote negro y pote blanco
 Informe [[50-hermes-noche-2026-11-09]]: el dueño mandó fotos de los dos potes y Maxi ahora distingue la proteína de la promo (pote negro) de la de la lista general (pote blanco); quedó en la ficha, la regla y dos filas del catálogo, y se confirmó que en la promo de dos puede ir una de cookies y una de chocolate. Se anotó por qué los datos de producto van en el catálogo (el revisor no da por ciertos los de las reglas). Registro de cambios [[17-registro-de-cambios]] al día.
 
