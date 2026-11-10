@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-10] update | Informe 50: sabores de la promo de fin de año
+Informe [[50-hermes-noche-2026-11-09]]: el dueño vio en vivo que Maxi nombraba vainilla y frutilla en la promo de proteína con creatina de regalo, que solo trae cookies y chocolate; el dato quedó en la ficha de los dos anuncios y en una regla general, con una prueba sin envíos antes y después. Registro de cambios [[17-registro-de-cambios]] al día.
+
 ## [2026-11-10] update | Informe 50: prueba en vivo del canal del dueño y bak65
 Informe [[50-hermes-noche-2026-11-09]]: la plantilla del dueño (un timbre de texto fijo) y el texto libre salieron y llegaron a su teléfono; sus respuestas sueltas las contestó Maxi como a un cliente, así que se instaló bak65 (el timbre es mensaje del sistema y lo que escribe justo después de un mensaje del sistema cuenta como respuesta). Cupo de ChatGPT, vigilante y respaldo con la API en pausa. Registro de cambios [[17-registro-de-cambios]] al día.
 
