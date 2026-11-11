@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-11 — Hermes: tres videos sobre la 0.23 procesados
+- **Pedido**: el dueño pasó las transcripciones de tres videos sobre Hermes 0.23 (hechas con Google AI Studio) para sacar lo que sirva y que quede anotado sin descartar nada.
+- **Hecho**: textos literales guardados sin editar en la bóveda privada; chequeo de fiabilidad (un error de marca de tiempo, listas finales con datos que no están en el video, un tramo patrocinado, dos videos del mismo embudo comercial); verificación contra fuentes primarias (versión, catálogo de 1.744 entradas, existencia y estrellas de los diez repositorios, fichas de los plugins); nota de análisis y 35 filas nuevas en el registro de capacidades (C-58 a C-92); resumen público en [[52-hermes-tres-videos-0-23-2026-11-11]]. Regla nueva en el protocolo de ingesta: un comando o un nombre de repositorio de una transcripción no se copia, se resuelve desde la fuente (un nombre mal leído apuntaba a una cuenta que no existe).
+- **Decidido**: nada se instala; sigue el veredicto del informe 51. Maxi sigue pausado a pedido del dueño.
+- **Pendiente**: enlace y fecha de cada video; plan de seguridad del servidor antes de probar cualquier plugin; datos de la promo de la live y reactivación de Maxi; decisiones viejas (cierre «quiero la de dos», fuentes de envío y ubicación, alerta de espera del vendedor).
 ### 2026-11-11 — Hermes: estudio de la 0.23 y los plugins, pausa de Maxi por una live
 - **Pedido**: estudiar la actualización 0.23 de Hermes y el catálogo de más de mil plugins, ver si el modelo aprende de verdad, anotar todo lo que salga de los videos que mande el dueño sin descartar nada, y pausar a Maxi durante una live con una promo nueva.
 - **Hecho**: estudio completo con cinco investigadores y tres notas propias; informe en [[51-hermes-0-23-plugins-y-aprendizaje-2026-11-11]]; registro de capacidades en la bóveda privada con estado y evidencia de cada ítem (57 filas); prompt listo para que Google AI Studio transcriba los videos de Hermes; Maxi pausado a las 15:40 con un procedimiento de pausa y reactivación probado (al reactivarlo empieza a escuchar desde ese momento).
