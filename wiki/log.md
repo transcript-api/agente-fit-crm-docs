@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-11] update | Informe 51: Hermes 0.23, plugins y aprendizaje
+Informe [[51-hermes-0-23-plugins-y-aprendizaje-2026-11-11]]: estudio de la actualización 0.23 de Hermes, del catálogo de más de mil plugins y de la memoria y el aprendizaje del agente. Veredicto: no actualizar producción, no instalar plugins ni skills de terceros y no esperar que el modelo aprenda solo; lo que ayuda a Maxi son datos y medición del lado del puente. Corrección incluida: la lectura de audios e imágenes ya existía desde el 9/11. Nada se instaló. El informe completo, el registro de capacidades con estado y evidencia y el plan de adopción segura están en la bóveda privada.
+
 ## [2026-11-10] update | Informe 50: creatina de 150 g y dos potes blancos
 Informe [[50-hermes-noche-2026-11-09]]: el dueño aclaró que la creatina de regalo de la primera promo es de 150 g (el texto de los anuncios dice 100 g) y que la Hyper Whey 100% también es de pote blanco; Maxi ya dice 150 g y distingue las dos de pote blanco por el nombre y el precio, probado sin envíos con doce casos. Registro de cambios [[17-registro-de-cambios]] al día.
 

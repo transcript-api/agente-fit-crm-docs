@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-11 — Hermes: estudio de la 0.23 y los plugins, pausa de Maxi por una live
+- **Pedido**: estudiar la actualización 0.23 de Hermes y el catálogo de más de mil plugins, ver si el modelo aprende de verdad, anotar todo lo que salga de los videos que mande el dueño sin descartar nada, y pausar a Maxi durante una live con una promo nueva.
+- **Hecho**: estudio completo con cinco investigadores y tres notas propias; informe en [[51-hermes-0-23-plugins-y-aprendizaje-2026-11-11]]; registro de capacidades en la bóveda privada con estado y evidencia de cada ítem (57 filas); prompt listo para que Google AI Studio transcriba los videos de Hermes; Maxi pausado a las 15:40 con un procedimiento de pausa y reactivación probado (al reactivarlo empieza a escuchar desde ese momento).
+- **Decidido** (dueño): Maxi sigue pausado hasta que él diga; el registro de promos y excepciones con vigencia queda diseñado para la próxima promo (todavía no está construido).
+- **Pendiente**: transcripciones de los videos de Hermes; plan de seguridad del servidor (en la bóveda privada); datos de la promo de la live y reactivación de Maxi; enviar audios (Q47); decisiones viejas sobre el cierre «quiero la de dos», las fuentes de envío y ubicación y la alerta de espera del vendedor.
 ### 2026-11-10 — Hermes: la regla "envío o retiro" por intención, base de datos aplicada y decisiones del dueño
 - **Pedido**: seguir el monitoreo; que el agente venda como el mejor vendedor humano; ordenar la base de datos de la plataforma de agentes.
 - **Hecho**: versiones bak56 a bak63 en producción (detalle en [[50-hermes-noche-2026-11-09]]); en Supabase se aplicaron 17 tablas nuevas para conversaciones, turnos, pedidos y experimentos (todas con RLS y sin acceso público); la clave de servicio quedó cargada esa tarde y a las 17:42 UTC el puente empezó a escribir eventos de conversación en Supabase (primeros eventos verificados); después se instaló bak63: cierre de noche, datos personales tapados antes de escribirlos en la base y un error latente corregido (si la base fallaba, una respuesta ya enviada habría quedado como "incierta"). Hubo un incidente de cupo de IA (Hermes sin responder unos 34 minutos; resuelto con un reset guardado de la suscripción, sin cambios de código).
