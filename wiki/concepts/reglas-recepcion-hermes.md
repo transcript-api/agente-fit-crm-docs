@@ -90,3 +90,12 @@ Se usan solo los pasos que aplican (si pidió el precio, alcanza con el precio y
 **Arreglo de código:** si en la tercera respuesta del lead hay una pregunta directa (precio, pago, envío, stock), Hermes la contesta y recién después pasa el lead a EN CONVERSACION. Antes lo pasaba sin contestar; caso real: "Q precio tiene?" quedó sin respuesta de noche.
 
 - **Nunca dejar sin respuesta por estilo (2026-11-08 11:00 UTC).** Caso real: el cliente preguntó "Es micronizada y monohidratada?". La primera respuesta decía que lo micronizado quedaba "por confirmar" y el revisor la frenó por mostrar un dato faltante. La corrección omitía lo micronizado y la volvió a frenar, así que el lead quedó sin respuesta. Arreglo de código: si después de la corrección el revisor solo objeta el estilo o una omisión (context) y no hay problema de datos, acciones ni seguridad, la respuesta se manda igual y queda anotada como `sent_despite_context`. También se agregó en `knowledge.json` que la creatina XTR 100% pura es monohidratada y micronizada (la planilla de kits dice "Creatina micronizada 300 g").
+
+## Actualización 2026-11-11: lo interno no se dice y sin frases hechas
+
+Pedido del dueño tras ver que Maxi explicaba «ese precio ya es la promo» a quien no había dudado: revisar todos los prompts y evitar las respuestas genéricas.
+
+- **Lo que el dueño aclara al equipo es interno.** Se escribe como dato o restricción («esta oferta no tiene promo por dos») y Maxi lo dice solo si el cliente pregunta por eso. Nunca como «decilo» para el cliente.
+- **Una respuesta sale de la charla.** Parte de lo que dijo el cliente o de un dato concreto del producto. Nada de beneficios armados que le sirven a cualquiera, ni preguntas de relleno («te queda alguna duda»), ni la misma pregunta de objetivo en todas las conversaciones. Los ejemplos entre comillas de los prompts son de tono, no para copiar.
+- **Corrige la estructura fija de 2026-11-08 03:20:** la recomendación personal y la pregunta puente ya no traen una redacción fija («en tu caso yo…»); cada paso se usa solo si aplica y con palabras propias.
+- **Guardia en el código y chequeador previo:** ver [[53-maxi-lo-interno-no-llega-al-cliente-2026-11-11]].

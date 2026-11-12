@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-11] update | Informe 53: lo que se le aclara al agente no se le explica al cliente
+Informe [[53-maxi-lo-interno-no-llega-al-cliente-2026-11-11]]: Maxi explicaba a clientes aclaraciones que el dueño había hecho al equipo («ese precio ya es la promo»); la causa estaba en cinco lugares y en la política general, y se repetían frases genéricas copiadas de ejemplos. Se auditaron ocho lugares, se midió sobre 626 respuestas, se preparó un paquete (datos y política sin frases para copiar, guardia mecánica, chequeador previo) probado sin envíos. Regla nueva en [[reglas-recepcion-hermes]]. A la espera del OK del dueño para instalar.
+
 ## [2026-11-11] update | Informe 52: tres videos sobre Hermes 0.23
 Informe [[52-hermes-tres-videos-0-23-2026-11-11]]: ingesta de tres videos sobre la 0.23 (plugins y skills gratis). Casi nada sirve hoy para Maxi; 35 ítems quedaron en el registro de capacidades de la bóveda privada con estado y evidencia (uno descartado hoy, el resto para después o guardados). Regla nueva: un comando o un nombre de repositorio sacado de una transcripción no se copia, se resuelve desde la fuente. Nada se instaló.
 
