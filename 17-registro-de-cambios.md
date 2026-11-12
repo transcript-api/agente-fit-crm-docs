@@ -10,11 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
-### 2026-11-12 (tarde) — Maxi: paquete liviano y notas de la reunión del dueño (preparado, sin instalar)
+### 2026-11-12 (tarde) — Maxi: paquete liviano y notas de la reunión del dueño (instalado)
 - **Pedido**: el dueño aceptó preparar una versión más liviana (la red de tamaño recortaba casi todos los turnos) y después pasó notas de una reunión del equipo, pidiendo cuidado para no estropear lo que ya funciona.
 - **Hecho**: se midió el pedido real y se quitaron datos repetidos sin sacar ninguna regla; se corrigió el tope de tamaño. Se sumaron al guion las notas de la reunión: preguntas naturales de a una cuando el cliente cuenta un problema, kit más económico si el presupuesto no alcanza (con productos y precios reales) y complemento concreto para el cliente que ya toma un solo producto. Pruebas sin envíos: verificaciones automáticas en cero fallas y 28 conversaciones con el redactor y el revisor reales, sin derivaciones nuevas.
 - **Hallazgos**: lo que el cliente cuenta de salud sigue pasando a un vendedor (igual que hoy; no se tocó). El complemento para el cliente que ya toma un producto funciona a medias. Dos detalles viejos confirmados contra lo instalado (una promo calculada de la planilla que se menciona sin estar confirmada, y el pedido de datos de envío que a veces se pide por partes).
-- **Pendiente**: OK del dueño para instalar; que defina qué producto ayuda a cada problema; decidir si Maxi puede preguntar aunque el cliente cuente un síntoma.
+- **Estado**: instalado el 2026-11-12 con el OK del dueño. **Pendiente**: que defina qué producto ayuda a cada problema; decidir si Maxi puede preguntar aunque el cliente cuente un síntoma.
 
 ### 2026-11-12 — Maxi: estilo, venta dinámica y límite oculto de tamaño (segunda tanda del paquete, sin instalar)
 - **Pedido**: «Perfecto/Dale» según la ocasión, más dinámico, nombres con criterio, no confirmar de más el mensaje del anuncio, no repetir, vender con razón (kits por objetivo, opciones superiores), descuentos y mejorar también los prompts del dueño.

@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-12] update | Informe 53: tercera tanda instalada
+El dueño dio el OK y el paquete liviano con las notas de la reunión (tercera tanda del informe [[53-maxi-lo-interno-no-llega-al-cliente-2026-11-11]]) quedó instalado el 2026-11-12. Servicio activo, sin errores en el arranque. Se vigilan los recortes de tamaño, las derivaciones nuevas y las preguntas de a una.
+
 ## [2026-11-12] update | Informe 53: tercera tanda (paquete liviano y notas de la reunión), preparada sin instalar
 Informe [[53-maxi-lo-interno-no-llega-al-cliente-2026-11-11]]: se preparó y probó sin envíos un paquete que adelgaza el pedido al redactor y al revisor (la red de tamaño recortaba casi todos los turnos) y suma al guion las notas que el dueño anotó en una reunión del equipo (preguntas naturales cuando el cliente cuenta un problema, kit más económico si no le alcanza, complemento para el cliente que ya toma un solo producto). Sin derivaciones nuevas en las pruebas. Falta el OK del dueño para instalarlo.
 

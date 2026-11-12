@@ -67,7 +67,7 @@ Estado: **instalado el 2026-11-12 con el OK del dueño**; se vigila en los corte
 **Seguridad:** al revisar este wiki se encontró un dato de acceso a una cuenta escrito en texto en informes viejos. Se retiró del texto actual; el historial del repositorio lo conserva, así que ese dato hay que cambiarlo en la cuenta.
 
 ## Tercera tanda (2026-11-12, tarde): paquete liviano y notas de la reunión
-Estado: **preparado y probado sin envíos; sin instalar hasta el OK del dueño** (producción sigue con la segunda tanda).
+Estado: **instalado el 2026-11-12 con el OK del dueño**; se vigilan en los cortes de monitoreo los recortes de tamaño, las derivaciones nuevas y las preguntas de a una.
 
 **Paquete liviano.** La red de seguridad de tamaño de la tanda anterior recortaba casi todos los turnos reales: funcionaba, pero perdía contexto sin necesidad. Se midió el pedido real, se quitaron datos repetidos entre fuentes (sin sacar ninguna regla) y se corrigió el tope, que contaba bytes con un margen más estricto que el necesario. El pedido queda del mismo tamaño que lo instalado una vez sumadas las notas de la reunión, pero con el tope corregido se recorta mucho menos.
 
