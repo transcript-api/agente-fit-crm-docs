@@ -10,7 +10,7 @@ El campo "Clave API" se ve enmascarado en pantalla, pero el snapshot de accesibi
 `GET /messages/{ticketId}` devuelve en `dataJson` la configuración completa de la conexión de WhatsApp, **incluido el `metaToken`** (token de acceso de Meta), en cada mensaje del ticket, no solo una vez. Decidir si se rota el token de la conexión "Fitness Suplementos" y preguntarle a soporte si el payload puede omitirlo.
 
 ## Incidentes históricos con claves/tokens (resueltos o mitigados, dejados como aprendizaje)
-- **`usersanti001` en el campo Clave API de "Agente fit" (9816)**: no era un valor inválido al azar — era la contraseña real de la cuenta de Google `usersantifitness@gmail.com`, cargada ahí por error (probablemente autocompletado del navegador). El usuario decidió explícitamente dejarlo para después.
+- **`[valor retirado]` en el campo Clave API de "Agente fit" (9816)**: no era un valor inválido al azar — era la contraseña real de la cuenta de Google `usersantifitness@gmail.com`, cargada ahí por error (probablemente autocompletado del navegador). El usuario decidió explícitamente dejarlo para después.
 - **`refresh_token` de Bling expuesto una vez por `sessionStorage.getItem(...)` en consola**, compartido por captura de pantalla del usuario sin querer. Mitigación: el `access_token` asociado venció solo (6h).
 - **Client Secret de Bling expuesto en texto plano** al usar el botón "Testar" (simulación) de un Flujo con el secret ya escrito en el body. El usuario decidió no rotarlo. Regla que queda: nunca usar "Testar" con un secret ya cargado, vaciarlo antes de cualquier simulación.
 

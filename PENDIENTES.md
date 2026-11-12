@@ -255,7 +255,7 @@ Salen del documento de estado que armó ChatGPT después de muchas rondas de pru
 
 | # | Pendiente | Cerrado |
 |---|---|---|
-| — | Clave API del agente rota (`usersanti001`) | ✅ 2026-09-13 — clave real de OpenAI cargada |
+| — | Clave API del agente rota (`[valor retirado]`) | ✅ 2026-09-13 — clave real de OpenAI cargada |
 | — | Regla de escalamiento cuando el agente no sabe la respuesta | ✅ 2026-09-13 — agregada al prompt y verificada guardada |
 | — | Los 3 niveles de temperatura en Remarketing reflejados en el prompt | ✅ ya estaba hecho en el prompt v3 (Etapa 4) — el pendiente en [[07-estrategias-pendientes-agente]] quedó mal marcado como abierto |
 | — | Confirmar que "Criar contato" no duplica contactos | ✅ 2026-09-13 — probado 4 veces, hace find-or-create |
