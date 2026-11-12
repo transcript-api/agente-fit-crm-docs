@@ -65,3 +65,22 @@ Estado: **instalado el 2026-11-12 con el OK del dueño**; se vigila en los corte
 **Queda anotado, sin bloquear:** un arranque suave repetido («yo iría con…»); al ofrecer un complemento no siempre nombra el precio en el mismo mensaje; cuando el cliente confirma «quiero la de dos», a veces pide solo la localidad en vez de la plantilla completa (pasa igual hoy). Después de instalar se vigilan los recortes de tamaño, las derivaciones nuevas y las muletillas repetidas.
 
 **Seguridad:** al revisar este wiki se encontró un dato de acceso a una cuenta escrito en texto en informes viejos. Se retiró del texto actual; el historial del repositorio lo conserva, así que ese dato hay que cambiarlo en la cuenta.
+
+## Tercera tanda (2026-11-12, tarde): paquete liviano y notas de la reunión
+Estado: **preparado y probado sin envíos; sin instalar hasta el OK del dueño** (producción sigue con la segunda tanda).
+
+**Paquete liviano.** La red de seguridad de tamaño de la tanda anterior recortaba casi todos los turnos reales: funcionaba, pero perdía contexto sin necesidad. Se midió el pedido real, se quitaron datos repetidos entre fuentes (sin sacar ninguna regla) y se corrigió el tope, que contaba bytes con un margen más estricto que el necesario. El pedido queda del mismo tamaño que lo instalado una vez sumadas las notas de la reunión, pero con el tope corregido se recorta mucho menos.
+
+**Notas de la reunión del dueño (tomadas como criterio, no como guion para el cliente):**
+- Cuando el cliente llega contando un problema, nacen otras preguntas: una por mensaje, la primera abierta y general, las siguientes según lo que responde y solo si cambian la recomendación; todo natural. Los ejemplos del dueño (sueño, edad, horas de trabajo, energía, articulaciones) son ideas, no una lista.
+- Darle confianza al cliente: que sienta que lo escuchan y lo orientan, sin prometer que algo cura.
+- Kit más caro con salida: si el presupuesto no alcanza, una sola alternativa más económica con productos y precios reales, sin descuentos inventados.
+- Cliente calificado (ya viene tomando, p. ej. solo creatina): se le nombra un complemento concreto con su motivo.
+
+**Pruebas sin envíos:** verificaciones automáticas en cero fallas; 28 conversaciones con el redactor y el revisor reales, sin derivaciones nuevas y sin errores. Cada caso sensible se comparó contra lo instalado.
+
+**Hallazgos honestos:**
+- Si el cliente cuenta algo de salud («duermo mal», «me duelen las articulaciones»), el sistema lo pasa a un vendedor, igual que hoy. No se tocó esa seguridad; permitir que el agente pregunte igual es una decisión del dueño.
+- El complemento para el cliente calificado funciona a medias: a veces nombra el producto y a veces pregunta en general. Se probó una redacción más firme y no mejoró de forma clara; se dejó la que pasó toda la batería y se vigilará con conversaciones reales.
+- Dos detalles viejos, confirmados también en lo instalado: una promo de dos unidades que la planilla trae como «calculada, a confirmar» a veces se menciona; y cuando el cliente confirma «quiero la de dos», el pedido de datos de envío a veces sale por partes en vez de la plantilla completa.
+- No hay ningún producto cargado para sueño ni articulaciones; el agente no inventa uno y deja que siga un vendedor.
