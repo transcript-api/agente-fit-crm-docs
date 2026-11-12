@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-12 (noche) — Maxi: solución primero y total de la promo; un error de planillas encontrado a tiempo
+- **Pedido**: el dueño confirmó que la promo "2 con 10 % de descuento" del Whey Isolate es real y que el total de las 2 unidades es $2.680; pidió que Maxi ofrezca una solución cuando el cliente llega y después haga preguntas, a veces indirectas y a veces directas, para encontrar lo que le pasa. Lo de articulaciones no es colágeno y se irá cargando con el tiempo.
+- **Hecho**: se instaló (con el OK del dueño) el paquete de datos y guion con la promo y el nuevo orden de la charla. Probado contra lo instalado: en el caso "me estanqué, no logro subir masa" pasa de solo preguntar a ofrecer un kit en el segundo mensaje; con un cliente que no dice objetivo no hay diferencia.
+- **Hallazgo**: el texto nuevo de una planilla llevaba un punto y coma adentro; como las planillas se separan con punto y coma, se corrieron las columnas y el sistema descartó dos filas del Whey Isolate (el precio y la promo siguen cargados en otro archivo, así que el daño fue acotado). Se agregó una prueba de planillas que lo detecta: falla con lo instalado y pasa con la corrección.
+- **Estado**: corrección preparada y probada, con el total de $2.680 ya cargado; **pendiente del OK del dueño** para instalarla. Lo que el cliente cuenta de salud sigue pasando a un vendedor. Pendiente también: cómo quiere el primer mensaje.
+
 ### 2026-11-12 (tarde) — Maxi: paquete liviano y notas de la reunión del dueño (instalado)
 - **Pedido**: el dueño aceptó preparar una versión más liviana (la red de tamaño recortaba casi todos los turnos) y después pasó notas de una reunión del equipo, pidiendo cuidado para no estropear lo que ya funciona.
 - **Hecho**: se midió el pedido real y se quitaron datos repetidos sin sacar ninguna regla; se corrigió el tope de tamaño. Se sumaron al guion las notas de la reunión: preguntas naturales de a una cuando el cliente cuenta un problema, kit más económico si el presupuesto no alcanza (con productos y precios reales) y complemento concreto para el cliente que ya toma un solo producto. Pruebas sin envíos: verificaciones automáticas en cero fallas y 28 conversaciones con el redactor y el revisor reales, sin derivaciones nuevas.
