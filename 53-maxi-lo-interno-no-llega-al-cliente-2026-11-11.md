@@ -1,6 +1,6 @@
 # 53 · Maxi: lo que se le aclara al agente no se le explica al cliente (2026-11-11)
 
-Estado: **preparado y probado sin enviar; a la espera del OK del dueño para instalar (producción sigue con la versión anterior)**. Resumen público, sin datos del servidor, identificadores ni teléfonos. Sigue al [[17-registro-de-cambios]] y a las reglas de [[reglas-recepcion-hermes]].
+Estado: **instalado el 2026-11-12 con el OK del dueño (primera tanda y segunda tanda juntas)**. Resumen público, sin datos del servidor, identificadores ni teléfonos. Sigue al [[17-registro-de-cambios]] y a las reglas de [[reglas-recepcion-hermes]].
 
 ## Qué pasó
 Un cliente escribió con el texto automático del anuncio, que ya traía el producto y el precio. Maxi le contestó explicándole que ese precio «ya es el de la promo». El cliente no había dudado de nada. El dueño lo vio en una captura y sospechó que el guion decía eso: tenía razón. Después pidió revisar **todos** los prompts, no solo ese, y evitar las respuestas genéricas («por ahora va bastante bien, vamos a mejorar todo esto»).
@@ -45,7 +45,7 @@ Los perfiles del redactor y del revisor (propuesta preparada: la pregunta puente
 
 
 ## Segunda tanda (2026-11-12): estilo, venta dinámica y un límite oculto de tamaño
-Estado: **el paquete sigue preparado y sin instalar** (producción sigue con la versión anterior). Se amplió a pedido del dueño después de ver conversaciones reales.
+Estado: **instalado el 2026-11-12 con el OK del dueño**; se vigila en los cortes de monitoreo. Se amplió a pedido del dueño después de ver conversaciones reales.
 
 **Lo que pidió el dueño y cómo quedó**
 - «Perfecto» y «Dale» **no están prohibidos**: se usan según la ocasión (al cerrar con el nombre pidiendo los datos de envío; al confirmar el pedido exacto cuando el cliente dice que es eso), no como reflejo. Esto resuelve la regla que se pisaba con las muletillas del guion.
