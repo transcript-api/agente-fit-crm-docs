@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-12] update | Informe 53: segunda tanda (estilo, venta dinámica y límite oculto de tamaño)
+Informe [[53-maxi-lo-interno-no-llega-al-cliente-2026-11-11]]: a pedido del dueño, «Perfecto/Dale» según la ocasión, nombres con criterio, guardia contra repetir, venta con razón y complemento concreto cuando lo piden; descuentos solo reales. Hallazgo: la API lee solo unos 65 mil caracteres de un mensaje y lo instalado hoy está a unos 2,5 mil del tope; el paquete trae un tope de 60 mil con recorte en orden. 113 verificaciones y 20 conversaciones de prueba sin envíos; sigue sin instalar. Se retiró del texto actual un dato de acceso que estaba en informes viejos.
+
 ## [2026-11-11] update | Informe 53: lo que se le aclara al agente no se le explica al cliente
 Informe [[53-maxi-lo-interno-no-llega-al-cliente-2026-11-11]]: Maxi explicaba a clientes aclaraciones que el dueño había hecho al equipo («ese precio ya es la promo»); la causa estaba en cinco lugares y en la política general, y se repetían frases genéricas copiadas de ejemplos. Se auditaron ocho lugares, se midió sobre 626 respuestas, se preparó un paquete (datos y política sin frases para copiar, guardia mecánica, chequeador previo) probado sin envíos. Regla nueva en [[reglas-recepcion-hermes]]. A la espera del OK del dueño para instalar.
 

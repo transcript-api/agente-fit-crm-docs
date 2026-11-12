@@ -17,7 +17,7 @@ La instrucción del primer mensaje y los motivos de reescritura en el código de
 - Doce más repitieron una pregunta de objetivo copiada de ejemplos entre comillas del guion, de la instrucción de reescritura, del revisor y de la política general.
 - Preguntas de relleno («tenés alguna duda», «qué te gustaría saber»): doce.
 - Ninguna respuesta dijo «dueño» ni «confirmado»: las marcas de procedencia como dato suelto no se filtraron; sí las que estaban dentro de frases.
-- Dos reglas se pisaban: «la compra explícita manda» contra «el texto del anuncio no es compra directa», y «nunca empezar con Perfecto» contra las muletillas del guion (esta queda para decidir con el dueño).
+- Dos reglas se pisaban: «la compra explícita manda» contra «el texto del anuncio no es compra directa», y «nunca empezar con Perfecto» contra las muletillas del guion (decidido el 2026-11-12: ver la segunda tanda, más abajo).
 
 ## Qué cambia (paquete bak67)
 1. **Instrucción del primer mensaje por casos** (con promo, con precio sin promo, sin precio, producto no claro), sin frases de ejemplo y con el producto dentro de la pregunta.
@@ -42,3 +42,26 @@ Lo que el dueño aclara es interno: se escribe como dato o restricción, nunca c
 
 ## Lo que no se toca sin OK del dueño
 Los perfiles del redactor y del revisor (propuesta preparada: la pregunta puente deja de exigir una redacción, y el revisor pasa a rechazar explicaciones que el cliente no pidió) y cualquier instalación en producción.
+
+
+## Segunda tanda (2026-11-12): estilo, venta dinámica y un límite oculto de tamaño
+Estado: **el paquete sigue preparado y sin instalar** (producción sigue con la versión anterior). Se amplió a pedido del dueño después de ver conversaciones reales.
+
+**Lo que pidió el dueño y cómo quedó**
+- «Perfecto» y «Dale» **no están prohibidos**: se usan según la ocasión (al cerrar con el nombre pidiendo los datos de envío; al confirmar el pedido exacto cuando el cliente dice que es eso), no como reflejo. Esto resuelve la regla que se pisaba con las muletillas del guion.
+- **Explicar como dato:** la información correcta queda como dato; no se explica la promo si no preguntan. El dueño va a cargar descripciones de anuncios y videos.
+- **Nombres con criterio:** si el nombre del perfil no parece de persona (apodos, «gym», «mamá», saludos), no se usa. Una lista de palabras que no son nombre lo asegura en el código.
+- **Mensaje automático del anuncio:** si el producto y el precio coinciden con las fuentes, no se le pide al cliente que los confirme; se corrige solo si algo está mal.
+- **No repetir:** una guardia nueva en el código marca una oración larga que dice casi lo mismo que algo ya enviado en la charla (por ejemplo, el nombre del producto tres veces) y pide una reescritura que sume algo nuevo; si no se logra, se saca solo esa oración o sale igual y queda anotado (nunca silencio). Los mensajes fijos aprobados (pedido de datos, plantilla) pueden repetirse.
+- **Venta más dinámica:** complementos, kits y versiones superiores siempre con su razón, de a uno por mensaje y antes de que el cliente fije la cantidad; el kit femenino para una mujer que quiere bajar de peso se muestra de a poco. Promesas buenas y firmes, sin garantizar resultados. Si el cliente pide «algo más para sumar», se contesta con un producto concreto y la razón, sin preguntarle a qué se refiere.
+- **Descuentos:** solo lo que está cargado en la planilla. Un porcentaje solo con un precio de lista real; sin precio «anterior» inventado y sin decir que «lo autorizó el dueño». La táctica de subir un precio para después «descontar» no se implementa: sería publicidad engañosa. El camino es cargar promos y precios de combo reales.
+- **Guía para dar aclaraciones:** una página en la bóveda privada explica cómo pasarle los casos al equipo para no volver a contagiar frases al cliente (decir el caso, no la frase; dato o regla; siempre, nunca o según la ocasión; marcar los ejemplos).
+
+**Hallazgo técnico: la API lee solo unos 65 mil caracteres de un mensaje.** Lo que pasa de ese tope se descarta sin dar error. El revisor recibe el candidato al final del pedido: si se corta, contesta «desconocido» y la respuesta pasa a una persona; al redactor se le corta el final de la política. Lo instalado hoy, en el peor turno (precio de una promo), está a unos 2,5 mil caracteres del tope; nunca falló, pero cualquier texto nuevo lo puede romper sin aviso.
+- La primera versión de esta tanda lo pasó y los turnos de precio se iban a una persona. Se resolvió con una dieta de datos (descripciones más cortas, campos que sobraban, textos sin repetir) y una **red de seguridad en el código**: tope de 60 mil caracteres que recorta, en orden, el historial, las descripciones y, solo para el revisor, el guion de venta y el conocimiento. Al redactor nunca se le quita el guion y el candidato queda entero. Cada recorte queda registrado para vigilarlo.
+
+**Pruebas sin envíos:** 113 verificaciones automáticas en cero fallas (guardia, frases prohibidas, repetición y nombres, tope de tamaño, flujo completo con redactor simulado); chequeador de prompts en cero hallazgos; y una batería de 20 conversaciones con el redactor y el revisor reales sin derivaciones nuevas (la única pasa a una persona cuando preguntan por un descuento extra que no existe, igual que hoy). Se vio al cerrar «Dale, [nombre], una de cookies y una de chocolate» seguido de los datos de envío, el kit femenino recomendado con su motivo, y un complemento concreto cuando lo piden.
+
+**Queda anotado, sin bloquear:** un arranque suave repetido («yo iría con…»); al ofrecer un complemento no siempre nombra el precio en el mismo mensaje; cuando el cliente confirma «quiero la de dos», a veces pide solo la localidad en vez de la plantilla completa (pasa igual hoy). Después de instalar se vigilan los recortes de tamaño, las derivaciones nuevas y las muletillas repetidas.
+
+**Seguridad:** al revisar este wiki se encontró un dato de acceso a una cuenta escrito en texto en informes viejos. Se retiró del texto actual; el historial del repositorio lo conserva, así que ese dato hay que cambiarlo en la cuenta.
