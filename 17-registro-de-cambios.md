@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-13 — Maxi: «un gusto saludarte!!» habilitado y bienvenidas más cálidas (instalado)
+- **Pedido**: el dueño quería una bienvenida más cálida y dinámica, que Maxi pregunte cómo está el cliente y diga «un gusto saludarte». Autorizó la frase con dos signos de exclamación solo al final.
+- **Hecho**: se instaló (con un reinicio de unos segundos) la versión 3.7. La frase salió de las frases prohibidas, el código ahora conserva los dos signos solo en «saludarte!!» (cualquier otro «!!» o «??» sigue achicándose a uno) y la lista de saludos del primer mensaje pasó de 4 cortos a 5 más cálidos y distintos entre sí. Pruebas sin envíos: la bienvenida sale variada, la frase sobrevive al código y al revisor, y sigue una pregunta abierta sobre lo que el cliente quiere mejorar.
+- **Pendiente**: mirar en conversaciones reales si las cinco bienvenidas suenan bien y no se repiten, y las muletillas («Yo sumaría») y el dato suelto de las cápsulas.
+
 ### 2026-11-13 — Maxi: preguntas para conocer al cliente, bienvenida y venta de varios productos (instalado)
 - **Pedido**: el dueño quiere que Maxi venda como el mejor vendedor: que no se limite a un solo producto con quien nunca consumió, que conozca al cliente con preguntas (rutina, objetivo, cómo come), que sume productos de forma persuasiva y que la bienvenida sea más cálida y mejore siempre. También pidió quitar reglas que lo frenan y sumar escasez y descuentos que no existen.
 - **Hecho**: se instaló (con el OK del dueño, con un reinicio de unos segundos) la versión 3.6: sección nueva de preguntas, primer mensaje que pregunta por la rutina o lo que busca mejorar antes de nombrar la promo, una regla de política que ya no trata como comprador directo a quien solo mostró el producto del anuncio, y menos límites de estilo (hasta dos reflexiones ante una duda, un intento más ante un «no» a un complemento). Incluye las técnicas de los nueve videos de ventas de Brasil (cierre directo, preguntar el presupuesto antes de bajar el precio, adaptar la charla al perfil). Pruebas sin envíos: con un cliente que viene por el Testo, Maxi pregunta por la rutina y suma la creatina al contar su objetivo; los controles de cierre y de salud quedaron igual que antes.
