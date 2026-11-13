@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-13 — Maxi: nunca «Soy Maxi» y bienvenidas con «un gusto saludarte!!» (instalado)
+- **Pedido**: el dueño pidió que Maxi nunca se presente como «Soy Maxi» y que use presentaciones como «Buenas, todo bien? Te habla Maxi de Fitness Suplementos por acá, un gusto saludarte!!», con variaciones pero siempre cerrando con «un gusto saludarte!!». También pidió revisar que Maxi esté trabajando bien.
+- **Hecho**: se instaló (con un reinicio de unos segundos) la versión 3.8: siete bienvenidas nuevas, todas con el nombre completo y la frase al final; «soy Maxi» pasó a las frases que el sistema no deja pasar; y cuando el cliente no dice qué producto quiere, la pregunta es más natural. Se revisaron las charlas reales desde la versión anterior: bienvenida, dato del producto y pregunta que avanza funcionan, no hubo envíos fallidos, y se encontraron y corrigieron «Soy Maxi» (era una bienvenida de la versión anterior) y una pregunta torpe.
+- **Pendiente**: ver en conversaciones reales cómo suenan las siete bienvenidas, y las muletillas («Yo sumaría»).
+
 ### 2026-11-13 — Maxi: «un gusto saludarte!!» habilitado y bienvenidas más cálidas (instalado)
 - **Pedido**: el dueño quería una bienvenida más cálida y dinámica, que Maxi pregunte cómo está el cliente y diga «un gusto saludarte». Autorizó la frase con dos signos de exclamación solo al final.
 - **Hecho**: se instaló (con un reinicio de unos segundos) la versión 3.7. La frase salió de las frases prohibidas, el código ahora conserva los dos signos solo en «saludarte!!» (cualquier otro «!!» o «??» sigue achicándose a uno) y la lista de saludos del primer mensaje pasó de 4 cortos a 5 más cálidos y distintos entre sí. Pruebas sin envíos: la bienvenida sale variada, la frase sobrevive al código y al revisor, y sigue una pregunta abierta sobre lo que el cliente quiere mejorar.
