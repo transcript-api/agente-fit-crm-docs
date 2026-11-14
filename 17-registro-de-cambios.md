@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-14 — Maxi: anuncios nuevos registrados solos y venta alrededor del producto del anuncio (instalado)
+- **Pedido**: el dueño vio que Maxi preguntaba «qué producto te interesa» a clientes que venían de un anuncio, y pidió que todo anuncio nuevo se registre solo y que no vuelva a pasar. También pidió que venda mejor: con un cliente que vino por el Testo y quiere ganar masa, ofrecer el Testo más creatina y proteína explicando por qué, con más preguntas para encajar productos.
+- **Causa**: la empresa publicó anuncios nuevos y el sistema solo conocía los viejos; además, una frase de ejemplo de la versión anterior hizo que Maxi preguntara el producto aunque el anuncio lo dijera, y «Que costo tiene» (sin signo de pregunta) no se tomaba como pregunta.
+- **Hecho**: se instaló la versión 3.9. Cada anuncio nuevo se registra solo con su título y su texto y se cruza con las planillas de precios; si tiene el mismo producto y precio que un anuncio ya revisado, hereda sus datos. Si el cliente vino de un anuncio, Maxi no pregunta qué producto quiere (y si lo hace, el sistema lo hace reescribir). La propuesta parte del producto por el que vino y suma complementos, cada uno con su porqué. Pruebas sin envíos: los nueve anuncios nuevos se reconocen y, en el caso del Testo, Maxi propone Testo más proteína y creatina explicando qué aporta cada uno y sigue preguntando.
+- **Pendiente**: el dueño decide si Maxi puede hacer más de tres respuestas antes de pasar al vendedor.
+
 ### 2026-11-13 — Maxi: nunca «Soy Maxi» y bienvenidas con «un gusto saludarte!!» (instalado)
 - **Pedido**: el dueño pidió que Maxi nunca se presente como «Soy Maxi» y que use presentaciones como «Buenas, todo bien? Te habla Maxi de Fitness Suplementos por acá, un gusto saludarte!!», con variaciones pero siempre cerrando con «un gusto saludarte!!». También pidió revisar que Maxi esté trabajando bien.
 - **Hecho**: se instaló (con un reinicio de unos segundos) la versión 3.8: siete bienvenidas nuevas, todas con el nombre completo y la frase al final; «soy Maxi» pasó a las frases que el sistema no deja pasar; y cuando el cliente no dice qué producto quiere, la pregunta es más natural. Se revisaron las charlas reales desde la versión anterior: bienvenida, dato del producto y pregunta que avanza funcionan, no hubo envíos fallidos, y se encontraron y corrigieron «Soy Maxi» (era una bienvenida de la versión anterior) y una pregunta torpe.
