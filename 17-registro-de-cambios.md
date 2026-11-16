@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-16 — Perfiles nuevos de los agentes y agente de reconversión en modo prueba (instalado)
+- **Pedido**: el dueño aprobó instalar los perfiles nuevos de los agentes (clasificador, redactor y revisor) y el perfil del agente de reconversión.
+- **Hecho**: los tres perfiles quedaron entre 2 y 4 veces más cortos y sin las reglas que obligaban a terminar con una pregunta. Se sumaron las reglas del dueño que se habían perdido en la propuesta: el producto por el que vino el cliente siempre en la propuesta, sin preguntar si ya toma suplementos, el nombre con criterio y el modo de uso solo de las fuentes. Antes de instalarlos se probaron en perfiles de prueba aparte. Se creó un perfil nuevo para la reconversión: retoma la venta cuando el cliente deja de contestar, con producto, precio, una razón y una pregunta fácil. Por ahora escribe los seguimientos sin enviarlos, para revisarlos antes de prenderlos.
+- **Pendiente**: el OK del dueño para que los seguimientos se envíen y la regla de quién atiende cuando hay un vendedor asignado.
+
 ### 2026-11-16 — Revisión completa del sistema de venta, arreglos urgentes y limpieza (instalado)
 - **Pedido**: el dueño pidió una revisión completa de todo (estrategias, ventas, errores, respuestas por etapa), limpiar lo que no aporta, estudiar en internet, dejar la recepción muy bien y preparar los agentes de reconversión y de cierre, audios, creativos y base de datos, con todo anotado para cualquier agente.
 - **Hallazgos**: en 151 conversaciones reales, Maxi no cerró ventas (las cerraron vendedores); el 38 % no contesta el primer mensaje y la pregunta de objetivo con dos opciones es la que menos respuesta tiene; Maxi casi nunca daba el precio; muchos clientes quedaban sin respuesta en los pases a vendedores; el pedido al modelo estaba al límite de tamaño.
