@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-16 — Revisión completa del sistema de venta, arreglos urgentes y limpieza (instalado)
+- **Pedido**: el dueño pidió una revisión completa de todo (estrategias, ventas, errores, respuestas por etapa), limpiar lo que no aporta, estudiar en internet, dejar la recepción muy bien y preparar los agentes de reconversión y de cierre, audios, creativos y base de datos, con todo anotado para cualquier agente.
+- **Hallazgos**: en 151 conversaciones reales, Maxi no cerró ventas (las cerraron vendedores); el 38 % no contesta el primer mensaje y la pregunta de objetivo con dos opciones es la que menos respuesta tiene; Maxi casi nunca daba el precio; muchos clientes quedaban sin respuesta en los pases a vendedores; el pedido al modelo estaba al límite de tamaño.
+- **Hecho**: se instalaron arreglos urgentes (se leen las respuestas a historias y comentarios, el límite de turnos ya no pasa en silencio, el cierre se dispara cuando el cliente se decide aunque el precio lo haya mostrado el anuncio, salud a un vendedor) y la limpieza: un manual de venta único y datos sin repetir, con el pedido al modelo de unos 66 mil a unos 38 mil caracteres. Probado con 15 conversaciones sin envíos.
+- **Pendiente**: prueba A/B del primer mensaje con precio y promo, agente de cierre con formas de pago, agente de reconversión con su propio perfil, base de datos completa, mapa de creativos y audios; varias decisiones y datos del dueño.
+
 ### 2026-11-14 — Maxi: anuncios nuevos registrados solos y venta alrededor del producto del anuncio (instalado)
 - **Pedido**: el dueño vio que Maxi preguntaba «qué producto te interesa» a clientes que venían de un anuncio, y pidió que todo anuncio nuevo se registre solo y que no vuelva a pasar. También pidió que venda mejor: con un cliente que vino por el Testo y quiere ganar masa, ofrecer el Testo más creatina y proteína explicando por qué, con más preguntas para encajar productos.
 - **Causa**: la empresa publicó anuncios nuevos y el sistema solo conocía los viejos; además, una frase de ejemplo de la versión anterior hizo que Maxi preguntara el producto aunque el anuncio lo dijera, y «Que costo tiene» (sin signo de pregunta) no se tomaba como pregunta.
