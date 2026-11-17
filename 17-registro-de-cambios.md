@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-17 — Primer mensaje que no repite el anuncio, de la creatina a la proteína y el kit femenino con foto (instalado)
+- **Pedido**: el dueño notó que Maxi repetía lo que ya decía el anuncio y que con la creatina se quedaba en un solo producto. Para quien viene por creatina pidió un saludo con la promo general de la marca y la pregunta de si ya viene tomando o sería la primera vez. Para el kit femenino, preguntar el objetivo en vez de listar lo que trae. Con la creatina, preguntar por la alimentación para llegar a la proteína. Al explicar el kit, mandar la foto y resumir qué hace cada producto, incluido que uno ayuda a la piel, el pelo y las uñas.
+- **Hallazgo**: en 47 de 47 charlas del kit el primer mensaje repetía su contenido, por una instrucción que pedía contar «qué incluye». La pregunta de experiencia la había prohibido el mismo dueño tiempo atrás. La foto que usan los vendedores ya estaba guardada en el CRM.
+- **Hecho**: un primer mensaje propio para creatina y otro para kits, sin repetir el anuncio. La pregunta de experiencia queda habilitada solo en ese primer mensaje de creatina. Con «salteo comidas» Maxi ahora ofrece proteína, y el kit se explica producto por producto. Probado sin envíos con el redactor y el revisor reales, varias corridas por caso.
+- **Pendiente**: la foto quedó lista pero apagada. Falta el OK del dueño para mandarla una vez a su número de prueba y, si llega bien, prenderla.
+
 ### 2026-11-17 — Respuesta de ubicación más dinámica y pedido de datos solo con el cliente decidido (instalado)
 - **Pedido**: el dueño quiso que, cuando preguntan de dónde somos, Maxi diga el departamento, que hay tienda física para pasar a retirar o a conocer, que se envía a todo el país por DAC, y pregunte de dónde es el cliente. También pidió no pedir nunca los datos de envío sin haber convencido al cliente, salvo que el cliente sea muy directo.
 - **Hallazgo**: la respuesta de ubicación era seca, solo la dirección. Desde el día anterior se habían pedido datos 9 veces y una sola estuvo mal: una clienta contestó «las dos cosas» a la pregunta «definir o más energía?» y el sistema lo tomó como «me llevo los dos». Repetida esa regla sobre 511 charlas reales, 3 de sus 4 disparos eran esa misma confusión.
