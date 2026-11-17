@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-17 — Más variedad: productos de la lista del dueño que todavía no tienen precio (instalado)
+- **Pedido**: el dueño compartió su lista completa de productos para que Maxi tenga más variedad según la situación, prefiriendo lo que tiene precio y pasando a una persona cuando el cliente pide el precio de algo que no lo tiene.
+- **Hallazgo**: la lista ya estaba conectada y Maxi usaba los productos con precio; los que no tienen precio se ignoraban.
+- **Hecho**: entran los productos sin precio que tienen descripción, solo en las categorías donde casi no hay nada con precio (pre entrenos, aminoácidos, vitaminas). Quedan afuera los sabores o tamaños de un producto que ya tiene precio, para que no se deduzca el precio de un pariente. Maxi ahora también reconoce la situación que cuenta el cliente (energía, entrenar de noche, bajar o subir de peso, recuperación) y no solo nombres de productos, y se corrigió que dos marcas se tomaban como categorías. En la prueba, ante «tienen pre entreno? cuánto sale?», ofreció uno y pasó a una persona al pedir el precio.
+- **Pendiente**: precios de los pre entrenos y cuáles no tienen cafeína.
+
 ### 2026-11-17 — Datos del dueño, salud y humanización, y una guía de errores para no repetirlos (instalado)
 - **Pedido**: el dueño pasó datos nuevos (un kit subió de precio, el regalo de una promo, las cuotas del link de pago, poco stock real y una promoción semanal autorizada por la empresa) y pidió que Maxi hable con seguridad de lo que funciona, que no pregunte por problemas de salud, que elija el producto según el detalle del cliente (por ejemplo, sin cafeína para quien entrena de noche) sin repetirle lo que contó, y una guía con todos los sesgos de la IA y los errores cometidos.
 - **Hecho**: se cargaron los datos (la promo se nombra específica, al sumar un producto y nunca de entrada; el poco stock se usa pocas veces). El sistema ahora acepta la respuesta del redactor aunque no venga en el formato esperado. Maxi elige la opción por el detalle que la justifica y lo nombra natural, no pregunta por salud y responde «si funciona» con seguridad: las frases que restan («no te puedo asegurar», «puede variar») se reescriben solas (en la prueba pasaron de 2 de cada 3 respuestas a ninguna). Se creó la guía de criterio para agentes de venta: cómo interpreta el modelo lo que se le escribe, dónde se equivoca quien lo arma, qué va en cada agente y el catálogo de errores con fecha.
