@@ -10,11 +10,30 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-17 — Complemento sin marca, una opción más económica ante un no y foto del kit prendida (instalado)
+- **Pedido**:
+  - al sumar un complemento, Maxi tiene que decir «le sumaría una creatina» y no nombrar una marca, porque hay muchas;
+  - cuando el cliente se interesa, elegir una buena opción;
+  - si dice que no, ofrecerle una más económica para que se lleve todo junto;
+  - el dueño aprobó mandar la foto del kit a su número de prueba.
+- **Hallazgo**:
+  - una instrucción pedía «un complemento concreto con su precio», y el modelo tomaba siempre la primera creatina de la lista;
+  - la primera prueba de la foto quedó trabada en el CRM porque la hora programada tenía milisegundos: el CRM solo envía en minuto exacto. El mismo problema habría afectado al envío automático de los datos de pago.
+- **Hecho**:
+  - el complemento se ofrece por su tipo, y la marca cuando le interesa;
+  - el código detecta el no al complemento ofrecido y pide, una sola vez y antes de los datos, una opción real más económica con su precio (con la regla solo en el manual no lo hacía);
+  - los agendamientos van en minuto exacto, y la foto salió en la segunda prueba y quedó prendida;
+  - probado sin envíos con el redactor y el revisor reales, varias corridas por caso.
+- **Pendiente**:
+  - que el dueño confirme que vio la foto;
+  - definir si «no, solo eso», justo después de ofrecer un complemento, recibe primero la opción más económica o cierra directo;
+  - confirmar el precio de una creatina que figura distinto en el catálogo y en la planilla.
+
 ### 2026-11-17 — Primer mensaje que no repite el anuncio, de la creatina a la proteína y el kit femenino con foto (instalado)
 - **Pedido**: el dueño notó que Maxi repetía lo que ya decía el anuncio y que con la creatina se quedaba en un solo producto. Para quien viene por creatina pidió un saludo con la promo general de la marca y la pregunta de si ya viene tomando o sería la primera vez. Para el kit femenino, preguntar el objetivo en vez de listar lo que trae. Con la creatina, preguntar por la alimentación para llegar a la proteína. Al explicar el kit, mandar la foto y resumir qué hace cada producto, incluido que uno ayuda a la piel, el pelo y las uñas.
 - **Hallazgo**: en 47 de 47 charlas del kit el primer mensaje repetía su contenido, por una instrucción que pedía contar «qué incluye». La pregunta de experiencia la había prohibido el mismo dueño tiempo atrás. La foto que usan los vendedores ya estaba guardada en el CRM.
 - **Hecho**: un primer mensaje propio para creatina y otro para kits, sin repetir el anuncio. La pregunta de experiencia queda habilitada solo en ese primer mensaje de creatina. Con «salteo comidas» Maxi ahora ofrece proteína, y el kit se explica producto por producto. Probado sin envíos con el redactor y el revisor reales, varias corridas por caso.
-- **Pendiente**: la foto quedó lista pero apagada. Falta el OK del dueño para mandarla una vez a su número de prueba y, si llega bien, prenderla.
+- **Pendiente**: la foto quedó lista pero apagada (se prendió más tarde ese día, ver la entrada de arriba).
 
 ### 2026-11-17 — Respuesta de ubicación más dinámica y pedido de datos solo con el cliente decidido (instalado)
 - **Pedido**: el dueño quiso que, cuando preguntan de dónde somos, Maxi diga el departamento, que hay tienda física para pasar a retirar o a conocer, que se envía a todo el país por DAC, y pregunte de dónde es el cliente. También pidió no pedir nunca los datos de envío sin haber convencido al cliente, salvo que el cliente sea muy directo.
