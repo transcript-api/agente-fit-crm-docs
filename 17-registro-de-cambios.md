@@ -10,6 +10,14 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-17 — Ante el no al complemento, primero «si te parece, te muestro una más económica» (instalado)
+- **Pedido**: el dueño corrigió el cambio anterior. Después del «no quiero», Maxi no nombra enseguida la opción más barata: primero pregunta si le parece que le muestre una más económica. Vale también cuando el cliente dice «no, solo eso» justo después de que se le ofreció un complemento.
+- **Hecho**:
+  - ante el no, una sola pregunta corta, sin nombrar el producto ni dar el precio;
+  - si el cliente acepta, la opción real con su nombre, su precio y la pregunta de si la suma, una vez por conversación;
+  - probado sin envíos con el redactor y el revisor reales: «Te parece que te muestre una opción de creatina más económica para complementar el kit?» y, después del «dale», la opción con su precio y «La sumamos al kit?».
+- **Pendiente**: confirmar el precio de una creatina que figura distinto en el catálogo y en la planilla, y revisar un descargo que a veces aparece al explicar el kit.
+
 ### 2026-11-17 — Complemento sin marca, una opción más económica ante un no y foto del kit prendida (instalado)
 - **Pedido**:
   - al sumar un complemento, Maxi tiene que decir «le sumaría una creatina» y no nombrar una marca, porque hay muchas;
