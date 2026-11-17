@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-17 — Respuesta de ubicación más dinámica y pedido de datos solo con el cliente decidido (instalado)
+- **Pedido**: el dueño quiso que, cuando preguntan de dónde somos, Maxi diga el departamento, que hay tienda física para pasar a retirar o a conocer, que se envía a todo el país por DAC, y pregunte de dónde es el cliente. También pidió no pedir nunca los datos de envío sin haber convencido al cliente, salvo que el cliente sea muy directo.
+- **Hallazgo**: la respuesta de ubicación era seca, solo la dirección. Desde el día anterior se habían pedido datos 9 veces y una sola estuvo mal: una clienta contestó «las dos cosas» a la pregunta «definir o más energía?» y el sistema lo tomó como «me llevo los dos». Repetida esa regla sobre 511 charlas reales, 3 de sus 4 disparos eran esa misma confusión.
+- **Hecho**: el dato, el manual y el texto de respaldo dicen ahora la ubicación como la pidió el dueño. La pregunta queda en neutro («Vos de dónde sos?») y sale solo si el cliente no dijo de dónde es y la respuesta no tiene otra pregunta. El cierre automático ya no toma como compra una respuesta a una pregunta sobre lo que busca el cliente, y «sí, los 2» después de una pregunta abierta sigue cerrando. En el manual, sin decisión no se piden los datos y con el cliente directo se piden enseguida. Se probó sin envíos con el redactor y el revisor reales: 8 de 8 respuestas de ubicación bien, ningún formulario ante «las dos cosas», y el cliente directo y el «dale, la llevo» cierran igual que antes.
+- **Pendiente**: confirmar qué se libera el sábado de noche («los 3 hasta la venta»), renovar el servidor antes del 20/11 y vigilar en los registros que ningún comprador decidido quede sin datos.
+
 ### 2026-11-17 — Más variedad: productos de la lista del dueño que todavía no tienen precio (instalado)
 - **Pedido**: el dueño compartió su lista completa de productos para que Maxi tenga más variedad según la situación, prefiriendo lo que tiene precio y pasando a una persona cuando el cliente pide el precio de algo que no lo tiene.
 - **Hallazgo**: la lista ya estaba conectada y Maxi usaba los productos con precio; los que no tienen precio se ignoraban.
