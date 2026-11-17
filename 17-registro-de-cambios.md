@@ -16,7 +16,7 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
   - ante el no, una sola pregunta corta, sin nombrar el producto ni dar el precio;
   - si el cliente acepta, la opción real con su nombre, su precio y la pregunta de si la suma, una vez por conversación;
   - probado sin envíos con el redactor y el revisor reales: «Te parece que te muestre una opción de creatina más económica para complementar el kit?» y, después del «dale», la opción con su precio y «La sumamos al kit?».
-- **Pendiente**: confirmar el precio de una creatina que figura distinto en el catálogo y en la planilla, y revisar un descargo que a veces aparece al explicar el kit.
+- **Pendiente**: revisar un descargo que a veces aparece al explicar el kit. El precio de la creatina con sabor quedó confirmado por el dueño y corregido el mismo día (a dos clientes se les había dicho un precio más alto).
 
 ### 2026-11-17 — Complemento sin marca, una opción más económica ante un no y foto del kit prendida (instalado)
 - **Pedido**:
