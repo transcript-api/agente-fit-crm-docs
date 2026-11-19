@@ -10,6 +10,27 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-19 — La edad no es salud, el producto de testosterona y la intimidad, la presión con otras opciones y el embudo nuevo (instalado)
+- **Pedido**:
+  - la edad no es un problema: a una persona mayor se la atiende igual que a cualquiera;
+  - quien quiere subir la testosterona o rendir mejor en la intimidad está comprando, no contando un problema de salud;
+  - el producto de testosterona ayuda en la intimidad, según cuentan los clientes;
+  - con un problema de presión no se recomienda ese producto, pero sí otras opciones (creatina, beta alanina, glutamina, proteína), sin mandarlo al médico;
+  - el equipo dejó una sola columna después de «lead nuevo» en el embudo del CRM.
+- **Hallazgo**:
+  - la regla de salud estaba en cinco lugares (el filtro del código, el clasificador y los tres agentes), y la presión o una palabra sobre la intimidad mandaban al cliente a un vendedor;
+  - una vez, «tengo 37 años» se tomó como salud;
+  - el filtro no reconocía «diabético» con tilde;
+  - por la columna borrada, dos pases a vendedor fallaron y el paso posterior al formulario quedó apagado.
+- **Hecho**:
+  - la edad, la energía, la testosterona, la libido y la intimidad ya no son salud, en los cinco lugares;
+  - ante la intimidad, el agente dice que muchos clientes cuentan que lo notan también ahí, con discreción y sin descargos (una guarda saca la frase de cobertura si aparece), y sin prometer efectos de medicamento;
+  - con un problema de presión: nada con cafeína ni estimulantes y, en el mismo mensaje, las opciones que no los tienen; si a último momento todavía ofrece algo estimulante, lo sigue un vendedor;
+  - las demás condiciones de salud siguen pasando a un vendedor;
+  - los pases y el formulario van a la columna que quedó;
+  - probado sin envíos con los agentes reales, 26 corridas.
+- **Pendiente**: el kit femenino con presión todavía no siempre ofrece la alternativa, y falta decidir qué hacer con otras condiciones de salud.
+
 ### 2026-11-19 — Proteína sin marca de entrada, con las promos y buenas opciones (instalado)
 - **Pedido**:
   - el dueño vio que Maxi recomendaba casi siempre una misma marca de proteína;
