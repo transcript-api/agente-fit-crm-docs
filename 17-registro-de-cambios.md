@@ -10,6 +10,26 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-19 — Proteína sin marca de entrada, con las promos y buenas opciones (instalado)
+- **Pedido**:
+  - el dueño vio que Maxi recomendaba casi siempre una misma marca de proteína;
+  - que no nombre una marca de entrada y que, si va a ofrecer, vea primero el interés;
+  - que cuente que hay promociones en proteínas y que no se limite a ofrecer la más barata.
+- **Hallazgo** (5 días de charlas):
+  - ante «cuánto está la proteína?» daba una sola proteína, casi siempre la más barata, y no nombraba las promos;
+  - cuando la recomendaba por su cuenta, iba con marca desde el primer mensaje;
+  - la causa fue la misma que con la creatina: las instrucciones pedían «el producto» y «el precio de una», y el modelo toma la primera de la lista. El arreglo anterior había quedado solo para el complemento.
+- **Hecho**:
+  - la proteína que el cliente no nombró se ofrece por su tipo, con «tenemos promociones en proteínas» y una pregunta para ver si le interesa;
+  - si pregunta el precio, pide una recomendación o dice que le interesa, Maxi da la que mejor le sirve y una o dos alternativas reales de otro nivel o de otra marca, no solo la más barata;
+  - si el cliente viene del anuncio de una proteína o nombra una, se sigue hablando de esa;
+  - el código detecta la pregunta genérica y el interés, y revisa la primera vez que aparece la proteína: si sale con marca o sin las promos, se reescribe una vez;
+  - probado sin envíos con el redactor y el revisor reales, 24 corridas. Con la versión final, «cuánto está la proteína?» dio dos marcas y la promo en 3 de 3.
+- **Otros hallazgos**:
+  - la foto de prueba del kit figuraba como enviada en el CRM, pero no llegó porque la ventana de 24 horas de WhatsApp de ese número estaba cerrada; las fotos a clientes sí llegaron y las leyeron;
+  - un seguimiento interno trabado frenaba el instalador, que ahora ignora lo viejo.
+- **Pendiente**: un precio de la planilla del dueño que no coincide entre dos sabores, el descargo «no reemplaza la cena» y un caso en que la edad se tomó como tema de salud.
+
 ### 2026-11-17 — Ante el no al complemento, primero «si te parece, te muestro una más económica» (instalado)
 - **Pedido**: el dueño corrigió el cambio anterior. Después del «no quiero», Maxi no nombra enseguida la opción más barata: primero pregunta si le parece que le muestre una más económica. Vale también cuando el cliente dice «no, solo eso» justo después de que se le ofreció un complemento.
 - **Hecho**:
