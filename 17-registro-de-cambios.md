@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-20 — «Te lo guardo» para que el cliente pague pronto, sin ofrecerlo como pregunta (instalado)
+- **Pedido**: «te lo guardo» es para que el cliente no se duerma y pague pronto, por el poco stock; al que compra decidido, sin vueltas, no se le dice; va también de seguimiento («ya tengo tu pedido guardado… avisame y lo despachamos»).
+- **Por qué**: en la primera media hora con el cambio anterior, Maxi lo usaba como pregunta antes de que el cliente decidiera («Querés que te guardemos el kit?»).
+- **Hecho**: se afirma, con el que duda o cobra más tarde y en el seguimiento del que se interesó y dejó de contestar; al comprador directo se le piden los datos. Los seguimientos (todavía sin enviarse) suman el pedido guardado por poco stock. Se corta también el resto de descargo «la idea es acompañar la alimentación».
+- **Probado** sin envíos con los agentes reales: la misma charla real, 2 de 2 sin «guardar» como pregunta y con los datos cuando preguntó cómo pagar; el comprador directo, los datos enseguida; «cobro el viernes», «te la guardo hasta el viernes, avisame cuando puedas pagar».
+
 ### 2026-11-20 — Coma en vez de dos puntos, la marca con «de», sin hablar mal de otros productos, «te lo guardo» y el cliente que cobra más tarde (instalado)
 - **Pedido**:
   - sin dos puntos en los mensajes, con coma;
