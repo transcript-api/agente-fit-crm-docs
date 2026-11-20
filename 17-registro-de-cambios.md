@@ -10,6 +10,20 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-20 — Coma en vez de dos puntos, la marca con «de», sin hablar mal de otros productos, «te lo guardo» y el cliente que cobra más tarde (instalado)
+- **Pedido**:
+  - sin dos puntos en los mensajes, con coma;
+  - la marca con «de» («Beef Protein de Integralmédica»);
+  - nunca decir lo malo de otro producto para recomendar uno;
+  - «te lo guardo» es real: el encargado del despacho separa el producto;
+  - con el que cobra más tarde o va a pagar a una red de cobranza, cálido y sin presión.
+- **Hecho**:
+  - los dos puntos a mitad de frase pasan a coma antes de mandar (estaban en el 8 % de las respuestas); el formulario de datos y los totales quedan igual;
+  - las fichas de proteínas quedan en positivo y la guía pide recomendar la que sirve sin hablar de las contras de las otras;
+  - Maxi puede guardarle el producto al cliente, y el revisor ya no lo rechaza;
+  - «cobro el viernes», «cobro a la tarde» o «voy a Red Pagos» tienen su propia instrucción: se le guarda lo que eligió, sin preguntarle si arranca hoy, sin ofrecerle otro más barato y sin «lo despachamos hoy mismo»; queda en que avisa cuando pueda y se despacha.
+- **Probado** sin envíos con los agentes reales: «sin lactosa y sin gluten» recomienda «Beef Protein de Integralmédica» sin dos puntos; «cobro el viernes, me la guardás?», 2 de 2 «Sí, te la podemos guardar hasta el viernes… Cuando puedas pagar, nos avisás y se despacha»; «cobro a la tarde», «te guardo la creatina» y que avise cuando pague.
+
 ### 2026-11-20 — Diabetes como venta normal, el kit sin repetir y menos descargos (instalado)
 - **Pedido**:
   - para el dueño, la diabetes no es un problema: se atiende como a cualquier cliente;
