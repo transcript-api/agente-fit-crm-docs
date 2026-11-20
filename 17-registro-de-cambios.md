@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-20 — Porciones por envase, cómo se paga y cuotas al que duda (instalado)
+- **Pedido**: el dueño pidió que el agente sepa cuántas porciones trae cada producto, que a «cómo se paga?» cuente las tres formas, y que al que duda por el precio le ofrezca las cuotas y una propuesta más accesible.
+- **Hecho**: se investigaron las porciones en las páginas de los fabricantes y se cargaron las confirmadas (24 productos). A «cómo se paga?», las tres formas y el pedido de datos. Al que duda, las cuotas con la cuota por mes que calcula el sistema y la pregunta por una opción más accesible, una vez por charla.
+- **Probado** sin envíos con los agentes reales: porciones correctas en las dos preguntas probadas, las tres formas de pago, y 2 de 2 con las cuotas y la propuesta más accesible.
+
 ### 2026-11-20 — El pago: transferencia primero y cuotas al que duda con una compra alta (instalado en parte)
 - **Pedido**: si el cliente no pide tarjeta, se le dan primero los datos para transferir, sin hacerlo elegir. Si la compra es alta y el cliente duda, se le cuenta que puede pagarla en cuotas con tarjeta y cuánto le queda por mes.
 - **Hecho**: la transferencia va primero. Las cuotas quedan listas: la cuota por mes la calcula el sistema, no el agente, y se dice una vez y antes de bajar a algo más barato. Quedan apagadas hasta confirmar la cuenta con el dueño.
