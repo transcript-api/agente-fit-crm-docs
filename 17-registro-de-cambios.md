@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-20 — El pago: transferencia primero y cuotas al que duda con una compra alta (instalado en parte)
+- **Pedido**: si el cliente no pide tarjeta, se le dan primero los datos para transferir, sin hacerlo elegir. Si la compra es alta y el cliente duda, se le cuenta que puede pagarla en cuotas con tarjeta y cuánto le queda por mes.
+- **Hecho**: la transferencia va primero. Las cuotas quedan listas: la cuota por mes la calcula el sistema, no el agente, y se dice una vez y antes de bajar a algo más barato. Quedan apagadas hasta confirmar la cuenta con el dueño.
+- **Probado** sin envíos con los agentes reales: «cómo se paga?» recibe solo la transferencia y el pedido de datos; con las cuotas prendidas en una copia de prueba, «es mucha plata» por un kit de $2.590 recibe 2 de 2 «hasta en 12 cuotas de unos $242 por mes».
+
 ### 2026-11-20 — El producto de testosterona con diabetes, aunque tome medicación: respuesta y más opciones (instalado)
 - **Pedido**: el cliente viene a rendir más, no por su medicación; el producto no tiene contraindicación según el dueño. Aunque tome medicación, se le contesta y se le ofrecen otras opciones.
 - **Hecho**: el «sí» suma que los clientes con diabetes lo toman sin problema. Si toma medicación, se le dice que igual se recomienda charlarlo con su médico y enseguida se le ofrece una creatina pura o una proteína de carne con muy poca azúcar, y se le pregunta su objetivo. En los mensajes siguientes el agente no se desdice y sigue vendiendo.
