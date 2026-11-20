@@ -10,6 +10,19 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-20 — Diabetes como venta normal, el kit sin repetir y menos descargos (instalado)
+- **Pedido**:
+  - para el dueño, la diabetes no es un problema: se atiende como a cualquier cliente;
+  - para embarazadas, que se investigue qué suplementos se podrían ofrecer (mientras tanto, siguen con un vendedor);
+  - que se arregle todo lo que no estaba haciendo bien.
+- **Hecho**:
+  - la diabetes ya no pasa a un vendedor: venta normal, eligiendo sin azúcar agregada cuando hay opción;
+  - el embarazo sigue pasando a un vendedor. La investigación concluye que solo una proteína sola, sin extras, tiene algo de respaldo, y que nada se puede presentar como que «no afecta en nada»;
+  - el kit se explica una vez y después no se repite;
+  - se cortan los descargos que se colaban («por sí solo», «no reemplaza…»);
+  - con un problema de presión, siempre hay una alternativa sin estimulantes en el mismo mensaje.
+- **Probado** sin envíos con los agentes reales: con diabetes, 3 de 5 venden bien y el resto pasa a un vendedor; el kit de mujer con presión, 2 de 2 con alternativa.
+
 ### 2026-11-19 — La edad no es salud, el producto de testosterona y la intimidad, la presión con otras opciones y el embudo nuevo (instalado)
 - **Pedido**:
   - la edad no es un problema: a una persona mayor se la atiende igual que a cualquiera;
