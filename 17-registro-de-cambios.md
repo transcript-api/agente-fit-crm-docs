@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-20 — «El producto de testosterona lo puede tomar un diabético?»: sí, y se busca vender más soluciones (instalado)
+- **Pedido**: el dueño confirmó que ese producto lo puede tomar una persona con diabetes, y que hay que preguntarle al cliente qué busca mejorar para ofrecerle más soluciones.
+- **Por qué**: en vivo, esa pregunta pasaba a un vendedor y el cliente esperó más de 4 horas.
+- **Hecho**: la respuesta va fija («Sí, … lo puede tomar una persona con diabetes») seguida de la pregunta de qué busca mejorar o con qué le está costando. Va fija porque el modelo, aun con el dato, lo mandaba al médico. Si el cliente cuenta que toma medicación para la diabetes, lo sigue un vendedor.
+- **Probado** sin envíos con los agentes reales: 3 de 3 contestan que sí y preguntan; en el turno siguiente suman la creatina; con medicación, a un vendedor.
+
 ### 2026-11-20 — «Te lo guardo» para que el cliente pague pronto, sin ofrecerlo como pregunta (instalado)
 - **Pedido**: «te lo guardo» es para que el cliente no se duerma y pague pronto, por el poco stock; al que compra decidido, sin vueltas, no se le dice; va también de seguimiento («ya tengo tu pedido guardado… avisame y lo despachamos»).
 - **Por qué**: en la primera media hora con el cambio anterior, Maxi lo usaba como pregunta antes de que el cliente decidiera («Querés que te guardemos el kit?»).
