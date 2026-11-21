@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-21 — Los datos de pago salen solos y los seguimientos son más cortos (instalado)
+- **Pedido**: el dueño pidió que el agente use el mensaje guardado con las cuentas para transferir, y que los seguimientos no repitan la marca y suenen como los de un vendedor.
+- **Hecho**: cuando el cliente manda sus datos de envío, le llega el mensaje con las cuentas y, al minuto, el pedido de la captura del comprobante; si pidió pagar con tarjeta, lo sigue un vendedor. Los seguimientos (todavía sin enviarse) nombran el producto corto, sin repetir marca, tamaño ni precio, y dicen que se lo despachan a su ciudad.
+- **Probado**: el mensaje de las cuentas llegó entregado al número de prueba del dueño antes de conectarlo.
+
 ### 2026-11-20 — Porciones por envase, cómo se paga y cuotas al que duda (instalado)
 - **Pedido**: el dueño pidió que el agente sepa cuántas porciones trae cada producto, que a «cómo se paga?» cuente las tres formas, y que al que duda por el precio le ofrezca las cuotas y una propuesta más accesible.
 - **Hecho**: se investigaron las porciones en las páginas de los fabricantes y se cargaron las confirmadas (24 productos). A «cómo se paga?», las tres formas y el pedido de datos. Al que duda, las cuotas con la cuota por mes que calcula el sistema y la pregunta por una opción más accesible, una vez por charla.
