@@ -10,6 +10,19 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-21 — Marca puntual, «qué opciones hay» y mayoristas
+- **Pedido.** El dueño quiere tres cosas:
+  - si el cliente pregunta por una marca puntual, el agente contesta solo por esa, sin repetir todas las marcas, y le ofrece sus tamaños del más caro al más barato;
+  - si pregunta qué opciones hay, las marcas y desde qué precio arrancan;
+  - al mayorista no se le dan precios de lista.
+
+  Pidió además probar todos los casos para no romper lo que ya funcionaba.
+- **Hecho:**
+  - Primero se probó lo instalado: fallaban la marca puntual y el precio de una marca.
+  - Ahora una nota del turno se activa solo en esos casos: el cliente nombra una marca con un producto y pregunta, o pregunta qué opciones hay.
+  - Los mayoristas siguen con su respuesta aparte, sin precios.
+- **Probado.** Con el modelo real, sin mandar nada, en 8 casos: los nuevos y los que ya andaban (anuncio, kit, precio sin contexto, mayorista). Todos salieron como se esperaba.
+
 ### 2026-11-21 — «Arrancan desde…» y una pregunta por vez
 - **Pedido.** El dueño no quiere que el agente enumere todos los tamaños cada vez. Prefiere que diga desde qué precio arrancan, sin aclarar cuál es el más barato, así el cliente pregunta. También pide una sola pregunta por vez para conocerlo y, ya conocido, preguntarle por cuánto tiempo le gustaría tener el producto, para ofrecerle el tamaño grande.
 - **Hecho:**
