@@ -10,6 +10,10 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-21 — Los seguimientos se mandan a todos los clientes
+- **Pedido**: el dueño dio el OK para mandar los seguimientos personalizados a todos.
+- **Hecho**: desde las 11:43 (hora de Uruguay) el agente manda hasta 3 seguimientos por cliente dentro de las 24 horas, nunca de noche, al menos 2 horas entre uno y otro, y solo los que aprueba el revisor. Se puede volver al modo de prueba en un minuto.
+
 ### 2026-11-21 — Tres seguimientos repartidos en las 24 horas (instalado en prueba)
 - **Pedido**: el dueño quiere que el agente intente reactivar 3 veces al cliente que dejó de contestar, en todas las etapas, repartido dentro de las 24 horas que permite WhatsApp.
 - **Hecho**: hasta 3 mensajes (a las 3 horas, a las 9 horas y antes de que se cierre la ventana), nunca de noche. Respeta lo que dijo el cliente («cobro a la tarde», «voy a pagar a la red de cobranza») y no le escribe al que pidió que no, ni a revendedores, ni donde un vendedor está escribiendo. Tiene mensajes propios para el formulario sin completar y para el pago sin comprobante.
