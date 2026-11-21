@@ -10,6 +10,18 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-21 — Precios de las imágenes de los vendedores y un agente que va sumando productos
+- **Pedido.**
+  - Que el agente no se quede en un solo producto y vaya ofreciendo otros según lo que cuenta la persona.
+  - Completar los precios que faltaban (preentrenos, marcas nuevas) con lo que los vendedores mandan por WhatsApp.
+- **Hecho:**
+  - Se leyeron las imágenes de productos que mandó el equipo en cuatro días. Se revisaron a mano y se cargaron 26 precios que faltaban (preentrenos, proteínas, kits) y 5 promociones de dos unidades.
+  - La planilla del dueño sigue mandando, y él recibió un archivo para pegar esos precios ahí.
+  - El agente ahora encuentra el producto que el cliente nombra, aun en el primer mensaje.
+  - El agente sabe lo que ya ofreció en la charla para no repetirlo y sumar otra cosa.
+  - Tres precios que no coincidían quedaron para que los confirme el dueño.
+- **Probado.** Con el modelo real, sin mandar nada, salieron bien los 20 intentos: 10 casos, cada uno probado 2 veces, entre los nuevos y los que ya andaban.
+
 ### 2026-11-21 — Marca puntual, «qué opciones hay» y mayoristas
 - **Pedido.** El dueño quiere tres cosas:
   - si el cliente pregunta por una marca puntual, el agente contesta solo por esa, sin repetir todas las marcas, y le ofrece sus tamaños del más caro al más barato;
