@@ -10,6 +10,14 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-21 — El agente contesta al que responde un seguimiento y presenta varias marcas
+- **Pedido.** Una clienta que preguntó por creatinas recibió seguimientos con una sola marca. Cuando contestó que quería conocer los precios, nadie le respondió. El dueño quiere que el agente presente varias marcas del mismo producto y pregunte cuál le interesa, sin cambiar de producto.
+- **Hecho:**
+  - Si el agente retomó un chat con un seguimiento, ahora contesta la respuesta, aunque el chat ya lo tenga un vendedor. Se corta si una persona del equipo escribe o si el agente lo pasó a una persona.
+  - Después de un pase a una persona, no manda seguimientos.
+  - Si el cliente no eligió marca, o pide una que no se trabaja, el agente le presenta dos o tres marcas de ese mismo producto con lo que distingue a cada una y su precio.
+- **Probado.** Con simulaciones y con el modelo real, sin mandar nada. En todas las pruebas ofreció varias marcas del mismo producto con su precio.
+
 ### 2026-11-21 — Los seguimientos se mandan a todos los clientes
 - **Pedido**: el dueño dio el OK para mandar los seguimientos personalizados a todos.
 - **Hecho**: desde las 11:43 (hora de Uruguay) el agente manda hasta 3 seguimientos por cliente dentro de las 24 horas, nunca de noche, al menos 2 horas entre uno y otro, y solo los que aprueba el revisor. Se puede volver al modo de prueba en un minuto.
