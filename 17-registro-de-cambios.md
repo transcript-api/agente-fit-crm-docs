@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-21 — Sumar siempre algo cuando ya se entendió al cliente (instalado)
+- **Pedido**: el dueño no quiere que el agente diga «no hace falta sumar» o «no le sumaría»; cuando entiende lo que busca el cliente, tiene que intentar sumar algo más.
+- **Hecho**: el manual dice que comer bien o ya tomar algo no es motivo para no sumar, y el sistema corta esas frases antes de mandar. Al que compra directo se le siguen pidiendo los datos sin sumar.
+- **Probado** sin envíos con los agentes reales: 4 de 4 suman (la proteína al que come bien, la creatina al que ya toma proteína), sin decir que no hace falta.
+
 ### 2026-11-21 — Los datos de pago salen solos y los seguimientos son más cortos (instalado)
 - **Pedido**: el dueño pidió que el agente use el mensaje guardado con las cuentas para transferir, y que los seguimientos no repitan la marca y suenen como los de un vendedor.
 - **Hecho**: cuando el cliente manda sus datos de envío, le llega el mensaje con las cuentas y, al minuto, el pedido de la captura del comprobante; si pidió pagar con tarjeta, lo sigue un vendedor. Los seguimientos (todavía sin enviarse) nombran el producto corto, sin repetir marca, tamaño ni precio, y dicen que se lo despachan a su ciudad.
