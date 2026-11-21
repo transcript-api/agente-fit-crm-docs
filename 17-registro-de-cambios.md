@@ -10,6 +10,14 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-21 — Mostrar toda la variedad y conocer al cliente antes de elegirle un producto
+- **Pedido.** El dueño vio que el agente ofrecía solo creatinas de 300 gramos, cuando hay desde 150 gramos hasta 1 kilo. También cerraba con «cuál te interesa» a clientes con los que casi no había hablado.
+- **Hecho:**
+  - Si el cliente todavía no contó qué busca, el agente le muestra que hay mucha variedad de ese producto, con las marcas, los tamaños y el precio desde el que arranca.
+  - Después le hace una pregunta para conocerlo y recomendarle el que mejor le sirve.
+  - Lo mismo vale para los seguimientos.
+- **Probado.** Con el modelo real, sin mandar nada, en las 10 pruebas mostró la variedad y preguntó para conocer al cliente.
+
 ### 2026-11-21 — El agente contesta al que responde un seguimiento y presenta varias marcas
 - **Pedido.** Una clienta que preguntó por creatinas recibió seguimientos con una sola marca. Cuando contestó que quería conocer los precios, nadie le respondió. El dueño quiere que el agente presente varias marcas del mismo producto y pregunte cuál le interesa, sin cambiar de producto.
 - **Hecho:**
