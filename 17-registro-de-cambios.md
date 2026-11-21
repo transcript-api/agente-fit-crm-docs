@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-21 — Tres seguimientos repartidos en las 24 horas (instalado en prueba)
+- **Pedido**: el dueño quiere que el agente intente reactivar 3 veces al cliente que dejó de contestar, en todas las etapas, repartido dentro de las 24 horas que permite WhatsApp.
+- **Hecho**: hasta 3 mensajes (a las 3 horas, a las 9 horas y antes de que se cierre la ventana), nunca de noche. Respeta lo que dijo el cliente («cobro a la tarde», «voy a pagar a la red de cobranza») y no le escribe al que pidió que no, ni a revendedores, ni donde un vendedor está escribiendo. Tiene mensajes propios para el formulario sin completar y para el pago sin comprobante.
+- **Probado**: con simulaciones y con el número de prueba del dueño (el mensaje llegó; el revisor frenó uno que no correspondía). A los demás clientes se les activa cuando el dueño confirme.
+
 ### 2026-11-21 — Sumar siempre algo cuando ya se entendió al cliente (instalado)
 - **Pedido**: el dueño no quiere que el agente diga «no hace falta sumar» o «no le sumaría»; cuando entiende lo que busca el cliente, tiene que intentar sumar algo más.
 - **Hecho**: el manual dice que comer bien o ya tomar algo no es motivo para no sumar, y el sistema corta esas frases antes de mandar. Al que compra directo se le siguen pidiendo los datos sin sumar.
