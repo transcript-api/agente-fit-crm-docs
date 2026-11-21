@@ -10,6 +10,14 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-21 — «Arrancan desde…» y una pregunta por vez
+- **Pedido.** El dueño no quiere que el agente enumere todos los tamaños cada vez. Prefiere que diga desde qué precio arrancan, sin aclarar cuál es el más barato, así el cliente pregunta. También pide una sola pregunta por vez para conocerlo y, ya conocido, preguntarle por cuánto tiempo le gustaría tener el producto, para ofrecerle el tamaño grande.
+- **Hecho:**
+  - Si el cliente pregunta el precio sin contar qué busca, el agente le dice desde cuánto arrancan y le hace una sola pregunta.
+  - Los tamaños los dice cuando el cliente elige o los pregunta.
+  - Para el tamaño grande, el agente sabe cuánto le dura y cuánto menos le sale cada toma.
+- **Probado.** Con el modelo real, sin mandar nada, salió bien en las 10 pruebas.
+
 ### 2026-11-21 — Mostrar toda la variedad y conocer al cliente antes de elegirle un producto
 - **Pedido.** El dueño vio que el agente ofrecía solo creatinas de 300 gramos, cuando hay desde 150 gramos hasta 1 kilo. También cerraba con «cuál te interesa» a clientes con los que casi no había hablado.
 - **Hecho:**
