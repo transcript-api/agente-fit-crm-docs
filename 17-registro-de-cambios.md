@@ -10,6 +10,16 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-22 — Los precios de las imágenes quedan en la planilla del dueño
+- **Pedido.** El dueño pidió que los precios que mandan los vendedores en imágenes queden cargados en su planilla de productos.
+- **Hecho:**
+  - Se cargaron 26 productos. 11 ya estaban en la planilla sin precio y recibieron precio y descripción. Los otros 15 entraron como filas nuevas: preentrenos, creatinas, proteínas y 6 kits.
+  - Se sumaron las promos por 2 a cinco productos que ya estaban, en todos sus sabores.
+  - En las filas completadas se borró la nota de «precio no indicado», porque el agente la leía como algo a verificar y no ofrecía la promo.
+  - Se retiró la lista aparte que el agente usaba mientras tanto, para que no quedaran productos repetidos. La planilla del dueño vuelve a ser la única fuente de precios de esos productos.
+  - Dos precios que no coinciden entre fuentes siguen sin tocar hasta que el dueño los confirme.
+- **Probado.** Cada carga se comparó con la planilla exportada. La simulación del agente lee la planilla sin repetidos y con todos los precios.
+
 ### 2026-11-22 — Los agentes venden hasta el comprobante
 - **Pedido.** El dueño dio el OK para liberar a los agentes de recepción, conversión y cierre para que vendan hasta el comprobante. También pidió seguimientos coherentes que lean toda la charla.
 - **Hecho:**
