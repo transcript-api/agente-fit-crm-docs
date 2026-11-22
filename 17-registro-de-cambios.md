@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-22 — Sin seguimientos a quien ya compró
+- **Qué pasó.** Un seguimiento le escribió a un cliente que ya había pagado y al que un vendedor ya le había agradecido la compra.
+- **Hecho.** Los seguimientos se frenan si el equipo confirmó la compra o el comprobante, o si el cliente mandó una imagen después de recibir los datos de pago.
+- **Probado.** Con el caso real y todas las pruebas anteriores.
+
 ### 2026-11-22 — Diagnóstico completo y primer paquete de arreglos
 - **Pedido.** El dueño pidió revisar toda la estructura para que los agentes vendan mejor en todas las etapas y en todas las situaciones. También pidió estudiar a los vendedores, probar con muchas personas simuladas y analizar con criterio propio un informe de otro modelo.
 - **Diagnóstico:**
