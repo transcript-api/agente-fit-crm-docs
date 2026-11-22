@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-22 — Seguimientos que respetan el envío y los mensajes masivos
+- **Qué pasó.** Un seguimiento le preguntó qué buscaba a un cliente que ya tenía su pedido en camino, justo después de un mensaje masivo.
+- **Hecho.** El rastreo y el despacho cuentan como venta hecha aunque estén escritos abreviados. Además, el seguimiento espera unas horas si el cliente acaba de recibir otro mensaje del negocio.
+- **Probado.** Con el caso real y repasado sobre todos los chats con seguimiento de dos días.
+
 ### 2026-11-22 — Sin seguimientos a quien ya compró
 - **Qué pasó.** Un seguimiento le escribió a un cliente que ya había pagado y al que un vendedor ya le había agradecido la compra.
 - **Hecho.** Los seguimientos se frenan si el equipo confirmó la compra o el comprobante, o si el cliente mandó una imagen después de recibir los datos de pago.
