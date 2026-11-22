@@ -10,6 +10,16 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-22 — Los agentes venden hasta el comprobante
+- **Pedido.** El dueño dio el OK para liberar a los agentes de recepción, conversión y cierre para que vendan hasta el comprobante. También pidió seguimientos coherentes que lean toda la charla.
+- **Hecho:**
+  - El agente atiende también los chats con una propuesta enviada o con el pago pendiente, aunque los tenga un vendedor. Se corre si un vendedor escribió en las últimas 12 horas o si el chat se pasó a una persona.
+  - Ya no hay tope de respuestas y el comprador decidido ya no se deriva. El agente pide los datos y manda las cuentas.
+  - Con el comprobante, confirma que lo recibió, marca la venta como ganada con su monto y la pasa a un vendedor para que verifique el pago y despache.
+  - Los seguimientos leen lo que habló el vendedor y retoman lo pendiente. No repiten precios ya dichos, y al que no contó qué busca le preguntan.
+  - Todo se puede apagar con un solo ajuste.
+- **Probado.** Con simulaciones y con el modelo real, sin mandar nada. Falta ver en vivo la primera venta con comprobante.
+
 ### 2026-11-21 — Precios de las imágenes de los vendedores y un agente que va sumando productos
 - **Pedido.**
   - Que el agente no se quede en un solo producto y vaya ofreciendo otros según lo que cuenta la persona.
