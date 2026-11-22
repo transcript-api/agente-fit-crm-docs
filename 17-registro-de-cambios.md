@@ -10,6 +10,21 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-22 — Diagnóstico completo y primer paquete de arreglos
+- **Pedido.** El dueño pidió revisar toda la estructura para que los agentes vendan mejor en todas las etapas y en todas las situaciones. También pidió estudiar a los vendedores, probar con muchas personas simuladas y analizar con criterio propio un informe de otro modelo.
+- **Diagnóstico:**
+  - Se revisaron las charlas reales de cinco días y cientos de chats de vendedores. Se probaron 32 clientes simulados con personalidad propia, todo sin enviar nada.
+  - La venta se pierde sobre todo por pases a persona sin respuesta, que de noche esperan horas, y por no sumar algo al pedido antes de pedir los datos. Los vendedores lo intentan en el 73 % de las ventas.
+- **Hecho (primer paquete, sin cambiar cómo vende):**
+  - La venta se marca como ganada solo después de leer el comprobante y ver que el monto coincide con lo que compró el cliente. Primero se carga el monto en la tarjeta y después se mueve, como pidió el dueño. Si no coincide, lo verifica un vendedor.
+  - Con el pago pendiente ya no vuelve a pedir los datos ni mueve el negocio hacia atrás. Si el cliente pide las cuentas, se las reenvía.
+  - Responde las preguntas cortas después del formulario.
+  - Reconoce los audios y las fotos de los vendedores para no contestarles encima.
+  - Los seguimientos respetan la hora que dio el cliente y nunca le escriben a quien pidió que no.
+  - Hay una guarda para que nunca salga texto interno del sistema.
+- **Probado.** Con pruebas automáticas y clientes simulados en dos vueltas. Falta ver en vivo el primer comprobante.
+- **Siguiente.** Un segundo paquete para vender más (menos pases, total calculado, creatina grande, cierre con resumen), que espera algunas decisiones del dueño.
+
 ### 2026-11-22 — Los precios de las imágenes quedan en la planilla del dueño
 - **Pedido.** El dueño pidió que los precios que mandan los vendedores en imágenes queden cargados en su planilla de productos.
 - **Hecho:**
