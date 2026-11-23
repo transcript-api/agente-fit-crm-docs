@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-23] update | Informe 54: memoria del cliente, agenda y seguimientos
+Informe [[54-memoria-del-cliente-agenda-y-seguimientos-2026-11-23]]: qué deja hacer el CRM (notas internas, campos, agenda, mensajes programados sí; plantillas y automatizaciones no), cuánto del cliente ve hoy el agente (solo los últimos mensajes, olvida audios y fotos al turno siguiente) y cómo salieron los primeros seguimientos reales (escasez de más). Propuesta de ficha del cliente y paquete 3. Nada instalado.
+
 ## [2026-11-12] update | Informe 53: tercera tanda instalada
 El dueño dio el OK y el paquete liviano con las notas de la reunión (tercera tanda del informe [[53-maxi-lo-interno-no-llega-al-cliente-2026-11-11]]) quedó instalado el 2026-11-12. Servicio activo, sin errores en el arranque. Se vigilan los recortes de tamaño, las derivaciones nuevas y las preguntas de a una.
 

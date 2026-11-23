@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-23 — Estudio de memoria del cliente, agenda y seguimientos
+- **Pedido.** El dueño preguntó si los agentes leen las charlas anteriores, si los seguimientos son personalizados, si el CRM deja guardar fichas de clientes y si el agente puede agendar o crear plantillas y automatizaciones.
+- **Hallado.** El agente puede dejar notas internas, crear campos, agendar citas y programar mensajes; no puede crear plantillas ni automatizaciones. Hoy ve solo los últimos mensajes, olvida los audios y fotos en el turno siguiente y no tiene ficha. Los seguimientos usaron de más la escasez.
+- **Propuesto.** Ficha del cliente en nota interna y paquete 3 de memoria. Detalle en [[54-memoria-del-cliente-agenda-y-seguimientos-2026-11-23]]. Nada instalado.
+
 ### 2026-11-22 — Seguimientos que respetan el envío y los mensajes masivos
 - **Qué pasó.** Un seguimiento le preguntó qué buscaba a un cliente que ya tenía su pedido en camino, justo después de un mensaje masivo.
 - **Hecho.** El rastreo y el despacho cuentan como venta hecha aunque estén escritos abreviados. Además, el seguimiento espera unas horas si el cliente acaba de recibir otro mensaje del negocio.
