@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-23 — El agente reconoce al vendedor que escribe sin firma
+- **Qué pasó.** Un vendedor que escribe en el CRM sin firma estaba cerrando una venta y el agente le mandó un seguimiento al cliente tres horas después: para la API, esos mensajes no se distinguen de los automáticos.
+- **Hecho.** Todo mensaje del negocio sin firma que no sea del agente ni de una automatización conocida del CRM cuenta como de un vendedor, y el agente no escribe en ese chat por 12 horas.
+- **Probado.** Pruebas automáticas y 38 chats reales del día: solo cambian los chats con mensajes reales de vendedores. Instalado con vuelta atrás.
+
 ### 2026-11-23 — El pase a persona ya no le saca el cliente a su vendedor
 - **Qué pasó.** Un cliente que ya había comprado preguntó por su número de envío. Una automatización del CRM devolvió su negocio al embudo comercial, el agente lo tomó, no podía contestar y al pasarlo a una persona lo mandó a la cola: el CRM se lo asignó a otro vendedor.
 - **Hecho.** Cuando el chat ya tiene vendedor, el pase lo deja con ese vendedor. Y la posventa de un cliente al que el equipo ya le confirmó la compra o el despacho queda directo para su vendedor, sin respuesta del agente ni cambio de columna.
