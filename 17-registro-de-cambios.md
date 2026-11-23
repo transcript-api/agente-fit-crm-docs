@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-23 — El pase a persona ya no le saca el cliente a su vendedor
+- **Qué pasó.** Un cliente que ya había comprado preguntó por su número de envío. Una automatización del CRM devolvió su negocio al embudo comercial, el agente lo tomó, no podía contestar y al pasarlo a una persona lo mandó a la cola: el CRM se lo asignó a otro vendedor.
+- **Hecho.** Cuando el chat ya tiene vendedor, el pase lo deja con ese vendedor. Y la posventa de un cliente al que el equipo ya le confirmó la compra o el despacho queda directo para su vendedor, sin respuesta del agente ni cambio de columna.
+- **Probado.** Pruebas automáticas y los chats reales del caso; instalado con vuelta atrás.
+
 ### 2026-11-23 — La ficha del cliente y 20 mensajes de memoria
 - **Pedido.** El dueño pidió aplicar el estudio de la noche: una ficha interna por cliente con toda la información posible y que el agente lea siempre al menos los 20 mensajes anteriores.
 - **Hecho.** El agente escribe una nota interna en el contacto (el cliente no la ve) y la va actualizando: qué busca, qué se le ofreció, qué eligió, dudas, compra, entrega, pendiente y preferencias, sin salud, teléfonos ni cuentas. Lee los 20 mensajes anteriores aunque estén en la página anterior del chat, y recuerda lo que dijeron los audios y mostraron las fotos (también los audios del vendedor).
