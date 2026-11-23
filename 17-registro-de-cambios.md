@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-23 — Promos de Black Friday y kits de los anuncios en la planilla
+- **Pedido.** El dueño mandó las dos placas de la Semana Black Friday y avisó que faltaba un kit en su planilla.
+- **Hecho.** Las dos promos quedaron arriba de la planilla y se sumaron los kits de los anuncios que faltaban. Por decisión del dueño, los dos kits de Black Friday se presentan con su 50% de descuento, sin precio anterior: se ajustó una línea del manual y se instaló sin reiniciar.
+- **Probado.** Clientes simulados sin envíos: los kits salen con precio, contenido y descuento; los productos sueltos, sin porcentaje.
+
 ### 2026-11-23 — Estudio de memoria del cliente, agenda y seguimientos
 - **Pedido.** El dueño preguntó si los agentes leen las charlas anteriores, si los seguimientos son personalizados, si el CRM deja guardar fichas de clientes y si el agente puede agendar o crear plantillas y automatizaciones.
 - **Hallado.** El agente puede dejar notas internas, crear campos, agendar citas y programar mensajes; no puede crear plantillas ni automatizaciones. Hoy ve solo los últimos mensajes, olvida los audios y fotos en el turno siguiente y no tiene ficha. Los seguimientos usaron de más la escasez.
