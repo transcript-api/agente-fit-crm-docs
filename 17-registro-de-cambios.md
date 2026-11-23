@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-23 — La ficha del cliente y 20 mensajes de memoria
+- **Pedido.** El dueño pidió aplicar el estudio de la noche: una ficha interna por cliente con toda la información posible y que el agente lea siempre al menos los 20 mensajes anteriores.
+- **Hecho.** El agente escribe una nota interna en el contacto (el cliente no la ve) y la va actualizando: qué busca, qué se le ofreció, qué eligió, dudas, compra, entrega, pendiente y preferencias, sin salud, teléfonos ni cuentas. Lee los 20 mensajes anteriores aunque estén en la página anterior del chat, y recuerda lo que dijeron los audios y mostraron las fotos (también los audios del vendedor).
+- **Probado.** Pruebas automáticas, fichas armadas sin escribir sobre charlas reales (con el modelo chico inventaba retiros y despachos, se pasó al más fuerte) y clientes simulados. Instalado con vuelta atrás; las primeras fichas reales quedaron bien.
+
 ### 2026-11-23 — Promos de Black Friday y kits de los anuncios en la planilla
 - **Pedido.** El dueño mandó las dos placas de la Semana Black Friday y avisó que faltaba un kit en su planilla.
 - **Hecho.** Las dos promos quedaron arriba de la planilla y se sumaron los kits de los anuncios que faltaban. Por decisión del dueño, los dos kits de Black Friday se presentan con su 50% de descuento, sin precio anterior: se ajustó una línea del manual y se instaló sin reiniciar.
