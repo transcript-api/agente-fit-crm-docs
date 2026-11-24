@@ -10,6 +10,17 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — El precio después de los datos (bak150)
+- **Pedido del dueño.** Si el cliente no preguntó el precio, el total va después de que pasa sus datos, sumado, junto con las cuentas.
+- **Hecho.** Al «sí», el agente pide el sabor si falta y los datos, sin precio. Cuando llegan los datos, escribe una línea por producto con su precio de la planilla, el sistema controla cada precio, suma el total y lo manda antes de las cuentas.
+- **Probado.** De a pares sin envíos y con pruebas automáticas. Instalado con vuelta atrás.
+
+### 2026-11-24 — Menos repetición, nada de dieta, cafeína solo si lo cuenta (bak149)
+- **Pedido del dueño.** No repetir tanto el nombre del producto. No dar consejos de alimentación si no los piden. Hablar de cafeína solo si el cliente entrena de noche o no le cae bien, y ahí ofrecer el preentreno sin cafeína. Humor natural si el cliente abre el tono.
+- **Por qué repetía.** Una instrucción decía que el producto iba «siempre» en la propuesta.
+- **Hecho.** Ajustes en el manual y en las instrucciones del agente, y un dato del preentreno sin cafeína cuando el cliente entrena de noche.
+- **Probado.** De a pares, de a dos a la vez y mirando la cuota del modelo. Instalado con vuelta atrás.
+
 ### 2026-11-24 — El poco stock, una sola vez por cliente de verdad (bak148)
 - **Visto.** A un cliente le dijimos dos veces el mismo día que quedaban pocas unidades. Desde el 20/11 le pasó a 8 de 57 clientes.
 - **Por qué.** El control de «una vez por cliente» miraba solo los últimos mensajes del chat, y en una charla larga el primer aviso quedaba afuera.
