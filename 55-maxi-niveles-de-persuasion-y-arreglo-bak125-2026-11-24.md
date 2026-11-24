@@ -145,5 +145,24 @@ En estos casos, lo instalado contesta casi siempre con nivel 1 o 2, o pasa a una
   - Arranca con una disculpa corta por la demora y sigue la charla hasta que escribe una persona del equipo.
   - Nunca con salud, reclamos, posventa o solo el texto automático del anuncio.
   - En una prueba sin envíos sobre los chats reales de esa noche, habría contestado a 2 clientes que esperaban hace 7 y 8 horas.
-- **El comprobante en el chat del vendedor.** Cuando el vendedor ya pasó las cuentas y el cliente manda el comprobante, Maxi lo lee sin escribir nada. Si el monto coincide con lo que se cotizó, lo pone en la tarjeta y recién ahí pasa la venta a ganada.
+- **El comprobante en el chat del vendedor.** Cuando el vendedor ya pasó las cuentas y el cliente manda el comprobante, Maxi lo lee sin escribir nada. Si el monto coincide con lo que se cotizó, lo pone en la tarjeta y recién ahí pasa la venta a ganada. Esto se apagó en bak131 (ver abajo).
 - **Un repositorio que pasó el dueño** (prompts para el agente que programa) quedó anotado como idea para más adelante. No mejora cómo vende Maxi, pero puede servir para ordenar el código del puente.
+
+## 12. bak131 (24/11, 04:12 hora de Uruguay): cada uno con sus ventas, y de noche solo sus chats
+
+- **El dueño aclaró dos cosas.**
+  - Si un vendedor cerró la venta y el cliente manda el comprobante, Maxi no se mete. Lo maneja solo si la venta es suya.
+  - Está bien que de noche responda sus chats, los leads que llegan y los que viene atendiendo. Pero no tiene que meterse en los chats de los vendedores.
+- **Mi error.** En bak130 entendí que el monto en la tarjeta valía para todas las ventas, también las de los vendedores. Era para las de Maxi.
+- **El comprobante.**
+  - En el chat de un vendedor, Maxi ya no lee el comprobante ni toca la tarjeta.
+  - En un chat que atiende Maxi, el comprobante lo maneja él solo si él pasó las cuentas.
+  - Si las cuentas las pasó una persona del equipo, ni lo acusa ni mueve la tarjeta. Sigue el vendedor.
+- **De noche (de 22:30 a 08:30).**
+  - Si el último del equipo en hablar fue un vendedor, Maxi no entra en el chat.
+  - Tampoco vuelve a intentar el chat que tomó un vendedor.
+  - Los leads nuevos, los chats que venía atendiendo él y los que rescató siguen sin corte.
+- **Probado.**
+  - Pruebas automáticas de las dos reglas. Dos casos de noche: el chat del vendedor queda quieto y el que llevaba Maxi sigue.
+  - La puerta completa pasó sin fallas.
+  - Instalado con vuelta atrás.

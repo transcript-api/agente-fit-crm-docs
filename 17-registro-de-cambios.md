@@ -10,6 +10,16 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Cada uno con sus ventas, y de noche solo sus chats (bak131)
+- **Pedido.** El dueño aclaró dos cosas.
+  - Si un vendedor cerró la venta, el agente no se mete con el comprobante. Lo maneja solo si la venta es suya.
+  - De noche contesta sus chats y los leads que llegan, no los chats de los vendedores.
+- **Hecho.**
+  - El comprobante en el chat del vendedor (bak130) quedó apagado. El agente lo maneja solo cuando él pasó las cuentas.
+  - De 22:30 a 08:30 no entra en un chat donde el último del equipo en hablar fue un vendedor, ni vuelve a intentar el que tomó un vendedor.
+- **Probado.** Pruebas automáticas con casos de día y de noche, y la puerta completa sin fallas. Instalado con vuelta atrás.
+- **Aprendido.** Lo que el dueño pide para el agente vale para las ventas del agente. Meterse en el trabajo de un vendedor se pregunta antes.
+
 ### 2026-11-24 — El cliente que espera a un vendedor y el comprobante (bak130)
 - **Pedido.** El dueño pidió dos cosas.
   - Si el cliente está muy interesado y el vendedor no responde en más de 5 horas, que conteste el agente.
