@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Un nombre mal escrito no es otra marca (bak147)
+- **Visto.** Una clienta escribió mal el nombre de un producto que vendemos. El agente tenía lista una respuesta que decía que esa marca no la trabajamos. No salió porque contestó antes una vendedora.
+- **Hecho.** Si el nombre se parece a uno de nuestros productos o marcas, ya no se toma como una marca que no trabajamos.
+- **Probado.** Pruebas automáticas sin fallas, con nombres mal escritos y con marcas que de verdad no trabajamos. Instalado con vuelta atrás.
+- **Incidente.** Las pruebas de la tarde agotaron la cuota del modelo, que comparte el agente en vivo, y durante una hora los clientes pasaron a vendedores. Desde ahora las pruebas van de a dos y se mira la cuota antes.
+
 ### 2026-11-24 — Nunca ofrecer dejarlo para más adelante (bak145)
 - **Visto.** Un cliente dijo «Te aviso» y el agente le preguntó si quería empezar ahora o dejarlo para más adelante. Esa pregunta le abre la puerta a no comprar.
 - **Hecho.** Toda pregunta que ofrece postergar la compra se reescribe una vez con una pregunta de cierre, también cuando el cliente es el que posterga.
