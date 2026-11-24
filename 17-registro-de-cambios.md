@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — El acuse del comprobante solo en la venta del agente (bak136)
+- **Visto.** En una venta que cerró una vendedora (pasó las cuentas por audio), el agente contestó el comprobante del cliente. El dueño ya había dicho que en la venta de un vendedor el agente no se mete.
+- **Hecho.** El acuse va solo si la venta es del agente o si en el chat no escribió nadie del equipo. En la venta de un vendedor, el comprobante pasa a su vendedor sin mensaje.
+- **Probado.** Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
 ### 2026-11-24 — Un seguimiento que corrige no sale (bak135)
 - **Visto.** En los primeros seguimientos del día, uno corrigió lo que había recomendado una vendedora y habló en contra de un producto que vendemos. A un cliente que cobra el mes que viene le llegó «la tenés guardada».
 - **Hecho.** Un seguimiento que corrige o desaconseja ya no sale. Si el día de cobro que dijo el cliente ya pasó este mes, se toma como el mes que viene y el seguimiento va sin «guardado».
