@@ -137,3 +137,13 @@ En estos casos, lo instalado contesta casi siempre con nivel 1 o 2, o pasa a una
 - **El que paga el mes que viene.** No se habla de guardarlo. Va la frase del dueño con Mercado Pago en 12 cuotas, «así no te perdés la promo». Si pide que se lo guarden, «Dale, voy a ver qué puedo hacer por vos» y sigue su vendedor.
 - **Modelos.** Los agentes pasan a gpt-6.2-sol, que responde con la misma calidad y más rápido. La lectura de fotos, placas, comprobantes y fichas también pasa a gpt-6.2-sol. Leyó bien la placa que el modelo viejo leía mal y la foto que se negaba a ver. Los audios siguen con el modelo de siempre, que entendió mejor un audio real.
 - **La escala de persuasión cambió.** Ahora mide el valor, no el precio: 3 es el producto con su porqué y 4 el valor con una propuesta concreta. Con esta escala la persuasión sí subió, de 1,4 el 07/11 a 2,3 el 23/11, y los cierres de 0 a 11 %.
+
+## 11. bak130 (24/11, 03:47 hora de Uruguay): el cliente que espera a un vendedor y el comprobante
+
+- **Rescate de 5 horas.** Si el cliente muestra intención clara de compra y nadie del equipo le contesta en más de 5 horas, Maxi le contesta, fuera de la noche.
+  - Son mensajes como «lo quiero», «cuánto sale», «pasame la cuenta» o «cómo pago».
+  - Arranca con una disculpa corta por la demora y sigue la charla hasta que escribe una persona del equipo.
+  - Nunca con salud, reclamos, posventa o solo el texto automático del anuncio.
+  - En una prueba sin envíos sobre los chats reales de esa noche, habría contestado a 2 clientes que esperaban hace 7 y 8 horas.
+- **El comprobante en el chat del vendedor.** Cuando el vendedor ya pasó las cuentas y el cliente manda el comprobante, Maxi lo lee sin escribir nada. Si el monto coincide con lo que se cotizó, lo pone en la tarjeta y recién ahí pasa la venta a ganada.
+- **Un repositorio que pasó el dueño** (prompts para el agente que programa) quedó anotado como idea para más adelante. No mejora cómo vende Maxi, pero puede servir para ordenar el código del puente.

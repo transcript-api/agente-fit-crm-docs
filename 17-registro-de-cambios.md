@@ -10,6 +10,15 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — El cliente que espera a un vendedor y el comprobante (bak130)
+- **Pedido.** El dueño pidió dos cosas.
+  - Si el cliente está muy interesado y el vendedor no responde en más de 5 horas, que conteste el agente.
+  - Al cerrar la venta, el monto en la tarjeta y recién ahí la venta ganada.
+- **Hecho.**
+  - Un barrido cada 10 minutos, fuera de la noche, contesta con una disculpa a quien muestra intención clara de compra y lleva más de 5 horas sin respuesta del equipo.
+  - En el chat de un vendedor, el comprobante se lee sin escribir: si coincide con lo cotizado, pone el monto y pasa a ganada.
+- **Probado.** Pruebas automáticas con el caso real del 23/11, la puerta completa y una prueba en seco sobre los chats reales. Instalado con vuelta atrás y con un interruptor para apagar cada parte.
+
 ### 2026-11-24 — Las correcciones del dueño y los modelos nuevos (bak129)
 - **Pedido.** El dueño corrigió cómo vende el agente.
   - El precio solo si el cliente lo pregunta, y hasta ahí convencerlo con el valor y sin pedir permiso.
