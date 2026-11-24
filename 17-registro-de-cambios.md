@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Primero se atiende a quien escribió (bak141)
+- **Visto.** Un cliente nuevo esperó 13 minutos la primera respuesta. En cada vuelta, el sistema mandaba primero seguimientos y escribía fichas de clientes, y recién después atendía a quien había escrito.
+- **Hecho.** Ahora primero se atiende a los clientes que escribieron, y después los seguimientos, las fichas y el rescate.
+- **Probado.** Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
 ### 2026-11-24 — El revendedor ya pasado lo sigue el vendedor (bak140)
 - **Visto.** Un revendedor ya pasado a comercial volvió a escribir. El agente le contestó con precios de catálogo y se pisó con el vendedor, que entró enseguida con las condiciones mayoristas.
 - **Hecho.** Después del pase por reventa, el agente no vuelve a contestar en ese chat. Además, el nombre de una tienda ya no se toma como marca.
