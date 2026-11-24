@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Un seguimiento que corrige no sale (bak135)
+- **Visto.** En los primeros seguimientos del día, uno corrigió lo que había recomendado una vendedora y habló en contra de un producto que vendemos. A un cliente que cobra el mes que viene le llegó «la tenés guardada».
+- **Hecho.** Un seguimiento que corrige o desaconseja ya no sale. Si el día de cobro que dijo el cliente ya pasó este mes, se toma como el mes que viene y el seguimiento va sin «guardado».
+- **Probado.** Borradores sin envíos con el modelo real sobre esos chats y pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
 ### 2026-11-24 — El tamaño más grande como dato (bak134)
 - **Visto.**
   - Una venta aceptada pasó a un vendedor porque el agente dijo que no había una proteína más grande, y la había.
