@@ -117,3 +117,14 @@ En estos casos, lo instalado contesta casi siempre con nivel 1 o 2, o pasa a una
 - **Pendiente del dueño.**
   - Si «no tengo apetito» o «me cuesta comer» es tema de salud (hoy pasa a persona) o lo atiende Maxi con el hipercalórico.
   - Hasta qué día va la promo de Black Friday.
+
+## 9. bak128 (24/11, 02:32 hora de Uruguay): el poco apetito y las fotos
+
+- **Decisión del dueño.** El cliente que dice que no tiene mucho apetito no es un tema de salud. Se lo trata como algo normal y se le explica cómo lo ayuda el hipercalórico.
+  - Se cambió en los 6 lugares donde vive la regla de salud: los cuatro perfiles de los agentes, la regla del clasificador en el código y el manual.
+  - Con una enfermedad o una medicación sigue pasando a persona. Se probó con «no tengo apetito por la medicación de la tiroides».
+- **En los clientes simulados**, el caso real pasaba a persona con lo instalado. Con bak128 contestó 2 de 2 veces que el hipercalórico suma calorías y proteína en un batido, con el kit y su precio y «Lo armamos para vos?».
+- **Fotos de clientes.**
+  - Una negativa del modelo de visión ya no queda como lo que mostraba la foto.
+  - El precio tachado de una placa se saca de la descripción, así Maxi no lo repite.
+- **Black Friday.** El dueño cree que va hasta fin de mes. El 1/12 se sacan los dos kits de la planilla.

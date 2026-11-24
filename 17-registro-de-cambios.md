@@ -10,6 +10,13 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — El poco apetito es una venta (bak128)
+- **Decisión del dueño.** El cliente que dice que no tiene mucho apetito no es un tema de salud. Se lo trata como algo normal y se le explica cómo lo ayuda el hipercalórico.
+- **Hecho.**
+  - Se cambió en los 6 lugares de la regla de salud: los perfiles de los cuatro agentes, la regla del clasificador y el manual. Se sumó una nota del turno.
+  - Las fotos de clientes ya no guardan una negativa del modelo ni el precio tachado de una placa.
+- **Probado.** Pruebas automáticas, la puerta completa y clientes simulados con los perfiles nuevos en perfiles de prueba. El caso real ya no pasa a persona, y una medicación sí. Instalado con vuelta atrás de todo.
+
 ### 2026-11-24 — Niveles de persuasión y el arreglo de la venta (bak125 a bak127)
 - **Pedido.** El dueño pidió arreglar todo lo que se vio en el día con nuestros criterios, sin dejar nada atrás. También pidió definir los niveles de persuasión y ver si el agente vende más.
 - **Medido.**
