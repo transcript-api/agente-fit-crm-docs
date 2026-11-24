@@ -32,7 +32,7 @@ Medido por día (hora de Uruguay) sobre las respuestas a clientes, sin los segui
 
 **La respuesta corta.**
 - **La persuasión no subió.** Está clavada entre 1,5 y 1,9 desde el primer día. Casi la mitad de las respuestas son de nivel 1, y la de nivel 4 o 5 nunca pasó del 10 %.
-- **Las ventas sí empezaron a subir, por el cierre y no por la persuasión.** Los pedidos de datos pasaron de 0 por día a 4 y después a 7. El 23/11 llegaron datos de 3 clientes y salió la primera venta cerrada de punta a punta por Maxi (comprobante leído y VENTA GANADA).
+- **Las ventas sí empezaron a subir, por el cierre y no por la persuasión.** Los pedidos de datos pasaron de 0 por día a 4 y después a 7. El 23/11 llegaron datos de 3 clientes. **Corrección del 24/11.** La única VENTA GANADA que movió Maxi esa tarde la vendió un vendedor. Maxi solo leyó el comprobante, vio que el monto coincidía con el total que había dado el vendedor y movió el negocio. Todavía no hay una venta hecha por Maxi de punta a punta.
 - **Lo que mejoró se debe al circuito.** El formulario, las cuentas, el comprobante y la liberación de etapas. La forma de hablar no cambió.
 
 ## 3. Por qué no subía (las causas)

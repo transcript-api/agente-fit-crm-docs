@@ -14,7 +14,7 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 - **Pedido.** El dueño pidió arreglar todo lo que se vio en el día con nuestros criterios, sin dejar nada atrás. También pidió definir los niveles de persuasión y ver si el agente vende más.
 - **Medido.**
   - Escala de 1 a 5 sobre todas las respuestas desde el 07/11. La persuasión quedó entre 1,5 y 1,9 todos los días, sin subir.
-  - Las ventas empezaron a subir por el circuito de cierre: de 0 a 7 pedidos de datos por día y la primera venta cerrada de punta a punta el 23/11.
+  - Las ventas empezaron a subir por el circuito de cierre: de 0 a 7 pedidos de datos por día. La VENTA GANADA del 23/11 la vendió un vendedor y Maxi solo leyó el comprobante (corregido el 24/11). Todavía no hay una venta de Maxi de punta a punta.
   - Detalle en [[55-maxi-niveles-de-persuasion-y-arreglo-bak125-2026-11-24]].
 - **Hecho.** Se cambiaron el código y el manual, sin tocar los perfiles de los agentes.
   - Precio sin pedir permiso, y también cuando pide una recomendación. Cierre a quien dice que sí a una propuesta con precio.
