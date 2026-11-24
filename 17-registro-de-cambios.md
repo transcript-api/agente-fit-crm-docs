@@ -10,6 +10,16 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — El tamaño más grande como dato (bak134)
+- **Visto.**
+  - Una venta aceptada pasó a un vendedor porque el agente dijo que no había una proteína más grande, y la había.
+  - El agente propuso la misma suma tres veces seguidas.
+- **Hecho.**
+  - El código busca en toda la planilla el producto más grande de la categoría y se lo pasa como dato.
+  - La suma repetida se reescribe.
+- **Probado.** De a pares, sin envíos, y pruebas automáticas sin fallas. Instalado con vuelta atrás.
+- **Pendiente del dueño.** Qué hacer con la cafeína para quien entrena de tarde y vino por un kit con cafeína.
+
 ### 2026-11-24 — Lo que se vio respondiendo mal a la mañana (bak133)
 - **Pedido.** «Todo lo que veas que está respondiendo mal arregla.»
 - **Hecho.** Seis arreglos en el código:

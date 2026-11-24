@@ -80,6 +80,15 @@ El dueño pidió arreglar todo lo que se viera respondiendo mal. En tres cliente
 - Al que cobra más adelante, la nueva se lo guardó en 2 de 2. La instalada lo soltó o le preguntó si arrancaba esta semana.
 - Pruebas automáticas sin fallas. Instalado con vuelta atrás.
 
+### bak134 (08:23 hora de Uruguay): el tamaño más grande
+
+- Un cliente que ya había dicho que sí al kit preguntó si había una proteína más grande. Maxi dijo que no, y había una de 1,8 kg. El revisor lo rechazó y la venta pasó a un vendedor.
+  - El modelo solo ve una parte de la planilla, así que no puede saber qué no tenemos.
+  - Ahora el código busca en toda la planilla el producto más grande de esa categoría y se lo pasa como dato.
+  - En la prueba de a pares, la versión nueva contestó bien 2 de 2 («la más grande es de 1,8 kg») y la instalada mal.
+- La misma suma repetida en mensajes seguidos ahora se reescribe.
+- Queda para el dueño un caso: una clienta que vino por un kit con cafeína y entrena de tarde. Maxi le advirtió por el sueño y le recomendó otro kit. Puede ser su criterio, así que no se tocó.
+
 ## 6. Qué sigue (propuestas, de a una)
 
 1. Reconocer antes de responder y cuidar el último mensaje.
