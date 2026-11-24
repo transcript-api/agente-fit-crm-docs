@@ -10,6 +10,16 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Estudio para un vendedor nivel 10 y los seguimientos corregidos (bak132)
+- **Pedido.** Estudiar con referentes reales cómo interpreta el modelo, cómo venden los mejores y cómo mejorar el agente sin romperlo. Revisar todos los agentes y buscar videos con Lince. Sin cambios bruscos.
+- **Hecho.**
+  - Cuatro estudios con fuentes y nueve videos transcriptos.
+  - La skill de criterio sumó sesgos, errores propios, criterios de vendedor nivel 10 y el ciclo para mejorar sin romper.
+  - La revisión encontró al agente de seguimientos atrás de las reglas del dueño y en contradicción con su nota. Quedó arreglado.
+- **Probado.** Versión nueva contra la instalada, de a pares, con clientes reales y sin envíos. Bajaron los rechazos del revisor (5 a 1) y los precios que nadie pidió (8 a 0). Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+- **Detalle.** [[56-maxi-vendedor-nivel-10-estudio-y-seguimientos-2026-11-24]].
+- **Pendiente del dueño.** Si se prueban el humor de reacción y los emojis en espejo, y material real (reseñas, fotos de pedidos).
+
 ### 2026-11-24 — Cada uno con sus ventas, y de noche solo sus chats (bak131)
 - **Pedido.** El dueño aclaró dos cosas.
   - Si un vendedor cerró la venta, el agente no se mete con el comprobante. Lo maneja solo si la venta es suya.
