@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Lo más económico, cuando el cliente pone un tope (bak143)
+- **Visto.** Un cliente pidió una proteína de chocolate o vainilla por el precio de un kit de $999. El agente le dijo que por ese precio no había y le ofreció una de $1.490. Hay dos marcas a $990 en esos sabores.
+- **Por qué.** La lista de productos que recibe el agente tomaba los primeros de la planilla en su orden, y los más baratos quedaban afuera.
+- **Hecho.** Si el cliente pide algo más barato o pone un tope, la lista va de lo más barato a lo más caro y el agente recibe el dato de lo más económico de ese producto.
+- **Probado.** De a pares sin envíos: lo nuevo ofreció la de $990 en 3 de 3, y lo anterior, en 3 de 3, la de $1.490. Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
 ### 2026-11-24 — El tamaño más grande, con cada categoría (bak142)
 - **Visto.** Un cliente pidió creatina y una whey de 3 kg. El agente le dijo que en whey había de 900 g, y la más grande que tenemos es de 1,8 kg.
 - **Hecho.** El dato del tamaño más grande va con cada producto que nombra el cliente.
