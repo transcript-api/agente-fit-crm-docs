@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Nunca ofrecer dejarlo para más adelante (bak145)
+- **Visto.** Un cliente dijo «Te aviso» y el agente le preguntó si quería empezar ahora o dejarlo para más adelante. Esa pregunta le abre la puerta a no comprar.
+- **Hecho.** Toda pregunta que ofrece postergar la compra se reescribe una vez con una pregunta de cierre, también cuando el cliente es el que posterga.
+- **Probado.** De a pares sin envíos. Lo anterior ofreció postergar en 3 de 3, lo nuevo cerró en 3 de 3. Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+- **No instalado.** Un intento de sacar «no tenemos confirmado» hizo que el agente inventara un no sobre un medio de pago. Quedó guardado hasta tener el dato.
+
 ### 2026-11-24 — Lo más económico, cuando el cliente pone un tope (bak143)
 - **Visto.** Un cliente pidió una proteína de chocolate o vainilla por el precio de un kit de $999. El agente le dijo que por ese precio no había y le ofreció una de $1.490. Hay dos marcas a $990 en esos sabores.
 - **Por qué.** La lista de productos que recibe el agente tomaba los primeros de la planilla en su orden, y los más baratos quedaban afuera.
