@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Nunca los datos sin el total (bak139)
+- **Visto.** Otro cliente decidido («quiero aprovechar la promo, se paga al recibir») recibió el pedido de datos sin saber cuánto era.
+- **Hecho.** Si una respuesta pide los datos y en la charla nunca se dio un precio, se reescribe con el total y la promo antes de pedirlos.
+- **Probado.** De a pares sin envíos (2 de 2 con el total) y pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
 ### 2026-11-24 — Después de las cuentas, el agente sigue atendiendo su venta, y el total al que ya decidió (bak137 y bak138)
 - **Visto.** Un cliente del agente mandó el comprobante y nadie le contestó en casi una hora. El texto con las cuentas que manda el sistema se tomaba como si lo hubiera escrito un vendedor, y el agente dejaba su propia venta. Además, a un cliente que pidió dos unidades de entrada no le dieron el total, y pagó más que la promo.
 - **Hecho.**
