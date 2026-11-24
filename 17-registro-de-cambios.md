@@ -10,6 +10,12 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — El poco stock, una sola vez por cliente de verdad (bak148)
+- **Visto.** A un cliente le dijimos dos veces el mismo día que quedaban pocas unidades. Desde el 20/11 le pasó a 8 de 57 clientes.
+- **Por qué.** El control de «una vez por cliente» miraba solo los últimos mensajes del chat, y en una charla larga el primer aviso quedaba afuera.
+- **Hecho.** Ahora mira todo lo que ya le mandamos a ese cliente.
+- **Probado.** Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
 ### 2026-11-24 — Un nombre mal escrito no es otra marca (bak147)
 - **Visto.** Una clienta escribió mal el nombre de un producto que vendemos. El agente tenía lista una respuesta que decía que esa marca no la trabajamos. No salió porque contestó antes una vendedora.
 - **Hecho.** Si el nombre se parece a uno de nuestros productos o marcas, ya no se toma como una marca que no trabajamos.
