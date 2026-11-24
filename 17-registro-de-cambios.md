@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — El tamaño más grande, con cada categoría (bak142)
+- **Visto.** Un cliente pidió creatina y una whey de 3 kg. El agente le dijo que en whey había de 900 g, y la más grande que tenemos es de 1,8 kg.
+- **Hecho.** El dato del tamaño más grande va con cada producto que nombra el cliente.
+- **Probado.** De a pares sin envíos (2 de 2 con la de 1,8 kg) y pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
 ### 2026-11-24 — Primero se atiende a quien escribió (bak141)
 - **Visto.** Un cliente nuevo esperó 13 minutos la primera respuesta. En cada vuelta, el sistema mandaba primero seguimientos y escribía fichas de clientes, y recién después atendía a quien había escrito.
 - **Hecho.** Ahora primero se atiende a los clientes que escribieron, y después los seguimientos, las fichas y el rescate.
