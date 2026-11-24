@@ -10,6 +10,17 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Lo que se vio respondiendo mal a la mañana (bak133)
+- **Pedido.** «Todo lo que veas que está respondiendo mal arregla.»
+- **Hecho.** Seis arreglos en el código:
+  - el precio cuando piden «el costo»;
+  - guardarle el pedido al que cobra más adelante aunque no se haya dado el precio;
+  - decir que no trabajamos una marca y nombrar las nuestras;
+  - no ofrecer postergar ni repetir la pregunta;
+  - el total de dos o más productos en el resumen.
+- **Probado.** De a pares con los casos reales, sin envíos, y pruebas automáticas sin fallas. Instalado con vuelta atrás.
+- **Detalle.** [[56-maxi-vendedor-nivel-10-estudio-y-seguimientos-2026-11-24]], sección 5.
+
 ### 2026-11-24 — Estudio para un vendedor nivel 10 y los seguimientos corregidos (bak132)
 - **Pedido.** Estudiar con referentes reales cómo interpreta el modelo, cómo venden los mejores y cómo mejorar el agente sin romperlo. Revisar todos los agentes y buscar videos con Lince. Sin cambios bruscos.
 - **Hecho.**

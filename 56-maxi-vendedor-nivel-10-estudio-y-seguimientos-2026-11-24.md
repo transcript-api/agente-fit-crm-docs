@@ -62,7 +62,25 @@ Cuatro líneas en paralelo, con fuentes citadas:
 
 El primer intento de la versión nueva cambió de conducta por una sola palabra. Dejó de cerrar y le preguntó a un cliente apurado si ya había conseguido el producto. Las pruebas automáticas no lo veían. La prueba de a pares sí, y se corrigió antes de instalar.
 
-## 5. Qué sigue (propuestas, de a una)
+## 5. bak133: lo que se vio respondiendo mal a la mañana (24/11, 07:39 hora de Uruguay)
+
+El dueño pidió arreglar todo lo que se viera respondiendo mal. En tres clientes nuevos se vieron seis cosas:
+
+| Lo que pasó | Por qué | Arreglo |
+|---|---|---|
+| Le pidieron «el costo» y contestó sin precio | «Costo» no contaba como pregunta de precio | Ahora cuenta, salvo «el costo del envío» |
+| «Te aviso cuando cobre» y lo soltó con «escribime cuando puedas» | La forma de tratar al que cobra más adelante solo corría si ya se había dado un precio | Corre también si se le propuso un producto: se le guarda sin presión |
+| Una marca que no trabajamos: «no tengo una promo de esa marca» | Contestaba la pregunta sin aclarar que no la tenemos | Dice sin vueltas que no la trabajamos y nombra las nuestras con desde cuánto |
+| «Preferís avanzar ahora o dejarlo para más adelante?» | Tono de asistente que ofrece postergar | Esa pregunta se reescribe una vez |
+| Repitió la misma pregunta después de un «tal vez sí» | No tomaba el «tal vez» como respuesta | Se reescribe una vez |
+| Resumen de dos productos sin total | Una regla pedía el total y otra le prohibía sumar | La suma la hace el código y se la pasa como dato |
+
+**Probado de a pares** (simulador sin envíos, versión instalada contra la nueva, dos vueltas):
+- La marca salió bien en 3 de 3 con la nueva y mal en 2 de 2 con la instalada.
+- Al que cobra más adelante, la nueva se lo guardó en 2 de 2. La instalada lo soltó o le preguntó si arrancaba esta semana.
+- Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
+## 6. Qué sigue (propuestas, de a una)
 
 1. Reconocer antes de responder y cuidar el último mensaje.
 2. Humor de reacción y un emoji en espejo del cliente, si el dueño lo aprueba.
