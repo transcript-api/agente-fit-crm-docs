@@ -2,6 +2,9 @@
 
 Formato: `## [fecha] tipo | qué`. Append-only, no editar entradas viejas. Distinto de `17-registro-de-cambios.md` (ese es el log narrativo de sesiones de TODO el proyecto; este es específico de qué cambió en `wiki/`).
 
+## [2026-11-24] update | Informe 55: niveles de persuasión y el arreglo de la venta
+Informe [[55-maxi-niveles-de-persuasion-y-arreglo-bak125-2026-11-24]]: escala de persuasión de 1 a 5 medida día por día desde el 07/11 (clavada entre 1,5 y 1,9), las causas encontradas en la auditoría del 23/11 y lo instalado en bak125, bak126 y bak127, con la tabla de clientes simulados antes y después.
+
 ## [2026-11-23] update | Informe 54: memoria del cliente, agenda y seguimientos
 Informe [[54-memoria-del-cliente-agenda-y-seguimientos-2026-11-23]]: qué deja hacer el CRM (notas internas, campos, agenda, mensajes programados sí; plantillas y automatizaciones no), cuánto del cliente ve hoy el agente (solo los últimos mensajes, olvida audios y fotos al turno siguiente) y cómo salieron los primeros seguimientos reales (escasez de más). Propuesta de ficha del cliente y paquete 3. Nada instalado.
 

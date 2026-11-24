@@ -10,6 +10,20 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Niveles de persuasión y el arreglo de la venta (bak125 a bak127)
+- **Pedido.** El dueño pidió arreglar todo lo que se vio en el día con nuestros criterios, sin dejar nada atrás. También pidió definir los niveles de persuasión y ver si el agente vende más.
+- **Medido.**
+  - Escala de 1 a 5 sobre todas las respuestas desde el 07/11. La persuasión quedó entre 1,5 y 1,9 todos los días, sin subir.
+  - Las ventas empezaron a subir por el circuito de cierre: de 0 a 7 pedidos de datos por día y la primera venta cerrada de punta a punta el 23/11.
+  - Detalle en [[55-maxi-niveles-de-persuasion-y-arreglo-bak125-2026-11-24]].
+- **Hecho.** Se cambiaron el código y el manual, sin tocar los perfiles de los agentes.
+  - Precio sin pedir permiso, y también cuando pide una recomendación. Cierre a quien dice que sí a una propuesta con precio.
+  - Tope de dos preguntas para conocerlo. Despedida sin preguntas. Sin retención ni precio prometido a quien paga el mes que viene. Escasez una vez por cliente.
+  - Preguntas de venta sin pase a persona. Si el revisor marca una frase, se recorta esa frase y sale el resto.
+  - Anuncios con placa leídos y registrados con el producto de la planilla. Seguimientos que esperan si el equipo tiene un mensaje programado.
+- **Probado.** Pruebas automáticas, la puerta completa y clientes simulados con los 12 casos reales del día. Lo instalado pasaba 4 de los 12 a persona. La candidata los resolvió todos en dos vueltas.
+- **En vivo.** Un problema de lectura de imagen y uno de precios se vieron en los primeros minutos y se arreglaron con bak126 y bak127, cada uno con vuelta atrás.
+
 ### 2026-11-23 — El agente reconoce al vendedor que escribe sin firma
 - **Qué pasó.** Un vendedor que escribe en el CRM sin firma estaba cerrando una venta y el agente le mandó un seguimiento al cliente tres horas después: para la API, esos mensajes no se distinguen de los automáticos.
 - **Hecho.** Todo mensaje del negocio sin firma que no sea del agente ni de una automatización conocida del CRM cuenta como de un vendedor, y el agente no escribe en ese chat por 12 horas.
