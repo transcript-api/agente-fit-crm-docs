@@ -10,6 +10,14 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Después de las cuentas, el agente sigue atendiendo su venta, y el total al que ya decidió (bak137 y bak138)
+- **Visto.** Un cliente del agente mandó el comprobante y nadie le contestó en casi una hora. El texto con las cuentas que manda el sistema se tomaba como si lo hubiera escrito un vendedor, y el agente dejaba su propia venta. Además, a un cliente que pidió dos unidades de entrada no le dieron el total, y pagó más que la promo.
+- **Hecho.**
+  - El texto de las cuentas del agente cuenta como del agente. Ahora, después de las cuentas, lee el comprobante, y si el monto coincide marca la venta ganada.
+  - Si el monto no coincide, avisa y pasa la venta a un vendedor.
+  - Al que ya decidió y no sabe el precio, le da el total con la promo de esa cantidad antes de pedirle los datos.
+- **Probado.** Diagnóstico de solo lectura sobre el caso real, pruebas automáticas sin fallas y prueba de a pares sin envíos. Instalado con vuelta atrás. Apenas se instaló, el agente tomó el comprobante que estaba esperando.
+
 ### 2026-11-24 — El acuse del comprobante solo en la venta del agente (bak136)
 - **Visto.** En una venta que cerró una vendedora (pasó las cuentas por audio), el agente contestó el comprobante del cliente. El dueño ya había dicho que en la venta de un vendedor el agente no se mete.
 - **Hecho.** El acuse va solo si la venta es del agente o si en el chat no escribió nadie del equipo. En la venta de un vendedor, el comprobante pasa a su vendedor sin mensaje.
