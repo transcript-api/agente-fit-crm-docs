@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — El revendedor ya pasado lo sigue el vendedor (bak140)
+- **Visto.** Un revendedor ya pasado a comercial volvió a escribir. El agente le contestó con precios de catálogo y se pisó con el vendedor, que entró enseguida con las condiciones mayoristas.
+- **Hecho.** Después del pase por reventa, el agente no vuelve a contestar en ese chat. Además, el nombre de una tienda ya no se toma como marca.
+- **Probado.** Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
 ### 2026-11-24 — Nunca los datos sin el total (bak139)
 - **Visto.** Otro cliente decidido («quiero aprovechar la promo, se paga al recibir») recibió el pedido de datos sin saber cuánto era.
 - **Hecho.** Si una respuesta pide los datos y en la charla nunca se dio un precio, se reescribe con el total y la promo antes de pedirlos.
