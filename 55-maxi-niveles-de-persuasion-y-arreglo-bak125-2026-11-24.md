@@ -128,3 +128,12 @@ En estos casos, lo instalado contesta casi siempre con nivel 1 o 2, o pasa a una
   - Una negativa del modelo de visión ya no queda como lo que mostraba la foto.
   - El precio tachado de una placa se saca de la descripción, así Maxi no lo repite.
 - **Black Friday.** El dueño cree que va hasta fin de mes. El 1/12 se sacan los dos kits de la planilla.
+
+## 10. bak129 (24/11, 02:59 hora de Uruguay): las correcciones del dueño y los modelos nuevos
+
+- **Precio solo si el cliente lo pregunta.** Hasta ahí, Maxi lo convence con el valor y sin pedir permiso. Se revirtieron dos agregados míos que daban el precio cuando el cliente decía que le interesaba o pedía una recomendación. Si dice que sí antes de saber el precio, Maxi le confirma el pedido con su total y le pide los datos.
+- **Preguntas según cómo es el cliente.** Al sociable, más charla, y con conexión le suma algo al pedido. Al directo, lo básico, le elige el producto y cierra con «Te armo el pedido con esa?».
+- **Intimidad.** «Sí, ayuda. Varios de nuestros clientes nos cuentan que el Testo Dilated les ayuda mucho en esa parte, además de la energía y las ganas…», sin precio si no lo pidió.
+- **El que paga el mes que viene.** No se habla de guardarlo. Va la frase del dueño con Mercado Pago en 12 cuotas, «así no te perdés la promo». Si pide que se lo guarden, «Dale, voy a ver qué puedo hacer por vos» y sigue su vendedor.
+- **Modelos.** Los agentes pasan a gpt-6.2-sol, que responde con la misma calidad y más rápido. La lectura de fotos, placas, comprobantes y fichas también pasa a gpt-6.2-sol. Leyó bien la placa que el modelo viejo leía mal y la foto que se negaba a ver. Los audios siguen con el modelo de siempre, que entendió mejor un audio real.
+- **La escala de persuasión cambió.** Ahora mide el valor, no el precio: 3 es el producto con su porqué y 4 el valor con una propuesta concreta. Con esta escala la persuasión sí subió, de 1,4 el 07/11 a 2,3 el 23/11, y los cierres de 0 a 11 %.

@@ -10,6 +10,16 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-24 — Las correcciones del dueño y los modelos nuevos (bak129)
+- **Pedido.** El dueño corrigió cómo vende el agente.
+  - El precio solo si el cliente lo pregunta, y hasta ahí convencerlo con el valor y sin pedir permiso.
+  - Preguntas según cómo es el cliente.
+  - Su frase para la intimidad.
+  - Al que paga el mes que viene, Mercado Pago en cuotas sin hablar de guardarlo.
+  - Un modelo de OpenAI más nuevo.
+- **Hecho.** Código y manual. Los agentes y la lectura de imágenes y fichas pasan a gpt-6.2-sol, y la escala de persuasión mide el valor.
+- **Probado.** Pruebas automáticas, la puerta completa y 13 clientes simulados en dos vueltas con el modelo nuevo y una con el anterior. Instalado con vuelta atrás, también del modelo.
+
 ### 2026-11-24 — El poco apetito es una venta (bak128)
 - **Decisión del dueño.** El cliente que dice que no tiene mucho apetito no es un tema de salud. Se lo trata como algo normal y se le explica cómo lo ayuda el hipercalórico.
 - **Hecho.**
