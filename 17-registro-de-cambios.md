@@ -10,6 +10,24 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-25 — Nunca descartar sin ofrecer lo que sí sirve, y estudio de los vendedores (bak159)
+- **Pedido del dueño.**
+  - Si un producto no es para lo que busca el cliente, recomendar el que sí.
+  - Sumar al pedido por tipo, con la promo en otro mensaje.
+  - Sin chistes.
+  - Si piden fotos, que atienda un vendedor.
+  - Donde escribió un vendedor, el agente no vuelve a escribir.
+- **Hecho.**
+  - Una respuesta que descarta un producto sin ofrecer otro para esa necesidad se reescribe.
+  - La suma se ofrece por tipo, con el producto elegido por dentro para dar el precio si lo piden.
+  - Los pedidos de fotos pasan a un vendedor.
+  - La pausa en los chats de vendedores pasó de 12 horas a 7 días.
+- **Estudio.**
+  - Se leyeron 785 charlas de vendedores de una semana y se transcribieron sus audios en nuestro servidor.
+  - 148 mensajes quedaron en una base, cada uno con su análisis.
+  - Lo que más vende y al agente le falta: decir cuándo sale y cuándo llega el pedido. El equipo lo dijo en 32 de 40 ventas.
+- **Probado.** De a pares sin envíos: lo nuevo ofreció un preentreno en 2 de 2 y la suma por tipo en 2 de 2. Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
 ### 2026-11-25 — La cuota de Mercado Pago sale del precio (bak158)
 - **Visto.** A un cliente con un presupuesto de $1.500 que pagaba el mes que viene, el agente le ofreció 12 cuotas calculadas sobre esos $1.500. El kit costaba $999.
 - **Hecho.** La cuota se calcula solo sobre precios de nuestros datos, nunca sobre un número que dijo el cliente.
