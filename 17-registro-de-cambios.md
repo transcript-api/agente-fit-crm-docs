@@ -10,6 +10,16 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-25 — La cuota de Mercado Pago sale del precio (bak158)
+- **Visto.** A un cliente con un presupuesto de $1.500 que pagaba el mes que viene, el agente le ofreció 12 cuotas calculadas sobre esos $1.500. El kit costaba $999.
+- **Hecho.** La cuota se calcula solo sobre precios de nuestros datos, nunca sobre un número que dijo el cliente.
+- **Probado.** Pruebas automáticas con el caso real. Instalado con vuelta atrás.
+
+### 2026-11-25 — La promo de 2 proteínas vuelve a estar a mano (bak157)
+- **Pedido del dueño.** La promo de 2 unidades de una proteína sigue.
+- **Visto.** Ese precio por 2 estaba vacío en los datos que lee el agente hasta que el dueño lo confirmara, y en una semana no se ofreció nunca.
+- **Hecho.** Se cargó de nuevo. De a pares sin envíos, lo anterior no la nombró y lo nuevo la ofreció en 1 de 2.
+
 ### 2026-11-25 — Subir de peso, precios sin repetir y el nombre del kit una vez (bak156)
 - **Pedido del dueño.**
   - Para subir de peso, la base es un hipercalórico. Para aumentar masa muscular, la proteína.
