@@ -10,6 +10,33 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-25 — Un intento de sumar antes de los datos y la proteína como base (bak154)
+- **Pedido del dueño.** El agente pedía los datos demasiado rápido. Hay que leer al cliente: al que va directo, directo, y al resto intentar sumar algo al pedido antes. Para ganar músculo o peso, la proteína 100% como principal y el hipercalórico como complemento.
+- **Visto.** En un día, 11 de 15 pedidos de datos salieron con 3 mensajes o menos, y solo 2 tuvieron un intento de sumar. A un cliente que quería ganar músculo el agente le propuso primero un hipercalórico.
+- **Hecho.**
+  - Al «sí», una vez por chat, el agente ofrece un complemento con su porqué antes de pedir los datos. No lo hace si el cliente pide la cuenta, cómo pagar o el total.
+  - Si el cliente dice que no al complemento, va directo a los datos sin ofrecer otra cosa.
+  - La proteína va primero también para quien quiere subir de peso, y el hipercalórico entra como complemento.
+- **Probado.**
+  - De a pares sin envíos. Lo anterior pidió los datos al primer «sí». Lo nuevo ofreció sumar la proteína, y con el «no» fue a los datos.
+  - Para subir de peso, la proteína fue primero en 2 de 2, y para ganar masa en 3 de 3.
+  - Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
+### 2026-11-25 — Ninguna reescritura ofrece dejar la compra para más adelante (bak153)
+- **Visto.** Una respuesta reescrita por otro motivo terminó ofreciendo «dejarlo para más adelante».
+- **Hecho.** Ninguna reescritura sale si ofrece postergar la compra, sea cual sea el motivo.
+- **Probado.** Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
+### 2026-11-25 — La foto del kit no sale si el agente lo deja de lado (bak152)
+- **Visto.** A una clienta que quería recuperar músculo el agente le recomendó otra opción en lugar del kit del anuncio, y el sistema le mandó igual la foto de ese kit.
+- **Hecho.** La foto automática ya no cuenta las frases que dejan un producto de lado («en vez de», «más pensado para»).
+- **Probado.** Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
+### 2026-11-24 — Qué tarjetas acepta Mercado Pago (bak151)
+- **Pedido del dueño.** Averiguar si se puede pagar con Passcard.
+- **Hecho.** Según la página oficial de medios de pago de Mercado Pago Uruguay, Passcard no figura. El dato quedó cargado con las tarjetas que sí acepta.
+- **Probado.** De a pares sin envíos. Lo anterior esquivó la pregunta. Lo nuevo contestó que con Passcard no y siguió la venta (2 de 2). Instalado con vuelta atrás.
+
 ### 2026-11-24 — El precio después de los datos (bak150)
 - **Pedido del dueño.** Si el cliente no preguntó el precio, el total va después de que pasa sus datos, sumado, junto con las cuentas.
 - **Hecho.** Al «sí», el agente pide el sabor si falta y los datos, sin precio. Cuando llegan los datos, escribe una línea por producto con su precio de la planilla, el sistema controla cada precio, suma el total y lo manda antes de las cuentas.
