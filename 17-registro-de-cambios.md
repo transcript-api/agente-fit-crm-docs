@@ -10,6 +10,25 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-25 — Subir de peso, precios sin repetir y el nombre del kit una vez (bak156)
+- **Pedido del dueño.**
+  - Para subir de peso, la base es un hipercalórico. Para aumentar masa muscular, la proteína.
+  - Si el cliente pregunta por un producto que no tiene precio cargado, se le dice que sí lo tenemos, y si pide el precio pasa a una persona.
+  - El precio va solo si lo pregunta o al final, sin repetirlo.
+  - Una vez nombrado el kit, no se repite su nombre completo.
+- **Visto.**
+  - En un día, 7 respuestas repitieron un precio que el cliente ya sabía. 3 fueron el total del final de un solo producto.
+  - Después de un saludo que ya nombraba el kit, el agente lo volvió a nombrar completo.
+- **Hecho.**
+  - **Subir de peso y masa muscular.** Se separaron los dos objetivos en los datos del agente.
+  - **Productos sin precio.** Los que el cliente nombra llegan a los datos del agente.
+  - **Total del final.** Si el cliente ya sabía los precios y son hasta 3 productos, no se repite. Si es uno solo, va solo el total: «Con la promoción te queda todo en $X».
+  - **Nombre del kit.** Si ya se nombró, el agente dice «el kit».
+- **Probado.**
+  - De a pares sin envíos. Para subir de peso, lo anterior propuso una proteína y lo nuevo un hipercalórico.
+  - En el caso del dueño, lo anterior repitió el nombre del kit en 2 de 2 y lo nuevo dijo «el kit» en 2 de 2.
+  - Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
 ### 2026-11-25 — El complemento que se ofrece, con nombre (bak155)
 - **Visto.** En el primer chat real después del cambio anterior, el agente ofreció «un termogénico» sin decir cuál. Cuando el cliente preguntó cuánto sería, no tenía precio que dar y pasó el chat a una persona.
 - **Hecho.** El complemento que se ofrece antes de los datos es un producto concreto de la planilla, nombrado una vez. De paso se corrigió un precio viejo de una proteína que seguía en los datos del agente. Se lo había dicho a un cliente, antes de que el dueño lo cambiara.
