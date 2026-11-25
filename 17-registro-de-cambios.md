@@ -10,6 +10,11 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-25 — El complemento que se ofrece, con nombre (bak155)
+- **Visto.** En el primer chat real después del cambio anterior, el agente ofreció «un termogénico» sin decir cuál. Cuando el cliente preguntó cuánto sería, no tenía precio que dar y pasó el chat a una persona.
+- **Hecho.** El complemento que se ofrece antes de los datos es un producto concreto de la planilla, nombrado una vez. De paso se corrigió un precio viejo de una proteína que seguía en los datos del agente. Se lo había dicho a un cliente, antes de que el dueño lo cambiara.
+- **Probado.** Sin envíos, de a dos: a «Cuanto seria?» contestó el precio en 4 de 4. Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+
 ### 2026-11-25 — Un intento de sumar antes de los datos y la proteína como base (bak154)
 - **Pedido del dueño.** El agente pedía los datos demasiado rápido. Hay que leer al cliente: al que va directo, directo, y al resto intentar sumar algo al pedido antes. Para ganar músculo o peso, la proteína 100% como principal y el hipercalórico como complemento.
 - **Visto.** En un día, 11 de 15 pedidos de datos salieron con 3 mensajes o menos, y solo 2 tuvieron un intento de sumar. A un cliente que quería ganar músculo el agente le propuso primero un hipercalórico.
