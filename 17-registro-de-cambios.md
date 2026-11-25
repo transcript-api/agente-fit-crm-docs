@@ -10,6 +10,13 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-25 — El último seguimiento ya no se frena por una fecha inventada (bak164)
+- **Visto.** El último seguimiento, el que sale antes de que se cierre la ventana de 24 horas de WhatsApp, no salía en 23 de 39 casos desde el 22/11.
+- **Causa.** La instrucción pedía una propuesta con fecha. El agente inventaba un día («listo para el viernes») y el revisor lo frenaba porque no estaba en los datos.
+- **Hecho.** La instrucción ahora trae el día real de despacho que calcula el código, según la hora de corte.
+- **Probado.** De a pares sin envíos con clientes reales: lo anterior quedó frenado en 3 de 3 y lo nuevo pasó en 3 de 3 («si confirmás y pagás hoy, te armamos el pedido y lo despachamos en el día»). Instalado con vuelta atrás.
+- **Lección.** Si una instrucción pide un dato que el revisor exige en los datos, el código se lo tiene que dar. Y antes de culpar al último cambio, hay que medir si el error ya pasaba antes.
+
 ### 2026-11-25 — Seguimientos sin lo que hace perder al cliente (bak163)
 - **Pedido del dueño.** Arreglar todo lo grave de los seguimientos que puede hacer perder al cliente y ver dónde están los errores.
 - **Medido.** En 36 seguimientos de la tarde:
