@@ -10,6 +10,23 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-25 — La creatina del kit sale igual en todos lados y la Testo sin sobres de regalo (bak162)
+- **Pedido del dueño.**
+  - La creatina del kit de $999 es de 100 g.
+  - Ya no hay sobres de cápsulas de regalo para la Testo. La promo de 2 potes sigue, pero sin mencionarlos.
+- **Visto.**
+  - A un cliente el agente le dijo 300 g, y a otros 100 g.
+  - Otro cliente pasó a un vendedor porque el revisor vio datos distintos.
+- **Causa.** El registro automático de anuncios había guardado una copia del nombre del producto de la planilla antes de que el dueño lo corrigiera. Esa copia no se actualiza sola.
+- **Hecho.**
+  - Se corrigió esa copia.
+  - Los sobres de regalo salieron de los datos, del catálogo, de las copias del registro y de la planilla del dueño.
+- **Probado.**
+  - Pruebas automáticas sin fallas y prueba de a pares sin envíos.
+  - Después de instalar, ante la promo de 2 el agente dice «2 potes de 120 cápsulas por $1.650 en total», sin regalo.
+  - Instalado con vuelta atrás.
+- **Lección.** Cuando cambia un dato, se buscan también las copias que guardó el código.
+
 ### 2026-11-25 — Poco stock solo al que duda, cuándo sale el pedido y rescate según lo que dijo el cliente (bak161)
 - **Pedido del dueño.**
   - Limitar el «quedan pocas».
