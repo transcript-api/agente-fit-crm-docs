@@ -10,6 +10,32 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-25 — Poco stock solo al que duda, cuándo sale el pedido y rescate según lo que dijo el cliente (bak161)
+- **Pedido del dueño.**
+  - Limitar el «quedan pocas».
+  - Decir cuándo sale el pedido, con corte a las 17 y «andamos a full con los despachos».
+  - El costo y la demora del envío, solo si el cliente pregunta.
+  - El rescate según lo que dijo el cliente. Si quedó en pagar otro día, es del vendedor. Si dice que va a mirar en otro lado, preguntarle qué lo frena.
+  - Aceptamos todos los medios de pago: Abitab, Redpagos, Prex y Mi Dinero.
+- **Visto.**
+  - «Quedan pocas» salía en 50 de 134 seguimientos.
+  - El agente no decía nunca cuándo sale el pedido. El equipo lo dice en casi todas las ventas.
+- **Hecho.**
+  - El poco stock solo va a quien dudó o postergó, una vez.
+  - El agente dice si el pedido sale hoy o mañana según la hora real, y la demora de la empresa de envíos solo si se la preguntan.
+  - El rescate deja al que quedó en pagar otro día y le pregunta qué lo frena al que se va.
+  - Se sumaron los medios de pago.
+- **Probado.** De a pares sin envíos, ante «cuándo me llega?», lo anterior dijo «no te puedo dar una fecha exacta» y lo nuevo dio el horario de corte y la demora en 2 de 2. Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+- **Audios.** Se eligieron 6 audios de dos vendedores para cargarlos como mensajes listos, con la transcripción, cuándo mandar cada uno y qué cortar. Quedan 2 de reserva.
+- **Criterios.** La guía de criterios suma: poco stock por señal de duda, sumar por tipo, descartar siempre con alternativa, cuándo sale y llega el pedido, rescate según el cliente y cómo elegir audios.
+- **Pendiente.** Responder citando el mensaje: la API del CRM no lo permite al enviar.
+
+### 2026-11-25 — Una palabra de tipo no trae un producto sin precio (bak160)
+- **Visto.** Un mensaje dijo que no había precio confirmado para «el termogénico», y el termogénico sí tiene precio.
+- **Causa.** La palabra «termogénico» coincidía con el nombre de otro termogénico que no tiene precio, y ese entraba a los datos del turno.
+- **Hecho.** Las palabras de tipo (termogénico, bcaa, preentreno, hipercalórico y parecidas) ya no cuentan como nombre de un producto sin precio.
+- **Probado.** Pruebas automáticas con el caso real. Instalado con vuelta atrás.
+
 ### 2026-11-25 — Nunca descartar sin ofrecer lo que sí sirve, y estudio de los vendedores (bak159)
 - **Pedido del dueño.**
   - Si un producto no es para lo que busca el cliente, recomendar el que sí.
