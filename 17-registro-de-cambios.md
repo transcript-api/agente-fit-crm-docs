@@ -10,6 +10,28 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-25 — Seguimientos sin lo que hace perder al cliente (bak163)
+- **Pedido del dueño.** Arreglar todo lo grave de los seguimientos que puede hacer perder al cliente y ver dónde están los errores.
+- **Medido.** En 36 seguimientos de la tarde:
+  - 7 terminaban con una pregunta para conocerlo y no para cerrar.
+  - 3 pedían permiso para dar un dato.
+  - 2 ofrecían dejarlo para más adelante.
+  - 2 preguntaban si lo quería a domicilio o en agencia, que va en el formulario.
+  - 1 explicaba cómo se toma sin que lo preguntaran.
+- **Causa.**
+  - La instrucción decía «una pregunta fácil» sin decir para qué.
+  - El ejemplo de pregunta de cierre de los seguimientos era justo cómo se lo mandamos.
+  - Los frenos que ya tenían las respuestas no corrían en los seguimientos.
+- **Hecho.**
+  - El código saca esas frases antes de mandar el seguimiento.
+  - La instrucción pide una propuesta para cerrar, dejárselo listo o despachárselo.
+  - «El 1ero cobro» cuenta como cobro del mes que viene, y ahí se ofrece pagar en cuotas.
+- **Probado.**
+  - Sobre 185 seguimientos reales el freno corrige 12 sin tocar los que estaban bien.
+  - De a pares sin envíos con 7 clientes, lo nuevo cerró con una propuesta en todos los borradores.
+  - Instalado con vuelta atrás.
+- **Lección.** Cada freno del código y cada ejemplo de un prompt se revisan en todos los agentes, no solo en el que se estaba mirando.
+
 ### 2026-11-25 — La creatina del kit sale igual en todos lados y la Testo sin sobres de regalo (bak162)
 - **Pedido del dueño.**
   - La creatina del kit de $999 es de 100 g.
