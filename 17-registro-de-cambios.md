@@ -10,6 +10,14 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-26 — El anuncio de Black Friday cambió y el agente ya ofrece el combo correcto (bak166)
+- **Visto.** Los clientes que venían del anuncio del combo hipercalórico recibían otro kit. Era un kit más barato, de proteína, que ese anuncio mostraba antes. A uno le dio el precio de ese kit y a otro le pidió los datos para ese kit.
+- **Causa.** El anuncio se editó en Meta y conservó su identificador. El registro de anuncios del agente había guardado el producto desde la imagen vieja. Cuando llegó el texto nuevo, cambió el texto pero dejó el nombre del producto viejo, así que el agente tenía dos ofertas para el mismo anuncio.
+- **Hecho.** El registro de ese anuncio ahora tiene el combo hipercalórico con el nombre de la planilla del dueño. Se verificó en Meta, en modo lectura, qué dice hoy el anuncio.
+- **Probado.** De a pares sin envíos con el mismo cliente. Lo anterior ofreció el kit viejo y lo nuevo el combo con su precio y lo que trae. Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+- **Lección.** Un anuncio puede cambiar sin cambiar de identificador. Si el registro no dice lo mismo que el texto que vio el cliente, hay que mirar el anuncio. Los chequeos comparan las dos fuentes, no fijan una palabra de la oferta vieja.
+- **Pendiente.** Que el código tome el producto del texto nuevo cuando un anuncio cambia, para que no vuelva a pasar con otro.
+
 ### 2026-11-26 — Una marca de la lista del dueño ya no recibe «no la trabajamos» (bak165)
 - **Visto.** A 3 clientes en 2 días el agente les dijo que no trabajamos una marca que sí se vende, y un vendedor tenía stock.
 - **Causa.** Más de la mitad de la planilla del dueño (161 de 292 filas) no se cargaba porque esas filas no tienen precio ni descripción. Para el agente esas marcas no existían.
