@@ -10,6 +10,15 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-26 — Una marca de la lista del dueño ya no recibe «no la trabajamos» (bak165)
+- **Visto.** A 3 clientes en 2 días el agente les dijo que no trabajamos una marca que sí se vende, y un vendedor tenía stock.
+- **Causa.** Más de la mitad de la planilla del dueño (161 de 292 filas) no se cargaba porque esas filas no tienen precio ni descripción. Para el agente esas marcas no existían.
+- **Hecho.**
+  - Toda la lista del dueño cuenta como marcas que trabajamos.
+  - Si el cliente nombra un producto sin datos, el agente dice que lo tenemos y el precio lo confirma una persona.
+- **Probado.** De a pares sin envíos: lo anterior dijo «no la trabajamos» en 2 de 2 y lo nuevo en 0 de 2. Pruebas automáticas sin fallas. Instalado con vuelta atrás.
+- **Lección.** Lo que el código descarta de un dato del dueño no puede usarse para decirle al cliente que no lo tenemos.
+
 ### 2026-11-25 — El último seguimiento ya no se frena por una fecha inventada (bak164)
 - **Visto.** El último seguimiento, el que sale antes de que se cierre la ventana de 24 horas de WhatsApp, no salía en 23 de 39 casos desde el 22/11.
 - **Causa.** La instrucción pedía una propuesta con fecha. El agente inventaba un día («listo para el viernes») y el revisor lo frenaba porque no estaba en los datos.
