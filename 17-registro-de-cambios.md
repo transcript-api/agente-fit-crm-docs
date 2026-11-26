@@ -10,6 +10,29 @@ Registro cronológico de las sesiones de trabajo sobre este vault y sobre el pro
 
 ## Sesiones
 
+### 2026-11-26 — Diez errores del agente arreglados con guardas de código (bak167 y bak168)
+- **Visto.** El dueño pidió arreglar todos los errores que le hacían perder clientes. Eran estos.
+  - Seguimientos que salían aunque el revisor los objetaba, uno en contra del producto.
+  - Descargos.
+  - Explicar cómo se toma en el saludo.
+  - Decir que un dato no estaba confirmado.
+  - Invitar al local sin decir la ciudad.
+  - Pedir permiso para contar algo.
+  - Precio no pedido o pregunta de cómo recibirlo en los seguimientos.
+  - Soltar al que posterga.
+  - Ofrecer un combo más barato cuando el cliente quería sumar algo a lo que eligió.
+- **Hecho.**
+  - Lo que nunca puede salir lo corta el código.
+  - Un seguimiento objetado se vuelve a escribir con las razones del revisor.
+  - El que posterga a principio de mes recibe la opción de pagar en cuotas, con las palabras del dueño.
+  - El que quiere sumar algo recibe el precio del agregado y una pregunta para sumarlo, sin cambiarle lo que eligió.
+  - Se cargaron también los precios nuevos de una marca.
+- **Probado.** Pruebas automáticas sin fallas y pruebas de a pares sin envíos con los mismos clientes. Lo anterior repetía el error y lo nuevo no.
+  - Una nota que pedía calcular el total hizo que el agente pasara a una persona. Sin esa parte salió bien en todas las repeticiones.
+  - Instalado en dos pasos, cada uno con vuelta atrás.
+- **Lección.** Una objeción que no frena igual tiene que volver al que escribe. Una nota no puede pedir lo que otra regla prohíbe. Una palabra de más cambia la conducta, así que se prueba pareado.
+- **Pendiente.** Cambiar una frase del perfil de seguimientos (hoy la corta el código) y que el registro de anuncios tome el producto cuando un anuncio cambia.
+
 ### 2026-11-26 — El anuncio de Black Friday cambió y el agente ya ofrece el combo correcto (bak166)
 - **Visto.** Los clientes que venían del anuncio del combo hipercalórico recibían otro kit. Era un kit más barato, de proteína, que ese anuncio mostraba antes. A uno le dio el precio de ese kit y a otro le pidió los datos para ese kit.
 - **Causa.** El anuncio se editó en Meta y conservó su identificador. El registro de anuncios del agente había guardado el producto desde la imagen vieja. Cuando llegó el texto nuevo, cambió el texto pero dejó el nombre del producto viejo, así que el agente tenía dos ofertas para el mismo anuncio.
